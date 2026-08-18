@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">GlycoGuard AI</string>
+    <string name="title_activity_main">GlycoGuard AI</string>
+    <string name="package_name">com.glycoguard.ai</string>
+    <string name="custom_url_scheme">com.glycoguard.ai</string>
+</resources>

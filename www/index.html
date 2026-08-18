@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>GlycoGuard AI Mobile</title>
+    
+    <!-- Meta & Branding -->
+    <meta name="theme-color" content="#0b132b">
+    <meta name="description" content="AI-Powered Diabetes Prediction and Preventive Health Platform">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    
+    <!-- Chart.js for Mobile Charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Mobile Application Styles -->
+    <link rel="stylesheet" href="mobile/mobile.css">
+    <link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+
+    <!-- Offline Status Banner -->
+    <div id="offlineBanner">
+        <i class="fa-solid fa-triangle-exclamation"></i> Offline: Unable to reach GlycoGuard server
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer"></div>
+
+    <!-- ==========================================================
+         1. SPLASH SCREEN
+         ========================================================== -->
+    <div id="splashScreen">
+        <div class="splash-logo-wrap">
+            <div class="splash-pulse-ring"></div>
+            <div class="splash-icon">🩺</div>
+        </div>
+        <h1 class="splash-title">GlycoGuard AI</h1>
+        <p class="splash-tagline">Predict • Prevent • Personalize</p>
+        <div class="splash-loader"></div>
+    </div>
+
+    <!-- ==========================================================
+         2. MOBILE AUTHENTICATION VIEW
+         ========================================================== -->
+    <div id="authView" class="screen-view" style="padding: 24px 16px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+        <div style="text-align: center; margin-bottom: 24px;">
+            <div style="font-size: 48px; margin-bottom: 8px;">🩺</div>
+            <h2 style="font-size: 24px; font-weight: 700; background: var(--brand-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">GlycoGuard AI</h2>
+            <p style="font-size: 12px; color: var(--text-secondary);">Predict • Prevent • Personalize</p>
+        </div>
+
+        <div class="card" style="margin-bottom: 16px;">
+            <!-- Auth Tabs -->
+            <div style="display: flex; gap: 8px; margin-bottom: 18px; background: var(--bg-input); padding: 4px; border-radius: var(--radius-md);">
+                <button id="authTabLogin" class="btn-secondary btn-sm" style="flex: 1; border: none; background: var(--brand-primary); color: #fff;" onclick="switchAuthTab('login')">Sign In</button>
+                <button id="authTabRegister" class="btn-secondary btn-sm" style="flex: 1; border: none;" onclick="switchAuthTab('register')">Register</button>
+                <button id="authTabForgot" class="btn-secondary btn-sm" style="flex: 1; border: none;" onclick="switchAuthTab('forgot')">Reset</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" onsubmit="event.preventDefault(); handleMobileLogin();">
+                <div class="form-group">
+                    <label class="form-label">Username or Email</label>
+                    <input type="text" id="loginUsername" class="form-control" placeholder="Enter username or email" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="loginPassword" class="form-control" placeholder="Enter password" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="btn-primary" style="margin-top: 18px;">
+                    <i class="fa-solid fa-right-to-bracket"></i> Sign In to GlycoGuard
+                </button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" style="display: none;" onsubmit="event.preventDefault(); handleMobileRegister();">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" id="regFullName" class="form-control" placeholder="Dr. Lakshmi / John Doe" required>
+                </div>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label class="form-label">Username</label>
+                        <input type="text" id="regUsername" class="form-control" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" id="regPhone" class="form-control" placeholder="Phone" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" id="regEmail" class="form-control" placeholder="name@example.com" required>
+                </div>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" id="regPassword" class="form-control" placeholder="Min 6 chars" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Confirm</label>
+                        <input type="password" id="regConfirmPassword" class="form-control" placeholder="Repeat" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary" style="margin-top: 10px;">
+                    <i class="fa-solid fa-user-plus"></i> Create Account
+                </button>
+            </form>
+
+            <!-- Direct Reset Form -->
+            <form id="forgotForm" style="display: none;" onsubmit="event.preventDefault(); handleMobileReset();">
+                <div class="disclaimer-box" style="margin-top: 0; margin-bottom: 14px;">
+                    Enter your registered email or username to update your password immediately.
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email or Username</label>
+                    <input type="text" id="resetIdentifier" class="form-control" placeholder="Registered username or email" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">New Password</label>
+                    <input type="password" id="resetNewPassword" class="form-control" placeholder="Enter new password" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Confirm New Password</label>
+                    <input type="password" id="resetConfirmPassword" class="form-control" placeholder="Confirm new password" required>
+                </div>
+                <button type="submit" class="btn-primary" style="margin-top: 10px;">
+                    <i class="fa-solid fa-key"></i> Update Password & Sign In
+                </button>
+            </form>
+
+            <!-- Quick Google Demo Sign-In -->
+            <div style="margin-top: 18px; text-align: center; border-top: 1px solid var(--border-color); padding-top: 14px;">
+                <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px;">Or continue with Google</p>
+                <button class="btn-secondary" type="button" onclick="handleGoogleDemoLogin()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" style="margin-right: 6px;">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                    </svg>
+                    Continue with Google
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+         MAIN APP SHELL (PROTECTED VIEWS)
+         ========================================================== -->
+    <div id="mainAppShell" style="display: none;">
+
+        <!-- Sticky Header -->
+        <header class="mobile-header">
+            <div class="header-brand">
+                <span class="header-brand-icon">🩺</span>
+                <div>
+                    <div class="header-brand-title">GlycoGuard AI</div>
+                    <div class="header-brand-subtitle">Clinical Mobile Assistant</div>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="header-btn" onclick="toggleAppTheme()" title="Toggle Theme">
+                    <i id="themeIcon" class="fa-solid fa-moon"></i>
+                </button>
+                <button class="header-btn" onclick="navigateTo('profile')" title="User Profile">
+                    <i class="fa-solid fa-user-doctor"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- ==========================================================
+             SCREEN 1: HOME / DASHBOARD
+             ========================================================== -->
+        <main id="view-dashboard" class="screen-view active">
+            <!-- Greeting Header -->
+            <div class="greeting-header">
+                <div class="greeting-text">
+                    <h2 id="dashGreeting">Good morning 👋</h2>
+                    <p id="dashDate">Saturday, August 16, 2026</p>
+                </div>
+                <div class="user-avatar-mini" id="dashAvatar">U</div>
+            </div>
+
+            <!-- Diabetes Risk Hero Card -->
+            <div class="card card-gradient-hero">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span style="font-size: 12px; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px;">Current Risk Status</span>
+                    <span id="dashRiskPill" class="pill pill-low" style="background: rgba(255,255,255,0.25); color: #fff; border: none;">LOW RISK</span>
+                </div>
+                <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px;">
+                    <span id="dashRiskPercent" style="font-size: 36px; font-weight: 700;">28.4%</span>
+                    <span style="font-size: 13px; opacity: 0.85;">Probability Score</span>
+                </div>
+                <p id="dashRecommendation" style="font-size: 12px; line-height: 1.4; opacity: 0.95; margin-bottom: 14px;">
+                    Low diabetes probability detected. Continue regular physical activity and balanced nutrition.
+                </p>
+                <button class="btn-secondary" style="background: rgba(255,255,255,0.2); border: none; color: #fff;" onclick="navigateTo('prediction')">
+                    <i class="fa-solid fa-bolt"></i> Run New AI Prediction
+                </button>
+            </div>
+
+            <!-- Quick Action Shortcuts -->
+            <div class="quick-actions">
+                <div class="action-btn" onclick="navigateTo('prediction')">
+                    <div class="action-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <span class="action-label">Predict</span>
+                </div>
+                <div class="action-btn" onclick="navigateTo('tracking')">
+                    <div class="action-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <span class="action-label">Track</span>
+                </div>
+                <div class="action-btn" onclick="navigateTo('planner')">
+                    <div class="action-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                    <span class="action-label">Planner</span>
+                </div>
+                <div class="action-btn" onclick="navigateTo('patients')">
+                    <div class="action-icon"><i class="fa-solid fa-user-group"></i></div>
+                    <span class="action-label">Patients</span>
+                </div>
+            </div>
+
+            <!-- Health Summary KPI Cards -->
+            <div class="card-title">
+                <span>Today's Health Metrics</span>
+                <button class="btn-sm btn-secondary" onclick="navigateTo('tracking')">+ Log</button>
+            </div>
+            <div class="grid-2" style="margin-bottom: 16px;">
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <span>Fasting Glucose</span>
+                        <i class="fa-solid fa-droplet" style="color: var(--brand-primary);"></i>
+                    </div>
+                    <div class="kpi-value"><span id="kpiGlucose">98</span> <span class="kpi-unit">mg/dL</span></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <span>Water Intake</span>
+                        <i class="fa-solid fa-glass-water" style="color: #06b6d4;"></i>
+                    </div>
+                    <div class="kpi-value"><span id="kpiWater">2.5</span> <span class="kpi-unit">Liters</span></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <span>Physical Activity</span>
+                        <i class="fa-solid fa-person-running" style="color: #10b981;"></i>
+                    </div>
+                    <div class="kpi-value"><span id="kpiExercise">35</span> <span class="kpi-unit">Minutes</span></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <span>Sleep Duration</span>
+                        <i class="fa-solid fa-bed" style="color: #a855f7;"></i>
+                    </div>
+                    <div class="kpi-value"><span id="kpiSleep">7.5</span> <span class="kpi-unit">Hours</span></div>
+                </div>
+            </div>
+
+            <!-- Recent Activity Feed -->
+            <div class="card">
+                <div class="card-title">
+                    <span>Recent Clinical Activity</span>
+                    <i class="fa-solid fa-clock-rotate-left" style="color: var(--text-muted);"></i>
+                </div>
+                <div id="dashActivityList">
+                    <div class="activity-item">
+                        <div class="activity-icon"><i class="fa-solid fa-check"></i></div>
+                        <div class="activity-info">
+                            <div class="activity-title">Diabetes Risk Assessment (Low Risk)</div>
+                            <div class="activity-date">Patient: Lakshmi Ankala • Today</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- ==========================================================
+             SCREEN 2: AI PREDICTION
+             ========================================================== -->
+        <main id="view-prediction" class="screen-view">
+            <div class="card-title" style="font-size: 18px; margin-bottom: 4px;">
+                <span>AI Diabetes Risk Predictor</span>
+            </div>
+            <p class="card-subtitle">RandomForest ML Classification Engine</p>
+
+            <!-- Results Card (When Available) -->
+            <div id="predResultCard" class="card" style="display: none; border: 1px solid var(--border-highlight);">
+                <div class="card-title">
+                    <span>Prediction Result</span>
+                    <span id="predRiskBadge" class="pill pill-low">LOW RISK</span>
+                </div>
+
+                <div class="gauge-container">
+                    <div class="circular-gauge">
+                        <svg>
+                            <circle class="gauge-bg" cx="70" cy="70" r="54"></circle>
+                            <circle id="predGaugeCircle" class="gauge-fill" cx="70" cy="70" r="54"></circle>
+                        </svg>
+                        <div class="gauge-center-text">
+                            <div id="predPercentText" class="gauge-percent">0%</div>
+                            <div class="gauge-label">Risk Probability</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top: 10px;">
+                    <label class="form-label" style="font-weight: 600;">AI Clinical Recommendation</label>
+                    <div id="predRecommendationText" class="disclaimer-box" style="background: var(--bg-input); border-left-color: var(--brand-primary); margin-top: 4px;">
+                        Evaluation result recommendation will be displayed here.
+                    </div>
+                </div>
+
+                <div class="grid-2" style="margin-top: 14px;">
+                    <button class="btn-secondary btn-sm" onclick="navigateTo('planner')">
+                        <i class="fa-solid fa-calendar-check"></i> Open AI Plan
+                    </button>
+                    <button class="btn-secondary btn-sm" onclick="navigateTo('reports')">
+                        <i class="fa-solid fa-file-lines"></i> View Report
+                    </button>
+                </div>
+
+                <div class="disclaimer-box">
+                    <i class="fa-solid fa-circle-info"></i> <strong>Medical Notice:</strong> This result is an AI-based risk estimate and is not a formal medical diagnosis. Consult a physician for definitive laboratory analysis.
+                </div>
+            </div>
+
+            <!-- Prediction Form -->
+            <div class="card">
+                <form id="mobilePredForm" onsubmit="event.preventDefault(); handleRunPrediction();">
+                    <div class="form-group">
+                        <label class="form-label">Select Patient (Optional)</label>
+                        <select id="predPatientSelect" class="form-control" onchange="autoFillPatientMetrics(this.value)">
+                            <option value="">-- Manual Quick Assessment --</option>
+                        </select>
+                    </div>
+
+                    <div style="font-weight: 600; font-size: 13px; color: var(--brand-primary); margin: 12px 0 8px 0;">1. Clinical Biomarkers</div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Glucose (mg/dL)</label>
+                            <input type="number" id="predGlucose" class="form-control" value="120" placeholder="e.g. 120" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Blood Pressure (mm Hg)</label>
+                            <input type="number" id="predBP" class="form-control" value="70" placeholder="e.g. 70" required>
+                        </div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Insulin (μU/mL)</label>
+                            <input type="number" id="predInsulin" class="form-control" value="80" placeholder="e.g. 80" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Skin Thickness (mm)</label>
+                            <input type="number" id="predSkin" class="form-control" value="20" placeholder="e.g. 20" required>
+                        </div>
+                    </div>
+
+                    <div style="font-weight: 600; font-size: 13px; color: var(--brand-primary); margin: 12px 0 8px 0;">2. Body & Heredity</div>
+                    <div class="grid-3">
+                        <div class="form-group">
+                            <label class="form-label">BMI</label>
+                            <input type="number" step="0.1" id="predBMI" class="form-control" value="25.4" placeholder="25.4" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Age</label>
+                            <input type="number" id="predAge" class="form-control" value="35" placeholder="35" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Pregnancies</label>
+                            <input type="number" id="predPregnancies" class="form-control" value="0" placeholder="0" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Diabetes Pedigree (0.05 - 2.5)</label>
+                        <input type="number" step="0.01" id="predDPF" class="form-control" value="0.47" placeholder="0.47" required>
+                    </div>
+
+                    <div style="font-weight: 600; font-size: 13px; color: var(--brand-primary); margin: 12px 0 8px 0;">3. Lifestyle Metrics</div>
+                    <div class="grid-3">
+                        <div class="form-group">
+                            <label class="form-label">Exercise (min)</label>
+                            <input type="number" id="predExercise" class="form-control" value="30" placeholder="30">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Sleep (hrs)</label>
+                            <input type="number" step="0.5" id="predSleep" class="form-control" value="7.5" placeholder="7.5">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Stress (1-10)</label>
+                            <input type="number" id="predStress" class="form-control" value="4" min="1" max="10" placeholder="4">
+                        </div>
+                    </div>
+
+                    <button type="submit" id="btnRunPrediction" class="btn-primary" style="margin-top: 14px;">
+                        <i class="fa-solid fa-heart-pulse"></i> Calculate Diabetes Risk
+                    </button>
+                </form>
+            </div>
+        </main>
+
+        <!-- ==========================================================
+             SCREEN 3: DAILY TRACKING
+             ========================================================== -->
+        <main id="view-tracking" class="screen-view">
+            <div class="card-title" style="font-size: 18px; margin-bottom: 4px;">
+                <span>Daily Health Tracking</span>
+            </div>
+            <p class="card-subtitle">Record and visualize vitals trends over time</p>
+
+            <!-- Vitals Log Form -->
+            <div class="card">
+                <div class="card-title">
+                    <span>Log Daily Metrics</span>
+                    <i class="fa-solid fa-pen-to-square" style="color: var(--brand-primary);"></i>
+                </div>
+                <form id="mobileTrackingForm" onsubmit="event.preventDefault(); handleSaveTracking();">
+                    <div class="form-group">
+                        <label class="form-label">Select Patient</label>
+                        <select id="trackPatientSelect" class="form-control">
+                            <option value="">-- General Log --</option>
+                        </select>
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Water Intake (L)</label>
+                            <input type="number" step="0.1" id="trackWater" class="form-control" value="2.5" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Sleep (Hours)</label>
+                            <input type="number" step="0.5" id="trackSleep" class="form-control" value="7.5" required>
+                        </div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Exercise (Mins)</label>
+                            <input type="number" id="trackExercise" class="form-control" value="30" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Blood Sugar (mg/dL)</label>
+                            <input type="number" id="trackBloodSugar" class="form-control" value="98" required>
+                        </div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Weight (kg)</label>
+                            <input type="number" step="0.1" id="trackWeight" class="form-control" value="68.5" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Stress Level (1-10)</label>
+                            <input type="number" id="trackStress" class="form-control" min="1" max="10" value="3" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary" style="margin-top: 8px;">
+                        <i class="fa-solid fa-floppy-disk"></i> Save Today's Vitals Log
+                    </button>
+                </form>
+            </div>
+
+            <!-- Tracking Trend Chart -->
+            <div class="card">
+                <div class="card-title">
+                    <span>Blood Sugar & Vitals Trends</span>
+                </div>
+                <div style="position: relative; height: 220px; width: 100%;">
+                    <canvas id="mobileTrackingChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Historical Entries Card -->
+            <div class="card">
+                <div class="card-title">
+                    <span>Recent Logged Entries</span>
+                    <i class="fa-solid fa-list-check" style="color: var(--text-muted);"></i>
+                </div>
+                <div id="trackingLogsList">
+                    <p style="text-align: center; color: var(--text-muted); padding: 10px;">Loading tracking logs...</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- ==========================================================
+             SCREEN 4: AI HEALTH PLANNER
+             ========================================================== -->
+        <main id="view-planner" class="screen-view">
+            <div class="card-title" style="font-size: 18px; margin-bottom: 4px;">
+                <span>AI Health & Nutrition Planner</span>
+            </div>
+            <p class="card-subtitle">Personalized preventive lifestyle schedule</p>
+
+            <!-- Plan Generator Filter -->
+            <div class="card" style="padding: 14px;">
+                <div style="display: flex; gap: 10px; align-items: flex-end;">
+                    <div style="flex: 1;">
+                        <label class="form-label">Target Risk Level</label>
+                        <select id="plannerRiskSelect" class="form-control" onchange="fetchAIHealthPlan(this.value)">
+                            <option value="Low">Low Risk Protocol</option>
+                            <option value="Medium" selected>Moderate Risk Protocol</option>
+                            <option value="High">High Risk Protocol</option>
+                        </select>
+                    </div>
+                    <button class="btn-primary btn-sm" style="height: 44px; padding: 0 16px;" onclick="fetchAIHealthPlan(document.getElementById('plannerRiskSelect').value)">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Today's Daily Checklist Goals -->
+            <div class="card">
+                <div class="card-title">
+                    <span>Today's Daily Goals</span>
+                    <span id="planGoalsProgress" class="pill pill-low">0/4 Done</span>
+                </div>
+                <div id="planGoalsList">
+                    <div class="plan-goal-item" onclick="toggleGoal(this, 1)">
+                        <div class="goal-checkbox"><i class="fa-solid fa-check"></i></div>
+                        <span class="goal-text">Complete 30 mins active exercise</span>
+                    </div>
+                    <div class="plan-goal-item" onclick="toggleGoal(this, 2)">
+                        <div class="goal-checkbox"><i class="fa-solid fa-check"></i></div>
+                        <span class="goal-text">Follow low-glycemic dietary meal plan</span>
+                    </div>
+                    <div class="plan-goal-item" onclick="toggleGoal(this, 3)">
+                        <div class="goal-checkbox"><i class="fa-solid fa-check"></i></div>
+                        <span class="goal-text">Drink 2.5 Liters of fresh water</span>
+                    </div>
+                    <div class="plan-goal-item" onclick="toggleGoal(this, 4)">
+                        <div class="goal-checkbox"><i class="fa-solid fa-check"></i></div>
+                        <span class="goal-text">Perform 15 mins evening relaxation / meditation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Structured Meal Recommendations -->
+            <div class="meal-card">
+                <div class="meal-header"><i class="fa-solid fa-mug-hot"></i> Breakfast Protocol</div>
+                <div id="planBreakfast" class="meal-content">Vegetable omelet or Moong dal chilla + green tea (no sugar).</div>
+            </div>
+            <div class="meal-card">
+                <div class="meal-header"><i class="fa-solid fa-bowl-food"></i> Lunch Protocol</div>
+                <div id="planLunch" class="meal-content">Brown rice or 2 multigrain rotis with mixed vegetable curry and fresh sprouts.</div>
+            </div>
+            <div class="meal-card">
+                <div class="meal-header"><i class="fa-solid fa-apple-whole"></i> Snacks & Evening</div>
+                <div id="planSnacks" class="meal-content">Apple slices with peanut butter or hand-full of unsalted almonds and walnuts.</div>
+            </div>
+            <div class="meal-card">
+                <div class="meal-header"><i class="fa-solid fa-utensils"></i> Dinner Protocol</div>
+                <div id="planDinner" class="meal-content">Lentil soup with baked fish/paneer and crisp garden green salad.</div>
+            </div>
+
+            <!-- Lifestyle Support -->
+            <div class="card">
+                <div class="card-title">
+                    <span>Lifestyle & Recovery Guidance</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 10px; font-size: 12px;">
+                    <div><strong style="color: var(--brand-primary);"><i class="fa-solid fa-person-walking"></i> Exercise:</strong> <span id="planExercise">30-40 mins moderate cardio + light strength training</span></div>
+                    <div><strong style="color: #06b6d4;"><i class="fa-solid fa-glass-water"></i> Hydration:</strong> <span id="planWater">2.5 Liters daily</span></div>
+                    <div><strong style="color: #a855f7;"><i class="fa-solid fa-moon"></i> Sleep:</strong> <span id="planSleep">7 to 8 Hours nightly</span></div>
+                    <div><strong style="color: #10b981;"><i class="fa-solid fa-spa"></i> Stress Relief:</strong> <span id="planStress">20 mins evening walk without phone & gentle yoga</span></div>
+                </div>
+            </div>
+        </main>
+
+        <!-- ==========================================================
+             SCREEN 5: PATIENTS DIRECTORY
+             ========================================================== -->
+        <main id="view-patients" class="screen-view">
+            <div class="card-title" style="font-size: 18px; margin-bottom: 4px;">
+                <span>Patient Management</span>
+                <button class="btn-primary btn-sm" onclick="openAddPatientModal()">
+                    <i class="fa-solid fa-user-plus"></i> Add Patient
+                </button>
+            </div>
+            <p class="card-subtitle">Manage medical records and individual patient histories</p>
+
+            <!-- Search Bar -->
+            <div class="card" style="padding: 12px; margin-bottom: 12px;">
+                <div style="position: relative;">
+                    <input type="text" id="patientSearchInput" class="form-control" placeholder="Search patient by name or ID..." oninput="filterPatientsList(this.value)">
+                    <i class="fa-solid fa-magnifying-glass" style="position: absolute; right: 14px; top: 15px; color: var(--text-muted);"></i>
+                </div>
+            </div>
+
+            <!-- Patients List Container -->
+            <div id="patientsCardsContainer">
+                <p style="text-align: center; color: var(--text-muted); padding: 20px;">Loading patients records...</p>
+            </div>
+        </main>
+
+        <!-- ==========================================================
+             SCREEN 6: HEALTH ANALYTICS
+             ========================================================== -->
+        <main id="view-analytics" class="screen-view">
+            <div class="card-title" style="font-size: 18px; margin-bottom: 4px;">
+                <span>Population & Risk Analytics</span>
+            </div>
+            <p class="card-subtitle">Clinical statistics and lifestyle correlation metrics</p>
+
+            <div class="card">
+                <div class="card-title">
+                    <span>Risk Level Distribution</span>
+                </div>
+                <div style="position: relative; height: 200px; width: 100%;">
+                    <canvas id="chartRiskDistribution"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span>Fasting Glucose Categories</span>
+                </div>
+                <div style="position: relative; height: 200px; width: 100%;">
+                    <canvas id="chartGlucoseBreakdown"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span>Exercise vs Stress Correlation</span>
+                </div>
+                <div style="position: relative; height: 200px; width: 100%;">
+                    <canvas id="chartLifestyleCorrelation"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span>Cohort Health Trend Score</span>
+                </div>
+                <div style="position: relative; height: 200px; width: 100%;">
+                    <canvas id="chartHealthTrend"></canvas>
+                </div>
+            </div>
+        </main>
+
+        <!-- ==========================================================
+             SCREEN 7: CLINICAL REPORTS
+             ========================================================== -->
+        <main id="view-reports" class="screen-view">
+            <div class="card-title" style="font-size: 18px; margin-bottom: 4px;">
+                <span>Clinical Reports</span>
+            </div>
+            <p class="card-subtitle">Generate and review exportable patient evaluation reports</p>
+
+            <div class="card">
+                <div class="card-title">
+                    <span>Generate Clinical Assessment</span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Select Patient</label>
+                    <select id="reportPatientSelect" class="form-control">
+                        <option value="">-- Choose Patient --</option>
+                    </select>
+                </div>
+                <button class="btn-primary" onclick="handleGenerateReport()">
+                    <i class="fa-solid fa-file-circle-plus"></i> Generate Comprehensive Report
+                </button>
+            </div>
+
+            <!-- Report Preview Card -->
+            <div id="reportPreviewContainer" class="card" style="display: none; border: 1px solid var(--border-highlight);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
+                    <div>
+                        <h3 style="font-size: 15px; font-weight: 700; color: var(--text-primary);">GlycoGuard Clinical Report</h3>
+                        <span id="repGeneratedId" style="font-size: 11px; color: var(--text-muted);">ID: GG-2026-0001</span>
+                    </div>
+                    <button class="btn-secondary btn-sm" onclick="window.print()">
+                        <i class="fa-solid fa-print"></i> Print / PDF
+                    </button>
+                </div>
+
+                <div class="patient-details-grid" style="margin-bottom: 14px;">
+                    <div><span style="color: var(--text-muted);">Patient:</span> <strong id="repPatName">-</strong></div>
+                    <div><span style="color: var(--text-muted);">Age/Gender:</span> <strong id="repPatAgeGender">-</strong></div>
+                    <div><span style="color: var(--text-muted);">BMI:</span> <strong id="repPatBMI">-</strong></div>
+                    <div><span style="color: var(--text-muted);">Phone:</span> <span id="repPatPhone">-</span></div>
+                    <div><span style="color: var(--text-muted);">Email:</span> <span id="repPatEmail">-</span></div>
+                    <div><span style="color: var(--text-muted);">Date:</span> <span id="repDate">-</span></div>
+                </div>
+
+                <div style="background: var(--bg-input); padding: 12px; border-radius: var(--radius-md); margin-bottom: 12px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                        <span style="font-size: 12px; color: var(--text-secondary);">Assessed Risk Level:</span>
+                        <strong id="repRiskLevel" style="color: var(--brand-primary);">Low Risk</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="font-size: 12px; color: var(--text-secondary);">Calculated Probability:</span>
+                        <strong id="repProbability">0%</strong>
+                    </div>
+                </div>
+
+                <div class="disclaimer-box" style="margin-top: 0;">
+                    <strong style="color: var(--brand-primary); display: block; margin-bottom: 4px;">Physician Recommendation:</strong>
+                    <span id="repRecommendationText">Maintain current preventive regimen.</span>
+                </div>
+            </div>
+
+            <!-- Report History -->
+            <div class="card">
+                <div class="card-title">
+                    <span>Generated Report History</span>
+                </div>
+                <div id="reportsHistoryList">
+                    <p style="text-align: center; color: var(--text-muted); padding: 10px;">Loading historical reports...</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- ==========================================================
+             SCREEN 8: PROFILE & SETTINGS
+             ========================================================== -->
+        <main id="view-profile" class="screen-view">
+            <div class="card-title" style="font-size: 18px; margin-bottom: 4px;">
+                <span>Account & Preferences</span>
+            </div>
+            <p class="card-subtitle">User profile, app settings, and connection details</p>
+
+            <!-- User Info Card -->
+            <div class="card" style="text-align: center; padding: 24px 18px;">
+                <div style="width: 68px; height: 68px; border-radius: 50%; background: var(--brand-gradient); color: #fff; display: flex; justify-content: center; align-items: center; font-size: 28px; font-weight: 700; margin: 0 auto 12px auto; box-shadow: var(--shadow-md);" id="profileAvatarLarge">
+                    U
+                </div>
+                <h3 id="profileFullName" style="font-size: 17px; font-weight: 700; color: var(--text-primary); margin-bottom: 2px;">User Name</h3>
+                <p id="profileUsername" style="font-size: 12px; color: var(--brand-primary); font-weight: 600; margin-bottom: 16px;">@username</p>
+                
+                <div style="background: var(--bg-input); border-radius: var(--radius-md); padding: 12px; text-align: left; font-size: 12px;">
+                    <div style="margin-bottom: 8px;">
+                        <span style="color: var(--text-muted); display: block; font-size: 10px; text-transform: uppercase;">Email Address</span>
+                        <strong id="profileEmail" style="color: var(--text-primary);">user@glycoguard.ai</strong>
+                    </div>
+                    <div>
+                        <span style="color: var(--text-muted); display: block; font-size: 10px; text-transform: uppercase;">Role</span>
+                        <strong id="profileRole" style="color: var(--brand-primary);">Medical Practitioner</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Appearance & Theme -->
+            <div class="card">
+                <div class="card-title">
+                    <span>Application Appearance</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div style="font-weight: 600; font-size: 13px;">Color Theme</div>
+                        <div style="font-size: 11px; color: var(--text-muted);">Choose Dark or Light mode</div>
+                    </div>
+                    <button class="btn-secondary btn-sm" onclick="toggleAppTheme()">
+                        <i class="fa-solid fa-circle-half-stroke"></i> <span id="themeToggleText">Switch Theme</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Server & API Settings (Public Cloud HTTPS & Dev Switcher) -->
+            <div class="card">
+                <div class="card-title">
+                    <span>Cloud API & Server Settings</span>
+                    <i class="fa-solid fa-cloud" style="color: var(--brand-primary);"></i>
+                </div>
+                <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px;">
+                    Connected to Public Cloud HTTPS backend (accessible over any Wi-Fi & 4G/5G mobile data).
+                </p>
+                <div class="form-group">
+                    <label class="form-label">API Base URL</label>
+                    <input type="text" id="apiConfigUrl" class="form-control" placeholder="https://glycoguard-api.onrender.com">
+                </div>
+                <div class="grid-2" style="margin-bottom: 8px;">
+                    <button class="btn-secondary btn-sm" onclick="saveCustomApiUrl()">
+                        <i class="fa-solid fa-floppy-disk"></i> Save URL
+                    </button>
+                    <button class="btn-secondary btn-sm" onclick="testServerConnection()">
+                        <i class="fa-solid fa-plug"></i> Test Server
+                    </button>
+                </div>
+                <div id="apiTestStatus" style="font-size: 11px; margin-top: 4px; text-align: center;"></div>
+            </div>
+
+
+            <!-- Quick Navigation to Extra Screens -->
+            <div class="card">
+                <div class="card-title">
+                    <span>More Features</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <button class="btn-secondary btn-sm" style="justify-content: space-between;" onclick="navigateTo('patients')">
+                        <span><i class="fa-solid fa-users" style="margin-right: 8px;"></i> Patient Directory</span>
+                        <i class="fa-solid fa-chevron-right" style="color: var(--text-muted);"></i>
+                    </button>
+                    <button class="btn-secondary btn-sm" style="justify-content: space-between;" onclick="navigateTo('analytics')">
+                        <span><i class="fa-solid fa-chart-pie" style="margin-right: 8px;"></i> Population Analytics</span>
+                        <i class="fa-solid fa-chevron-right" style="color: var(--text-muted);"></i>
+                    </button>
+                    <button class="btn-secondary btn-sm" style="justify-content: space-between;" onclick="navigateTo('reports')">
+                        <span><i class="fa-solid fa-file-lines" style="margin-right: 8px;"></i> Clinical Reports</span>
+                        <i class="fa-solid fa-chevron-right" style="color: var(--text-muted);"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Logout Button -->
+            <div style="margin-top: 10px; margin-bottom: 24px;">
+                <button class="btn-primary btn-danger" onclick="handleMobileLogout()">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out of GlycoGuard
+                </button>
+                <p style="text-align: center; font-size: 11px; color: var(--text-muted); margin-top: 14px;">
+                    GlycoGuard AI v2.0 • Android Native
+                </p>
+            </div>
+        </main>
+
+        <!-- ==========================================================
+             PERSISTENT BOTTOM NAVIGATION BAR
+             ========================================================== -->
+        <nav class="bottom-nav">
+            <button class="nav-tab active" data-view="dashboard" onclick="navigateTo('dashboard')">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </button>
+            <button class="nav-tab" data-view="prediction" onclick="navigateTo('prediction')">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <span>Predict</span>
+            </button>
+            <button class="nav-tab" data-view="tracking" onclick="navigateTo('tracking')">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Track</span>
+            </button>
+            <button class="nav-tab" data-view="planner" onclick="navigateTo('planner')">
+                <i class="fa-solid fa-calendar-check"></i>
+                <span>Planner</span>
+            </button>
+            <button class="nav-tab" data-view="profile" onclick="navigateTo('profile')">
+                <i class="fa-solid fa-user"></i>
+                <span>Profile</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- ==========================================================
+         MODAL: ADD / EDIT PATIENT BOTTOM SHEET
+         ========================================================== -->
+    <div id="patientModal" class="modal-overlay" onclick="if(event.target===this) closePatientModal()">
+        <div class="bottom-sheet">
+            <div class="sheet-handle"></div>
+            <div class="card-title" style="margin-bottom: 14px;">
+                <span id="patientModalTitle">Add New Patient</span>
+                <button class="btn-sm btn-secondary" onclick="closePatientModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="patientForm" onsubmit="event.preventDefault(); handleSavePatient();">
+                <input type="hidden" id="modalPatientId" value="">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" id="modalPatName" class="form-control" placeholder="Patient Name" required>
+                </div>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label class="form-label">Age</label>
+                        <input type="number" id="modalPatAge" class="form-control" placeholder="Age" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Gender</label>
+                        <select id="modalPatGender" class="form-control">
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label class="form-label">Height (cm)</label>
+                        <input type="number" id="modalPatHeight" class="form-control" placeholder="170" oninput="calculateModalBMI()">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Weight (kg)</label>
+                        <input type="number" id="modalPatWeight" class="form-control" placeholder="70" oninput="calculateModalBMI()">
+                    </div>
+                </div>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label class="form-label">Calculated BMI</label>
+                        <input type="number" step="0.1" id="modalPatBMI" class="form-control" placeholder="24.2">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone</label>
+                        <input type="tel" id="modalPatPhone" class="form-control" placeholder="Phone Number">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" id="modalPatEmail" class="form-control" placeholder="patient@example.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Family Medical History</label>
+                    <input type="text" id="modalPatHistory" class="form-control" placeholder="e.g. Type 2 Diabetes (Maternal)">
+                </div>
+                <button type="submit" class="btn-primary" style="margin-top: 14px;">
+                    <i class="fa-solid fa-floppy-disk"></i> Save Patient Profile
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="mobile/mobile.js"></script>
+    <script src="mobile.js"></script>
+</body>
+</html>

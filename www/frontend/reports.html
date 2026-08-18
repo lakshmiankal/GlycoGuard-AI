@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Reports | GlycoGuard AI</title>
+    <link rel="stylesheet" href="../css/patient.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        .report-preview {
+            background: #ffffff;
+            color: #1e293b;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: none;
+        }
+        .report-header {
+            border-bottom: 2px solid #2563eb;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .report-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .report-table th, .report-table td {
+            border: 1px solid #cbd5e1;
+            padding: 10px;
+            text-align: left;
+            color: #1e293b;
+        }
+        .report-table th {
+            background: #f1f5f9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="logo">
+            <h2>🩺 GlycoGuard AI</h2>
+            <p>Predict • Prevent • Personalize</p>
+        </div>
+        <ul>
+            <li><a href="dashboard.html"><i class="fa fa-home"></i> Dashboard</a></li>
+            <li><a href="patients.html"><i class="fa fa-user-group"></i> Patients</a></li>
+            <li><a href="prediction.html"><i class="fa fa-heart-pulse"></i> Prediction</a></li>
+            <li><a href="planner.html"><i class="fa fa-calendar-check"></i> AI Planner</a></li>
+            <li><a href="tracking.html"><i class="fa fa-chart-line"></i> Tracking</a></li>
+            <li><a href="analytics.html"><i class="fa fa-chart-pie"></i> Analytics</a></li>
+            <li class="active"><a href="#"><i class="fa fa-file"></i> Reports</a></li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <div class="topbar" style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+                <h1>Patient Health Reports</h1>
+            </div>
+            <div style="display:flex; align-items:center; gap:15px;">
+                <button class="addBtn" onclick="window.print()" style="cursor:pointer;">
+                    <i class="fa fa-print"></i> Print / Download PDF
+                </button>
+                <div class="profile" onclick="showProfileModal()" style="cursor:pointer;" title="View User Profile">
+                    <i class="fa-solid fa-circle-user" style="font-size: 32px; color: #38bdf8;"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Generate Report</h2>
+            <div style="display:flex; gap:15px; flex-wrap:wrap; align-items:center;">
+                <select id="reportPatientSelect" style="width:250px; padding:10px; border-radius:8px; background:#1e293b; color:#fff; border:1px solid #334155;">
+                    <option value="">-- Select Patient --</option>
+                </select>
+                <button class="save" style="padding:10px 20px;" onclick="generateReport()">Generate Clinical Report</button>
+            </div>
+        </div>
+
+        <div id="reportContainer" class="report-preview">
+            <div class="report-header">
+                <div>
+                    <h2 style="color:#2563eb; margin:0;">🩺 GlycoGuard AI</h2>
+                    <p style="margin:4px 0 0 0; color:#64748b; font-size:13px;">Clinical Diabetes Risk & Prevention Assessment Report</p>
+                </div>
+                <div style="text-align:right;">
+                    <strong id="repDate">Date: 2026-08-10</strong><br>
+                    <span id="repId" style="font-size:12px; color:#64748b;">Report #: GG-2026-101</span>
+                </div>
+            </div>
+
+            <h3 style="color:#0f172a; margin-top:0;">Patient Information</h3>
+            <table class="report-table">
+                <tr><th>Full Name</th><td id="repName">-</td><th>Age / Gender</th><td id="repAgeGender">-</td></tr>
+                <tr><th>Phone</th><td id="repPhone">-</td><th>Email</th><td id="repEmail">-</td></tr>
+                <tr><th>Height / Weight</th><td id="repHW">-</td><th>BMI</th><td id="repBMI">-</td></tr>
+            </table>
+
+            <h3 style="color:#0f172a; margin-top:25px;">Latest Risk Assessment Outcome</h3>
+            <table class="report-table">
+                <tr><th>Predicted Risk Tier</th><td id="repRisk">-</td><th>Diabetes Probability</th><td id="repProb">-</td></tr>
+                <tr><th>Clinical Recommendation</th><td colspan="3" id="repRec">-</td></tr>
+            </table>
+
+            <div style="margin-top:30px; padding-top:15px; border-top:1px solid #e2e8f0; text-align:center; font-size:12px; color:#94a3b8;">
+                This report is generated automatically by GlycoGuard AI for preventive risk screening. Consult a certified practitioner for diagnostic confirmation.
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:20px;">
+            <h2>Report History</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Patient</th>
+                        <th>Report Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="reportsTable">
+                    <tr><td colspan="4" style="text-align:center;">Loading report history...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav class="mobile-nav">
+        <a href="dashboard.html"><i class="fa-solid fa-chart-pie"></i><span>Home</span></a>
+        <a href="prediction.html"><i class="fa-solid fa-heart-pulse"></i><span>Predict</span></a>
+        <a href="patients.html"><i class="fa-solid fa-users"></i><span>Patients</span></a>
+        <a href="tracking.html"><i class="fa-solid fa-chart-line"></i><span>Tracking</span></a>
+        <a href="planner.html"><i class="fa-solid fa-calendar-check"></i><span>Planner</span></a>
+        <a href="reports.html" class="active"><i class="fa-solid fa-file-medical"></i><span>Reports</span></a>
+    </nav>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/reports.js"></script>
+</body>
+</html>

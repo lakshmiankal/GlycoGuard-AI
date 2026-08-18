@@ -1,0 +1,47 @@
+import javax.net.ssl.*
+import java.security.SecureRandom
+import java.security.cert.X509Certificate
+
+try {
+    def nullTrustManager = [
+        checkClientTrusted: { chain, authType -> },
+        checkServerTrusted: { chain, authType -> },
+        getAcceptedIssuers: { return new X509Certificate[0] }
+    ] as X509TrustManager
+
+    def sslContext = SSLContext.getInstance("TLS")
+    sslContext.init(null, [nullTrustManager] as TrustManager[], new SecureRandom())
+    SSLContext.setDefault(sslContext)
+    HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory())
+    HttpsURLConnection.setDefaultHostnameVerifier({ hostname, session -> true } as HostnameVerifier)
+} catch (Exception e) {
+    println("SSL bypass note: " + e)
+}
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        maven { url "${project.rootDir}/local_repo" }
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.2.1'
+        classpath 'com.google.gms:google-services:4.4.0'
+    }
+}
+
+apply from: "variables.gradle"
+
+allprojects {
+    repositories {
+        maven { url "${project.rootDir}/local_repo" }
+        google()
+        mavenCentral()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

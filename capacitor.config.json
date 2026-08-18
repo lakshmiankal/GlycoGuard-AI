@@ -1,0 +1,13 @@
+{
+  "appId": "com.glycoguard.ai",
+  "appName": "GlycoGuard AI",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https",
+    "cleartext": true
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}
+

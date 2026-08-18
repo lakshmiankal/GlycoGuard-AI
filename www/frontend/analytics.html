@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics & Visualizations | GlycoGuard AI</title>
+    <link rel="stylesheet" href="../css/patient.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="logo">
+            <h2>🩺 GlycoGuard AI</h2>
+            <p>Predict • Prevent • Personalize</p>
+        </div>
+        <ul>
+            <li><a href="dashboard.html"><i class="fa fa-home"></i> Dashboard</a></li>
+            <li><a href="patients.html"><i class="fa fa-user-group"></i> Patients</a></li>
+            <li><a href="prediction.html"><i class="fa fa-heart-pulse"></i> Prediction</a></li>
+            <li><a href="planner.html"><i class="fa fa-calendar-check"></i> AI Planner</a></li>
+            <li><a href="tracking.html"><i class="fa fa-chart-line"></i> Tracking</a></li>
+            <li class="active"><a href="#"><i class="fa fa-chart-pie"></i> Analytics</a></li>
+            <li><a href="reports.html"><i class="fa fa-file"></i> Reports</a></li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <div class="topbar" style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+                <h1>Clinical Analytics & Insights</h1>
+                <p style="color:#94a3b8;">Population Risk Profiles & Lifestyle Correlation</p>
+            </div>
+            <div class="profile" onclick="showProfileModal()" style="cursor:pointer;" title="View User Profile">
+                <i class="fa-solid fa-circle-user" style="font-size: 32px; color: #38bdf8;"></i>
+            </div>
+        </div>
+
+        <div class="chart-grid">
+            <div class="card">
+                <h2><i class="fa fa-chart-pie" style="color:#2563eb;"></i> Patient Risk Distribution</h2>
+                <canvas id="riskDistributionChart" height="250"></canvas>
+            </div>
+
+            <div class="card">
+                <h2><i class="fa fa-chart-bar" style="color:#06b6d4;"></i> Glucose Level Breakdown</h2>
+                <canvas id="glucoseChart" height="250"></canvas>
+            </div>
+
+            <div class="card">
+                <h2><i class="fa fa-person-walking" style="color:#10b981;"></i> Exercise vs Stress Level</h2>
+                <canvas id="lifestyleChart" height="250"></canvas>
+            </div>
+
+            <div class="card">
+                <h2><i class="fa fa-chart-line" style="color:#f59e0b;"></i> Patient Cohort Progress</h2>
+                <canvas id="trendChart" height="250"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav class="mobile-nav">
+        <a href="dashboard.html"><i class="fa-solid fa-chart-pie"></i><span>Home</span></a>
+        <a href="prediction.html"><i class="fa-solid fa-heart-pulse"></i><span>Predict</span></a>
+        <a href="patients.html"><i class="fa-solid fa-users"></i><span>Patients</span></a>
+        <a href="tracking.html"><i class="fa-solid fa-chart-line"></i><span>Tracking</span></a>
+        <a href="planner.html"><i class="fa-solid fa-calendar-check"></i><span>Planner</span></a>
+        <a href="reports.html"><i class="fa-solid fa-file-medical"></i><span>Reports</span></a>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/analytics.js"></script>
+</body>
+</html>

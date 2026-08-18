@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GlycoGuard AI - Login/Register</title>
+</head>
+
+<body style="text-align:center; font-family:Arial;">
+
+    <h2>🔐 GlycoGuard AI</h2>
+
+    <input id="username" placeholder="Email / Mobile"><br><br>
+    <input id="password" type="password" placeholder="Password"><br><br>
+
+    <!-- Extra fields (hidden initially) -->
+    <div id="extra" style="display:none;">
+        <input id="name" placeholder="Full Name"><br><br>
+        <input id="age" type="number" placeholder="Age"><br><br>
+        <input id="location" placeholder="Location"><br><br>
+        <input id="hospital" placeholder="Hospital Name"><br><br>
+    </div>
+
+    <button onclick="submitForm()">Continue</button>
+
+    <p id="msg"></p>
+
+    <script>
+        function submitForm() {
+            let data = {
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value
+            };
+
+            fetch("http://127.0.0.1:5000/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            })
+                .then(res => res.json())
+                .then(response => {
+
+                    if (response.status === "success") {
+                        // ✅ Existing user
+                        window.location.href = "index.html";
+
+                    } else {
+                        // ❗ New user → show extra fields
+                        document.getElementById("msg").innerText = "New user detected. Please complete registration.";
+                        document.getElementById("extra").style.display = "block";
+
+                        // Change button behavior
+                        document.querySelector("button").onclick = registerUser;
+                    }
+                });
+        }
+
+        function registerUser() {
+            let data = {
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value,
+                name: document.getElementById("name").value,
+                age: document.getElementById("age").value,
+                location: document.getElementById("location").value,
+                hospital: document.getElementById("hospital").value
+            };
+
+            fetch("http://127.0.0.1:5000/signup", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            })
+                .then(res => res.json())
+                .then(() => {
+                    alert("Registered successfully!");
+                    window.location.href = "index.html";
+                });
+        }
+    </script>
+
+</body>
+
+</html>

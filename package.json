@@ -1,0 +1,26 @@
+{
+  "name": "glycoguard-ai-mobile",
+  "version": "1.0.0",
+  "description": "GlycoGuard AI - Professional Android Application",
+  "main": "auth.html",
+  "scripts": {
+    "build": "python build_www.py",
+    "cap:sync": "npx cap sync android",
+    "cap:open": "npx cap open android"
+  },
+  "keywords": [
+    "glycoguard",
+    "diabetes",
+    "ai",
+    "capacitor",
+    "android"
+  ],
+  "author": "GlycoGuard AI Team",
+  "license": "ISC",
+  "dependencies": {
+    "@capacitor/android": "^6.2.0",
+    "@capacitor/app": "^6.0.2",
+    "@capacitor/cli": "^6.2.0",
+    "@capacitor/core": "^6.2.0"
+  }
+}

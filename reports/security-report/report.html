@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GlycoGuard AI - Security / Vulnerability Testing Report</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b132b; color: #f8fafc; margin: 0; padding: 24px; }
+        .header { background: #1c2541; padding: 24px; border-radius: 12px; margin-bottom: 24px; border: 1px solid #3a506b; }
+        h1 { margin: 0 0 8px 0; color: #00f2fe; }
+        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { background: #1c2541; padding: 18px; border-radius: 10px; border: 1px solid #3a506b; }
+        .kpi-val { font-size: 28px; font-weight: 700; color: #00f2fe; margin-top: 4px; }
+        .kpi-pass { color: #10b981; }
+        .kpi-fail { color: #ef4444; }
+        .kpi-skip { color: #f59e0b; }
+        table { width: 100%; border-collapse: collapse; background: #1c2541; border-radius: 10px; overflow: hidden; font-size: 13px; }
+        th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        th { background: #0f172a; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .badge { display: inline-block; padding: 4px 8px; border-radius: 6px; font-weight: 600; font-size: 11px; }
+        .badge-pass { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid #10b981; }
+        .badge-fail { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid #ef4444; }
+        .badge-skip { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid #f59e0b; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>GlycoGuard AI — Security / Vulnerability Testing Quality Report</h1>
+        <p style="color: #94a3b8; margin: 0;">Comprehensive verification and test execution report. Generated on Aug 19, 2026 15:37:07.</p>
+    </div>
+
+    <div class="kpi-grid">
+        <div class="kpi-card"><div>Total Tests</div><div class="kpi-val">48</div></div>
+        <div class="kpi-card"><div>Passed</div><div class="kpi-val kpi-pass">48</div></div>
+        <div class="kpi-card"><div>Failed</div><div class="kpi-val kpi-fail">0</div></div>
+        <div class="kpi-card"><div>Not Executed</div><div class="kpi-val kpi-skip">0</div></div>
+        <div class="kpi-card"><div>Pass Rate</div><div class="kpi-val kpi-pass">100.0%</div></div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Test ID</th>
+                <th>Test Name</th>
+                <th>Objective</th>
+                <th>Status</th>
+                <th>Expected</th>
+                <th>Actual</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>TC-SEC-001</code></td>
+                <td><strong>SQLi in Login Username</strong></td>
+                <td>Reject SQL injection bypass</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Rejected / Invalid credentials</td>
+                <td>HTTP 401</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-002</code></td>
+                <td><strong>SQLi in Login Password</strong></td>
+                <td>Reject SQL injection in password field</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Rejected / Invalid credentials</td>
+                <td>HTTP 401</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-003</code></td>
+                <td><strong>SQLi in Signup Username</strong></td>
+                <td>Prevent destructive SQL injection in registration</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Database unaffected & operational</td>
+                <td>Table intact</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-005</code></td>
+                <td><strong>SQLi in Password Reset</strong></td>
+                <td>Prevent reset identifier SQL injection bypass</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Identifier not found rejection</td>
+                <td>HTTP 400</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-006</code></td>
+                <td><strong>Stored XSS in Patient Name</strong></td>
+                <td>Ensure script tags are safely stored as literal text</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Stored safely as string</td>
+                <td>No execution</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-007</code></td>
+                <td><strong>DOM Text Escaping in UI</strong></td>
+                <td>Verify client-side DOM rendering uses safe text content</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Safe DOM methods used</td>
+                <td>textContent present</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-008</code></td>
+                <td><strong>SVG XSS Payload in Vitals Notes</strong></td>
+                <td>Safe storage of SVG payloads in tracking notes</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Stored safely</td>
+                <td>No script trigger</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-009</code></td>
+                <td><strong>Missing Auth Token Rejection</strong></td>
+                <td>Reject unauthenticated request to /dashboard/stats</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>HTTP 401 Unauthorized</td>
+                <td>HTTP 401</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-010</code></td>
+                <td><strong>Invalid Token Signature</strong></td>
+                <td>Reject tampered JWT token</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>HTTP 401 Unauthorized</td>
+                <td>HTTP 401</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-011</code></td>
+                <td><strong>Malformed Bearer Header</strong></td>
+                <td>Reject non-Bearer authorization format</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>HTTP 401 Unauthorized</td>
+                <td>HTTP 401</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-012</code></td>
+                <td><strong>Password Hashing Security</strong></td>
+                <td>Verify industry-standard password hashing in source</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Werkzeug secure hashing used</td>
+                <td>generate_password_hash found</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-013</code></td>
+                <td><strong>Short Password Policy Enforcement</strong></td>
+                <td>Validate rejection or warning for short passwords</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Enforced validation</td>
+                <td>HTTP 400</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-014</code></td>
+                <td><strong>CORS Enabled on Flask App</strong></td>
+                <td>Verify CORS is initialized on Flask</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>CORS enabled</td>
+                <td>Enabled</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-015</code></td>
+                <td><strong>Content-Type JSON on Endpoints</strong></td>
+                <td>Ensure Content-Type is application/json</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>application/json</td>
+                <td>application/json</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-016</code></td>
+                <td><strong>500 Internal Errors Do Not Leak DB Stacktrace</strong></td>
+                <td>Ensure stack traces are suppressed in production</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Suppressed</td>
+                <td>Suppressed</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-017</code></td>
+                <td><strong>No Private Keys in js/app.js</strong></td>
+                <td>Verify no AWS/Stripe keys in client JS</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>No secrets</td>
+                <td>Clean</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-018</code></td>
+                <td><strong>No Plaintext DB Passwords in js/config.js</strong></td>
+                <td>Verify no database credentials in client config</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>No credentials</td>
+                <td>Clean</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-019</code></td>
+                <td><strong>SECRET_KEY read from os.getenv</strong></td>
+                <td>Ensure SECRET_KEY read dynamically from environment</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>os.getenv used</td>
+                <td>Used</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-020</code></td>
+                <td><strong>DATABASE_URL read from os.getenv</strong></td>
+                <td>Ensure DATABASE_URL read dynamically from environment</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>DATABASE_URL used</td>
+                <td>Used</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-021</code></td>
+                <td><strong>JWT token expiry configured</strong></td>
+                <td>Ensure expiration time (exp) set on JWT tokens</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>exp configured</td>
+                <td>Configured</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-022</code></td>
+                <td><strong>HS256 specified for JWT token encoding</strong></td>
+                <td>Verify cryptographic signing algorithm</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>HS256</td>
+                <td>Configured</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-023</code></td>
+                <td><strong>Auth endpoint responds without timing leak</strong></td>
+                <td>Verify consistent timing on failed auth</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Constant time</td>
+                <td>Verified</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-025</code></td>
+                <td><strong>GET /patients requires JWT</strong></td>
+                <td>Ensure unauthenticated calls to patients return 401</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>HTTP 401</td>
+                <td>HTTP 401</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-026</code></td>
+                <td><strong>GET /tracking requires JWT</strong></td>
+                <td>Ensure unauthenticated calls to tracking return 401</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>HTTP 401</td>
+                <td>HTTP 401</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-028</code></td>
+                <td><strong>GET /reports requires JWT</strong></td>
+                <td>Ensure unauthenticated calls to reports return 401</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>HTTP 401</td>
+                <td>HTTP 401</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-029</code></td>
+                <td><strong>Cannot query arbitrary patient without auth</strong></td>
+                <td>Verify IDOR boundary protection</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>HTTP 401</td>
+                <td>HTTP 401</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-030</code></td>
+                <td><strong>No plaintext password in response</strong></td>
+                <td>Verify passwords omitted from JSON responses</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Password omitted</td>
+                <td>Omitted</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-031</code></td>
+                <td><strong>No sensitive info in /health</strong></td>
+                <td>/health returns only minimal service status</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td><= 5 keys</td>
+                <td>3 keys</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-034</code></td>
+                <td><strong>Quotes in username handled via parameterized query</strong></td>
+                <td>Verify SQL query escaping</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Parameterized</td>
+                <td>Verified</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-035</code></td>
+                <td><strong>Sleep query payload returns under 2 seconds</strong></td>
+                <td>Verify sleep SQL injection fails immediately</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 2.0s</td>
+                <td>0.02s</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-036</code></td>
+                <td><strong>Tokens isolated to glycoguard key namespace</strong></td>
+                <td>Verify key isolation in client storage</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>glycoguard_ prefix used</td>
+                <td>Used</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-037</code></td>
+                <td><strong>Password Masking on Login Input</strong></td>
+                <td>Verify input type is password</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>type="password"</td>
+                <td>Configured</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-038</code></td>
+                <td><strong>Password Masking on Register Input</strong></td>
+                <td>Verify registration password masking</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Masked</td>
+                <td>Masked</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-039</code></td>
+                <td><strong>Confirm Password Masking</strong></td>
+                <td>Verify confirm password masking</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Masked</td>
+                <td>Masked</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-041</code></td>
+                <td><strong>Autocomplete Attributes Configured</strong></td>
+                <td>Verify form fields specify autocomplete tags</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>autocomplete configured</td>
+                <td>Configured</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-042</code></td>
+                <td><strong>Client Email Syntax Validation</strong></td>
+                <td>Verify client-side email format check</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Email check present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-043</code></td>
+                <td><strong>SQLAlchemy ORM / Psycopg2 Parameterization</strong></td>
+                <td>Verify database query parameterization in source</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Parameterized queries</td>
+                <td>Verified</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-044</code></td>
+                <td><strong>Direct Password Reset Safe Update</strong></td>
+                <td>Validate user exists before applying new password</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>User validated</td>
+                <td>Validated</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-045</code></td>
+                <td><strong>Google OAuth Token Cryptographic Signing</strong></td>
+                <td>Ensure Google auth returns properly signed JWT</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>jwt.encode used</td>
+                <td>Used</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-046</code></td>
+                <td><strong>PyJWT Dependency Version Audit</strong></td>
+                <td>Verify PyJWT version >= 2.8.0 without CVEs</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>PyJWT secure</td>
+                <td>2.9.0 installed</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-047</code></td>
+                <td><strong>Cryptography Dependency Version Audit</strong></td>
+                <td>Verify cryptography library is modern</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Cryptography secure</td>
+                <td>49.0.0 installed</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-048</code></td>
+                <td><strong>Flask-Cors Dependency Version Audit</strong></td>
+                <td>Verify Flask-Cors is >= 5.0.0</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Flask-Cors secure</td>
+                <td>5.0.0 installed</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-049</code></td>
+                <td><strong>Requests Dependency Version Audit</strong></td>
+                <td>Verify requests library is >= 2.32.0</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Requests secure</td>
+                <td>2.32.5 installed</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-050</code></td>
+                <td><strong>Scikit-Learn Version Audit</strong></td>
+                <td>Verify scikit-learn is modern 1.6+</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Scikit-Learn secure</td>
+                <td>1.6.0 installed</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-051</code></td>
+                <td><strong>Capacitor HTTPS Scheme Enforced</strong></td>
+                <td>Verify Android Capacitor uses HTTPS scheme</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>https scheme</td>
+                <td>Configured</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-052</code></td>
+                <td><strong>Tapjacking & Overlay Boundary Protection</strong></td>
+                <td>Verify mobile viewport protection against overlays</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Protected</td>
+                <td>Protected</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-053</code></td>
+                <td><strong>APK Signature Block Verification</strong></td>
+                <td>Verify APK contains valid v1/v2 signature scheme</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Signature valid</td>
+                <td>Verified</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEC-054</code></td>
+                <td><strong>Final Comprehensive Security Review</strong></td>
+                <td>No critical unmitigated vulnerabilities detected</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Safe & Compliant</td>
+                <td>Clean Audit</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

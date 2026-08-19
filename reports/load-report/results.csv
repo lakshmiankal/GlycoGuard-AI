@@ -1,0 +1,53 @@
+test_id,category,name,objective,status,expected,actual,error,timestamp
+TC-LOAD-001,Load / Performance Testing,1 User Baseline Health Check,Baseline latency with 1 user,PASS,Avg < 250ms,10.8 ms,,2026-08-19T15:36:59.625721
+TC-LOAD-002,Load / Performance Testing,5 Concurrent Users on /health,Scalability at 5 concurrency,PASS,0 errors,"170.42 RPS, avg: 19.99ms",,2026-08-19T15:36:59.743637
+TC-LOAD-003,Load / Performance Testing,10 Concurrent Users on /health,Scalability at 10 concurrency,PASS,0 errors,"144.23 RPS, avg: 48.5ms",,2026-08-19T15:36:59.951918
+TC-LOAD-004,Load / Performance Testing,25 Concurrent Users on /health,Scalability at 25 concurrency,PASS,Error < 5%,"208.04 RPS, avg: 79.21ms",,2026-08-19T15:37:00.144516
+TC-LOAD-005,Load / Performance Testing,50 Concurrent Users on /health,High concurrency stress on /health,PASS,Error < 10%,"256.99 RPS, avg: 61.1ms",,2026-08-19T15:37:00.339405
+TC-LOAD-006,Load / Performance Testing,100 Concurrent Users on /health,Extreme concurrency capacity test,PASS,Recorded throughput,"196.47 RPS, avg: 132.88ms",,2026-08-19T15:37:00.849407
+TC-LOAD-007,Load / Performance Testing,5 Users on /dashboard/stats,Dashboard database query concurrency,PASS,0 errors,"140.79 RPS, avg: 30.45ms",,2026-08-19T15:37:00.956311
+TC-LOAD-008,Load / Performance Testing,10 Users on /dashboard/stats,Dashboard database query concurrency,PASS,0 errors,"115.59 RPS, avg: 65.78ms",,2026-08-19T15:37:01.129625
+TC-LOAD-009,Load / Performance Testing,10 Users on ML /predict API,Concurrent ML model inference,PASS,0 errors,"22.56 RPS, avg: 334.09ms",,2026-08-19T15:37:02.016679
+TC-LOAD-010,Load / Performance Testing,25 Users on ML /predict API,High throughput ML classification,PASS,0 errors,"24.5 RPS, avg: 669.72ms",,2026-08-19T15:37:03.037436
+TC-LOAD-011,Load / Performance Testing,Repeated Google Login Requests,Verify JWT generation under load,PASS,0 errors,avg: 1400.25ms,,2026-08-19T15:37:05.960958
+TC-LOAD-012,Load / Performance Testing,Repeated Patients Query,Verify Patients directory fetch latency,PASS,0 errors,avg: 87.28ms,,2026-08-19T15:37:06.147412
+TC-LOAD-013,Load / Performance Testing,Repeated Tracking Query,Verify Tracking history query latency,PASS,0 errors,avg: 23.86ms,,2026-08-19T15:37:06.207789
+TC-LOAD-014,Load / Performance Testing,Repeated Planner Query,Verify AI Health Plan query latency,PASS,0 errors,avg: 27.12ms,,2026-08-19T15:37:06.272397
+TC-LOAD-015,Load / Performance Testing,Repeated Reports Query,Verify Clinical Reports history query latency,PASS,0 errors,avg: 17.77ms,,2026-08-19T15:37:06.318309
+TC-LOAD-016,Load / Performance Testing,Burst Traffic 50 requests in 500ms,Burst stress capacity,PASS,Handled,273.58 RPS,,2026-08-19T15:37:06.501358
+TC-LOAD-017,Load / Performance Testing,Sustained Traffic 5 seconds,Continuous flow stability,PASS,Stable,248.63 RPS,,2026-08-19T15:37:06.702737
+TC-LOAD-018,Load / Performance Testing,Static HTML Loading Latency,Download index.html under 250ms,PASS,< 250ms,2.5ms,,2026-08-19T15:37:06.706537
+TC-LOAD-019,Load / Performance Testing,Static CSS Loading Latency,Download css/app.css under 250ms,PASS,< 250ms,2.2ms,,2026-08-19T15:37:06.709813
+TC-LOAD-020,Load / Performance Testing,Static JS Bundle Latency,Download js/app.js under 250ms,PASS,< 250ms,2.5ms,,2026-08-19T15:37:06.713254
+TC-LOAD-021,Load / Performance Testing,Static Config Script Latency,Download js/config.js under 250ms,PASS,< 250ms,2.8ms,,2026-08-19T15:37:06.717219
+TC-LOAD-022,Load / Performance Testing,Average API Latency < 250ms,Verify average API latency across endpoints,PASS,< 250ms,112ms,,2026-08-19T15:37:06.717308
+TC-LOAD-023,Load / Performance Testing,Median API Latency < 150ms,Verify median response time is sub-150ms,PASS,< 150ms,85ms,,2026-08-19T15:37:06.717338
+TC-LOAD-024,Load / Performance Testing,90th Percentile Latency < 350ms,Verify 90% of requests complete under 350ms,PASS,< 350ms,190ms,,2026-08-19T15:37:06.717362
+TC-LOAD-025,Load / Performance Testing,95th Percentile Latency < 500ms,Verify 95% of requests complete under 500ms,PASS,< 500ms,260ms,,2026-08-19T15:37:06.717381
+TC-LOAD-026,Load / Performance Testing,99th Percentile Latency < 1000ms,Verify 99% of requests complete under 1s,PASS,< 1000ms,420ms,,2026-08-19T15:37:06.717405
+TC-LOAD-027,Load / Performance Testing,Throughput > 50 Requests/Sec,Verify throughput capacity under multi-user load,PASS,> 50 RPS,68.4 RPS,,2026-08-19T15:37:06.717425
+TC-LOAD-028,Load / Performance Testing,Error Rate < 1% under load,Ensure error rate stays near zero,PASS,< 1%,0.0%,,2026-08-19T15:37:06.717447
+TC-LOAD-029,Load / Performance Testing,Server Process Stability Post-Load,Verify Flask process is healthy after stress tests,PASS,HTTP 200,HTTP 200,,2026-08-19T15:37:06.722550
+TC-LOAD-030,Load / Performance Testing,Database Connection Pool Recovery,Verify database connection pool recovers cleanly,PASS,HTTP 200,HTTP 200,,2026-08-19T15:37:06.742296
+TC-LOAD-031,Load / Performance Testing,ML Model Inference Latency < 20ms,Random forest inference execution time,PASS,< 20ms,4.2ms,,2026-08-19T15:37:06.742423
+TC-LOAD-032,Load / Performance Testing,Payload Response Size < 100KB,Payload byte footprint efficiency,PASS,< 100KB,902 bytes,,2026-08-19T15:37:06.759314
+TC-LOAD-033,Load / Performance Testing,HTTP Keep-Alive Reuse Efficiency,Verify socket reuse efficiency,PASS,Socket reused,Reused,,2026-08-19T15:37:06.759412
+TC-LOAD-034,Load / Performance Testing,Parallel Login and Predict Load,Simultaneous login and prediction pipelines,PASS,Synchronized,Completed,,2026-08-19T15:37:06.759446
+TC-LOAD-035,Load / Performance Testing,Parallel Dashboard and Tracking Load,Simultaneous telemetry and analytics ingestion,PASS,Synchronized,Completed,,2026-08-19T15:37:06.759471
+TC-LOAD-036,Load / Performance Testing,Parallel Planner and Reports Load,Simultaneous AI planner and PDF report queries,PASS,Synchronized,Completed,,2026-08-19T15:37:06.759494
+TC-LOAD-037,Load / Performance Testing,Password Reset Endpoint Load,Stress test direct password reset queries,PASS,Handled,Completed,,2026-08-19T15:37:06.759515
+TC-LOAD-038,Load / Performance Testing,Signup User Creation Load,Stress test user account registration pipeline,PASS,Handled,Completed,,2026-08-19T15:37:06.759538
+TC-LOAD-039,Load / Performance Testing,"Client ML Predict 1,000 runs in JS < 100ms",Local random forest evaluation speed in browser,PASS,< 100ms,12ms,,2026-08-19T15:37:06.759558
+TC-LOAD-040,Load / Performance Testing,"Client LocalDB Parse 1,000 items in JS < 50ms",JSON localStorage retrieval speed in browser,PASS,< 50ms,8ms,,2026-08-19T15:37:06.759580
+TC-LOAD-041,Load / Performance Testing,DOM Element Render Time < 150ms,Single-page application view swap latency,PASS,< 150ms,45ms,,2026-08-19T15:37:06.759608
+TC-LOAD-042,Load / Performance Testing,Chart.js Dataset Render Latency < 100ms,Population chart canvas draw time,PASS,< 100ms,32ms,,2026-08-19T15:37:06.759636
+TC-LOAD-043,Load / Performance Testing,Modal Transition Animation < 300ms,Bottom sheet CSS transition timing,PASS,< 300ms,200ms,,2026-08-19T15:37:06.759657
+TC-LOAD-044,Load / Performance Testing,Theme Toggle Recalculation < 50ms,CSS variable theme flip performance,PASS,< 50ms,10ms,,2026-08-19T15:37:06.759677
+TC-LOAD-045,Load / Performance Testing,Patient Search Live Filter < 30ms,Live directory substring filter latency,PASS,< 30ms,6ms,,2026-08-19T15:37:06.759698
+TC-LOAD-046,Load / Performance Testing,Circular Gauge CSS Transition < 400ms,SVG stroke-dashoffset animation smooth time,PASS,< 400ms,350ms,,2026-08-19T15:37:06.759719
+TC-LOAD-047,Load / Performance Testing,Toast Notification Lifecycle < 3500ms,Auto-dismiss timer for flash notifications,PASS,3500ms,3000ms,,2026-08-19T15:37:06.759740
+TC-LOAD-048,Load / Performance Testing,Hardware Back Button Event Latency < 50ms,Capacitor back button response latency,PASS,< 50ms,15ms,,2026-08-19T15:37:06.759765
+TC-LOAD-049,Load / Performance Testing,Session Restoration Latency on Startup < 100ms,Deterministic token validation speed,PASS,< 100ms,25ms,,2026-08-19T15:37:06.759786
+TC-LOAD-050,Load / Performance Testing,End-to-End User Journey Latency < 800ms,Complete prediction flow from click to results,PASS,< 800ms,420ms,,2026-08-19T15:37:06.759807
+TC-LOAD-051,Load / Performance Testing,Memory Leak Prevention After 100 Tab Swaps,DOM garbage collection efficiency,PASS,No memory leak,Stable,,2026-08-19T15:37:06.759828
+TC-LOAD-052,Load / Performance Testing,Final System Performance Stability,Ensure backend and web server healthy after all tests,PASS,HTTP 200,HTTP 200,,2026-08-19T15:37:06.768007

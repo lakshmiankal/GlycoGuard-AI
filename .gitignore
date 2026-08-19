@@ -1,0 +1,27 @@
+# Node dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Android & Gradle Build Artifacts
+.gradle/
+build/
+android/app/build/
+android/.gradle/
+*.iml
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

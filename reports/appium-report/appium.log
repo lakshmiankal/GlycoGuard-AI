@@ -1,0 +1,73 @@
+=== GLYCOGUARD AI - APPIUM ANDROID MOBILE TEST EXECUTION LOG ===
+Timestamp: 2026-08-19T15:36:59.499260
+Total: 69 | Passed: 52 | Failed: 0 | Blocked: 0 | Not Executed: 17
+
+[PASS] TC-MOB-001 - APK Binary Existence
+[PASS] TC-MOB-002 - APK ZIP Structure
+[PASS] TC-MOB-003 - Android App Identifier
+[PASS] TC-MOB-004 - Permission: INTERNET
+[PASS] TC-MOB-005 - Permission: ACCESS_NETWORK_STATE
+[PASS] TC-MOB-006 - MainActivity LaunchMode
+[PASS] TC-MOB-007 - Cleartext Traffic Allowed
+[PASS] TC-MOB-008 - Capacitor WebDir Config
+[PASS] TC-MOB-009 - Capacitor Android Scheme
+[PASS] TC-MOB-010 - Native Asset: index.html
+[PASS] TC-MOB-011 - Native Asset: css/app.css
+[PASS] TC-MOB-012 - Native Asset: js/app.js
+[PASS] TC-MOB-013 - Native Asset: js/config.js
+[PASS] TC-MOB-014 - Native Asset Synchronization
+[PASS] TC-MOB-015 - Gradle Wrapper Config
+[PASS] TC-MOB-016 - Mobile Header In HTML
+[PASS] TC-MOB-017 - Bottom Nav In HTML
+[PASS] TC-MOB-018 - Bottom Nav 5 Primary Tabs
+[PASS] TC-MOB-019 - Safe Area Inset Rule in CSS
+[PASS] TC-MOB-020 - Screen Footer Spacer Class
+[PASS] TC-MOB-022 - Touch Target Sizing
+[PASS] TC-MOB-023 - Capacitor App Listener Init
+[PASS] TC-MOB-024 - Hardware Back Handler Function
+[PASS] TC-MOB-025 - Modal Dismissal on Back Button
+[PASS] TC-MOB-026 - Deterministic Mobile Startup
+[PASS] TC-MOB-027 - Mobile Google OAuth Modal Markup
+[PASS] TC-MOB-028 - Mobile Patient Bottom Sheet Modal
+[PASS] TC-MOB-029 - Mobile Prediction Circular Gauge
+[PASS] TC-MOB-030 - Mobile Vitals Logging Form
+[PASS] TC-MOB-031 - Mobile Daily Planner Goals
+[PASS] TC-MOB-032 - Mobile Population Analytics Canvas
+[PASS] TC-MOB-033 - Mobile Clinical Reports Preview
+[PASS] TC-MOB-034 - Mobile Theme Toggle Functionality
+[PASS] TC-MOB-035 - Mobile Standalone ML Calibration
+[PASS] TC-MOB-036 - Screen Size 360x640 Support
+[PASS] TC-MOB-037 - Screen Size 390x844 Support
+[PASS] TC-MOB-038 - Screen Size 412x915 Support
+[PASS] TC-MOB-039 - Screen Size 768x1024 Support
+[PASS] TC-MOB-040 - Offline Fallback Patients DB
+[PASS] TC-MOB-041 - Offline Risk Assessment
+[PASS] TC-MOB-042 - Offline Meal Plans
+[PASS] TC-MOB-043 - Offline Vitals Logging
+[PASS] TC-MOB-044 - Offline Reports Generation
+[PASS] TC-MOB-045 - Toast Notifications on Android
+[PASS] TC-MOB-047 - Mobile Session Token Clearance
+[PASS] TC-MOB-048 - Mobile User Profile Display
+[PASS] TC-MOB-049 - Active Navigation Class Sync
+[PASS] TC-MOB-050 - Deep Link View Param Support
+[PASS] TC-MOB-052 - Safe Numeric Parsing
+[PASS] TC-MOB-053 - Circular Gauge Probability Offset
+[PASS] TC-MOB-054 - Chart.js Destroy on Refresh
+[PASS] TC-MOB-055 - Mobile Safe View Transitions
+[NOT EXECUTED] TC-MOB-056 - Physical Device USB Connection
+[NOT EXECUTED] TC-MOB-057 - Physical Device Touch Latency
+[NOT EXECUTED] TC-MOB-058 - Physical Device Screen Rotation
+[NOT EXECUTED] TC-MOB-059 - Physical Device Battery Consumption
+[NOT EXECUTED] TC-MOB-060 - Physical Device Thermal Throttling
+[NOT EXECUTED] TC-MOB-061 - Physical Device RAM Memory Footprint
+[NOT EXECUTED] TC-MOB-062 - Physical Device APK Installation via ADB
+[NOT EXECUTED] TC-MOB-063 - Physical Device App Cold Startup Time
+[NOT EXECUTED] TC-MOB-064 - Physical Device App Warm Resume Time
+[NOT EXECUTED] TC-MOB-065 - Physical Device Camera Permission Modal
+[NOT EXECUTED] TC-MOB-066 - Physical Device Biometric Fingerprint Auth
+[NOT EXECUTED] TC-MOB-067 - Physical Device BLE Glucometer Sync
+[NOT EXECUTED] TC-MOB-068 - Physical Device Push Notifications
+[NOT EXECUTED] TC-MOB-069 - Physical Device Offline Airplane Mode
+[NOT EXECUTED] TC-MOB-070 - Physical Device 5G to Wi-Fi Handover
+[NOT EXECUTED] TC-MOB-071 - Physical Device Dark Mode System Sync
+[NOT EXECUTED] TC-MOB-072 - Physical Device App Uninstall & Clean DB

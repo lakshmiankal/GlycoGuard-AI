@@ -1,0 +1,52 @@
+=== GLYCOGUARD AI - SECURITY / VULNERABILITY TESTING TEST EXECUTION LOG ===
+Timestamp: 2026-08-19T15:37:07.872245
+Total: 48 | Passed: 48 | Failed: 0 | Blocked: 0 | Not Executed: 0
+
+[PASS] TC-SEC-001 - SQLi in Login Username
+[PASS] TC-SEC-002 - SQLi in Login Password
+[PASS] TC-SEC-003 - SQLi in Signup Username
+[PASS] TC-SEC-005 - SQLi in Password Reset
+[PASS] TC-SEC-006 - Stored XSS in Patient Name
+[PASS] TC-SEC-007 - DOM Text Escaping in UI
+[PASS] TC-SEC-008 - SVG XSS Payload in Vitals Notes
+[PASS] TC-SEC-009 - Missing Auth Token Rejection
+[PASS] TC-SEC-010 - Invalid Token Signature
+[PASS] TC-SEC-011 - Malformed Bearer Header
+[PASS] TC-SEC-012 - Password Hashing Security
+[PASS] TC-SEC-013 - Short Password Policy Enforcement
+[PASS] TC-SEC-014 - CORS Enabled on Flask App
+[PASS] TC-SEC-015 - Content-Type JSON on Endpoints
+[PASS] TC-SEC-016 - 500 Internal Errors Do Not Leak DB Stacktrace
+[PASS] TC-SEC-017 - No Private Keys in js/app.js
+[PASS] TC-SEC-018 - No Plaintext DB Passwords in js/config.js
+[PASS] TC-SEC-019 - SECRET_KEY read from os.getenv
+[PASS] TC-SEC-020 - DATABASE_URL read from os.getenv
+[PASS] TC-SEC-021 - JWT token expiry configured
+[PASS] TC-SEC-022 - HS256 specified for JWT token encoding
+[PASS] TC-SEC-023 - Auth endpoint responds without timing leak
+[PASS] TC-SEC-025 - GET /patients requires JWT
+[PASS] TC-SEC-026 - GET /tracking requires JWT
+[PASS] TC-SEC-028 - GET /reports requires JWT
+[PASS] TC-SEC-029 - Cannot query arbitrary patient without auth
+[PASS] TC-SEC-030 - No plaintext password in response
+[PASS] TC-SEC-031 - No sensitive info in /health
+[PASS] TC-SEC-034 - Quotes in username handled via parameterized query
+[PASS] TC-SEC-035 - Sleep query payload returns under 2 seconds
+[PASS] TC-SEC-036 - Tokens isolated to glycoguard key namespace
+[PASS] TC-SEC-037 - Password Masking on Login Input
+[PASS] TC-SEC-038 - Password Masking on Register Input
+[PASS] TC-SEC-039 - Confirm Password Masking
+[PASS] TC-SEC-041 - Autocomplete Attributes Configured
+[PASS] TC-SEC-042 - Client Email Syntax Validation
+[PASS] TC-SEC-043 - SQLAlchemy ORM / Psycopg2 Parameterization
+[PASS] TC-SEC-044 - Direct Password Reset Safe Update
+[PASS] TC-SEC-045 - Google OAuth Token Cryptographic Signing
+[PASS] TC-SEC-046 - PyJWT Dependency Version Audit
+[PASS] TC-SEC-047 - Cryptography Dependency Version Audit
+[PASS] TC-SEC-048 - Flask-Cors Dependency Version Audit
+[PASS] TC-SEC-049 - Requests Dependency Version Audit
+[PASS] TC-SEC-050 - Scikit-Learn Version Audit
+[PASS] TC-SEC-051 - Capacitor HTTPS Scheme Enforced
+[PASS] TC-SEC-052 - Tapjacking & Overlay Boundary Protection
+[PASS] TC-SEC-053 - APK Signature Block Verification
+[PASS] TC-SEC-054 - Final Comprehensive Security Review

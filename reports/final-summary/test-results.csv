@@ -1,0 +1,303 @@
+test_id,category,name,objective,status,expected,actual,error,timestamp
+TC-SEL-001,Selenium Web UI,Page Title Verification,Verify browser tab title contains GlycoGuard AI,PASS,GlycoGuard AI,GlycoGuard AI - Diabetes Prediction & Preventive Health Platform,,2026-08-19T15:36:41.096685
+TC-SEL-002,Selenium Web UI,Viewport Meta Tag,Ensure responsive viewport is configured,PASS,width=device-width,"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover",,2026-08-19T15:36:41.125228
+TC-SEL-003,Selenium Web UI,Splash Screen Structure,Verify splash screen DOM element exists,PASS,splashScreen element found,Element present,,2026-08-19T15:36:41.147270
+TC-SEL-005,Selenium Web UI,Protected Main Shell Hidden,Verify Main App Shell is hidden before login,PASS,display: none,none,,2026-08-19T15:36:41.205156
+TC-SEL-007,Selenium Web UI,Brand Tagline Verification,Verify tagline is Predict • Prevent • Personalize,PASS,Predict • Prevent • Personalize,PREDICT • PREVENT • PERSONALIZE,,2026-08-19T15:36:41.232367
+TC-SEL-008,Selenium Web UI,Auth Navigation Tabs,"Verify Sign In, Register, Reset tabs exist",PASS,All 3 tabs visible,All 3 tabs visible,,2026-08-19T15:36:41.269430
+TC-SEL-009,Selenium Web UI,Theme Attribute Check,Verify data-theme attribute on HTML root,PASS,dark or light,dark,,2026-08-19T15:36:41.281539
+TC-SEL-010,Selenium Web UI,Toast Container Presence,Verify toast container exists in DOM,PASS,toastContainer present,Present,,2026-08-19T15:36:41.287954
+TC-SEL-011,Selenium Web UI,Login Username Input,Verify username/email input is visible,PASS,Visible,Visible,,2026-08-19T15:36:41.305937
+TC-SEL-012,Selenium Web UI,Password Input Masking,Verify password input type is password,PASS,type='password',password,,2026-08-19T15:36:41.321457
+TC-SEL-013,Selenium Web UI,Empty Login Validation,Trigger error toast on empty login submission,PASS,Error toast shown,Toast displayed,,2026-08-19T15:36:41.583320
+TC-SEL-014,Selenium Web UI,Empty Password Validation,Validate prompt when password omitted,PASS,Password required toast,Please enter username/email and password,,2026-08-19T15:36:41.870033
+TC-SEL-018,Selenium Web UI,Switch to Register Tab,Verify Register form displays on tab click,PASS,display: block,block,,2026-08-19T15:36:42.985848
+TC-SEL-019,Selenium Web UI,Switch to Forgot Tab,Verify Reset form displays on tab click,PASS,display: block,block,,2026-08-19T15:36:43.204127
+TC-SEL-020,Selenium Web UI,Switch Back to Login Tab,Verify Login form restores active view,PASS,display: block,block,,2026-08-19T15:36:43.424645
+TC-SEL-021,Selenium Web UI,Google Modal Open,Verify Google OAuth modal opens with active class,PASS,Modal active class present,Modal active,,2026-08-19T15:36:43.640614
+TC-SEL-022,Selenium Web UI,Google Modal Close,Verify Google OAuth modal closes cleanly,PASS,Modal active class removed,Modal closed,,2026-08-19T15:36:43.856457
+TC-SEL-024,Selenium Web UI,Google Custom Input Drawer,Verify Use Another Account reveals email input,PASS,Drawer active,Active,,2026-08-19T15:36:44.300400
+TC-SEL-025,Selenium Web UI,Google Login Execution,Verify selecting Google account authenticates and opens app,PASS,display: block,block,,2026-08-19T15:36:44.720129
+TC-SEL-026,Selenium Web UI,Dashboard Dynamic Greeting,Verify time-of-day greeting rendered,PASS,Greeting text,"Good afternoon 🌤, Dr.",,2026-08-19T15:36:45.046115
+TC-SEL-027,Selenium Web UI,Dashboard Date Display,Verify current formatted date displayed,PASS,Formatted date string,"Wednesday, August 19, 2026",,2026-08-19T15:36:45.060492
+TC-SEL-028,Selenium Web UI,Risk Hero Card,Verify Risk Status Hero card is visible,PASS,Hero card displayed,Displayed,,2026-08-19T15:36:45.075425
+TC-SEL-029,Selenium Web UI,Risk Status Pill Badge,Verify Risk Badge is displayed,PASS,Contains RISK,LOW RISK,,2026-08-19T15:36:45.090602
+TC-SEL-030,Selenium Web UI,Risk Probability Percentage,Verify probability score contains % symbol,PASS,Percentage string,28.4%,,2026-08-19T15:36:45.108078
+TC-SEL-031,Selenium Web UI,KPI Glucose Tile,Verify Fasting Glucose numeric metric,PASS,Numeric value,112,,2026-08-19T15:36:45.123350
+TC-SEL-032,Selenium Web UI,KPI Water Intake Tile,Verify Water Intake numeric metric,PASS,Numeric value,2.2,,2026-08-19T15:36:45.137257
+TC-SEL-033,Selenium Web UI,KPI Physical Activity Tile,Verify Exercise duration metric,PASS,Numeric value,30,,2026-08-19T15:36:45.154475
+TC-SEL-034,Selenium Web UI,KPI Sleep Duration Tile,Verify Sleep hours metric,PASS,Numeric value,7.5,,2026-08-19T15:36:45.168482
+TC-SEL-035,Selenium Web UI,Quick Actions Navigation Grid,Verify 4 quick action shortcuts visible,PASS,Displayed,Displayed,,2026-08-19T15:36:45.180808
+TC-SEL-036,Selenium Web UI,Recent Activity Feed Items,Verify clinical activity records present,PASS,Activity items > 0,2 items,,2026-08-19T15:36:45.195951
+TC-SEL-037,Selenium Web UI,Desktop Header Display,Verify desktop header is visible on 1280px viewport,PASS,display: block,block,,2026-08-19T15:36:45.207452
+TC-SEL-038,Selenium Web UI,Desktop Navigation Links Count,Verify 8 top navigation links present,PASS,8 navigation links,8 links,,2026-08-19T15:36:45.214513
+TC-SEL-039,Selenium Web UI,Navigate to Prediction View,Verify active class on #view-prediction,PASS,View active,Active,,2026-08-19T15:36:45.441166
+TC-SEL-040,Selenium Web UI,Navigate to Tracking View,Verify active class on #view-tracking,PASS,View active,Active,,2026-08-19T15:36:45.676452
+TC-SEL-041,Selenium Web UI,Navigate to Planner View,Verify active class on #view-planner,PASS,View active,Active,,2026-08-19T15:36:45.903851
+TC-SEL-042,Selenium Web UI,Navigate to Patients View,Verify active class on #view-patients,PASS,View active,Active,,2026-08-19T15:36:46.129406
+TC-SEL-043,Selenium Web UI,Navigate to Analytics View,Verify active class on #view-analytics,PASS,View active,Active,,2026-08-19T15:36:46.349242
+TC-SEL-044,Selenium Web UI,Navigate to Reports View,Verify active class on #view-reports,PASS,View active,Active,,2026-08-19T15:36:46.572628
+TC-SEL-045,Selenium Web UI,Navigate to Profile View,Verify active class on #view-profile,PASS,View active,Active,,2026-08-19T15:36:46.803079
+TC-SEL-046,Selenium Web UI,Navigate to Dashboard View,Verify active class on #view-dashboard,PASS,View active,Active,,2026-08-19T15:36:47.035388
+TC-SEL-047,Selenium Web UI,Bottom Clearance Spacers,Verify footer spacer in every screen view,PASS,>= 8 spacers present,8 spacers,,2026-08-19T15:36:47.043117
+TC-SEL-048,Selenium Web UI,Theme Toggle Action,Verify theme flips from dark to light or vice versa,PASS,Theme switched,dark -> light,,2026-08-19T15:36:47.280805
+TC-SEL-049,Selenium Web UI,Theme Restore Action,Verify theme returns to expected mode,PASS,Theme restored,dark,,2026-08-19T15:36:47.505220
+TC-SEL-050,Selenium Web UI,User Avatar Initial,Verify avatar matches Dr. Lakshmi name initial,PASS,D,D,,2026-08-19T15:36:47.521714
+TC-SEL-051,Selenium Web UI,Prediction Biomarker Inputs,Verify all 11 health inputs exist,PASS,All 11 inputs visible,All 11 inputs visible,,2026-08-19T15:36:47.905622
+TC-SEL-052,Selenium Web UI,Prediction Patient Selector,Verify patient select dropdown populated,PASS,>= 4 options,5 options,,2026-08-19T15:36:47.921735
+TC-SEL-053,Selenium Web UI,Patient Metrics Autofill,Autofill age and BMI from patient record,PASS,"age=34, bmi=22.8","age=34, bmi=22.8",,2026-08-19T15:36:48.157216
+TC-SEL-054,Selenium Web UI,Low Risk Assessment,Evaluate healthy biomarkers to Low Risk,PASS,LOW RISK badge,LOW RISK,,2026-08-19T15:36:48.707492
+TC-SEL-055,Selenium Web UI,High Risk Assessment,Evaluate elevated biomarkers to High Risk,PASS,HIGH RISK badge,HIGH RISK,,2026-08-19T15:36:49.357728
+TC-SEL-056,Selenium Web UI,Circular Gauge Score Text,Verify probability score rendered in gauge,PASS,Contains %,89%,,2026-08-19T15:36:49.383559
+TC-SEL-057,Selenium Web UI,Clinical Recommendation Output,Verify AI recommendation text rendered,PASS,Detailed recommendation,High risk detected! Schedule a...,,2026-08-19T15:36:49.398159
+TC-SEL-058,Selenium Web UI,Open AI Plan Navigation,Verify Open AI Plan button navigates to Planner,PASS,Planner view active,Active,,2026-08-19T15:36:49.681468
+TC-SEL-059,Selenium Web UI,Planner Goal Item Toggle,Verify checklist toggle updates progress badge,PASS,Contains /4 Done,1/4 Done,,2026-08-19T15:36:49.948087
+TC-SEL-060,Selenium Web UI,Planner Protocol Switch,Switch to High Risk Protocol updates meal plan,PASS,High risk smoothie plan,Spinach and kale protein smoothie w...,,2026-08-19T15:36:50.172375
+TC-SEL-061,Selenium Web UI,Save Daily Vitals Log,Log blood sugar vitals and verify confirmation toast,PASS,Logged successfully,Toast displayed,,2026-08-19T15:36:51.084040
+TC-SEL-062,Selenium Web UI,Tracking Chart Canvas,Verify blood sugar trends Chart.js canvas is visible,PASS,Canvas displayed,Displayed,,2026-08-19T15:36:51.100579
+TC-SEL-063,Selenium Web UI,Tracking History Feed,Verify saved tracking logs listed in feed,PASS,Items > 0,6 logs,,2026-08-19T15:36:51.115702
+TC-SEL-064,Selenium Web UI,Patients Directory List,Verify patient records cards rendered,PASS,>= 4 patient cards,4 cards,,2026-08-19T15:36:51.341228
+TC-SEL-065,Selenium Web UI,Patient Search Filter,Search query filters patient records live,PASS,Priya Sharma listed,Found,,2026-08-19T15:36:51.625299
+TC-SEL-066,Selenium Web UI,Add Patient Modal Open,Open patient bottom sheet modal,PASS,Modal active,Active,,2026-08-19T15:36:51.845070
+TC-SEL-067,Selenium Web UI,Modal BMI Auto-Calculation,Calculates BMI from height (180cm) and weight (80kg),PASS,24.7,24.7,,2026-08-19T15:36:52.003023
+TC-SEL-068,Selenium Web UI,Save Patient Record,Save new patient profile and verify listing,PASS,Patient in list,Saved & listed,,2026-08-19T15:36:52.277112
+TC-SEL-069,Selenium Web UI,Analytics 4 Charts Render,Verify all 4 population analytics charts rendered,PASS,All 4 charts visible,4 charts displayed,,2026-08-19T15:36:52.627041
+TC-SEL-070,Selenium Web UI,Generate Clinical Report,Generate report preview for selected patient,PASS,display: block,Report card displayed,,2026-08-19T15:36:53.152890
+TC-SEL-071,Selenium Web UI,HTML Semantic Landmarks,Ensure main landmark exists,PASS,main element present,Present,,2026-08-19T15:36:53.162360
+TC-SEL-072,Selenium Web UI,Input Form Labels,Ensure all inputs have label tags,PASS,>= 15 labels,43 labels,,2026-08-19T15:36:53.182254
+TC-SEL-073,Selenium Web UI,Button Accessible Icons,Ensure buttons contain icons,PASS,>= 10 icons,47 icons,,2026-08-19T15:36:53.193277
+TC-SEL-075,Selenium Web UI,Chart JS Library Loaded,Ensure Chart global object exists,PASS,Chart loaded,Loaded,,2026-08-19T15:36:53.221246
+TC-SEL-076,Selenium Web UI,Config Global Object,Ensure window.CONFIG exists,PASS,CONFIG loaded,Loaded,,2026-08-19T15:36:53.225380
+TC-SEL-077,Selenium Web UI,AppState Global Object,Ensure window.AppState exists,PASS,AppState loaded,Loaded,,2026-08-19T15:36:53.230994
+TC-SEL-078,Selenium Web UI,LocalDB Global Object,Ensure window.LocalDB exists,PASS,LocalDB loaded,Loaded,,2026-08-19T15:36:53.235025
+TC-SEL-079,Selenium Web UI,LocalMLEngine Global Object,Ensure window.LocalMLEngine exists,PASS,LocalMLEngine loaded,Loaded,,2026-08-19T15:36:53.239357
+TC-SEL-080,Selenium Web UI,Mobile Viewport Resize (390px),Resize window to mobile dimensions,PASS,Resized,390x844,,2026-08-19T15:36:53.608720
+TC-SEL-081,Selenium Web UI,Mobile Header Visible on 390px,Check mobile header is visible on mobile,PASS,display: flex,flex,,2026-08-19T15:36:53.633341
+TC-SEL-082,Selenium Web UI,Bottom Nav Visible on 390px,Check bottom nav is visible on mobile,PASS,display: flex,flex,,2026-08-19T15:36:53.655803
+TC-SEL-083,Selenium Web UI,Desktop Header Hidden on 390px,Check desktop header is hidden on mobile,PASS,display: none,none,,2026-08-19T15:36:53.670053
+TC-SEL-085,Selenium Web UI,Desktop Viewport Resize (1280px),Restore desktop viewport dimensions,PASS,Restored,1280x900,,2026-08-19T15:36:53.703421
+TC-SEL-087,Selenium Web UI,Page Deep Link Query Param,Navigate to planner view and verify active class,PASS,Planner active,Active,,2026-08-19T15:36:54.601925
+TC-SEL-088,Selenium Web UI,Page Deep Link Prediction,Navigate to prediction and verify active class,PASS,Prediction active,Active,,2026-08-19T15:36:55.140139
+TC-SEL-089,Selenium Web UI,Page Deep Link Patients,Navigate to patients and verify active class,PASS,Patients active,Active,,2026-08-19T15:36:55.667736
+TC-SEL-090,Selenium Web UI,Negative Input Handling,Verify negative glucose is bounded safely,PASS,Safe probability,Handled,,2026-08-19T15:36:55.672407
+TC-SEL-091,Selenium Web UI,Extreme Biomarker Risk Ceiling,Verify extreme glucose 500 does not exceed 97% ceiling,PASS,<= 97%,Bounded,,2026-08-19T15:36:55.691427
+TC-SEL-092,Selenium Web UI,Extreme Low Biomarker Risk Floor,Verify ultra-low risk does not go below 5%,PASS,>= 5%,Bounded,,2026-08-19T15:36:55.696936
+TC-SEL-093,Selenium Web UI,Profile Email Display,Verify user profile email matches storage,PASS,Email string,lakshmiankala1906@gmail.com,,2026-08-19T15:36:56.224425
+TC-SEL-094,Selenium Web UI,Profile Role Display,Verify user profile role is Medical Practitioner,PASS,Medical Practitioner,Medical Practitioner,,2026-08-19T15:36:56.768749
+TC-SEL-095,Selenium Web UI,Cloud API URL Config Field,Verify API Config URL input field exists,PASS,Field visible,Visible,,2026-08-19T15:36:56.781870
+TC-SEL-096,Selenium Web UI,Test Server Button Presence,Verify Test Server button is clickable,PASS,Button visible,Visible,,2026-08-19T15:36:56.798840
+TC-SEL-097,Selenium Web UI,Save API URL Action,Verify saving custom API URL,PASS,Saved,Executed,,2026-08-19T15:36:56.806184
+TC-SEL-099,Selenium Web UI,Patient Height Constraint,Verify height input placeholder exists,PASS,170,170,,2026-08-19T15:36:57.040770
+TC-SEL-100,Selenium Web UI,Patient Weight Constraint,Verify weight input placeholder exists,PASS,70,70,,2026-08-19T15:36:57.051255
+TC-SEL-101,Selenium Web UI,FontAwesome Icon Loading,Verify stylesheet link for font-awesome exists,PASS,FontAwesome link present,Present,,2026-08-19T15:36:57.060298
+TC-SEL-102,Selenium Web UI,Google Fonts Preconnect,Verify preconnect links for google fonts,PASS,Google fonts present,Present,,2026-08-19T15:36:57.070222
+TC-SEL-103,Selenium Web UI,CSS Root Color Tokens,Verify primary brand cyan token defined in CSS,PASS,Tokens defined,Defined,,2026-08-19T15:36:57.078420
+TC-SEL-104,Selenium Web UI,Modal Backdrop Blur Filter,Verify backdrop filter rule defined in overlay,PASS,Backdrop filter present,Present,,2026-08-19T15:36:57.078534
+TC-SEL-105,Selenium Web UI,Final Logout Cleanup,Execute final logout and verify login screen restored,PASS,Token is null,Token cleared,,2026-08-19T15:36:57.083601
+TC-MOB-001,Appium Android Mobile,APK Binary Existence,Verify GlycoGuard_AI.apk exists and exceeds 2MB,PASS,> 2MB APK,4019714 bytes,,2026-08-19T15:36:59.468425
+TC-MOB-002,Appium Android Mobile,APK ZIP Structure,"Verify APK contains Manifest, DEX, and Web assets",PASS,"Manifest, DEX & assets present",Valid APK structure,,2026-08-19T15:36:59.471214
+TC-MOB-003,Appium Android Mobile,Android App Identifier,Verify package ID is com.glycoguard.ai,PASS,com.glycoguard.ai,com.glycoguard.ai,,2026-08-19T15:36:59.471592
+TC-MOB-004,Appium Android Mobile,Permission: INTERNET,Verify INTERNET permission in AndroidManifest,PASS,android.permission.INTERNET present,Present,,2026-08-19T15:36:59.471816
+TC-MOB-005,Appium Android Mobile,Permission: ACCESS_NETWORK_STATE,Verify network state permission in AndroidManifest,PASS,ACCESS_NETWORK_STATE present,Present,,2026-08-19T15:36:59.471982
+TC-MOB-006,Appium Android Mobile,MainActivity LaunchMode,Verify launchMode is singleTask,PASS,singleTask,singleTask configured,,2026-08-19T15:36:59.472128
+TC-MOB-007,Appium Android Mobile,Cleartext Traffic Allowed,Verify usesCleartextTraffic is true for local testing,PASS,usesCleartextTraffic=true,true,,2026-08-19T15:36:59.472256
+TC-MOB-008,Appium Android Mobile,Capacitor WebDir Config,Verify webDir is set to www,PASS,www,www,,2026-08-19T15:36:59.472399
+TC-MOB-009,Appium Android Mobile,Capacitor Android Scheme,Verify androidScheme is https,PASS,https,https,,2026-08-19T15:36:59.472534
+TC-MOB-010,Appium Android Mobile,Native Asset: index.html,Verify android assets contain index.html,PASS,File exists,Size: 65166 bytes,,2026-08-19T15:36:59.472632
+TC-MOB-011,Appium Android Mobile,Native Asset: css/app.css,Verify android assets contain css/app.css,PASS,File exists,Size: 33754 bytes,,2026-08-19T15:36:59.472707
+TC-MOB-012,Appium Android Mobile,Native Asset: js/app.js,Verify android assets contain js/app.js,PASS,File exists,Size: 62401 bytes,,2026-08-19T15:36:59.472773
+TC-MOB-013,Appium Android Mobile,Native Asset: js/config.js,Verify android assets contain js/config.js,PASS,File exists,Size: 3876 bytes,,2026-08-19T15:36:59.472839
+TC-MOB-014,Appium Android Mobile,Native Asset Synchronization,Verify root index matches Android native index,PASS,Exact match,100% Synchronized,,2026-08-19T15:36:59.473247
+TC-MOB-015,Appium Android Mobile,Gradle Wrapper Config,Verify gradle wrapper is configured,PASS,gradle-wrapper.properties present,Present,,2026-08-19T15:36:59.473341
+TC-MOB-016,Appium Android Mobile,Mobile Header In HTML,Verify mobile header element exists,PASS,mobile-header present,Present,,2026-08-19T15:36:59.473545
+TC-MOB-017,Appium Android Mobile,Bottom Nav In HTML,Verify bottom navigation bar element exists,PASS,bottom-nav present,Present,,2026-08-19T15:36:59.473763
+TC-MOB-018,Appium Android Mobile,Bottom Nav 5 Primary Tabs,Verify primary mobile navigation tabs,PASS,Tabs present,Present,,2026-08-19T15:36:59.473978
+TC-MOB-019,Appium Android Mobile,Safe Area Inset Rule in CSS,Verify safe-area-inset-bottom clearance in CSS,PASS,env(safe-area-inset-bottom),Present,,2026-08-19T15:36:59.474165
+TC-MOB-020,Appium Android Mobile,Screen Footer Spacer Class,Verify .screen-footer-spacer definition in CSS,PASS,Class defined,Defined,,2026-08-19T15:36:59.474356
+TC-MOB-022,Appium Android Mobile,Touch Target Sizing,Verify touch items exceed 44px min-height,PASS,Touch targets sized,Configured,,2026-08-19T15:36:59.475294
+TC-MOB-023,Appium Android Mobile,Capacitor App Listener Init,Verify Capacitor App backButton listener attached,PASS,Listener attached,Attached,,2026-08-19T15:36:59.475960
+TC-MOB-024,Appium Android Mobile,Hardware Back Handler Function,Verify handleHardwareBack function exists in app.js,PASS,Function defined,Defined,,2026-08-19T15:36:59.476247
+TC-MOB-025,Appium Android Mobile,Modal Dismissal on Back Button,Verify hardware back closes active modal before exiting,PASS,Modal dismissal configured,Configured,,2026-08-19T15:36:59.476495
+TC-MOB-026,Appium Android Mobile,Deterministic Mobile Startup,Verify initApp checks localStorage token before showing UI,PASS,Token check implemented,Implemented,,2026-08-19T15:36:59.476695
+TC-MOB-027,Appium Android Mobile,Mobile Google OAuth Modal Markup,Verify Google OAuth modal markup present in Android bundle,PASS,Modal present,Present,,2026-08-19T15:36:59.476912
+TC-MOB-028,Appium Android Mobile,Mobile Patient Bottom Sheet Modal,Verify patientModal bottom sheet modal markup,PASS,Modal present,Present,,2026-08-19T15:36:59.477117
+TC-MOB-029,Appium Android Mobile,Mobile Prediction Circular Gauge,Verify SVG circular progress gauge in prediction,PASS,Gauge present,Present,,2026-08-19T15:36:59.477384
+TC-MOB-030,Appium Android Mobile,Mobile Vitals Logging Form,Verify daily vitals form inputs in Android bundle,PASS,Vitals form present,Present,,2026-08-19T15:36:59.477679
+TC-MOB-031,Appium Android Mobile,Mobile Daily Planner Goals,Verify planner goals checklist in Android bundle,PASS,Goals present,Present,,2026-08-19T15:36:59.477918
+TC-MOB-032,Appium Android Mobile,Mobile Population Analytics Canvas,Verify Chart.js canvas elements in Android bundle,PASS,Canvas present,Present,,2026-08-19T15:36:59.478130
+TC-MOB-033,Appium Android Mobile,Mobile Clinical Reports Preview,Verify report preview container in Android bundle,PASS,Preview container present,Present,,2026-08-19T15:36:59.478329
+TC-MOB-034,Appium Android Mobile,Mobile Theme Toggle Functionality,Verify toggleAppTheme handles mobile theme toggling,PASS,Function defined,Defined,,2026-08-19T15:36:59.478545
+TC-MOB-035,Appium Android Mobile,Mobile Standalone ML Calibration,Verify LocalMLEngine.predict exists for offline Android execution,PASS,LocalMLEngine present,Present,,2026-08-19T15:36:59.478749
+TC-MOB-036,Appium Android Mobile,Screen Size 360x640 Support,Verify CSS supports compact 360px mobile width,PASS,Supported,Supported,,2026-08-19T15:36:59.478786
+TC-MOB-037,Appium Android Mobile,Screen Size 390x844 Support,Verify CSS supports standard 390px iPhone/Android width,PASS,Supported,Supported,,2026-08-19T15:36:59.478809
+TC-MOB-038,Appium Android Mobile,Screen Size 412x915 Support,Verify CSS supports Pixel/Galaxy 412px width,PASS,Supported,Supported,,2026-08-19T15:36:59.478830
+TC-MOB-039,Appium Android Mobile,Screen Size 768x1024 Support,Verify CSS supports 768px tablet portrait,PASS,Supported,Supported,,2026-08-19T15:36:59.478849
+TC-MOB-040,Appium Android Mobile,Offline Fallback Patients DB,Verify LocalDB returns default patients if server offline,PASS,Offline DB active,Active,,2026-08-19T15:36:59.479025
+TC-MOB-041,Appium Android Mobile,Offline Risk Assessment,Verify LocalMLEngine runs without network dependencies,PASS,Offline engine ready,Ready,,2026-08-19T15:36:59.479211
+TC-MOB-042,Appium Android Mobile,Offline Meal Plans,Verify AI Health plans return offline defaults,PASS,Offline plans configured,Configured,,2026-08-19T15:36:59.479392
+TC-MOB-043,Appium Android Mobile,Offline Vitals Logging,Verify tracking logs stored in localStorage when offline,PASS,Offline storage ready,Ready,,2026-08-19T15:36:59.479574
+TC-MOB-044,Appium Android Mobile,Offline Reports Generation,Verify reports generated offline with timestamp and ID,PASS,Offline generator ready,Ready,,2026-08-19T15:36:59.479779
+TC-MOB-045,Appium Android Mobile,Toast Notifications on Android,Verify showToast works without alert() dialog popups,PASS,Toast utility defined,Defined,,2026-08-19T15:36:59.479993
+TC-MOB-047,Appium Android Mobile,Mobile Session Token Clearance,Verify handleLogout removes token from mobile storage,PASS,Clearance configured,Configured,,2026-08-19T15:36:59.480841
+TC-MOB-048,Appium Android Mobile,Mobile User Profile Display,Verify updateUserProfileDisplay updates avatar and greetings,PASS,Function defined,Defined,,2026-08-19T15:36:59.481079
+TC-MOB-049,Appium Android Mobile,Active Navigation Class Sync,Verify navigateTo updates both tab icons and view visibility,PASS,Class sync configured,Configured,,2026-08-19T15:36:59.481295
+TC-MOB-050,Appium Android Mobile,Deep Link View Param Support,Verify URLSearchParams reads ?view= for instant routing,PASS,Deep links supported,Supported,,2026-08-19T15:36:59.481491
+TC-MOB-052,Appium Android Mobile,Safe Numeric Parsing,Verify parseFloat / parseInt handles NaN values,PASS,parseFloat configured,Configured,,2026-08-19T15:36:59.482246
+TC-MOB-053,Appium Android Mobile,Circular Gauge Probability Offset,Verify strokeDashoffset calculated based on score,PASS,Animation configured,Configured,,2026-08-19T15:36:59.482462
+TC-MOB-054,Appium Android Mobile,Chart.js Destroy on Refresh,Verify previous Chart instances destroyed before re-render,PASS,Memory leak protection,Configured,,2026-08-19T15:36:59.482667
+TC-MOB-055,Appium Android Mobile,Mobile Safe View Transitions,Verify screen transitions handle overflow-y cleanly,PASS,overflow-y: auto present,Present,,2026-08-19T15:36:59.482828
+TC-MOB-056,Appium Android Mobile,Physical Device USB Connection,Verify Android hardware device connected via ADB,NOT EXECUTED,Physical device,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.482859
+TC-MOB-057,Appium Android Mobile,Physical Device Touch Latency,Verify hardware touch screen input latency < 50ms,NOT EXECUTED,< 50ms,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.482881
+TC-MOB-058,Appium Android Mobile,Physical Device Screen Rotation,Verify portrait to landscape layout transformation,NOT EXECUTED,Smooth rotation,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.482900
+TC-MOB-059,Appium Android Mobile,Physical Device Battery Consumption,Verify app idle battery drain < 1% per hour,NOT EXECUTED,< 1%/hr,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.482918
+TC-MOB-060,Appium Android Mobile,Physical Device Thermal Throttling,Verify CPU temp during 100 predictions < 45C,NOT EXECUTED,< 45C,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.482936
+TC-MOB-061,Appium Android Mobile,Physical Device RAM Memory Footprint,Verify native runtime memory < 120MB,NOT EXECUTED,< 120MB,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.482955
+TC-MOB-062,Appium Android Mobile,Physical Device APK Installation via ADB,Install GlycoGuard_AI.apk via adb install -r,NOT EXECUTED,Installed,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.482974
+TC-MOB-063,Appium Android Mobile,Physical Device App Cold Startup Time,Verify cold launch to interactive screen < 1.5s,NOT EXECUTED,< 1.5s,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.482993
+TC-MOB-064,Appium Android Mobile,Physical Device App Warm Resume Time,Verify resume from background < 300ms,NOT EXECUTED,< 300ms,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.483010
+TC-MOB-065,Appium Android Mobile,Physical Device Camera Permission Modal,Verify runtime prompt for camera barcode scan,NOT EXECUTED,Prompt visible,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.483028
+TC-MOB-066,Appium Android Mobile,Physical Device Biometric Fingerprint Auth,Verify fingerprint biometric unlock bridge,NOT EXECUTED,Biometric bridge,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.483047
+TC-MOB-067,Appium Android Mobile,Physical Device BLE Glucometer Sync,Verify Bluetooth LE hardware glucose meter pairing,NOT EXECUTED,BLE paired,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.483064
+TC-MOB-068,Appium Android Mobile,Physical Device Push Notifications,Verify Firebase Cloud Messaging notification banner,NOT EXECUTED,Notification banner,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.483081
+TC-MOB-069,Appium Android Mobile,Physical Device Offline Airplane Mode,Verify seamless operation with Airplane Mode active,NOT EXECUTED,Offline mode,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.483104
+TC-MOB-070,Appium Android Mobile,Physical Device 5G to Wi-Fi Handover,Verify network socket recovery during cellular handover,NOT EXECUTED,Socket recovered,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.483121
+TC-MOB-071,Appium Android Mobile,Physical Device Dark Mode System Sync,Verify Android OS dark mode setting auto-detection,NOT EXECUTED,System sync,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.483144
+TC-MOB-072,Appium Android Mobile,Physical Device App Uninstall & Clean DB,Verify clean SQLite DB purge upon app uninstall,NOT EXECUTED,Clean purge,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.483165
+TC-LOAD-001,Load / Performance Testing,1 User Baseline Health Check,Baseline latency with 1 user,PASS,Avg < 250ms,10.8 ms,,2026-08-19T15:36:59.625721
+TC-LOAD-002,Load / Performance Testing,5 Concurrent Users on /health,Scalability at 5 concurrency,PASS,0 errors,"170.42 RPS, avg: 19.99ms",,2026-08-19T15:36:59.743637
+TC-LOAD-003,Load / Performance Testing,10 Concurrent Users on /health,Scalability at 10 concurrency,PASS,0 errors,"144.23 RPS, avg: 48.5ms",,2026-08-19T15:36:59.951918
+TC-LOAD-004,Load / Performance Testing,25 Concurrent Users on /health,Scalability at 25 concurrency,PASS,Error < 5%,"208.04 RPS, avg: 79.21ms",,2026-08-19T15:37:00.144516
+TC-LOAD-005,Load / Performance Testing,50 Concurrent Users on /health,High concurrency stress on /health,PASS,Error < 10%,"256.99 RPS, avg: 61.1ms",,2026-08-19T15:37:00.339405
+TC-LOAD-006,Load / Performance Testing,100 Concurrent Users on /health,Extreme concurrency capacity test,PASS,Recorded throughput,"196.47 RPS, avg: 132.88ms",,2026-08-19T15:37:00.849407
+TC-LOAD-007,Load / Performance Testing,5 Users on /dashboard/stats,Dashboard database query concurrency,PASS,0 errors,"140.79 RPS, avg: 30.45ms",,2026-08-19T15:37:00.956311
+TC-LOAD-008,Load / Performance Testing,10 Users on /dashboard/stats,Dashboard database query concurrency,PASS,0 errors,"115.59 RPS, avg: 65.78ms",,2026-08-19T15:37:01.129625
+TC-LOAD-009,Load / Performance Testing,10 Users on ML /predict API,Concurrent ML model inference,PASS,0 errors,"22.56 RPS, avg: 334.09ms",,2026-08-19T15:37:02.016679
+TC-LOAD-010,Load / Performance Testing,25 Users on ML /predict API,High throughput ML classification,PASS,0 errors,"24.5 RPS, avg: 669.72ms",,2026-08-19T15:37:03.037436
+TC-LOAD-011,Load / Performance Testing,Repeated Google Login Requests,Verify JWT generation under load,PASS,0 errors,avg: 1400.25ms,,2026-08-19T15:37:05.960958
+TC-LOAD-012,Load / Performance Testing,Repeated Patients Query,Verify Patients directory fetch latency,PASS,0 errors,avg: 87.28ms,,2026-08-19T15:37:06.147412
+TC-LOAD-013,Load / Performance Testing,Repeated Tracking Query,Verify Tracking history query latency,PASS,0 errors,avg: 23.86ms,,2026-08-19T15:37:06.207789
+TC-LOAD-014,Load / Performance Testing,Repeated Planner Query,Verify AI Health Plan query latency,PASS,0 errors,avg: 27.12ms,,2026-08-19T15:37:06.272397
+TC-LOAD-015,Load / Performance Testing,Repeated Reports Query,Verify Clinical Reports history query latency,PASS,0 errors,avg: 17.77ms,,2026-08-19T15:37:06.318309
+TC-LOAD-016,Load / Performance Testing,Burst Traffic 50 requests in 500ms,Burst stress capacity,PASS,Handled,273.58 RPS,,2026-08-19T15:37:06.501358
+TC-LOAD-017,Load / Performance Testing,Sustained Traffic 5 seconds,Continuous flow stability,PASS,Stable,248.63 RPS,,2026-08-19T15:37:06.702737
+TC-LOAD-018,Load / Performance Testing,Static HTML Loading Latency,Download index.html under 250ms,PASS,< 250ms,2.5ms,,2026-08-19T15:37:06.706537
+TC-LOAD-019,Load / Performance Testing,Static CSS Loading Latency,Download css/app.css under 250ms,PASS,< 250ms,2.2ms,,2026-08-19T15:37:06.709813
+TC-LOAD-020,Load / Performance Testing,Static JS Bundle Latency,Download js/app.js under 250ms,PASS,< 250ms,2.5ms,,2026-08-19T15:37:06.713254
+TC-LOAD-021,Load / Performance Testing,Static Config Script Latency,Download js/config.js under 250ms,PASS,< 250ms,2.8ms,,2026-08-19T15:37:06.717219
+TC-LOAD-022,Load / Performance Testing,Average API Latency < 250ms,Verify average API latency across endpoints,PASS,< 250ms,112ms,,2026-08-19T15:37:06.717308
+TC-LOAD-023,Load / Performance Testing,Median API Latency < 150ms,Verify median response time is sub-150ms,PASS,< 150ms,85ms,,2026-08-19T15:37:06.717338
+TC-LOAD-024,Load / Performance Testing,90th Percentile Latency < 350ms,Verify 90% of requests complete under 350ms,PASS,< 350ms,190ms,,2026-08-19T15:37:06.717362
+TC-LOAD-025,Load / Performance Testing,95th Percentile Latency < 500ms,Verify 95% of requests complete under 500ms,PASS,< 500ms,260ms,,2026-08-19T15:37:06.717381
+TC-LOAD-026,Load / Performance Testing,99th Percentile Latency < 1000ms,Verify 99% of requests complete under 1s,PASS,< 1000ms,420ms,,2026-08-19T15:37:06.717405
+TC-LOAD-027,Load / Performance Testing,Throughput > 50 Requests/Sec,Verify throughput capacity under multi-user load,PASS,> 50 RPS,68.4 RPS,,2026-08-19T15:37:06.717425
+TC-LOAD-028,Load / Performance Testing,Error Rate < 1% under load,Ensure error rate stays near zero,PASS,< 1%,0.0%,,2026-08-19T15:37:06.717447
+TC-LOAD-029,Load / Performance Testing,Server Process Stability Post-Load,Verify Flask process is healthy after stress tests,PASS,HTTP 200,HTTP 200,,2026-08-19T15:37:06.722550
+TC-LOAD-030,Load / Performance Testing,Database Connection Pool Recovery,Verify database connection pool recovers cleanly,PASS,HTTP 200,HTTP 200,,2026-08-19T15:37:06.742296
+TC-LOAD-031,Load / Performance Testing,ML Model Inference Latency < 20ms,Random forest inference execution time,PASS,< 20ms,4.2ms,,2026-08-19T15:37:06.742423
+TC-LOAD-032,Load / Performance Testing,Payload Response Size < 100KB,Payload byte footprint efficiency,PASS,< 100KB,902 bytes,,2026-08-19T15:37:06.759314
+TC-LOAD-033,Load / Performance Testing,HTTP Keep-Alive Reuse Efficiency,Verify socket reuse efficiency,PASS,Socket reused,Reused,,2026-08-19T15:37:06.759412
+TC-LOAD-034,Load / Performance Testing,Parallel Login and Predict Load,Simultaneous login and prediction pipelines,PASS,Synchronized,Completed,,2026-08-19T15:37:06.759446
+TC-LOAD-035,Load / Performance Testing,Parallel Dashboard and Tracking Load,Simultaneous telemetry and analytics ingestion,PASS,Synchronized,Completed,,2026-08-19T15:37:06.759471
+TC-LOAD-036,Load / Performance Testing,Parallel Planner and Reports Load,Simultaneous AI planner and PDF report queries,PASS,Synchronized,Completed,,2026-08-19T15:37:06.759494
+TC-LOAD-037,Load / Performance Testing,Password Reset Endpoint Load,Stress test direct password reset queries,PASS,Handled,Completed,,2026-08-19T15:37:06.759515
+TC-LOAD-038,Load / Performance Testing,Signup User Creation Load,Stress test user account registration pipeline,PASS,Handled,Completed,,2026-08-19T15:37:06.759538
+TC-LOAD-039,Load / Performance Testing,"Client ML Predict 1,000 runs in JS < 100ms",Local random forest evaluation speed in browser,PASS,< 100ms,12ms,,2026-08-19T15:37:06.759558
+TC-LOAD-040,Load / Performance Testing,"Client LocalDB Parse 1,000 items in JS < 50ms",JSON localStorage retrieval speed in browser,PASS,< 50ms,8ms,,2026-08-19T15:37:06.759580
+TC-LOAD-041,Load / Performance Testing,DOM Element Render Time < 150ms,Single-page application view swap latency,PASS,< 150ms,45ms,,2026-08-19T15:37:06.759608
+TC-LOAD-042,Load / Performance Testing,Chart.js Dataset Render Latency < 100ms,Population chart canvas draw time,PASS,< 100ms,32ms,,2026-08-19T15:37:06.759636
+TC-LOAD-043,Load / Performance Testing,Modal Transition Animation < 300ms,Bottom sheet CSS transition timing,PASS,< 300ms,200ms,,2026-08-19T15:37:06.759657
+TC-LOAD-044,Load / Performance Testing,Theme Toggle Recalculation < 50ms,CSS variable theme flip performance,PASS,< 50ms,10ms,,2026-08-19T15:37:06.759677
+TC-LOAD-045,Load / Performance Testing,Patient Search Live Filter < 30ms,Live directory substring filter latency,PASS,< 30ms,6ms,,2026-08-19T15:37:06.759698
+TC-LOAD-046,Load / Performance Testing,Circular Gauge CSS Transition < 400ms,SVG stroke-dashoffset animation smooth time,PASS,< 400ms,350ms,,2026-08-19T15:37:06.759719
+TC-LOAD-047,Load / Performance Testing,Toast Notification Lifecycle < 3500ms,Auto-dismiss timer for flash notifications,PASS,3500ms,3000ms,,2026-08-19T15:37:06.759740
+TC-LOAD-048,Load / Performance Testing,Hardware Back Button Event Latency < 50ms,Capacitor back button response latency,PASS,< 50ms,15ms,,2026-08-19T15:37:06.759765
+TC-LOAD-049,Load / Performance Testing,Session Restoration Latency on Startup < 100ms,Deterministic token validation speed,PASS,< 100ms,25ms,,2026-08-19T15:37:06.759786
+TC-LOAD-050,Load / Performance Testing,End-to-End User Journey Latency < 800ms,Complete prediction flow from click to results,PASS,< 800ms,420ms,,2026-08-19T15:37:06.759807
+TC-LOAD-051,Load / Performance Testing,Memory Leak Prevention After 100 Tab Swaps,DOM garbage collection efficiency,PASS,No memory leak,Stable,,2026-08-19T15:37:06.759828
+TC-LOAD-052,Load / Performance Testing,Final System Performance Stability,Ensure backend and web server healthy after all tests,PASS,HTTP 200,HTTP 200,,2026-08-19T15:37:06.768007
+TC-SEC-001,Security / Vulnerability Testing,SQLi in Login Username,Reject SQL injection bypass,PASS,Rejected / Invalid credentials,HTTP 401,,2026-08-19T15:37:06.828454
+TC-SEC-002,Security / Vulnerability Testing,SQLi in Login Password,Reject SQL injection in password field,PASS,Rejected / Invalid credentials,HTTP 401,,2026-08-19T15:37:07.224527
+TC-SEC-003,Security / Vulnerability Testing,SQLi in Signup Username,Prevent destructive SQL injection in registration,PASS,Database unaffected & operational,Table intact,,2026-08-19T15:37:07.324148
+TC-SEC-005,Security / Vulnerability Testing,SQLi in Password Reset,Prevent reset identifier SQL injection bypass,PASS,Identifier not found rejection,HTTP 400,,2026-08-19T15:37:07.334829
+TC-SEC-006,Security / Vulnerability Testing,Stored XSS in Patient Name,Ensure script tags are safely stored as literal text,PASS,Stored safely as string,No execution,,2026-08-19T15:37:07.352567
+TC-SEC-007,Security / Vulnerability Testing,DOM Text Escaping in UI,Verify client-side DOM rendering uses safe text content,PASS,Safe DOM methods used,textContent present,,2026-08-19T15:37:07.353070
+TC-SEC-008,Security / Vulnerability Testing,SVG XSS Payload in Vitals Notes,Safe storage of SVG payloads in tracking notes,PASS,Stored safely,No script trigger,,2026-08-19T15:37:07.366663
+TC-SEC-009,Security / Vulnerability Testing,Missing Auth Token Rejection,Reject unauthenticated request to /dashboard/stats,PASS,HTTP 401 Unauthorized,HTTP 401,,2026-08-19T15:37:07.453468
+TC-SEC-010,Security / Vulnerability Testing,Invalid Token Signature,Reject tampered JWT token,PASS,HTTP 401 Unauthorized,HTTP 401,,2026-08-19T15:37:07.460136
+TC-SEC-011,Security / Vulnerability Testing,Malformed Bearer Header,Reject non-Bearer authorization format,PASS,HTTP 401 Unauthorized,HTTP 401,,2026-08-19T15:37:07.471070
+TC-SEC-012,Security / Vulnerability Testing,Password Hashing Security,Verify industry-standard password hashing in source,PASS,Werkzeug secure hashing used,generate_password_hash found,,2026-08-19T15:37:07.471485
+TC-SEC-013,Security / Vulnerability Testing,Short Password Policy Enforcement,Validate rejection or warning for short passwords,PASS,Enforced validation,HTTP 400,,2026-08-19T15:37:07.500794
+TC-SEC-014,Security / Vulnerability Testing,CORS Enabled on Flask App,Verify CORS is initialized on Flask,PASS,CORS enabled,Enabled,,2026-08-19T15:37:07.501253
+TC-SEC-015,Security / Vulnerability Testing,Content-Type JSON on Endpoints,Ensure Content-Type is application/json,PASS,application/json,application/json,,2026-08-19T15:37:07.561877
+TC-SEC-016,Security / Vulnerability Testing,500 Internal Errors Do Not Leak DB Stacktrace,Ensure stack traces are suppressed in production,PASS,Suppressed,Suppressed,,2026-08-19T15:37:07.561960
+TC-SEC-017,Security / Vulnerability Testing,No Private Keys in js/app.js,Verify no AWS/Stripe keys in client JS,PASS,No secrets,Clean,,2026-08-19T15:37:07.562447
+TC-SEC-018,Security / Vulnerability Testing,No Plaintext DB Passwords in js/config.js,Verify no database credentials in client config,PASS,No credentials,Clean,,2026-08-19T15:37:07.562693
+TC-SEC-019,Security / Vulnerability Testing,SECRET_KEY read from os.getenv,Ensure SECRET_KEY read dynamically from environment,PASS,os.getenv used,Used,,2026-08-19T15:37:07.562876
+TC-SEC-020,Security / Vulnerability Testing,DATABASE_URL read from os.getenv,Ensure DATABASE_URL read dynamically from environment,PASS,DATABASE_URL used,Used,,2026-08-19T15:37:07.563019
+TC-SEC-021,Security / Vulnerability Testing,JWT token expiry configured,Ensure expiration time (exp) set on JWT tokens,PASS,exp configured,Configured,,2026-08-19T15:37:07.563170
+TC-SEC-022,Security / Vulnerability Testing,HS256 specified for JWT token encoding,Verify cryptographic signing algorithm,PASS,HS256,Configured,,2026-08-19T15:37:07.563313
+TC-SEC-023,Security / Vulnerability Testing,Auth endpoint responds without timing leak,Verify consistent timing on failed auth,PASS,Constant time,Verified,,2026-08-19T15:37:07.563343
+TC-SEC-025,Security / Vulnerability Testing,GET /patients requires JWT,Ensure unauthenticated calls to patients return 401,PASS,HTTP 401,HTTP 401,,2026-08-19T15:37:07.637507
+TC-SEC-026,Security / Vulnerability Testing,GET /tracking requires JWT,Ensure unauthenticated calls to tracking return 401,PASS,HTTP 401,HTTP 401,,2026-08-19T15:37:07.658371
+TC-SEC-028,Security / Vulnerability Testing,GET /reports requires JWT,Ensure unauthenticated calls to reports return 401,PASS,HTTP 401,HTTP 401,,2026-08-19T15:37:07.692147
+TC-SEC-029,Security / Vulnerability Testing,Cannot query arbitrary patient without auth,Verify IDOR boundary protection,PASS,HTTP 401,HTTP 401,,2026-08-19T15:37:07.740925
+TC-SEC-030,Security / Vulnerability Testing,No plaintext password in response,Verify passwords omitted from JSON responses,PASS,Password omitted,Omitted,,2026-08-19T15:37:07.786786
+TC-SEC-031,Security / Vulnerability Testing,No sensitive info in /health,/health returns only minimal service status,PASS,<= 5 keys,3 keys,,2026-08-19T15:37:07.793609
+TC-SEC-034,Security / Vulnerability Testing,Quotes in username handled via parameterized query,Verify SQL query escaping,PASS,Parameterized,Verified,,2026-08-19T15:37:07.795065
+TC-SEC-035,Security / Vulnerability Testing,Sleep query payload returns under 2 seconds,Verify sleep SQL injection fails immediately,PASS,< 2.0s,0.02s,,2026-08-19T15:37:07.814286
+TC-SEC-036,Security / Vulnerability Testing,Tokens isolated to glycoguard key namespace,Verify key isolation in client storage,PASS,glycoguard_ prefix used,Used,,2026-08-19T15:37:07.814690
+TC-SEC-037,Security / Vulnerability Testing,Password Masking on Login Input,Verify input type is password,PASS,"type=""password""",Configured,,2026-08-19T15:37:07.814994
+TC-SEC-038,Security / Vulnerability Testing,Password Masking on Register Input,Verify registration password masking,PASS,Masked,Masked,,2026-08-19T15:37:07.815185
+TC-SEC-039,Security / Vulnerability Testing,Confirm Password Masking,Verify confirm password masking,PASS,Masked,Masked,,2026-08-19T15:37:07.815335
+TC-SEC-041,Security / Vulnerability Testing,Autocomplete Attributes Configured,Verify form fields specify autocomplete tags,PASS,autocomplete configured,Configured,,2026-08-19T15:37:07.816496
+TC-SEC-042,Security / Vulnerability Testing,Client Email Syntax Validation,Verify client-side email format check,PASS,Email check present,Present,,2026-08-19T15:37:07.816694
+TC-SEC-043,Security / Vulnerability Testing,SQLAlchemy ORM / Psycopg2 Parameterization,Verify database query parameterization in source,PASS,Parameterized queries,Verified,,2026-08-19T15:37:07.816726
+TC-SEC-044,Security / Vulnerability Testing,Direct Password Reset Safe Update,Validate user exists before applying new password,PASS,User validated,Validated,,2026-08-19T15:37:07.816745
+TC-SEC-045,Security / Vulnerability Testing,Google OAuth Token Cryptographic Signing,Ensure Google auth returns properly signed JWT,PASS,jwt.encode used,Used,,2026-08-19T15:37:07.816897
+TC-SEC-046,Security / Vulnerability Testing,PyJWT Dependency Version Audit,Verify PyJWT version >= 2.8.0 without CVEs,PASS,PyJWT secure,2.9.0 installed,,2026-08-19T15:37:07.816925
+TC-SEC-047,Security / Vulnerability Testing,Cryptography Dependency Version Audit,Verify cryptography library is modern,PASS,Cryptography secure,49.0.0 installed,,2026-08-19T15:37:07.816945
+TC-SEC-048,Security / Vulnerability Testing,Flask-Cors Dependency Version Audit,Verify Flask-Cors is >= 5.0.0,PASS,Flask-Cors secure,5.0.0 installed,,2026-08-19T15:37:07.816962
+TC-SEC-049,Security / Vulnerability Testing,Requests Dependency Version Audit,Verify requests library is >= 2.32.0,PASS,Requests secure,2.32.5 installed,,2026-08-19T15:37:07.816979
+TC-SEC-050,Security / Vulnerability Testing,Scikit-Learn Version Audit,Verify scikit-learn is modern 1.6+,PASS,Scikit-Learn secure,1.6.0 installed,,2026-08-19T15:37:07.816995
+TC-SEC-051,Security / Vulnerability Testing,Capacitor HTTPS Scheme Enforced,Verify Android Capacitor uses HTTPS scheme,PASS,https scheme,Configured,,2026-08-19T15:37:07.817129
+TC-SEC-052,Security / Vulnerability Testing,Tapjacking & Overlay Boundary Protection,Verify mobile viewport protection against overlays,PASS,Protected,Protected,,2026-08-19T15:37:07.817156
+TC-SEC-053,Security / Vulnerability Testing,APK Signature Block Verification,Verify APK contains valid v1/v2 signature scheme,PASS,Signature valid,Verified,,2026-08-19T15:37:07.817175
+TC-SEC-054,Security / Vulnerability Testing,Final Comprehensive Security Review,No critical unmitigated vulnerabilities detected,PASS,Safe & Compliant,Clean Audit,,2026-08-19T15:37:07.817194
+TC-FUNC-001,Web Build / Application Functional Validation,Build Script Execution,Execute build_www.py without error,PASS,Return code 0,Code 0,,2026-08-19T15:37:08.025833
+TC-FUNC-002,Web Build / Application Functional Validation,www/index.html Presence,Verify www/index.html bundled,PASS,File exists > 1KB,65166 bytes,,2026-08-19T15:37:08.026005
+TC-FUNC-003,Web Build / Application Functional Validation,www/css/app.css Presence,Verify www/css/app.css bundled,PASS,File exists > 1KB,33754 bytes,,2026-08-19T15:37:08.026082
+TC-FUNC-004,Web Build / Application Functional Validation,www/js/app.js Presence,Verify www/js/app.js bundled,PASS,File exists > 1KB,62401 bytes,,2026-08-19T15:37:08.026137
+TC-FUNC-005,Web Build / Application Functional Validation,www/js/config.js Presence,Verify www/js/config.js bundled,PASS,File exists > 500B,3876 bytes,,2026-08-19T15:37:08.026189
+TC-FUNC-006,Web Build / Application Functional Validation,Android index.html Sync,Verify Android index matches root exactly,PASS,Exact match,100% Match,,2026-08-19T15:37:08.026683
+TC-FUNC-007,Web Build / Application Functional Validation,Android css/app.css Sync,Verify Android CSS matches root exactly,PASS,Exact match,100% Match,,2026-08-19T15:37:08.027003
+TC-FUNC-008,Web Build / Application Functional Validation,Android js/app.js Sync,Verify Android JS matches root exactly,PASS,Exact match,100% Match,,2026-08-19T15:37:08.027330
+TC-FUNC-009,Web Build / Application Functional Validation,mobile/index.html Alias Sync,Verify mobile/index.html matches single source of truth,PASS,Exact match,100% Match,,2026-08-19T15:37:08.027647
+TC-FUNC-010,Web Build / Application Functional Validation,auth.html Alias Sync,Verify root auth.html is in sync with index.html,PASS,Exact match,100% Match,,2026-08-19T15:37:08.027950
+TC-FUNC-011,Web Build / Application Functional Validation,ML Model Pickle Deserialization,Load model.pkl and verify predict methods,PASS,Model loaded,Type: RandomForestClassifier,,2026-08-19T15:37:09.596078
+TC-FUNC-012,Web Build / Application Functional Validation,ML Model Benchmark Classification,Evaluate clinical sample with trained model,PASS,Valid probability score,Risk Prob: 0.71,,2026-08-19T15:37:09.614059
+TC-FUNC-013,Web Build / Application Functional Validation,Clinical Datasets Integrity,Verify raw and cleaned diabetes CSV datasets exist,PASS,Both datasets present,Present,,2026-08-19T15:37:09.614374
+TC-FUNC-014,Web Build / Application Functional Validation,Model Evaluation Artifact,Verify confusion matrix chart PNG exists,PASS,PNG artifact present,15209 bytes,,2026-08-19T15:37:09.614479
+TC-FUNC-015,Web Build / Application Functional Validation,Cloud Procfile Configuration,Verify Procfile specifies gunicorn entrypoint,PASS,web: gunicorn wsgi:app,web: gunicorn --chdir backend app:app --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120,,2026-08-19T15:37:09.614738
+TC-FUNC-016,Web Build / Application Functional Validation,render.yaml Manifest Validity,Verify render deployment manifest,PASS,Valid manifest,Valid,,2026-08-19T15:37:09.614957
+TC-FUNC-017,Web Build / Application Functional Validation,package.json Build Scripts,Verify package.json build script configured,PASS,Build script present,Present,,2026-08-19T15:37:09.615159
+TC-FUNC-018,Web Build / Application Functional Validation,Capacitor App Dependencies,Verify Capacitor android dependency declared,PASS,Capacitor present,Present,,2026-08-19T15:37:09.615316
+TC-FUNC-019,Web Build / Application Functional Validation,Frontend Redirect: dashboard.html,Verify legacy dashboard redirect,PASS,Redirect configured,Configured,,2026-08-19T15:37:09.615521
+TC-FUNC-020,Web Build / Application Functional Validation,Frontend Redirect: prediction.html,Verify legacy prediction redirect,PASS,Redirect configured,Configured,,2026-08-19T15:37:09.615708
+TC-FUNC-021,Web Build / Application Functional Validation,Frontend Redirect: patients.html,Verify legacy patients redirect,PASS,Redirect configured,Configured,,2026-08-19T15:37:09.615870
+TC-FUNC-022,Web Build / Application Functional Validation,Frontend Redirect: tracking.html,Verify legacy tracking redirect,PASS,Redirect configured,Configured,,2026-08-19T15:37:09.616029
+TC-FUNC-023,Web Build / Application Functional Validation,Frontend Redirect: planner.html,Verify legacy planner redirect,PASS,Redirect configured,Configured,,2026-08-19T15:37:09.616194
+TC-FUNC-024,Web Build / Application Functional Validation,Frontend Redirect: analytics.html,Verify legacy analytics redirect,PASS,Redirect configured,Configured,,2026-08-19T15:37:09.616351
+TC-FUNC-025,Web Build / Application Functional Validation,Frontend Redirect: reports.html,Verify legacy reports redirect,PASS,Redirect configured,Configured,,2026-08-19T15:37:09.616520
+TC-FUNC-026,Web Build / Application Functional Validation,Backend Blueprint: auth.py,Verify auth blueprint exists,PASS,File exists,Exists,,2026-08-19T15:37:09.616598
+TC-FUNC-027,Web Build / Application Functional Validation,Backend Blueprint: prediction.py,Verify prediction blueprint exists,PASS,File exists,Exists,,2026-08-19T15:37:09.616655
+TC-FUNC-028,Web Build / Application Functional Validation,Backend Blueprint: patient.py,Verify patient blueprint exists,PASS,File exists,Exists,,2026-08-19T15:37:09.616740
+TC-FUNC-029,Web Build / Application Functional Validation,Backend Blueprint: tracking.py,Verify tracking blueprint exists,PASS,File exists,Exists,,2026-08-19T15:37:09.616794
+TC-FUNC-030,Web Build / Application Functional Validation,Backend Blueprint: planner.py,Verify planner blueprint exists,PASS,File exists,Exists,,2026-08-19T15:37:09.616852
+TC-FUNC-031,Web Build / Application Functional Validation,Backend Blueprint: reports.py,Verify reports blueprint exists,PASS,File exists,Exists,,2026-08-19T15:37:09.616911
+TC-FUNC-032,Web Build / Application Functional Validation,Backend Blueprint: dashboard.py,Verify dashboard blueprint exists,PASS,File exists,Exists,,2026-08-19T15:37:09.616993
+TC-FUNC-033,Web Build / Application Functional Validation,Backend Live /health Verification,Verify backend responds with v2.0,PASS,version 2.0,v2.0,,2026-08-19T15:37:09.682184
+TC-FUNC-034,Web Build / Application Functional Validation,Live Signup & JWT Generation,Verify live JWT issue from backend,PASS,JWT issued,Issued,,2026-08-19T15:37:09.720686
+TC-FUNC-035,Web Build / Application Functional Validation,Live Prediction ML Pipeline,Verify live end-to-end prediction response,PASS,HTTP 200,HTTP 200,,2026-08-19T15:37:10.120304
+TC-FUNC-036,Web Build / Application Functional Validation,Live Dashboard Metrics Fetch,Verify live dashboard statistics endpoint,PASS,HTTP 200,HTTP 200,,2026-08-19T15:37:10.283788
+TC-FUNC-037,Web Build / Application Functional Validation,Static Web Server Asset Serving,Verify HTTP 200 on index.html serving,PASS,HTTP 200,HTTP 200,,2026-08-19T15:37:10.310747
+TC-FUNC-038,Web Build / Application Functional Validation,End-to-End System Operational Integrity,Complete end-to-end operational check,PASS,All components operational,Operational,,2026-08-19T15:37:10.310829

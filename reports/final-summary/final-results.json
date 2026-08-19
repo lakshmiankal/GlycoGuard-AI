@@ -1,0 +1,48 @@
+{
+  "overall_status": "READY WITH MINOR ISSUES",
+  "total_test_cases": 302,
+  "passed": 285,
+  "failed": 0,
+  "blocked": 0,
+  "not_executed": 17,
+  "pass_percentage": 94.4,
+  "fail_percentage": 0.0,
+  "category_breakdown": {
+    "Selenium Web UI": {
+      "total": 95,
+      "passed": 95,
+      "failed": 0,
+      "blocked": 0,
+      "not_executed": 0
+    },
+    "Appium Android Mobile": {
+      "total": 69,
+      "passed": 52,
+      "failed": 0,
+      "blocked": 0,
+      "not_executed": 17
+    },
+    "Load / Performance Testing": {
+      "total": 52,
+      "passed": 52,
+      "failed": 0,
+      "blocked": 0,
+      "not_executed": 0
+    },
+    "Security / Vulnerability Testing": {
+      "total": 48,
+      "passed": 48,
+      "failed": 0,
+      "blocked": 0,
+      "not_executed": 0
+    },
+    "Web Build / Application Functional Validation": {
+      "total": 38,
+      "passed": 38,
+      "failed": 0,
+      "blocked": 0,
+      "not_executed": 0
+    }
+  },
+  "generated_at": "2026-08-19T15:37:10.410238"
+}

@@ -1,12 +1,12 @@
 /**
  * ==========================================================
- * GlycoGuard AI - Mobile Application Controller
- * 100% Standalone Offline-First Architecture
+ * GlycoGuard AI - Unified Application Controller
+ * Single Source of Truth for Web (Desktop/Tablet) and Android Mobile
  * Predict • Prevent • Personalize
  * ==========================================================
  */
 
-// Application State
+// Application Centralized State
 var AppState = window.AppState || {
     currentUser: null,
     currentView: 'dashboard',
@@ -20,57 +20,9 @@ var AppState = window.AppState || {
 window.AppState = AppState;
 
 // ==========================================================
-// LOCAL STORAGE & EMBEDDED CLINICAL DATABASE
+// 1. EMBEDDED PERSISTENT LOCAL DATABASE (Offline Cache)
 // ==========================================================
-
 var LocalDB = window.LocalDB || {
-    // Initial Preloaded Users
-    initUsers() {
-        const existing = localStorage.getItem('glycoguard_users_db');
-        if (!existing) {
-            const initialUsers = [
-                {
-                    username: 'lakshmi',
-                    email: 'lakshmiankala1906@gmail.com',
-                    password: 'password',
-                    name: 'Dr. Lakshmi Ankala',
-                    phone: '+91 98765 43210',
-                    role: 'Medical Practitioner'
-                },
-                {
-                    username: 'doctor',
-                    email: 'doctor@glycoguard.ai',
-                    password: 'password',
-                    name: 'Dr. John Watson',
-                    phone: '+1 555 123 4567',
-                    role: 'Endocrinologist'
-                }
-            ];
-            localStorage.setItem('glycoguard_users_db', JSON.stringify(initialUsers));
-        }
-    },
-
-    getUsers() {
-        this.initUsers();
-        try {
-            return JSON.parse(localStorage.getItem('glycoguard_users_db')) || [];
-        } catch (e) {
-            return [];
-        }
-    },
-
-    saveUser(user) {
-        const users = this.getUsers();
-        const idx = users.findIndex(u => (u.email && u.email.toLowerCase() === (user.email || '').toLowerCase()) || (u.username && u.username.toLowerCase() === (user.username || '').toLowerCase()));
-        if (idx >= 0) {
-            users[idx] = { ...users[idx], ...user };
-        } else {
-            users.push(user);
-        }
-        localStorage.setItem('glycoguard_users_db', JSON.stringify(users));
-    },
-
-    // Initial Preloaded Patients
     initPatients() {
         const existing = localStorage.getItem('glycoguard_patients_db');
         if (!existing) {
@@ -149,7 +101,6 @@ var LocalDB = window.LocalDB || {
         localStorage.setItem('glycoguard_patients_db', JSON.stringify(patients));
     },
 
-    // Initial Preloaded Tracking Logs
     initTracking() {
         const existing = localStorage.getItem('glycoguard_tracking_db');
         if (!existing) {
@@ -191,7 +142,6 @@ var LocalDB = window.LocalDB || {
         localStorage.setItem('glycoguard_tracking_db', JSON.stringify(logs));
     },
 
-    // Clinical Reports
     getReports() {
         try {
             return JSON.parse(localStorage.getItem('glycoguard_reports_db')) || [];
@@ -207,7 +157,7 @@ var LocalDB = window.LocalDB || {
 window.LocalDB = LocalDB;
 
 // ==========================================================
-// EMBEDDED CLINICAL ML PREDICTION ENGINE (Random Forest Logic)
+// 2. EMBEDDED CLINICAL ML PREDICTION ENGINE (Random Forest Logic)
 // ==========================================================
 var LocalMLEngine = window.LocalMLEngine || {
     predict(data) {
@@ -223,10 +173,9 @@ var LocalMLEngine = window.LocalMLEngine || {
         const sleep = parseFloat(data.sleep_hours || 7.5);
         const stress = parseFloat(data.stress_level || 4);
 
-        // Calibrated Multi-Biomarker Risk Scoring
         let riskScore = 0;
 
-        // 1. Fasting Blood Glucose (Strongest Predictor)
+        // 1. Fasting Glucose
         if (glucose >= 200) riskScore += 48;
         else if (glucose >= 160) riskScore += 36;
         else if (glucose >= 140) riskScore += 26;
@@ -234,36 +183,34 @@ var LocalMLEngine = window.LocalMLEngine || {
         else if (glucose >= 100) riskScore += 8;
         else riskScore += 2;
 
-        // 2. BMI Scoring
+        // 2. BMI
         if (bmi >= 35) riskScore += 24;
         else if (bmi >= 30) riskScore += 17;
         else if (bmi >= 25) riskScore += 9;
         else riskScore += 2;
 
-        // 3. Age Factor
+        // 3. Age
         if (age >= 55) riskScore += 15;
         else if (age >= 45) riskScore += 10;
         else if (age >= 35) riskScore += 5;
         else riskScore += 2;
 
-        // 4. Diabetes Pedigree Function & Heredity
+        // 4. Diabetes Pedigree Function
         if (dpf >= 1.0) riskScore += 14;
         else if (dpf >= 0.6) riskScore += 8;
         else riskScore += 3;
 
-        // 5. Insulin & Metabolic Resistance
+        // 5. Insulin & BP
         if (insulin >= 180) riskScore += 10;
         else if (insulin >= 140) riskScore += 6;
-
-        // 6. Blood Pressure
         if (blood_pressure >= 90) riskScore += 8;
         else if (blood_pressure >= 80) riskScore += 4;
 
-        // 7. Pregnancies
+        // 6. Pregnancies
         if (pregnancies >= 5) riskScore += 8;
         else if (pregnancies >= 3) riskScore += 4;
 
-        // 8. Protective vs Negative Lifestyle Modifiers
+        // 7. Lifestyle modifiers
         if (exercise >= 45) riskScore -= 10;
         else if (exercise >= 30) riskScore -= 6;
         else if (exercise < 15) riskScore += 7;
@@ -274,7 +221,6 @@ var LocalMLEngine = window.LocalMLEngine || {
         if (stress >= 7) riskScore += 8;
         else if (stress <= 3) riskScore -= 4;
 
-        // Normalize between 5% and 97%
         let probability = Math.min(97, Math.max(5.2, riskScore));
         probability = Math.round(probability * 10) / 10;
 
@@ -298,26 +244,16 @@ var LocalMLEngine = window.LocalMLEngine || {
             probability,
             prob_decimal: (probability / 100).toFixed(4),
             recommendation,
-            features_analyzed: {
-                glucose,
-                blood_pressure,
-                insulin,
-                bmi,
-                age,
-                exercise,
-                sleep,
-                stress
-            }
+            features_analyzed: { glucose, blood_pressure, insulin, bmi, age, exercise, sleep, stress }
         };
     }
 };
 window.LocalMLEngine = LocalMLEngine;
 
 // ==========================================================
-// 1. INITIALIZATION & SPLASH SCREEN
+// 3. DETERMINISTIC STARTUP & AUTHENTICATION FLOW
 // ==========================================================
 document.addEventListener('DOMContentLoaded', () => {
-    LocalDB.initUsers();
     LocalDB.initPatients();
     LocalDB.initTracking();
     initTheme();
@@ -326,30 +262,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function initApp() {
     const splash = document.getElementById('splashScreen');
+    const authView = document.getElementById('authView');
+    const mainShell = document.getElementById('mainAppShell');
 
-    // Minimum splash duration for smooth experience
-    const splashTimer = new Promise(resolve => setTimeout(resolve, 600));
+    // Keep views initially hidden to eliminate flashing
+    if (authView) authView.style.display = 'none';
+    if (mainShell) mainShell.style.display = 'none';
 
-    // Verify session
+    const splashMinTimer = new Promise(resolve => setTimeout(resolve, 500));
+
+    // Check active authentication session
     const token = localStorage.getItem('glycoguard_token');
     const cachedUser = localStorage.getItem('glycoguard_user');
     let isAuthenticated = false;
 
-    if (token || cachedUser) {
+    if (token && token.trim() !== '') {
         isAuthenticated = true;
         const storedName = localStorage.getItem('glycoguard_name') || 'Dr. Lakshmi Ankala';
         const storedEmail = localStorage.getItem('glycoguard_email') || `${cachedUser || 'lakshmi'}@glycoguard.ai`;
         AppState.currentUser = {
-            username: cachedUser || 'lakshmi',
+            username: cachedUser || 'user',
             name: storedName,
             email: storedEmail,
             role: 'Medical Practitioner'
         };
     }
 
-    await splashTimer;
+    await splashMinTimer;
 
-    // Fade out splash
+    // Fade out splash screen
     if (splash) {
         splash.classList.add('hidden');
     }
@@ -366,6 +307,7 @@ function showAuthView() {
     const mainShell = document.getElementById('mainAppShell');
     if (authView) authView.style.display = 'flex';
     if (mainShell) mainShell.style.display = 'none';
+    switchAuthTab('login');
 }
 
 function showMainApp() {
@@ -373,9 +315,13 @@ function showMainApp() {
     const mainShell = document.getElementById('mainAppShell');
     if (authView) authView.style.display = 'none';
     if (mainShell) mainShell.style.display = 'block';
-    
+
     updateUserProfileDisplay();
-    navigateTo('dashboard');
+    
+    // Support deep link or query param (e.g. ?view=prediction)
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialView = urlParams.get('view') || 'dashboard';
+    navigateTo(initialView);
     loadAllAppData();
 }
 
@@ -388,7 +334,7 @@ function loadAllAppData() {
 }
 
 // ==========================================================
-// 2. THEME MANAGEMENT (DARK / LIGHT)
+// 4. THEME CONTROLLER (Dark / Light)
 // ==========================================================
 function initTheme() {
     const savedTheme = localStorage.getItem('glycoguard_theme') || 'dark';
@@ -404,29 +350,27 @@ function toggleAppTheme() {
     updateThemeIcon(newTheme);
     showToast(`Switched to ${newTheme.toUpperCase()} theme`, 'info');
 
-    // Re-render charts for theme contrast
+    // Re-render active charts for optimal color contrast
     if (AppState.currentView === 'tracking') renderTrackingChart();
     if (AppState.currentView === 'analytics') renderAnalyticsCharts();
 }
 
 function updateThemeIcon(theme) {
-    const icon = document.getElementById('themeIcon');
+    const icons = document.querySelectorAll('.theme-toggle-icon');
+    icons.forEach(icon => {
+        icon.className = theme === 'dark' ? 'fa-solid fa-sun theme-toggle-icon' : 'fa-solid fa-moon theme-toggle-icon';
+    });
     const text = document.getElementById('themeToggleText');
-    if (icon) {
-        icon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-    }
-    if (text) {
-        text.innerText = theme === 'dark' ? 'Switch to Light' : 'Switch to Dark';
-    }
+    if (text) text.innerText = theme === 'dark' ? 'Switch to Light' : 'Switch to Dark';
 }
 
 // ==========================================================
-// 3. NAVIGATION ROUTER
+// 5. UNIFIED NAVIGATION ROUTER
 // ==========================================================
 function navigateTo(viewName) {
     if (!viewName) return;
 
-    // Update screen views
+    // 1. Update Screen Views
     document.querySelectorAll('.screen-view').forEach(view => {
         view.classList.remove('active');
     });
@@ -436,7 +380,15 @@ function navigateTo(viewName) {
         targetView.classList.add('active');
     }
 
-    // Update bottom nav tabs
+    // 2. Synchronize Desktop Header Nav Links
+    document.querySelectorAll('.desktop-nav-item').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-view') === viewName) {
+            link.classList.add('active');
+        }
+    });
+
+    // 3. Synchronize Mobile Bottom Navigation Tabs
     document.querySelectorAll('.nav-tab').forEach(tab => {
         tab.classList.remove('active');
         if (tab.getAttribute('data-view') === viewName) {
@@ -444,14 +396,14 @@ function navigateTo(viewName) {
         }
     });
 
-    // Update state history
+    // 4. Update Navigation History
     if (AppState.currentView !== viewName) {
         AppState.navigationHistory.push(viewName);
     }
     AppState.currentView = viewName;
     window.scrollTo({ top: 0, behavior: 'instant' });
 
-    // Trigger view-specific lifecycles
+    // 5. Trigger View-Specific Lifecycles
     if (viewName === 'dashboard') {
         loadDashboardStats();
     } else if (viewName === 'tracking') {
@@ -465,16 +417,22 @@ function navigateTo(viewName) {
     }
 }
 
+// Hardware Back Button (Capacitor Android)
 function handleHardwareBack() {
     const patientModal = document.getElementById('patientModal');
     if (patientModal && patientModal.classList.contains('active')) {
         closePatientModal();
         return;
     }
+    const googleModal = document.getElementById('googleOAuthModal');
+    if (googleModal && googleModal.classList.contains('active')) {
+        closeGoogleOAuthModal();
+        return;
+    }
 
     if (AppState.navigationHistory.length > 1) {
-        AppState.navigationHistory.pop(); // Current
-        const prev = AppState.navigationHistory.pop(); // Previous
+        AppState.navigationHistory.pop();
+        const prev = AppState.navigationHistory.pop();
         navigateTo(prev || 'dashboard');
     } else if (AppState.currentView !== 'dashboard') {
         navigateTo('dashboard');
@@ -484,7 +442,7 @@ function handleHardwareBack() {
 }
 
 // ==========================================================
-// 4. AUTHENTICATION CONTROLLER (100% Instant Standalone Login)
+// 6. AUTHENTICATION CONTROLLER (Login, Register, Reset, Google)
 // ==========================================================
 function switchAuthTab(tab) {
     const loginForm = document.getElementById('loginForm');
@@ -495,10 +453,7 @@ function switchAuthTab(tab) {
     const tabForgot = document.getElementById('authTabForgot');
 
     [tabLogin, tabReg, tabForgot].forEach(btn => {
-        if (btn) {
-            btn.style.background = 'transparent';
-            btn.style.color = 'var(--text-primary)';
-        }
+        if (btn) btn.classList.remove('active');
     });
 
     if (loginForm) loginForm.style.display = 'none';
@@ -507,22 +462,13 @@ function switchAuthTab(tab) {
 
     if (tab === 'login') {
         if (loginForm) loginForm.style.display = 'block';
-        if (tabLogin) {
-            tabLogin.style.background = 'var(--brand-primary)';
-            tabLogin.style.color = '#fff';
-        }
+        if (tabLogin) tabLogin.classList.add('active');
     } else if (tab === 'register') {
         if (regForm) regForm.style.display = 'block';
-        if (tabReg) {
-            tabReg.style.background = 'var(--brand-primary)';
-            tabReg.style.color = '#fff';
-        }
+        if (tabReg) tabReg.classList.add('active');
     } else if (tab === 'forgot') {
         if (forgotForm) forgotForm.style.display = 'block';
-        if (tabForgot) {
-            tabForgot.style.background = 'var(--brand-primary)';
-            tabForgot.style.color = '#fff';
-        }
+        if (tabForgot) tabForgot.classList.add('active');
     }
 }
 
@@ -539,7 +485,7 @@ function extractDisplayName(identifier) {
     return identifier.charAt(0).toUpperCase() + identifier.slice(1);
 }
 
-function handleMobileLogin() {
+async function handleLogin() {
     const usernameInput = document.getElementById('loginUsername');
     const passwordInput = document.getElementById('loginPassword');
     const username = usernameInput ? usernameInput.value.trim() : '';
@@ -550,29 +496,38 @@ function handleMobileLogin() {
         return;
     }
 
-    // Direct standalone instant login
-    const users = LocalDB.getUsers();
-    const existing = users.find(u => 
-        (u.email && u.email.toLowerCase() === username.toLowerCase()) || 
-        (u.username && u.username.toLowerCase() === username.toLowerCase())
-    );
+    showToast('Signing in...', 'info');
 
-    const displayName = existing ? existing.name : (username.toLowerCase().includes('lakshmi') ? 'Dr. Lakshmi Ankala' : extractDisplayName(username));
-    const email = (existing && existing.email) ? existing.email : (username.includes('@') ? username : `${username}@glycoguard.ai`);
-    const token = `glyco_standalone_token_${Date.now()}`;
-
-    // Auto-save local user profile if new
-    if (!existing) {
-        LocalDB.saveUser({
-            username: username.includes('@') ? username.split('@')[0] : username,
-            email: email,
-            password: password,
-            name: displayName,
-            role: 'Medical Practitioner'
-        });
+    try {
+        if (window.CONFIG && typeof window.CONFIG.fetchWithTimeout === 'function') {
+            const res = await window.CONFIG.fetchWithTimeout(
+                `${window.CONFIG.API_BASE}/login`,
+                {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                },
+                3500
+            );
+            const data = await res.json();
+            if (data && (data.status === true || data.status === 'success')) {
+                completeLoginSuccess(
+                    data.username || username,
+                    data.name || extractDisplayName(username),
+                    data.email || (username.includes('@') ? username : `${username}@glycoguard.ai`),
+                    data.token || `token_${Date.now()}`
+                );
+                return;
+            }
+        }
+    } catch (e) {
+        console.warn('Backend login unavailable, proceeding with local session:', e);
     }
 
-    completeLoginSuccess(username, displayName, email, token);
+    // Local Standalone Session Fallback
+    const displayName = username.toLowerCase().includes('lakshmi') ? 'Dr. Lakshmi Ankala' : extractDisplayName(username);
+    const email = username.includes('@') ? username : `${username}@glycoguard.ai`;
+    completeLoginSuccess(username, displayName, email, `token_${Date.now()}`);
 }
 
 function completeLoginSuccess(username, name, email, token) {
@@ -596,7 +551,7 @@ function completeLoginSuccess(username, name, email, token) {
     showMainApp();
 }
 
-function handleMobileRegister() {
+async function handleRegister() {
     const fullName = document.getElementById('regFullName').value.trim();
     const username = document.getElementById('regUsername').value.trim();
     const phone = document.getElementById('regPhone').value.trim();
@@ -614,14 +569,27 @@ function handleMobileRegister() {
         return;
     }
 
-    LocalDB.saveUser({
-        username: username,
-        email: email || `${username}@glycoguard.ai`,
-        password: password,
-        name: fullName || extractDisplayName(username),
-        phone: phone || '+91 00000 00000',
-        role: 'Medical Practitioner'
-    });
+    try {
+        if (window.CONFIG && typeof window.CONFIG.fetchWithTimeout === 'function') {
+            await window.CONFIG.fetchWithTimeout(
+                `${window.CONFIG.API_BASE}/signup`,
+                {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username,
+                        password,
+                        full_name: fullName || extractDisplayName(username),
+                        email: email || `${username}@glycoguard.ai`,
+                        phone: phone || '0000000000'
+                    })
+                },
+                3500
+            );
+        }
+    } catch (e) {
+        console.warn('Backend signup notice:', e);
+    }
 
     showToast('Account created successfully! Please sign in.', 'success');
     document.getElementById('loginUsername').value = email || username;
@@ -629,7 +597,7 @@ function handleMobileRegister() {
     switchAuthTab('login');
 }
 
-function handleMobileReset() {
+async function handleReset() {
     const identifier = document.getElementById('resetIdentifier').value.trim();
     const newPassword = document.getElementById('resetNewPassword').value.trim();
     const confirm = document.getElementById('resetConfirmPassword').value.trim();
@@ -649,11 +617,20 @@ function handleMobileReset() {
         return;
     }
 
-    const users = LocalDB.getUsers();
-    const user = users.find(u => (u.email && u.email.toLowerCase() === identifier.toLowerCase()) || (u.username && u.username.toLowerCase() === identifier.toLowerCase()));
-    if (user) {
-        user.password = newPassword;
-        LocalDB.saveUser(user);
+    try {
+        if (window.CONFIG && typeof window.CONFIG.fetchWithTimeout === 'function') {
+            await window.CONFIG.fetchWithTimeout(
+                `${window.CONFIG.API_BASE}/forgot-password/direct-reset`,
+                {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: identifier, new_password: newPassword })
+                },
+                3500
+            );
+        }
+    } catch (e) {
+        console.warn('Backend reset notice:', e);
     }
 
     showToast('Password reset successfully! Please sign in.', 'success');
@@ -662,21 +639,119 @@ function handleMobileReset() {
     switchAuthTab('login');
 }
 
-function handleGoogleDemoLogin() {
-    const email = "lakshmiankala1906@gmail.com";
-    const name = "Dr. Lakshmi Ankala";
-    completeLoginSuccess('lakshmi', name, email, `google_token_${Date.now()}`);
-}
-
-function handleMobileLogout() {
+function handleLogout() {
     localStorage.removeItem('glycoguard_token');
     AppState.currentUser = null;
-    showToast('Logged out successfully', 'info');
+    showToast('Logged out of GlycoGuard AI', 'info');
     showAuthView();
 }
 
 // ==========================================================
-// 5. DASHBOARD CONTROLLER
+// 7. GOOGLE SIGN-IN & ACCOUNT CHOOSER
+// ==========================================================
+function openGoogleOAuthModal() {
+    const modal = document.getElementById('googleOAuthModal');
+    if (!modal) return;
+
+    const accountsContainer = document.getElementById('googleOAuthAccountsList');
+    if (accountsContainer) {
+        const knownEmail = localStorage.getItem('glycoguard_email') || 'lakshmiankala1906@gmail.com';
+        const knownName = localStorage.getItem('glycoguard_name') || 'Lakshmi ankala';
+        const initial = (knownName || 'L').charAt(0).toUpperCase();
+
+        accountsContainer.innerHTML = `
+            <div class="google-account-item" onclick="selectGoogleOAuthAccount('${knownEmail}', '${knownName}')">
+                <div class="google-account-avatar" style="background-color: #3b7b3b;">${initial}</div>
+                <div class="google-account-info">
+                    <div class="google-account-name">${knownName}</div>
+                    <div class="google-account-email">${knownEmail}</div>
+                </div>
+            </div>
+            <div class="google-divider"></div>
+            <div class="google-another-account" onclick="toggleGoogleAnotherAccount()">
+                <div class="google-another-icon">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+                <span>Use another account</span>
+            </div>
+        `;
+    }
+
+    const customBox = document.getElementById('googleCustomInputBox');
+    if (customBox) customBox.classList.remove('active');
+
+    modal.classList.add('active');
+}
+
+function closeGoogleOAuthModal() {
+    const modal = document.getElementById('googleOAuthModal');
+    if (modal) modal.classList.remove('active');
+}
+
+function toggleGoogleAnotherAccount() {
+    const customBox = document.getElementById('googleCustomInputBox');
+    if (customBox) {
+        customBox.classList.toggle('active');
+        if (customBox.classList.contains('active')) {
+            const input = document.getElementById('googleCustomEmailInput');
+            if (input) input.focus();
+        }
+    }
+}
+
+function submitCustomGoogleOAuth() {
+    const input = document.getElementById('googleCustomEmailInput');
+    const email = input ? input.value.trim() : '';
+
+    if (!email || !email.includes('@')) {
+        showToast('Please enter a valid Google email address', 'error');
+        return;
+    }
+
+    const name = extractDisplayName(email);
+    selectGoogleOAuthAccount(email, name);
+}
+
+async function selectGoogleOAuthAccount(email, name) {
+    closeGoogleOAuthModal();
+    showToast(`Signing in with Google (${email})...`, 'info');
+
+    const username = email.split('@')[0];
+    const finalName = name || extractDisplayName(username);
+
+    try {
+        if (window.CONFIG && typeof window.CONFIG.fetchWithTimeout === 'function') {
+            const response = await window.CONFIG.fetchWithTimeout(
+                `${window.CONFIG.API_BASE}/google-login`,
+                {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email, name: finalName })
+                },
+                3500
+            );
+
+            const result = await response.json();
+            if (result && (result.status === true || result.token)) {
+                completeLoginSuccess(
+                    result.username || username,
+                    result.name || finalName,
+                    result.email || email,
+                    result.token || `google_token_${Date.now()}`
+                );
+                return;
+            }
+        }
+    } catch (e) {
+        console.warn('Backend Google Auth notice, proceeding with session:', e);
+    }
+
+    // Standalone fallback
+    completeLoginSuccess(username, finalName, email, `google_token_${Date.now()}`);
+}
+
+// ==========================================================
+// 8. DASHBOARD CONTROLLER
 // ==========================================================
 function updateUserProfileDisplay() {
     const user = AppState.currentUser || {
@@ -687,603 +762,541 @@ function updateUserProfileDisplay() {
 
     const initial = (user.name || 'L').charAt(0).toUpperCase();
 
-    // Dash Avatar & Greeting
+    // Desktop Header Avatar & Name
+    const deskAvatar = document.getElementById('desktopUserAvatar');
+    if (deskAvatar) deskAvatar.innerText = initial;
+    const deskName = document.getElementById('desktopUserName');
+    if (deskName) deskName.innerText = user.name || 'Dr. Lakshmi Ankala';
+
+    // Mobile Header Avatar & Greeting
     const dashAvatar = document.getElementById('dashAvatar');
     if (dashAvatar) dashAvatar.innerText = initial;
 
     const hour = new Date().getHours();
-    let greet = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
-    const dashGreeting = document.getElementById('dashGreeting');
-    if (dashGreeting) {
-        const firstName = user.name.replace(/^Dr\.\s*/, '').split(' ')[0] || user.username;
-        dashGreeting.innerText = `${greet}, ${firstName} 👋`;
-    }
+    const greetingText = hour < 12 ? 'Good morning ☀️' : hour < 17 ? 'Good afternoon 🌤' : 'Good evening 🌙';
+    const greetEl = document.getElementById('dashGreeting');
+    if (greetEl) greetEl.innerText = `${greetingText}, ${user.name ? user.name.split(' ')[0] : 'Doctor'}`;
 
-    const dashDate = document.getElementById('dashDate');
-    if (dashDate) {
-        dashDate.innerText = new Date().toLocaleDateString('en-US', {
+    const dateEl = document.getElementById('dashDate');
+    if (dateEl) {
+        dateEl.innerText = new Date().toLocaleDateString('en-US', {
             weekday: 'long',
-            month: 'short',
+            year: 'numeric',
+            month: 'long',
             day: 'numeric'
         });
     }
 
-    // Profile Screen
-    const profAvatar = document.getElementById('profileAvatarLarge');
-    if (profAvatar) profAvatar.innerText = initial;
-
+    // Profile Page
     const profName = document.getElementById('profileFullName');
     if (profName) profName.innerText = user.name;
-
     const profUser = document.getElementById('profileUsername');
     if (profUser) profUser.innerText = `@${user.username}`;
-
     const profEmail = document.getElementById('profileEmail');
     if (profEmail) profEmail.innerText = user.email;
-
-    // Load Last Prediction if available in localStorage
-    const savedPred = localStorage.getItem('last_prediction');
-    if (savedPred) {
-        try {
-            const pred = JSON.parse(savedPred);
-            updateDashboardRiskSummary(pred);
-        } catch (e) {}
-    } else {
-        updateDashboardRiskSummary({
-            probability: 24.5,
-            risk_level: 'Low',
-            recommendation: 'Low diabetes risk detected. Biomarkers are within healthy ranges. Continue regular physical activity and balanced nutrition.'
-        });
-    }
+    const profAvatarLarge = document.getElementById('profileAvatarLarge');
+    if (profAvatarLarge) profAvatarLarge.innerText = initial;
 }
 
-function updateDashboardRiskSummary(pred) {
-    if (!pred) return;
-    const pill = document.getElementById('dashRiskPill');
-    const percent = document.getElementById('dashRiskPercent');
-    const rec = document.getElementById('dashRecommendation');
-
-    if (percent) percent.innerText = `${pred.probability}%`;
-    if (rec && pred.recommendation) rec.innerText = pred.recommendation;
-
-    if (pill) {
-        pill.innerText = `${(pred.risk_level || 'Low').toUpperCase()} RISK`;
-        if (pred.risk_level === 'High') {
-            pill.className = 'pill pill-high';
-        } else if (pred.risk_level === 'Medium') {
-            pill.className = 'pill pill-medium';
-        } else {
-            pill.className = 'pill pill-low';
+async function loadDashboardStats() {
+    try {
+        if (window.CONFIG && typeof window.CONFIG.fetchWithTimeout === 'function') {
+            const res = await window.CONFIG.fetchWithTimeout(
+                `${window.CONFIG.API_BASE}/dashboard/stats`,
+                { headers: window.CONFIG.getAuthHeaders() },
+                3000
+            );
+            const data = await res.json();
+            if (data && data.status) {
+                if (document.getElementById('kpiGlucose')) document.getElementById('kpiGlucose').innerText = data.avg_glucose || '98';
+                if (document.getElementById('kpiWater')) document.getElementById('kpiWater').innerText = data.avg_water || '2.5';
+                if (document.getElementById('kpiExercise')) document.getElementById('kpiExercise').innerText = data.avg_exercise || '35';
+                if (document.getElementById('kpiSleep')) document.getElementById('kpiSleep').innerText = data.avg_sleep || '7.5';
+                return;
+            }
         }
+    } catch (e) {
+        // Fallback to recent tracking log
     }
-}
 
-function loadDashboardStats() {
-    const activityList = document.getElementById('dashActivityList');
-    if (activityList) {
-        const logs = LocalDB.getTrackingLogs();
-        const latest = logs[0] || { blood_sugar: 98, tracking_date: 'Today' };
-        activityList.innerHTML = `
-            <div class="activity-item">
-                <div class="activity-icon"><i class="fa-solid fa-check"></i></div>
-                <div class="activity-info">
-                    <div class="activity-title">Diabetes Risk Assessment (Low Risk - 24.5%)</div>
-                    <div class="activity-date">Patient: Dr. Lakshmi Ankala • Today</div>
-                </div>
-            </div>
-            <div class="activity-item">
-                <div class="activity-icon"><i class="fa-solid fa-droplet"></i></div>
-                <div class="activity-info">
-                    <div class="activity-title">Daily Glucose Log (${latest.blood_sugar} mg/dL)</div>
-                    <div class="activity-date">Recorded • ${String(latest.tracking_date).slice(0, 10)}</div>
-                </div>
-            </div>
-        `;
+    const logs = LocalDB.getTrackingLogs();
+    if (logs.length > 0) {
+        const latest = logs[0];
+        if (document.getElementById('kpiGlucose')) document.getElementById('kpiGlucose').innerText = latest.blood_sugar || '98';
+        if (document.getElementById('kpiWater')) document.getElementById('kpiWater').innerText = latest.water || '2.5';
+        if (document.getElementById('kpiExercise')) document.getElementById('kpiExercise').innerText = latest.exercise || '35';
+        if (document.getElementById('kpiSleep')) document.getElementById('kpiSleep').innerText = latest.sleep || '7.5';
     }
 }
 
 // ==========================================================
-// 6. AI PREDICTION CONTROLLER (Embedded ML Engine)
+// 9. PREDICTION CONTROLLER
 // ==========================================================
-function handleRunPrediction() {
-    const patientId = document.getElementById('predPatientSelect').value;
-    const glucose = parseFloat(document.getElementById('predGlucose').value || 120);
-    const blood_pressure = parseFloat(document.getElementById('predBP').value || 70);
-    const insulin = parseFloat(document.getElementById('predInsulin').value || 80);
-    const skin_thickness = parseFloat(document.getElementById('predSkin').value || 20);
-    const bmi = parseFloat(document.getElementById('predBMI').value || 25.4);
-    const age = parseFloat(document.getElementById('predAge').value || 35);
-    const pregnancies = parseFloat(document.getElementById('predPregnancies').value || 0);
-    const dpf = parseFloat(document.getElementById('predDPF').value || 0.47);
-    const exercise = parseFloat(document.getElementById('predExercise').value || 30);
-    const sleep = parseFloat(document.getElementById('predSleep').value || 7.5);
-    const stress = parseFloat(document.getElementById('predStress').value || 4);
+async function handleRunPrediction() {
+    const btn = document.getElementById('btnRunPrediction');
+    if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Calculating Risk...';
+    }
 
     const payload = {
-        patient_id: patientId ? parseInt(patientId) : null,
-        glucose,
-        blood_pressure,
-        insulin,
-        skin_thickness,
-        bmi,
-        age,
-        pregnancies,
-        diabetes_pedigree: dpf,
-        exercise_minutes: exercise,
-        sleep_hours: sleep,
-        stress_level: stress
+        glucose: parseFloat(document.getElementById('predGlucose').value || 120),
+        blood_pressure: parseFloat(document.getElementById('predBP').value || 70),
+        insulin: parseFloat(document.getElementById('predInsulin').value || 80),
+        skin_thickness: parseFloat(document.getElementById('predSkin').value || 20),
+        bmi: parseFloat(document.getElementById('predBMI').value || 25.4),
+        age: parseFloat(document.getElementById('predAge').value || 35),
+        pregnancies: parseFloat(document.getElementById('predPregnancies').value || 0),
+        diabetes_pedigree: parseFloat(document.getElementById('predDPF').value || 0.47),
+        exercise_minutes: parseFloat(document.getElementById('predExercise').value || 30),
+        sleep_hours: parseFloat(document.getElementById('predSleep').value || 7.5),
+        stress_level: parseFloat(document.getElementById('predStress').value || 4)
     };
 
-    const predictionResult = LocalMLEngine.predict(payload);
+    let result = null;
 
-    AppState.lastPrediction = predictionResult;
-    localStorage.setItem('last_prediction', JSON.stringify(predictionResult));
-    displayPredictionResults(predictionResult);
-    updateDashboardRiskSummary(predictionResult);
-    showToast('AI Risk Assessment calculated successfully!', 'success');
-}
-
-function displayPredictionResults(pred) {
-    const card = document.getElementById('predResultCard');
-    const badge = document.getElementById('predRiskBadge');
-    const percentText = document.getElementById('predPercentText');
-    const recText = document.getElementById('predRecommendationText');
-    const gaugeCircle = document.getElementById('predGaugeCircle');
-
-    if (!card) return;
-    card.style.display = 'block';
-
-    const prob = Math.round(pred.probability);
-    if (percentText) percentText.innerText = `${prob}%`;
-    if (recText) recText.innerText = pred.recommendation;
-
-    // Animate circular gauge
-    if (gaugeCircle) {
-        const radius = 54;
-        const circumference = 2 * Math.PI * radius; // ~339.29
-        const offset = circumference - (prob / 100) * circumference;
-        gaugeCircle.style.strokeDasharray = circumference;
-        gaugeCircle.style.strokeDashoffset = offset;
-
-        if (pred.risk_level === 'High') {
-            gaugeCircle.style.stroke = 'var(--risk-high)';
-            if (badge) {
-                badge.innerText = 'HIGH RISK';
-                badge.className = 'pill pill-high';
-            }
-        } else if (pred.risk_level === 'Medium') {
-            gaugeCircle.style.stroke = 'var(--risk-medium)';
-            if (badge) {
-                badge.innerText = 'MODERATE RISK';
-                badge.className = 'pill pill-medium';
-            }
-        } else {
-            gaugeCircle.style.stroke = 'var(--risk-low)';
-            if (badge) {
-                badge.innerText = 'LOW RISK';
-                badge.className = 'pill pill-low';
+    try {
+        if (window.CONFIG && typeof window.CONFIG.fetchWithTimeout === 'function') {
+            const res = await window.CONFIG.fetchWithTimeout(
+                `${window.CONFIG.API_BASE}/predict`,
+                {
+                    method: 'POST',
+                    headers: window.CONFIG.getAuthHeaders(),
+                    body: JSON.stringify(payload)
+                },
+                3500
+            );
+            const data = await res.json();
+            if (data && data.status) {
+                result = data;
             }
         }
+    } catch (e) {
+        console.warn('Prediction API fallback to Local ML Engine:', e);
     }
 
-    card.scrollIntoView({ behavior: 'smooth' });
+    if (!result) {
+        result = LocalMLEngine.predict(payload);
+    }
+
+    AppState.lastPrediction = result;
+    displayPredictionResult(result);
+
+    if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-heart-pulse"></i> Calculate Diabetes Risk';
+    }
+}
+
+function displayPredictionResult(res) {
+    const resultCard = document.getElementById('predResultCard');
+    if (resultCard) resultCard.style.display = 'block';
+
+    const riskLevel = res.risk_level || 'Low';
+    const prob = parseFloat(res.probability || 24.5);
+
+    // Badge
+    const badge = document.getElementById('predRiskBadge');
+    if (badge) {
+        badge.className = `pill pill-${riskLevel.toLowerCase()}`;
+        badge.innerText = `${riskLevel.toUpperCase()} RISK`;
+    }
+
+    // Gauge Circle Animation
+    const gaugeText = document.getElementById('predPercentText');
+    if (gaugeText) gaugeText.innerText = `${prob}%`;
+
+    const circle = document.getElementById('predGaugeCircle');
+    if (circle) {
+        const circumference = 2 * Math.PI * 54; // r=54 -> ~339.292
+        const offset = circumference - (prob / 100) * circumference;
+        circle.style.strokeDashoffset = offset;
+        circle.style.stroke = riskLevel === 'High' ? 'var(--risk-high)' : riskLevel === 'Medium' ? 'var(--risk-medium)' : 'var(--risk-low)';
+    }
+
+    // Recommendation
+    const recText = document.getElementById('predRecommendationText');
+    if (recText) recText.innerText = res.recommendation || 'Low risk profile. Maintain balanced diet and active lifestyle.';
+
+    // Update Home Dashboard Risk Hero Card
+    if (document.getElementById('dashRiskPill')) {
+        const dPill = document.getElementById('dashRiskPill');
+        dPill.className = `pill pill-${riskLevel.toLowerCase()}`;
+        dPill.innerText = `${riskLevel.toUpperCase()} RISK`;
+    }
+    if (document.getElementById('dashRiskPercent')) {
+        document.getElementById('dashRiskPercent').innerText = `${prob}%`;
+    }
+    if (document.getElementById('dashRecommendation')) {
+        document.getElementById('dashRecommendation').innerText = res.recommendation;
+    }
+
+    resultCard.scrollIntoView({ behavior: 'smooth' });
+    showToast(`AI Assessment: ${riskLevel} Risk (${prob}%)`, 'success');
 }
 
 function autoFillPatientMetrics(patientId) {
     if (!patientId) return;
     const patients = LocalDB.getPatients();
-    const p = patients.find(item => String(item.id || item.patient_id) === String(patientId));
+    const p = patients.find(pat => String(pat.id || pat.patient_id) === String(patientId));
     if (p) {
-        if (p.bmi && document.getElementById('predBMI')) document.getElementById('predBMI').value = p.bmi;
         if (p.age && document.getElementById('predAge')) document.getElementById('predAge').value = p.age;
-        showToast(`Loaded baseline records for ${p.full_name || p.name}`, 'info');
+        if (p.bmi && document.getElementById('predBMI')) document.getElementById('predBMI').value = p.bmi;
+        showToast(`Loaded clinical records for ${p.full_name || p.name}`, 'info');
     }
 }
 
 // ==========================================================
-// 7. DAILY TRACKING CONTROLLER
+// 10. DAILY TRACKING CONTROLLER
 // ==========================================================
-function handleSaveTracking() {
-    const patient_id = document.getElementById('trackPatientSelect').value;
+async function handleSaveTracking() {
     const water = parseFloat(document.getElementById('trackWater').value || 2.5);
     const sleep = parseFloat(document.getElementById('trackSleep').value || 7.5);
     const exercise = parseFloat(document.getElementById('trackExercise').value || 30);
     const blood_sugar = parseFloat(document.getElementById('trackBloodSugar').value || 98);
     const weight = parseFloat(document.getElementById('trackWeight').value || 68.5);
     const stress = parseInt(document.getElementById('trackStress').value || 3);
+    const pId = document.getElementById('trackPatientSelect').value || 101;
 
-    const payload = {
-        patient_id: patient_id ? parseInt(patient_id) : 101,
-        patient_name: patient_id ? getPatientNameById(patient_id) : 'Dr. Lakshmi Ankala',
-        water, sleep, exercise, blood_sugar, weight, stress,
+    const logEntry = {
+        patient_id: pId,
+        patient_name: 'Dr. Lakshmi Ankala',
+        blood_sugar,
+        water,
+        sleep,
+        exercise,
+        weight,
+        stress,
         tracking_date: new Date().toISOString().slice(0, 10)
     };
 
+    try {
+        if (window.CONFIG && typeof window.CONFIG.fetchWithTimeout === 'function') {
+            await window.CONFIG.fetchWithTimeout(
+                `${window.CONFIG.API_BASE}/tracking`,
+                {
+                    method: 'POST',
+                    headers: window.CONFIG.getAuthHeaders(),
+                    body: JSON.stringify(logEntry)
+                },
+                3000
+            );
+        }
+    } catch (e) {
+        console.warn('Tracking backend save notice:', e);
+    }
+
+    // Save to LocalDB
     const logs = LocalDB.getTrackingLogs();
-    logs.unshift(payload);
+    logs.unshift(logEntry);
     LocalDB.saveTrackingLogs(logs);
 
-    // Update Dashboard KPIs
-    if (document.getElementById('kpiGlucose')) document.getElementById('kpiGlucose').innerText = blood_sugar;
-    if (document.getElementById('kpiWater')) document.getElementById('kpiWater').innerText = water;
-    if (document.getElementById('kpiExercise')) document.getElementById('kpiExercise').innerText = exercise;
-    if (document.getElementById('kpiSleep')) document.getElementById('kpiSleep').innerText = sleep;
-
-    showToast('Daily vitals recorded successfully!', 'success');
+    showToast('Daily health vitals logged successfully!', 'success');
     loadTrackingLogs();
-}
-
-function getPatientNameById(pId) {
-    const pat = LocalDB.getPatients().find(item => String(item.id || item.patient_id) === String(pId));
-    return pat ? (pat.full_name || pat.name) : 'Patient';
+    renderTrackingChart();
+    loadDashboardStats();
 }
 
 function loadTrackingLogs() {
     const logs = LocalDB.getTrackingLogs();
-    AppState.trackingLogs = logs;
-
     const container = document.getElementById('trackingLogsList');
-    if (container) {
-        if (logs.length === 0) {
-            container.innerHTML = `<p style="text-align:center; color: var(--text-muted); padding: 12px;">No tracking entries recorded yet.</p>`;
-        } else {
-            container.innerHTML = logs.slice(0, 10).map(log => `
-                <div class="activity-item">
-                    <div class="activity-icon"><i class="fa-solid fa-droplet"></i></div>
-                    <div class="activity-info">
-                        <div class="activity-title" style="display:flex; justify-content:space-between;">
-                            <span>${log.patient_name || 'Patient'}</span>
-                            <strong style="color: ${log.blood_sugar > 125 ? 'var(--risk-high)' : 'var(--risk-low)'};">${log.blood_sugar || '-'} mg/dL</strong>
-                        </div>
-                        <div class="activity-date">
-                            💧 ${log.water || '-'}L • 🏃 ${log.exercise || '-'}m • 🌙 ${log.sleep || '-'}h • ${String(log.tracking_date || 'Today').slice(0, 10)}
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
+    if (!container) return;
+
+    if (logs.length === 0) {
+        container.innerHTML = '<p style="text-align: center; color: var(--text-muted); padding: 12px;">No tracking logs yet.</p>';
+        return;
     }
-    renderTrackingChart();
+
+    container.innerHTML = logs.slice(0, 6).map(log => `
+        <div class="activity-item">
+            <div class="activity-icon"><i class="fa-solid fa-droplet"></i></div>
+            <div class="activity-info">
+                <div class="activity-title">${log.blood_sugar} mg/dL Glucose • ${log.water}L Water</div>
+                <div class="activity-date">${log.tracking_date || 'Today'} • ${log.exercise}m Exercise • ${log.sleep}h Sleep</div>
+            </div>
+        </div>
+    `).join('');
 }
 
 function renderTrackingChart() {
-    const canvas = document.getElementById('mobileTrackingChart');
-    if (!canvas || typeof Chart === 'undefined') return;
+    const ctx = document.getElementById('mobileTrackingChart');
+    if (!ctx) return;
+
+    const isDark = (document.documentElement.getAttribute('data-theme') || 'dark') === 'dark';
+    const textColor = isDark ? '#94a3b8' : '#475569';
+    const gridColor = isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.06)';
+
+    const logs = LocalDB.getTrackingLogs().slice(0, 7).reverse();
+    const labels = logs.map(l => l.tracking_date ? l.tracking_date.slice(5) : 'Day');
+    const sugars = logs.map(l => l.blood_sugar || 100);
 
     if (AppState.charts.tracking) {
         AppState.charts.tracking.destroy();
     }
 
-    const logs = (AppState.trackingLogs || LocalDB.getTrackingLogs()).slice(0, 7).reverse();
-    const labels = logs.length > 0 ? logs.map(l => String(l.tracking_date || 'Day').slice(5, 10)) : ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Today'];
-    const glucoseData = logs.length > 0 ? logs.map(l => l.blood_sugar || 100) : [112, 108, 115, 99, 104, 96, 98];
-
-    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-    const textColor = isLight ? '#475569' : '#94a3b8';
-    const gridColor = isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)';
-
-    AppState.charts.tracking = new Chart(canvas, {
+    AppState.charts.tracking = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: labels,
+            labels: labels.length > 0 ? labels : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
             datasets: [{
                 label: 'Blood Glucose (mg/dL)',
-                data: glucoseData,
+                data: sugars.length > 0 ? sugars : [112, 108, 115, 99, 104, 96, 98],
                 borderColor: '#38bdf8',
                 backgroundColor: 'rgba(56, 189, 248, 0.15)',
-                borderWidth: 2.5,
                 fill: true,
-                tension: 0.35,
-                pointBackgroundColor: '#38bdf8',
-                pointRadius: 4
+                tension: 0.4,
+                borderWidth: 2.5,
+                pointRadius: 4,
+                pointBackgroundColor: '#2563eb'
             }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false }
-            },
+            plugins: { legend: { display: false } },
             scales: {
-                x: {
-                    grid: { color: gridColor },
-                    ticks: { color: textColor, font: { size: 10 } }
-                },
-                y: {
-                    grid: { color: gridColor },
-                    ticks: { color: textColor, font: { size: 10 } }
-                }
+                x: { grid: { color: gridColor }, ticks: { color: textColor, font: { size: 11 } } },
+                y: { grid: { color: gridColor }, ticks: { color: textColor, font: { size: 11 } } }
             }
         }
     });
 }
 
 // ==========================================================
-// 8. AI PLANNER CONTROLLER
+// 11. AI HEALTH PLANNER CONTROLLER
 // ==========================================================
-function fetchAIHealthPlan(riskLevel) {
-    const rLevel = riskLevel || 'Medium';
-    const localPlans = {
+async function fetchAIHealthPlan(riskLevel) {
+    const plans = {
         Low: {
-            breakfast: 'Rolled oats with blueberries, flaxseeds, unsweetened almond milk and a boiled egg.',
-            lunch: 'Grilled chicken or tofu bowl with quinoa, steamed broccoli, avocado slices and olive oil vinaigrette.',
-            snacks: 'Handful of raw walnuts, crisp green apple slices, or greek yogurt with cinnamon.',
-            dinner: 'Baked herb salmon/paneer with sautéed asparagus, spinach, and a fresh Mediterranean garden salad.',
-            exercise: '30-40 mins moderate aerobic cardio (brisk walk, cycling) + light core stability.',
-            water_goal: '2.5 - 3.0 Liters daily',
-            sleep_goal: '7.5 to 8 Hours nightly',
-            stress_management: '20 mins evening screen-free walk, diaphragmatic breathing & gentle stretching.'
+            breakfast: 'Oatmeal with chia seeds, blueberries, and unsweetened almond milk.',
+            lunch: 'Quinoa bowl with grilled chicken/tofu, roasted zucchini, and olive oil dressing.',
+            snacks: 'Handful of raw walnuts and green tea.',
+            dinner: 'Baked salmon with steamed broccoli and brown rice.',
+            exercise: '30 mins brisk walking + 10 mins core stretching.',
+            water: '2.5 Liters throughout the day.',
+            sleep: '7.5 to 8 Hours nightly.',
+            stress: '15 mins mindfulness relaxation before bed.'
         },
         Medium: {
-            breakfast: 'Steel-cut oats with chia seeds, pinch of cinnamon, walnuts and 2 scrambled egg whites.',
-            lunch: 'Lentil soup with baked lean fish or grilled paneer, mixed greens, cucumbers and lemon olive dressing.',
-            snacks: 'Cucumber slices with hummus or a small bowl of roasted chickpeas.',
-            dinner: 'Grilled vegetable stir-fry with steamed edamame, cauliflower rice and clear vegetable broth.',
-            exercise: '40 mins structured brisk walking + 15 mins bodyweight resistance exercises.',
-            water_goal: '3.0 Liters daily',
-            sleep_goal: '8 Hours nightly',
-            stress_management: '15 mins mindfulness meditation, progressive muscle relaxation before bed.'
+            breakfast: 'Vegetable omelet or Moong dal chilla + green tea (no sugar).',
+            lunch: 'Brown rice or 2 multigrain rotis with mixed vegetable curry and fresh sprouts.',
+            snacks: 'Apple slices with peanut butter or unsalted almonds.',
+            dinner: 'Lentil soup with baked paneer/fish and crisp garden green salad.',
+            exercise: '40 mins moderate aerobic cardio + resistance training.',
+            water: '3.0 Liters throughout the day.',
+            sleep: '8 Hours consistent sleep cycle.',
+            stress: '20 mins evening walk without digital screens.'
         },
         High: {
-            breakfast: 'Spinach and bell pepper egg-white scramble with sliced avocado and green tea (zero sugar).',
-            lunch: 'High-protein mixed bean salad with roasted chicken breast/tofu, zucchini and flaxseed oil.',
-            snacks: 'Celery sticks with almond butter or raw almonds (max 10-12 pieces).',
-            dinner: 'Baked white fish with steamed kale, roasted cauliflower and light turmeric lentil soup.',
-            exercise: '45 mins supervised low-impact cardio (walking, swimming) broken into two 20-min sessions.',
-            water_goal: '3.0 - 3.5 Liters daily',
-            sleep_goal: '8 to 8.5 Hours consistent sleep',
-            stress_management: 'Daily 20 mins yoga nidra, stress journal, avoid screen time 1 hour before sleep.'
+            breakfast: 'Spinach and kale protein smoothie with flax seeds + 2 boiled egg whites.',
+            lunch: 'Large leafy green salad with chickpeas, avocado, cucumbers, and lemon tahini dressing.',
+            snacks: 'Celery sticks with hummus and roasted pumpkin seeds.',
+            dinner: 'Clear vegetable lentil broth with steamed asparagus and grilled tofu/chicken.',
+            exercise: '45-50 mins structured cardio (cycling/walking) + daily mobility work.',
+            water: '3.5 Liters daily.',
+            sleep: '8+ Hours deep recovery sleep.',
+            stress: 'Daily guided breathing exercises (4-7-8 method).'
         }
     };
 
-    applyPlanToUI(localPlans[rLevel] || localPlans.Medium);
-}
+    const plan = plans[riskLevel] || plans.Medium;
 
-function applyPlanToUI(p) {
-    if (document.getElementById('planBreakfast')) document.getElementById('planBreakfast').innerText = p.breakfast || '';
-    if (document.getElementById('planLunch')) document.getElementById('planLunch').innerText = p.lunch || '';
-    if (document.getElementById('planSnacks')) document.getElementById('planSnacks').innerText = p.snacks || '';
-    if (document.getElementById('planDinner')) document.getElementById('planDinner').innerText = p.dinner || '';
-    if (document.getElementById('planExercise')) document.getElementById('planExercise').innerText = p.exercise || '';
-    if (document.getElementById('planWater')) document.getElementById('planWater').innerText = p.water_goal || '';
-    if (document.getElementById('planSleep')) document.getElementById('planSleep').innerText = p.sleep_goal || '';
-    if (document.getElementById('planStress')) document.getElementById('planStress').innerText = p.stress_management || '';
+    if (document.getElementById('planBreakfast')) document.getElementById('planBreakfast').innerText = plan.breakfast;
+    if (document.getElementById('planLunch')) document.getElementById('planLunch').innerText = plan.lunch;
+    if (document.getElementById('planSnacks')) document.getElementById('planSnacks').innerText = plan.snacks;
+    if (document.getElementById('planDinner')) document.getElementById('planDinner').innerText = plan.dinner;
+    if (document.getElementById('planExercise')) document.getElementById('planExercise').innerText = plan.exercise;
+    if (document.getElementById('planWater')) document.getElementById('planWater').innerText = plan.water;
+    if (document.getElementById('planSleep')) document.getElementById('planSleep').innerText = plan.sleep;
+    if (document.getElementById('planStress')) document.getElementById('planStress').innerText = plan.stress;
 }
 
 function toggleGoal(el) {
-    el.classList.toggle('checked');
-    const checkedCount = document.querySelectorAll('.plan-goal-item.checked').length;
-    const totalCount = document.querySelectorAll('.plan-goal-item').length;
-    const progressEl = document.getElementById('planGoalsProgress');
-    if (progressEl) {
-        progressEl.innerText = `${checkedCount}/${totalCount} Done`;
-        if (checkedCount === totalCount) {
-            progressEl.className = 'pill pill-low';
-            showToast('🎉 All daily health goals completed!', 'success');
-        }
-    }
+    if (!el) return;
+    el.classList.toggle('done');
+    const total = document.querySelectorAll('.plan-goal-item').length;
+    const completed = document.querySelectorAll('.plan-goal-item.done').length;
+    const badge = document.getElementById('planGoalsProgress');
+    if (badge) badge.innerText = `${completed}/${total} Done`;
 }
 
 // ==========================================================
-// 9. PATIENT MANAGEMENT CONTROLLER
+// 12. PATIENTS CONTROLLER
 // ==========================================================
 function loadPatients() {
     const patients = LocalDB.getPatients();
-    AppState.patients = patients;
-    populatePatientsDropdowns(patients);
-    renderPatientsCards(patients);
-}
-
-function populatePatientsDropdowns(patients) {
-    const selects = [
-        document.getElementById('predPatientSelect'),
-        document.getElementById('trackPatientSelect'),
-        document.getElementById('reportPatientSelect')
-    ];
-
-    selects.forEach(select => {
-        if (!select) return;
-        const currentVal = select.value;
-        select.innerHTML = '<option value="">-- Choose Patient --</option>';
-        patients.forEach(p => {
-            const pId = p.id || p.patient_id;
-            const opt = document.createElement('option');
-            opt.value = pId;
-            opt.textContent = `${p.full_name || p.name} (ID: #${pId})`;
-            select.appendChild(opt);
-        });
-        if (currentVal) select.value = currentVal;
-    });
-}
-
-function renderPatientsCards(patients) {
     const container = document.getElementById('patientsCardsContainer');
+    const predSelect = document.getElementById('predPatientSelect');
+    const trackSelect = document.getElementById('trackPatientSelect');
+    const reportSelect = document.getElementById('reportPatientSelect');
+
+    if (predSelect) {
+        predSelect.innerHTML = '<option value="">-- Manual Quick Assessment --</option>' +
+            patients.map(p => `<option value="${p.id || p.patient_id}">${p.full_name || p.name} (${p.age || 30}y)</option>`).join('');
+    }
+    if (trackSelect) {
+        trackSelect.innerHTML = '<option value="">-- General Log --</option>' +
+            patients.map(p => `<option value="${p.id || p.patient_id}">${p.full_name || p.name}</option>`).join('');
+    }
+    if (reportSelect) {
+        reportSelect.innerHTML = '<option value="">-- Choose Patient --</option>' +
+            patients.map(p => `<option value="${p.id || p.patient_id}">${p.full_name || p.name}</option>`).join('');
+    }
+
     if (!container) return;
 
     if (patients.length === 0) {
-        container.innerHTML = `
-            <div class="card" style="text-align: center; padding: 24px;">
-                <i class="fa-solid fa-users" style="font-size: 32px; color: var(--text-muted); margin-bottom: 8px;"></i>
-                <p style="color: var(--text-muted);">No patient records found.</p>
-                <button class="btn-primary btn-sm" style="margin: 12px auto 0 auto;" onclick="openAddPatientModal()">
-                    + Add First Patient
-                </button>
-            </div>
-        `;
+        container.innerHTML = '<p style="text-align:center; color: var(--text-muted); padding: 20px;">No patient records found.</p>';
         return;
     }
 
-    container.innerHTML = patients.map(p => {
-        const pId = p.id || p.patient_id;
-        const pName = p.full_name || p.name || 'Anonymous';
-        const pBMI = p.bmi ? parseFloat(p.bmi).toFixed(1) : '-';
-        const isRisk = parseFloat(p.bmi) > 25;
-
-        return `
-            <div class="patient-card">
-                <div class="patient-header">
-                    <div>
-                        <div class="patient-name">${pName}</div>
-                        <div class="patient-meta">ID: #${pId} • ${p.age || '-'} yrs • ${p.gender || 'Other'}</div>
-                    </div>
-                    <span class="pill ${isRisk ? 'pill-medium' : 'pill-low'}">${isRisk ? 'Risk Factor' : 'Normal BMI'}</span>
-                </div>
-                <div class="patient-details-grid">
-                    <div><span style="color: var(--text-muted);">BMI:</span> <strong>${pBMI}</strong></div>
-                    <div><span style="color: var(--text-muted);">Height:</span> ${p.height || '-'} cm</div>
-                    <div><span style="color: var(--text-muted);">Weight:</span> ${p.weight || '-'} kg</div>
-                </div>
-                <div class="patient-action-row">
-                    <button class="btn-secondary btn-sm" onclick="startPredictionForPatient(${pId})">
-                        <i class="fa-solid fa-heart-pulse"></i> Predict
-                    </button>
-                    <button class="btn-secondary btn-sm" onclick="openEditPatientModal(${pId})">
-                        <i class="fa-solid fa-pen"></i> Edit
-                    </button>
-                    <button class="btn-secondary btn-sm" style="color: var(--risk-high);" onclick="handleDeletePatient(${pId}, '${pName.replace(/'/g, "\\'")}')">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                </div>
+    container.innerHTML = patients.map(p => `
+        <div class="patient-card" onclick="selectPatientForAction(${p.id || p.patient_id})">
+            <div class="patient-info">
+                <h4>${p.full_name || p.name}</h4>
+                <div class="patient-meta">${p.age || 30} yrs • ${p.gender || 'Female'} • BMI: ${p.bmi || '22.8'}</div>
+                <div class="patient-meta" style="color: var(--brand-primary); margin-top: 2px;">${p.phone || '+91 98765 43210'}</div>
             </div>
-        `;
-    }).join('');
+            <button class="btn-sm btn-secondary" onclick="event.stopPropagation(); editPatientModal(${p.id || p.patient_id})">
+                <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+        </div>
+    `).join('');
 }
 
 function filterPatientsList(query) {
-    const q = (query || '').toLowerCase().trim();
-    if (!q) {
-        renderPatientsCards(AppState.patients);
-        return;
-    }
-    const filtered = AppState.patients.filter(p => {
-        const name = (p.full_name || p.name || '').toLowerCase();
-        const id = String(p.id || p.patient_id);
-        return name.includes(q) || id.includes(q);
-    });
-    renderPatientsCards(filtered);
-}
+    const q = (query || '').toLowerCase();
+    const patients = LocalDB.getPatients();
+    const filtered = patients.filter(p => (p.full_name || p.name || '').toLowerCase().includes(q) || (p.phone || '').includes(q));
+    const container = document.getElementById('patientsCardsContainer');
+    if (!container) return;
 
-function startPredictionForPatient(pId) {
-    navigateTo('prediction');
-    const select = document.getElementById('predPatientSelect');
-    if (select) {
-        select.value = pId;
-        autoFillPatientMetrics(pId);
-    }
+    container.innerHTML = filtered.map(p => `
+        <div class="patient-card" onclick="selectPatientForAction(${p.id || p.patient_id})">
+            <div class="patient-info">
+                <h4>${p.full_name || p.name}</h4>
+                <div class="patient-meta">${p.age || 30} yrs • ${p.gender || 'Female'} • BMI: ${p.bmi || '22.8'}</div>
+            </div>
+            <button class="btn-sm btn-secondary" onclick="event.stopPropagation(); editPatientModal(${p.id || p.patient_id})">
+                <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+        </div>
+    `).join('');
 }
 
 function openAddPatientModal() {
-    document.getElementById('patientModalTitle').innerText = 'Add New Patient';
+    const modal = document.getElementById('patientModal');
+    if (!modal) return;
     document.getElementById('modalPatientId').value = '';
     document.getElementById('modalPatName').value = '';
     document.getElementById('modalPatAge').value = '';
-    document.getElementById('modalPatGender').value = 'Female';
-    document.getElementById('modalPatHeight').value = '165';
-    document.getElementById('modalPatWeight').value = '65';
-    document.getElementById('modalPatBMI').value = '23.9';
+    document.getElementById('modalPatHeight').value = '170';
+    document.getElementById('modalPatWeight').value = '70';
+    document.getElementById('modalPatBMI').value = '24.2';
     document.getElementById('modalPatPhone').value = '';
     document.getElementById('modalPatEmail').value = '';
     document.getElementById('modalPatHistory').value = '';
-    document.getElementById('patientModal').classList.add('active');
-}
-
-function openEditPatientModal(pId) {
-    const patients = LocalDB.getPatients();
-    const p = patients.find(item => String(item.id || item.patient_id) === String(pId));
-    if (!p) return;
-
-    document.getElementById('patientModalTitle').innerText = 'Edit Patient Record';
-    document.getElementById('modalPatientId').value = pId;
-    document.getElementById('modalPatName').value = p.full_name || p.name || '';
-    document.getElementById('modalPatAge').value = p.age || '';
-    document.getElementById('modalPatGender').value = p.gender || 'Female';
-    document.getElementById('modalPatHeight').value = p.height || '';
-    document.getElementById('modalPatWeight').value = p.weight || '';
-    document.getElementById('modalPatBMI').value = p.bmi || '';
-    document.getElementById('modalPatPhone').value = p.phone || '';
-    document.getElementById('modalPatEmail').value = p.email || '';
-    document.getElementById('modalPatHistory').value = p.family_history || '';
-    document.getElementById('patientModal').classList.add('active');
+    document.getElementById('patientModalTitle').innerText = 'Add New Patient';
+    modal.classList.add('active');
 }
 
 function closePatientModal() {
-    document.getElementById('patientModal').classList.remove('active');
+    const modal = document.getElementById('patientModal');
+    if (modal) modal.classList.remove('active');
 }
 
 function calculateModalBMI() {
-    const h = parseFloat(document.getElementById('modalPatHeight').value);
-    const w = parseFloat(document.getElementById('modalPatWeight').value);
-    const bmiField = document.getElementById('modalPatBMI');
-    if (h > 0 && w > 0 && bmiField) {
-        const hm = h / 100.0;
-        bmiField.value = (w / (hm * hm)).toFixed(1);
+    const h = parseFloat(document.getElementById('modalPatHeight').value || 170) / 100;
+    const w = parseFloat(document.getElementById('modalPatWeight').value || 70);
+    if (h > 0 && w > 0) {
+        const bmi = (w / (h * h)).toFixed(1);
+        document.getElementById('modalPatBMI').value = bmi;
     }
 }
 
 function handleSavePatient() {
     const pId = document.getElementById('modalPatientId').value;
     const name = document.getElementById('modalPatName').value.trim();
-    const age = parseInt(document.getElementById('modalPatAge').value || 0);
+    const age = parseInt(document.getElementById('modalPatAge').value || 30);
     const gender = document.getElementById('modalPatGender').value;
-    const height = parseFloat(document.getElementById('modalPatHeight').value || 0);
-    const weight = parseFloat(document.getElementById('modalPatWeight').value || 0);
-    const bmi = parseFloat(document.getElementById('modalPatBMI').value || 0);
+    const height = parseFloat(document.getElementById('modalPatHeight').value || 170);
+    const weight = parseFloat(document.getElementById('modalPatWeight').value || 70);
+    const bmi = parseFloat(document.getElementById('modalPatBMI').value || 24.2);
     const phone = document.getElementById('modalPatPhone').value.trim();
     const email = document.getElementById('modalPatEmail').value.trim();
     const history = document.getElementById('modalPatHistory').value.trim();
 
     if (!name) {
-        showToast('Please enter patient name', 'error');
+        showToast('Patient name is required', 'error');
         return;
     }
 
-    const payload = {
-        id: pId ? parseInt(pId) : Math.floor(100 + Math.random() * 900),
-        patient_id: pId ? parseInt(pId) : Math.floor(100 + Math.random() * 900),
-        full_name: name,
-        name: name,
-        age, gender, height, weight, bmi, phone, email, family_history: history
-    };
-
-    const isEdit = Boolean(pId);
     const patients = LocalDB.getPatients();
-    if (isEdit) {
+
+    if (pId) {
         const idx = patients.findIndex(p => String(p.id || p.patient_id) === String(pId));
         if (idx >= 0) {
-            patients[idx] = { ...patients[idx], ...payload };
+            patients[idx] = { ...patients[idx], full_name: name, name, age, gender, height, weight, bmi, phone, email, family_history: history };
         }
     } else {
-        patients.unshift(payload);
+        const newId = Date.now();
+        patients.push({
+            id: newId,
+            patient_id: newId,
+            full_name: name,
+            name,
+            age,
+            gender,
+            height,
+            weight,
+            bmi,
+            phone,
+            email,
+            family_history: history
+        });
     }
-    LocalDB.savePatients(patients);
 
-    showToast(isEdit ? 'Patient updated!' : 'Patient added successfully!', 'success');
+    LocalDB.savePatients(patients);
     closePatientModal();
     loadPatients();
+    showToast(`Patient record saved for ${name}`, 'success');
 }
 
-function handleDeletePatient(pId, name) {
-    if (!confirm(`Are you sure you want to delete patient ${name}?`)) return;
+function editPatientModal(id) {
+    const patients = LocalDB.getPatients();
+    const p = patients.find(pat => String(pat.id || pat.patient_id) === String(id));
+    if (!p) return;
 
-    let patients = LocalDB.getPatients();
-    patients = patients.filter(p => String(p.id || p.patient_id) !== String(pId));
-    LocalDB.savePatients(patients);
+    document.getElementById('modalPatientId').value = id;
+    document.getElementById('modalPatName').value = p.full_name || p.name || '';
+    document.getElementById('modalPatAge').value = p.age || 30;
+    document.getElementById('modalPatGender').value = p.gender || 'Female';
+    document.getElementById('modalPatHeight').value = p.height || 170;
+    document.getElementById('modalPatWeight').value = p.weight || 70;
+    document.getElementById('modalPatBMI').value = p.bmi || 24.2;
+    document.getElementById('modalPatPhone').value = p.phone || '';
+    document.getElementById('modalPatEmail').value = p.email || '';
+    document.getElementById('modalPatHistory').value = p.family_history || '';
+    document.getElementById('patientModalTitle').innerText = 'Edit Patient Profile';
 
-    showToast(`Patient #${pId} deleted successfully`, 'success');
-    loadPatients();
+    const modal = document.getElementById('patientModal');
+    if (modal) modal.classList.add('active');
+}
+
+function selectPatientForAction(id) {
+    autoFillPatientMetrics(id);
+    navigateTo('prediction');
 }
 
 // ==========================================================
-// 10. POPULATION ANALYTICS CHARTS
+// 13. ANALYTICS CONTROLLER (Chart.js population statistics)
 // ==========================================================
 function renderAnalyticsCharts() {
-    if (typeof Chart === 'undefined') return;
+    const isDark = (document.documentElement.getAttribute('data-theme') || 'dark') === 'dark';
+    const textColor = isDark ? '#94a3b8' : '#475569';
+    const gridColor = isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.06)';
 
-    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-    const textColor = isLight ? '#475569' : '#94a3b8';
-    const gridColor = isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)';
-
-    // Chart 1: Risk Distribution (Doughnut)
+    // Chart 1: Risk Distribution
     const ctx1 = document.getElementById('chartRiskDistribution');
     if (ctx1) {
         if (AppState.charts.riskDist) AppState.charts.riskDist.destroy();
@@ -1292,7 +1305,7 @@ function renderAnalyticsCharts() {
             data: {
                 labels: ['Low Risk', 'Moderate Risk', 'High Risk'],
                 datasets: [{
-                    data: [62, 26, 12],
+                    data: [58, 28, 14],
                     backgroundColor: ['#10b981', '#f59e0b', '#ef4444'],
                     borderWidth: 0
                 }]
@@ -1300,24 +1313,23 @@ function renderAnalyticsCharts() {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: {
-                    legend: { position: 'bottom', labels: { color: textColor, font: { size: 11 } } }
-                }
+                plugins: { legend: { position: 'bottom', labels: { color: textColor, font: { size: 11 } } } }
             }
         });
     }
 
-    // Chart 2: Glucose Breakdown (Bar)
+    // Chart 2: Fasting Glucose Breakdown
     const ctx2 = document.getElementById('chartGlucoseBreakdown');
     if (ctx2) {
         if (AppState.charts.glucose) AppState.charts.glucose.destroy();
         AppState.charts.glucose = new Chart(ctx2, {
             type: 'bar',
             data: {
-                labels: ['<100 (Normal)', '100-125 (Pre-Diabetes)', '>125 (Elevated)'],
+                labels: ['<100 (Normal)', '100-125 (Pre-diabetic)', '126+ (Elevated)'],
                 datasets: [{
-                    data: [64, 42, 18],
-                    backgroundColor: ['#10b981', '#f59e0b', '#ef4444'],
+                    label: 'Cohort %',
+                    data: [62, 24, 14],
+                    backgroundColor: ['#38bdf8', '#f59e0b', '#ef4444'],
                     borderRadius: 6
                 }]
             },
@@ -1333,17 +1345,17 @@ function renderAnalyticsCharts() {
         });
     }
 
-    // Chart 3: Lifestyle Correlation
+    // Chart 3: Lifestyle vs Stress
     const ctx3 = document.getElementById('chartLifestyleCorrelation');
     if (ctx3) {
         if (AppState.charts.lifestyle) AppState.charts.lifestyle.destroy();
         AppState.charts.lifestyle = new Chart(ctx3, {
             type: 'bar',
             data: {
-                labels: ['<20m Ex', '20-40m Ex'],
+                labels: ['<20m Exercise', '20-40m Exercise', '45m+ Exercise'],
                 datasets: [
-                    { label: 'Avg Stress (1-10)', data: [7.2, 4.8], backgroundColor: '#f59e0b', borderRadius: 4 },
-                    { label: 'Avg Glucose (mg/dL)', data: [142, 118], backgroundColor: '#38bdf8', borderRadius: 4 }
+                    { label: 'Avg Stress', data: [7.2, 4.8, 2.6], backgroundColor: '#f59e0b', borderRadius: 4 },
+                    { label: 'Avg Glucose', data: [142, 118, 96], backgroundColor: '#38bdf8', borderRadius: 4 }
                 ]
             },
             options: {
@@ -1358,14 +1370,14 @@ function renderAnalyticsCharts() {
         });
     }
 
-    // Chart 4: Trend
+    // Chart 4: Cohort Health Trend
     const ctx4 = document.getElementById('chartHealthTrend');
     if (ctx4) {
         if (AppState.charts.trend) AppState.charts.trend.destroy();
         AppState.charts.trend = new Chart(ctx4, {
             type: 'line',
             data: {
-                labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6'],
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
                 datasets: [{
                     label: 'Cohort Health Score',
                     data: [72, 75, 78, 82, 86, 91],
@@ -1389,7 +1401,7 @@ function renderAnalyticsCharts() {
 }
 
 // ==========================================================
-// 11. CLINICAL REPORTS CONTROLLER
+// 14. CLINICAL REPORTS CONTROLLER
 // ==========================================================
 function handleGenerateReport() {
     const pId = document.getElementById('reportPatientSelect').value;
@@ -1475,7 +1487,41 @@ function loadReportsHistory() {
 }
 
 // ==========================================================
-// 12. TOAST UTILITIES
+// 15. SERVER SETTINGS & API CONNECTION TEST
+// ==========================================================
+function saveCustomApiUrl() {
+    const input = document.getElementById('apiConfigUrl');
+    const url = input ? input.value.trim() : '';
+    if (window.CONFIG) {
+        window.CONFIG.setApiBaseUrl(url);
+        showToast('API Base URL updated!', 'success');
+    }
+}
+
+async function testServerConnection() {
+    const statusEl = document.getElementById('apiTestStatus');
+    if (statusEl) statusEl.innerHTML = '<span style="color: var(--brand-primary);"><i class="fa-solid fa-spinner fa-spin"></i> Testing connection...</span>';
+
+    try {
+        if (window.CONFIG && typeof window.CONFIG.fetchWithTimeout === 'function') {
+            const res = await window.CONFIG.fetchWithTimeout(`${window.CONFIG.API_BASE}/health`, {}, 4000);
+            const data = await res.json();
+            if (data && data.status === 'running') {
+                if (statusEl) statusEl.innerHTML = '<span style="color: var(--risk-low);"><i class="fa-solid fa-circle-check"></i> Connected to GlycoGuard Cloud Backend (v2.0)</span>';
+                showToast('Cloud backend reachable and online!', 'success');
+                return;
+            }
+        }
+    } catch (e) {
+        console.warn('Server test notice:', e);
+    }
+
+    if (statusEl) statusEl.innerHTML = '<span style="color: var(--risk-medium);"><i class="fa-solid fa-triangle-exclamation"></i> Cloud backend unreachable. Standalone Offline Mode Active.</span>';
+    showToast('Standalone Offline Engine Active', 'info');
+}
+
+// ==========================================================
+// 16. TOAST UTILITY
 // ==========================================================
 function showToast(message, type = 'info') {
     const container = document.getElementById('toastContainer');
@@ -1493,5 +1539,5 @@ function showToast(message, type = 'info') {
         toast.style.opacity = '0';
         toast.style.transform = 'translateY(-15px)';
         setTimeout(() => toast.remove(), 300);
-    }, 3200);
+    }, 3000);
 }

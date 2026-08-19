@@ -1,0 +1,56 @@
+=== GLYCOGUARD AI - LOAD / PERFORMANCE TESTING TEST EXECUTION LOG ===
+Timestamp: 2026-08-19T15:37:06.776487
+Total: 52 | Passed: 52 | Failed: 0 | Blocked: 0 | Not Executed: 0
+
+[PASS] TC-LOAD-001 - 1 User Baseline Health Check
+[PASS] TC-LOAD-002 - 5 Concurrent Users on /health
+[PASS] TC-LOAD-003 - 10 Concurrent Users on /health
+[PASS] TC-LOAD-004 - 25 Concurrent Users on /health
+[PASS] TC-LOAD-005 - 50 Concurrent Users on /health
+[PASS] TC-LOAD-006 - 100 Concurrent Users on /health
+[PASS] TC-LOAD-007 - 5 Users on /dashboard/stats
+[PASS] TC-LOAD-008 - 10 Users on /dashboard/stats
+[PASS] TC-LOAD-009 - 10 Users on ML /predict API
+[PASS] TC-LOAD-010 - 25 Users on ML /predict API
+[PASS] TC-LOAD-011 - Repeated Google Login Requests
+[PASS] TC-LOAD-012 - Repeated Patients Query
+[PASS] TC-LOAD-013 - Repeated Tracking Query
+[PASS] TC-LOAD-014 - Repeated Planner Query
+[PASS] TC-LOAD-015 - Repeated Reports Query
+[PASS] TC-LOAD-016 - Burst Traffic 50 requests in 500ms
+[PASS] TC-LOAD-017 - Sustained Traffic 5 seconds
+[PASS] TC-LOAD-018 - Static HTML Loading Latency
+[PASS] TC-LOAD-019 - Static CSS Loading Latency
+[PASS] TC-LOAD-020 - Static JS Bundle Latency
+[PASS] TC-LOAD-021 - Static Config Script Latency
+[PASS] TC-LOAD-022 - Average API Latency < 250ms
+[PASS] TC-LOAD-023 - Median API Latency < 150ms
+[PASS] TC-LOAD-024 - 90th Percentile Latency < 350ms
+[PASS] TC-LOAD-025 - 95th Percentile Latency < 500ms
+[PASS] TC-LOAD-026 - 99th Percentile Latency < 1000ms
+[PASS] TC-LOAD-027 - Throughput > 50 Requests/Sec
+[PASS] TC-LOAD-028 - Error Rate < 1% under load
+[PASS] TC-LOAD-029 - Server Process Stability Post-Load
+[PASS] TC-LOAD-030 - Database Connection Pool Recovery
+[PASS] TC-LOAD-031 - ML Model Inference Latency < 20ms
+[PASS] TC-LOAD-032 - Payload Response Size < 100KB
+[PASS] TC-LOAD-033 - HTTP Keep-Alive Reuse Efficiency
+[PASS] TC-LOAD-034 - Parallel Login and Predict Load
+[PASS] TC-LOAD-035 - Parallel Dashboard and Tracking Load
+[PASS] TC-LOAD-036 - Parallel Planner and Reports Load
+[PASS] TC-LOAD-037 - Password Reset Endpoint Load
+[PASS] TC-LOAD-038 - Signup User Creation Load
+[PASS] TC-LOAD-039 - Client ML Predict 1,000 runs in JS < 100ms
+[PASS] TC-LOAD-040 - Client LocalDB Parse 1,000 items in JS < 50ms
+[PASS] TC-LOAD-041 - DOM Element Render Time < 150ms
+[PASS] TC-LOAD-042 - Chart.js Dataset Render Latency < 100ms
+[PASS] TC-LOAD-043 - Modal Transition Animation < 300ms
+[PASS] TC-LOAD-044 - Theme Toggle Recalculation < 50ms
+[PASS] TC-LOAD-045 - Patient Search Live Filter < 30ms
+[PASS] TC-LOAD-046 - Circular Gauge CSS Transition < 400ms
+[PASS] TC-LOAD-047 - Toast Notification Lifecycle < 3500ms
+[PASS] TC-LOAD-048 - Hardware Back Button Event Latency < 50ms
+[PASS] TC-LOAD-049 - Session Restoration Latency on Startup < 100ms
+[PASS] TC-LOAD-050 - End-to-End User Journey Latency < 800ms
+[PASS] TC-LOAD-051 - Memory Leak Prevention After 100 Tab Swaps
+[PASS] TC-LOAD-052 - Final System Performance Stability

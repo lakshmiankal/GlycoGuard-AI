@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GlycoGuard AI - Selenium Web UI Report</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b132b; color: #f8fafc; margin: 0; padding: 24px; }
+        .header { background: #1c2541; padding: 24px; border-radius: 12px; margin-bottom: 24px; border: 1px solid #3a506b; }
+        h1 { margin: 0 0 8px 0; color: #00f2fe; }
+        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { background: #1c2541; padding: 18px; border-radius: 10px; border: 1px solid #3a506b; }
+        .kpi-val { font-size: 28px; font-weight: 700; color: #00f2fe; margin-top: 4px; }
+        .kpi-pass { color: #10b981; }
+        .kpi-fail { color: #ef4444; }
+        .kpi-skip { color: #f59e0b; }
+        table { width: 100%; border-collapse: collapse; background: #1c2541; border-radius: 10px; overflow: hidden; font-size: 13px; }
+        th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        th { background: #0f172a; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .badge { display: inline-block; padding: 4px 8px; border-radius: 6px; font-weight: 600; font-size: 11px; }
+        .badge-pass { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid #10b981; }
+        .badge-fail { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid #ef4444; }
+        .badge-skip { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid #f59e0b; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>GlycoGuard AI — Selenium Web UI Quality Report</h1>
+        <p style="color: #94a3b8; margin: 0;">Comprehensive verification and test execution report. Generated on Aug 19, 2026 15:36:59.</p>
+    </div>
+
+    <div class="kpi-grid">
+        <div class="kpi-card"><div>Total Tests</div><div class="kpi-val">95</div></div>
+        <div class="kpi-card"><div>Passed</div><div class="kpi-val kpi-pass">95</div></div>
+        <div class="kpi-card"><div>Failed</div><div class="kpi-val kpi-fail">0</div></div>
+        <div class="kpi-card"><div>Not Executed</div><div class="kpi-val kpi-skip">0</div></div>
+        <div class="kpi-card"><div>Pass Rate</div><div class="kpi-val kpi-pass">100.0%</div></div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Test ID</th>
+                <th>Test Name</th>
+                <th>Objective</th>
+                <th>Status</th>
+                <th>Expected</th>
+                <th>Actual</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>TC-SEL-001</code></td>
+                <td><strong>Page Title Verification</strong></td>
+                <td>Verify browser tab title contains GlycoGuard AI</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>GlycoGuard AI</td>
+                <td>GlycoGuard AI - Diabetes Prediction & Preventive Health Platform</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-002</code></td>
+                <td><strong>Viewport Meta Tag</strong></td>
+                <td>Ensure responsive viewport is configured</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>width=device-width</td>
+                <td>width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-003</code></td>
+                <td><strong>Splash Screen Structure</strong></td>
+                <td>Verify splash screen DOM element exists</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>splashScreen element found</td>
+                <td>Element present</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-005</code></td>
+                <td><strong>Protected Main Shell Hidden</strong></td>
+                <td>Verify Main App Shell is hidden before login</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>display: none</td>
+                <td>none</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-007</code></td>
+                <td><strong>Brand Tagline Verification</strong></td>
+                <td>Verify tagline is Predict • Prevent • Personalize</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Predict • Prevent • Personalize</td>
+                <td>PREDICT • PREVENT • PERSONALIZE</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-008</code></td>
+                <td><strong>Auth Navigation Tabs</strong></td>
+                <td>Verify Sign In, Register, Reset tabs exist</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>All 3 tabs visible</td>
+                <td>All 3 tabs visible</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-009</code></td>
+                <td><strong>Theme Attribute Check</strong></td>
+                <td>Verify data-theme attribute on HTML root</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>dark or light</td>
+                <td>dark</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-010</code></td>
+                <td><strong>Toast Container Presence</strong></td>
+                <td>Verify toast container exists in DOM</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>toastContainer present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-011</code></td>
+                <td><strong>Login Username Input</strong></td>
+                <td>Verify username/email input is visible</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Visible</td>
+                <td>Visible</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-012</code></td>
+                <td><strong>Password Input Masking</strong></td>
+                <td>Verify password input type is password</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>type='password'</td>
+                <td>password</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-013</code></td>
+                <td><strong>Empty Login Validation</strong></td>
+                <td>Trigger error toast on empty login submission</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Error toast shown</td>
+                <td>Toast displayed</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-014</code></td>
+                <td><strong>Empty Password Validation</strong></td>
+                <td>Validate prompt when password omitted</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Password required toast</td>
+                <td>Please enter username/email and password</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-018</code></td>
+                <td><strong>Switch to Register Tab</strong></td>
+                <td>Verify Register form displays on tab click</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>display: block</td>
+                <td>block</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-019</code></td>
+                <td><strong>Switch to Forgot Tab</strong></td>
+                <td>Verify Reset form displays on tab click</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>display: block</td>
+                <td>block</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-020</code></td>
+                <td><strong>Switch Back to Login Tab</strong></td>
+                <td>Verify Login form restores active view</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>display: block</td>
+                <td>block</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-021</code></td>
+                <td><strong>Google Modal Open</strong></td>
+                <td>Verify Google OAuth modal opens with active class</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Modal active class present</td>
+                <td>Modal active</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-022</code></td>
+                <td><strong>Google Modal Close</strong></td>
+                <td>Verify Google OAuth modal closes cleanly</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Modal active class removed</td>
+                <td>Modal closed</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-024</code></td>
+                <td><strong>Google Custom Input Drawer</strong></td>
+                <td>Verify Use Another Account reveals email input</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Drawer active</td>
+                <td>Active</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-025</code></td>
+                <td><strong>Google Login Execution</strong></td>
+                <td>Verify selecting Google account authenticates and opens app</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>display: block</td>
+                <td>block</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-026</code></td>
+                <td><strong>Dashboard Dynamic Greeting</strong></td>
+                <td>Verify time-of-day greeting rendered</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Greeting text</td>
+                <td>Good afternoon 🌤, Dr.</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-027</code></td>
+                <td><strong>Dashboard Date Display</strong></td>
+                <td>Verify current formatted date displayed</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Formatted date string</td>
+                <td>Wednesday, August 19, 2026</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-028</code></td>
+                <td><strong>Risk Hero Card</strong></td>
+                <td>Verify Risk Status Hero card is visible</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Hero card displayed</td>
+                <td>Displayed</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-029</code></td>
+                <td><strong>Risk Status Pill Badge</strong></td>
+                <td>Verify Risk Badge is displayed</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Contains RISK</td>
+                <td>LOW RISK</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-030</code></td>
+                <td><strong>Risk Probability Percentage</strong></td>
+                <td>Verify probability score contains % symbol</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Percentage string</td>
+                <td>28.4%</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-031</code></td>
+                <td><strong>KPI Glucose Tile</strong></td>
+                <td>Verify Fasting Glucose numeric metric</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Numeric value</td>
+                <td>112</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-032</code></td>
+                <td><strong>KPI Water Intake Tile</strong></td>
+                <td>Verify Water Intake numeric metric</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Numeric value</td>
+                <td>2.2</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-033</code></td>
+                <td><strong>KPI Physical Activity Tile</strong></td>
+                <td>Verify Exercise duration metric</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Numeric value</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-034</code></td>
+                <td><strong>KPI Sleep Duration Tile</strong></td>
+                <td>Verify Sleep hours metric</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Numeric value</td>
+                <td>7.5</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-035</code></td>
+                <td><strong>Quick Actions Navigation Grid</strong></td>
+                <td>Verify 4 quick action shortcuts visible</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Displayed</td>
+                <td>Displayed</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-036</code></td>
+                <td><strong>Recent Activity Feed Items</strong></td>
+                <td>Verify clinical activity records present</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Activity items > 0</td>
+                <td>2 items</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-037</code></td>
+                <td><strong>Desktop Header Display</strong></td>
+                <td>Verify desktop header is visible on 1280px viewport</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>display: block</td>
+                <td>block</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-038</code></td>
+                <td><strong>Desktop Navigation Links Count</strong></td>
+                <td>Verify 8 top navigation links present</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>8 navigation links</td>
+                <td>8 links</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-039</code></td>
+                <td><strong>Navigate to Prediction View</strong></td>
+                <td>Verify active class on #view-prediction</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>View active</td>
+                <td>Active</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-040</code></td>
+                <td><strong>Navigate to Tracking View</strong></td>
+                <td>Verify active class on #view-tracking</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>View active</td>
+                <td>Active</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-041</code></td>
+                <td><strong>Navigate to Planner View</strong></td>
+                <td>Verify active class on #view-planner</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>View active</td>
+                <td>Active</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-042</code></td>
+                <td><strong>Navigate to Patients View</strong></td>
+                <td>Verify active class on #view-patients</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>View active</td>
+                <td>Active</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-043</code></td>
+                <td><strong>Navigate to Analytics View</strong></td>
+                <td>Verify active class on #view-analytics</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>View active</td>
+                <td>Active</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-044</code></td>
+                <td><strong>Navigate to Reports View</strong></td>
+                <td>Verify active class on #view-reports</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>View active</td>
+                <td>Active</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-045</code></td>
+                <td><strong>Navigate to Profile View</strong></td>
+                <td>Verify active class on #view-profile</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>View active</td>
+                <td>Active</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-046</code></td>
+                <td><strong>Navigate to Dashboard View</strong></td>
+                <td>Verify active class on #view-dashboard</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>View active</td>
+                <td>Active</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-047</code></td>
+                <td><strong>Bottom Clearance Spacers</strong></td>
+                <td>Verify footer spacer in every screen view</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>>= 8 spacers present</td>
+                <td>8 spacers</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-048</code></td>
+                <td><strong>Theme Toggle Action</strong></td>
+                <td>Verify theme flips from dark to light or vice versa</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Theme switched</td>
+                <td>dark -> light</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-049</code></td>
+                <td><strong>Theme Restore Action</strong></td>
+                <td>Verify theme returns to expected mode</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Theme restored</td>
+                <td>dark</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-050</code></td>
+                <td><strong>User Avatar Initial</strong></td>
+                <td>Verify avatar matches Dr. Lakshmi name initial</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>D</td>
+                <td>D</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-051</code></td>
+                <td><strong>Prediction Biomarker Inputs</strong></td>
+                <td>Verify all 11 health inputs exist</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>All 11 inputs visible</td>
+                <td>All 11 inputs visible</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-052</code></td>
+                <td><strong>Prediction Patient Selector</strong></td>
+                <td>Verify patient select dropdown populated</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>>= 4 options</td>
+                <td>5 options</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-053</code></td>
+                <td><strong>Patient Metrics Autofill</strong></td>
+                <td>Autofill age and BMI from patient record</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>age=34, bmi=22.8</td>
+                <td>age=34, bmi=22.8</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-054</code></td>
+                <td><strong>Low Risk Assessment</strong></td>
+                <td>Evaluate healthy biomarkers to Low Risk</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>LOW RISK badge</td>
+                <td>LOW RISK</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-055</code></td>
+                <td><strong>High Risk Assessment</strong></td>
+                <td>Evaluate elevated biomarkers to High Risk</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>HIGH RISK badge</td>
+                <td>HIGH RISK</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-056</code></td>
+                <td><strong>Circular Gauge Score Text</strong></td>
+                <td>Verify probability score rendered in gauge</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Contains %</td>
+                <td>89%</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-057</code></td>
+                <td><strong>Clinical Recommendation Output</strong></td>
+                <td>Verify AI recommendation text rendered</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Detailed recommendation</td>
+                <td>High risk detected! Schedule a...</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-058</code></td>
+                <td><strong>Open AI Plan Navigation</strong></td>
+                <td>Verify Open AI Plan button navigates to Planner</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Planner view active</td>
+                <td>Active</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-059</code></td>
+                <td><strong>Planner Goal Item Toggle</strong></td>
+                <td>Verify checklist toggle updates progress badge</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Contains /4 Done</td>
+                <td>1/4 Done</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-060</code></td>
+                <td><strong>Planner Protocol Switch</strong></td>
+                <td>Switch to High Risk Protocol updates meal plan</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>High risk smoothie plan</td>
+                <td>Spinach and kale protein smoothie w...</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-061</code></td>
+                <td><strong>Save Daily Vitals Log</strong></td>
+                <td>Log blood sugar vitals and verify confirmation toast</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Logged successfully</td>
+                <td>Toast displayed</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-062</code></td>
+                <td><strong>Tracking Chart Canvas</strong></td>
+                <td>Verify blood sugar trends Chart.js canvas is visible</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Canvas displayed</td>
+                <td>Displayed</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-063</code></td>
+                <td><strong>Tracking History Feed</strong></td>
+                <td>Verify saved tracking logs listed in feed</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Items > 0</td>
+                <td>6 logs</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-064</code></td>
+                <td><strong>Patients Directory List</strong></td>
+                <td>Verify patient records cards rendered</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>>= 4 patient cards</td>
+                <td>4 cards</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-065</code></td>
+                <td><strong>Patient Search Filter</strong></td>
+                <td>Search query filters patient records live</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Priya Sharma listed</td>
+                <td>Found</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-066</code></td>
+                <td><strong>Add Patient Modal Open</strong></td>
+                <td>Open patient bottom sheet modal</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Modal active</td>
+                <td>Active</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-067</code></td>
+                <td><strong>Modal BMI Auto-Calculation</strong></td>
+                <td>Calculates BMI from height (180cm) and weight (80kg)</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>24.7</td>
+                <td>24.7</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-068</code></td>
+                <td><strong>Save Patient Record</strong></td>
+                <td>Save new patient profile and verify listing</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Patient in list</td>
+                <td>Saved & listed</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-069</code></td>
+                <td><strong>Analytics 4 Charts Render</strong></td>
+                <td>Verify all 4 population analytics charts rendered</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>All 4 charts visible</td>
+                <td>4 charts displayed</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-070</code></td>
+                <td><strong>Generate Clinical Report</strong></td>
+                <td>Generate report preview for selected patient</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>display: block</td>
+                <td>Report card displayed</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-071</code></td>
+                <td><strong>HTML Semantic Landmarks</strong></td>
+                <td>Ensure main landmark exists</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>main element present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-072</code></td>
+                <td><strong>Input Form Labels</strong></td>
+                <td>Ensure all inputs have label tags</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>>= 15 labels</td>
+                <td>43 labels</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-073</code></td>
+                <td><strong>Button Accessible Icons</strong></td>
+                <td>Ensure buttons contain icons</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>>= 10 icons</td>
+                <td>47 icons</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-075</code></td>
+                <td><strong>Chart JS Library Loaded</strong></td>
+                <td>Ensure Chart global object exists</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Chart loaded</td>
+                <td>Loaded</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-076</code></td>
+                <td><strong>Config Global Object</strong></td>
+                <td>Ensure window.CONFIG exists</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>CONFIG loaded</td>
+                <td>Loaded</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-077</code></td>
+                <td><strong>AppState Global Object</strong></td>
+                <td>Ensure window.AppState exists</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>AppState loaded</td>
+                <td>Loaded</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-078</code></td>
+                <td><strong>LocalDB Global Object</strong></td>
+                <td>Ensure window.LocalDB exists</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>LocalDB loaded</td>
+                <td>Loaded</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-079</code></td>
+                <td><strong>LocalMLEngine Global Object</strong></td>
+                <td>Ensure window.LocalMLEngine exists</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>LocalMLEngine loaded</td>
+                <td>Loaded</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-080</code></td>
+                <td><strong>Mobile Viewport Resize (390px)</strong></td>
+                <td>Resize window to mobile dimensions</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Resized</td>
+                <td>390x844</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-081</code></td>
+                <td><strong>Mobile Header Visible on 390px</strong></td>
+                <td>Check mobile header is visible on mobile</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>display: flex</td>
+                <td>flex</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-082</code></td>
+                <td><strong>Bottom Nav Visible on 390px</strong></td>
+                <td>Check bottom nav is visible on mobile</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>display: flex</td>
+                <td>flex</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-083</code></td>
+                <td><strong>Desktop Header Hidden on 390px</strong></td>
+                <td>Check desktop header is hidden on mobile</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>display: none</td>
+                <td>none</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-085</code></td>
+                <td><strong>Desktop Viewport Resize (1280px)</strong></td>
+                <td>Restore desktop viewport dimensions</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Restored</td>
+                <td>1280x900</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-087</code></td>
+                <td><strong>Page Deep Link Query Param</strong></td>
+                <td>Navigate to planner view and verify active class</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Planner active</td>
+                <td>Active</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-088</code></td>
+                <td><strong>Page Deep Link Prediction</strong></td>
+                <td>Navigate to prediction and verify active class</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Prediction active</td>
+                <td>Active</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-089</code></td>
+                <td><strong>Page Deep Link Patients</strong></td>
+                <td>Navigate to patients and verify active class</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Patients active</td>
+                <td>Active</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-090</code></td>
+                <td><strong>Negative Input Handling</strong></td>
+                <td>Verify negative glucose is bounded safely</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Safe probability</td>
+                <td>Handled</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-091</code></td>
+                <td><strong>Extreme Biomarker Risk Ceiling</strong></td>
+                <td>Verify extreme glucose 500 does not exceed 97% ceiling</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td><= 97%</td>
+                <td>Bounded</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-092</code></td>
+                <td><strong>Extreme Low Biomarker Risk Floor</strong></td>
+                <td>Verify ultra-low risk does not go below 5%</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>>= 5%</td>
+                <td>Bounded</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-093</code></td>
+                <td><strong>Profile Email Display</strong></td>
+                <td>Verify user profile email matches storage</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Email string</td>
+                <td>lakshmiankala1906@gmail.com</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-094</code></td>
+                <td><strong>Profile Role Display</strong></td>
+                <td>Verify user profile role is Medical Practitioner</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Medical Practitioner</td>
+                <td>Medical Practitioner</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-095</code></td>
+                <td><strong>Cloud API URL Config Field</strong></td>
+                <td>Verify API Config URL input field exists</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Field visible</td>
+                <td>Visible</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-096</code></td>
+                <td><strong>Test Server Button Presence</strong></td>
+                <td>Verify Test Server button is clickable</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Button visible</td>
+                <td>Visible</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-097</code></td>
+                <td><strong>Save API URL Action</strong></td>
+                <td>Verify saving custom API URL</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Saved</td>
+                <td>Executed</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-099</code></td>
+                <td><strong>Patient Height Constraint</strong></td>
+                <td>Verify height input placeholder exists</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>170</td>
+                <td>170</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-100</code></td>
+                <td><strong>Patient Weight Constraint</strong></td>
+                <td>Verify weight input placeholder exists</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>70</td>
+                <td>70</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-101</code></td>
+                <td><strong>FontAwesome Icon Loading</strong></td>
+                <td>Verify stylesheet link for font-awesome exists</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>FontAwesome link present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-102</code></td>
+                <td><strong>Google Fonts Preconnect</strong></td>
+                <td>Verify preconnect links for google fonts</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Google fonts present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-103</code></td>
+                <td><strong>CSS Root Color Tokens</strong></td>
+                <td>Verify primary brand cyan token defined in CSS</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Tokens defined</td>
+                <td>Defined</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-104</code></td>
+                <td><strong>Modal Backdrop Blur Filter</strong></td>
+                <td>Verify backdrop filter rule defined in overlay</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Backdrop filter present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-105</code></td>
+                <td><strong>Final Logout Cleanup</strong></td>
+                <td>Execute final logout and verify login screen restored</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Token is null</td>
+                <td>Token cleared</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

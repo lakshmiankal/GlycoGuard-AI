@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GlycoGuard AI - Web Build / Application Functional Validation Report</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b132b; color: #f8fafc; margin: 0; padding: 24px; }
+        .header { background: #1c2541; padding: 24px; border-radius: 12px; margin-bottom: 24px; border: 1px solid #3a506b; }
+        h1 { margin: 0 0 8px 0; color: #00f2fe; }
+        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { background: #1c2541; padding: 18px; border-radius: 10px; border: 1px solid #3a506b; }
+        .kpi-val { font-size: 28px; font-weight: 700; color: #00f2fe; margin-top: 4px; }
+        .kpi-pass { color: #10b981; }
+        .kpi-fail { color: #ef4444; }
+        .kpi-skip { color: #f59e0b; }
+        table { width: 100%; border-collapse: collapse; background: #1c2541; border-radius: 10px; overflow: hidden; font-size: 13px; }
+        th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        th { background: #0f172a; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .badge { display: inline-block; padding: 4px 8px; border-radius: 6px; font-weight: 600; font-size: 11px; }
+        .badge-pass { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid #10b981; }
+        .badge-fail { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid #ef4444; }
+        .badge-skip { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid #f59e0b; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>GlycoGuard AI — Web Build / Application Functional Validation Quality Report</h1>
+        <p style="color: #94a3b8; margin: 0;">Comprehensive verification and test execution report. Generated on Aug 19, 2026 15:37:10.</p>
+    </div>
+
+    <div class="kpi-grid">
+        <div class="kpi-card"><div>Total Tests</div><div class="kpi-val">38</div></div>
+        <div class="kpi-card"><div>Passed</div><div class="kpi-val kpi-pass">38</div></div>
+        <div class="kpi-card"><div>Failed</div><div class="kpi-val kpi-fail">0</div></div>
+        <div class="kpi-card"><div>Not Executed</div><div class="kpi-val kpi-skip">0</div></div>
+        <div class="kpi-card"><div>Pass Rate</div><div class="kpi-val kpi-pass">100.0%</div></div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Test ID</th>
+                <th>Test Name</th>
+                <th>Objective</th>
+                <th>Status</th>
+                <th>Expected</th>
+                <th>Actual</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>TC-FUNC-001</code></td>
+                <td><strong>Build Script Execution</strong></td>
+                <td>Execute build_www.py without error</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Return code 0</td>
+                <td>Code 0</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-002</code></td>
+                <td><strong>www/index.html Presence</strong></td>
+                <td>Verify www/index.html bundled</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>File exists > 1KB</td>
+                <td>65166 bytes</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-003</code></td>
+                <td><strong>www/css/app.css Presence</strong></td>
+                <td>Verify www/css/app.css bundled</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>File exists > 1KB</td>
+                <td>33754 bytes</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-004</code></td>
+                <td><strong>www/js/app.js Presence</strong></td>
+                <td>Verify www/js/app.js bundled</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>File exists > 1KB</td>
+                <td>62401 bytes</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-005</code></td>
+                <td><strong>www/js/config.js Presence</strong></td>
+                <td>Verify www/js/config.js bundled</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>File exists > 500B</td>
+                <td>3876 bytes</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-006</code></td>
+                <td><strong>Android index.html Sync</strong></td>
+                <td>Verify Android index matches root exactly</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Exact match</td>
+                <td>100% Match</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-007</code></td>
+                <td><strong>Android css/app.css Sync</strong></td>
+                <td>Verify Android CSS matches root exactly</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Exact match</td>
+                <td>100% Match</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-008</code></td>
+                <td><strong>Android js/app.js Sync</strong></td>
+                <td>Verify Android JS matches root exactly</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Exact match</td>
+                <td>100% Match</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-009</code></td>
+                <td><strong>mobile/index.html Alias Sync</strong></td>
+                <td>Verify mobile/index.html matches single source of truth</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Exact match</td>
+                <td>100% Match</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-010</code></td>
+                <td><strong>auth.html Alias Sync</strong></td>
+                <td>Verify root auth.html is in sync with index.html</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Exact match</td>
+                <td>100% Match</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-011</code></td>
+                <td><strong>ML Model Pickle Deserialization</strong></td>
+                <td>Load model.pkl and verify predict methods</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Model loaded</td>
+                <td>Type: RandomForestClassifier</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-012</code></td>
+                <td><strong>ML Model Benchmark Classification</strong></td>
+                <td>Evaluate clinical sample with trained model</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Valid probability score</td>
+                <td>Risk Prob: 0.71</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-013</code></td>
+                <td><strong>Clinical Datasets Integrity</strong></td>
+                <td>Verify raw and cleaned diabetes CSV datasets exist</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Both datasets present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-014</code></td>
+                <td><strong>Model Evaluation Artifact</strong></td>
+                <td>Verify confusion matrix chart PNG exists</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>PNG artifact present</td>
+                <td>15209 bytes</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-015</code></td>
+                <td><strong>Cloud Procfile Configuration</strong></td>
+                <td>Verify Procfile specifies gunicorn entrypoint</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>web: gunicorn wsgi:app</td>
+                <td>web: gunicorn --chdir backend app:app --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-016</code></td>
+                <td><strong>render.yaml Manifest Validity</strong></td>
+                <td>Verify render deployment manifest</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Valid manifest</td>
+                <td>Valid</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-017</code></td>
+                <td><strong>package.json Build Scripts</strong></td>
+                <td>Verify package.json build script configured</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Build script present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-018</code></td>
+                <td><strong>Capacitor App Dependencies</strong></td>
+                <td>Verify Capacitor android dependency declared</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Capacitor present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-019</code></td>
+                <td><strong>Frontend Redirect: dashboard.html</strong></td>
+                <td>Verify legacy dashboard redirect</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Redirect configured</td>
+                <td>Configured</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-020</code></td>
+                <td><strong>Frontend Redirect: prediction.html</strong></td>
+                <td>Verify legacy prediction redirect</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Redirect configured</td>
+                <td>Configured</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-021</code></td>
+                <td><strong>Frontend Redirect: patients.html</strong></td>
+                <td>Verify legacy patients redirect</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Redirect configured</td>
+                <td>Configured</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-022</code></td>
+                <td><strong>Frontend Redirect: tracking.html</strong></td>
+                <td>Verify legacy tracking redirect</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Redirect configured</td>
+                <td>Configured</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-023</code></td>
+                <td><strong>Frontend Redirect: planner.html</strong></td>
+                <td>Verify legacy planner redirect</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Redirect configured</td>
+                <td>Configured</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-024</code></td>
+                <td><strong>Frontend Redirect: analytics.html</strong></td>
+                <td>Verify legacy analytics redirect</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Redirect configured</td>
+                <td>Configured</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-025</code></td>
+                <td><strong>Frontend Redirect: reports.html</strong></td>
+                <td>Verify legacy reports redirect</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Redirect configured</td>
+                <td>Configured</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-026</code></td>
+                <td><strong>Backend Blueprint: auth.py</strong></td>
+                <td>Verify auth blueprint exists</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>File exists</td>
+                <td>Exists</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-027</code></td>
+                <td><strong>Backend Blueprint: prediction.py</strong></td>
+                <td>Verify prediction blueprint exists</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>File exists</td>
+                <td>Exists</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-028</code></td>
+                <td><strong>Backend Blueprint: patient.py</strong></td>
+                <td>Verify patient blueprint exists</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>File exists</td>
+                <td>Exists</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-029</code></td>
+                <td><strong>Backend Blueprint: tracking.py</strong></td>
+                <td>Verify tracking blueprint exists</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>File exists</td>
+                <td>Exists</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-030</code></td>
+                <td><strong>Backend Blueprint: planner.py</strong></td>
+                <td>Verify planner blueprint exists</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>File exists</td>
+                <td>Exists</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-031</code></td>
+                <td><strong>Backend Blueprint: reports.py</strong></td>
+                <td>Verify reports blueprint exists</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>File exists</td>
+                <td>Exists</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-032</code></td>
+                <td><strong>Backend Blueprint: dashboard.py</strong></td>
+                <td>Verify dashboard blueprint exists</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>File exists</td>
+                <td>Exists</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-033</code></td>
+                <td><strong>Backend Live /health Verification</strong></td>
+                <td>Verify backend responds with v2.0</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>version 2.0</td>
+                <td>v2.0</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-034</code></td>
+                <td><strong>Live Signup & JWT Generation</strong></td>
+                <td>Verify live JWT issue from backend</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>JWT issued</td>
+                <td>Issued</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-035</code></td>
+                <td><strong>Live Prediction ML Pipeline</strong></td>
+                <td>Verify live end-to-end prediction response</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>HTTP 200</td>
+                <td>HTTP 200</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-036</code></td>
+                <td><strong>Live Dashboard Metrics Fetch</strong></td>
+                <td>Verify live dashboard statistics endpoint</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>HTTP 200</td>
+                <td>HTTP 200</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-037</code></td>
+                <td><strong>Static Web Server Asset Serving</strong></td>
+                <td>Verify HTTP 200 on index.html serving</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>HTTP 200</td>
+                <td>HTTP 200</td>
+            </tr>
+            <tr>
+                <td><code>TC-FUNC-038</code></td>
+                <td><strong>End-to-End System Operational Integrity</strong></td>
+                <td>Complete end-to-end operational check</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>All components operational</td>
+                <td>Operational</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

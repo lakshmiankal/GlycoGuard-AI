@@ -1,0 +1,382 @@
+name: GlycoGuard Full Testing Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  PYTHONUNBUFFERED: "1"
+  TEST_WEB_URL: "http://127.0.0.1:8080/index.html"
+  TEST_API_URL: "http://127.0.0.1:5000"
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # 1. SETUP JOB
+  # ---------------------------------------------------------------------------
+  setup:
+    name: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🟢 Set up Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: 📦 Install Node Dependencies
+        run: |
+          npm ci || npm install
+
+      - name: 🐍 Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: 📦 Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 🔍 Verify Important Project Structure & Files
+        run: |
+          echo "=== VERIFYING PROJECT ASSETS & ARCHITECTURE ==="
+          test -f "index.html" && echo "✓ Root index.html present"
+          test -f "js/app.js" && echo "✓ JavaScript app core present"
+          test -f "css/app.css" && echo "✓ CSS stylesheet present"
+          test -f "backend/app.py" && echo "✓ Flask backend present"
+          test -f "model.pkl" && echo "✓ ML Model pickle present"
+          test -f "capacitor.config.json" && echo "✓ Capacitor configuration present"
+          echo "=== SYSTEM ENVIRONMENT INFO ==="
+          node -v
+          npm -v
+          python --version
+          pip --version
+
+  # ---------------------------------------------------------------------------
+  # 2. SELENIUM TEST JOB
+  # ---------------------------------------------------------------------------
+  selenium-tests:
+    name: selenium-tests
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 🟢 Set up Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: 🌐 Install Google Chrome & Tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget curl unzip libxi6 libgconf-2-4 libnss3 libasound2
+          sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+
+      - name: 📦 Install Python Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: 🚀 Start Web & Backend Servers
+        run: |
+          python -m http.server 8080 &
+          python backend/app.py &
+          
+          # Wait for services to become available
+          echo "Waiting for HTTP Web Server (port 8080)..."
+          until curl -s http://127.0.0.1:8080/index.html > /dev/null; do
+            sleep 1
+          done
+          echo "HTTP Web Server is ready."
+
+          echo "Waiting for Flask Backend (port 5000)..."
+          until curl -s http://127.0.0.1:5000/health > /dev/null; do
+            sleep 1
+          done
+          echo "Flask Backend API is ready."
+
+      - name: 🧪 Execute Selenium Test Suite
+        run: |
+          python run_all_qa_tests.py --category selenium
+
+      - name: 📤 Upload Selenium Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: selenium-report
+          path: reports/selenium/
+          retention-days: 30
+
+  # ---------------------------------------------------------------------------
+  # 3. APPIUM ANDROID TEST JOB
+  # ---------------------------------------------------------------------------
+  appium-tests:
+    name: appium-tests
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: ☕ Set up Java JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "17"
+
+      - name: 🟢 Set up Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: 🐍 Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 📦 Install Dependencies & Appium CLI
+        run: |
+          pip install -r requirements.txt
+          npm ci || npm install
+          npm install -g appium @appium/doctor
+          appium driver install uiautomator2 || true
+
+      - name: 🔨 Build Android Web Assets
+        run: |
+          python build_www.py
+
+      - name: 📱 Execute Mobile & Appium Test Suite
+        run: |
+          python run_all_qa_tests.py --category appium
+
+      - name: 📤 Upload Appium Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: appium-report
+          path: reports/appium/
+          retention-days: 30
+
+  # ---------------------------------------------------------------------------
+  # 4. LOAD / PERFORMANCE TEST JOB
+  # ---------------------------------------------------------------------------
+  load-tests:
+    name: load-tests
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 📦 Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: 🚀 Start Flask Backend Server
+        run: |
+          python backend/app.py &
+          until curl -s http://127.0.0.1:5000/health > /dev/null; do
+            sleep 1
+          done
+          echo "Flask Backend API is ready for load testing."
+
+      - name: ⚡ Execute Concurrency & Load Test Suite
+        run: |
+          python run_all_qa_tests.py --category load
+
+      - name: 📤 Upload Load Testing Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: load-report
+          path: reports/load/
+          retention-days: 30
+
+  # ---------------------------------------------------------------------------
+  # 5. SECURITY ASSESSMENT JOB
+  # ---------------------------------------------------------------------------
+  security-assessment:
+    name: security-assessment
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 📦 Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: 🚀 Start Flask Backend Server
+        run: |
+          python backend/app.py &
+          until curl -s http://127.0.0.1:5000/health > /dev/null; do
+            sleep 1
+          done
+          echo "Flask Backend API is ready for security assessment."
+
+      - name: 🛡️ Execute Security & Vulnerability Test Suite
+        run: |
+          python run_all_qa_tests.py --category security
+
+      - name: 🔍 Static Code Security Scan (Bandit)
+        run: |
+          bandit -r backend -ll -ii || true
+
+      - name: 📤 Upload Security Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-report
+          path: reports/security/
+          retention-days: 30
+
+  # ---------------------------------------------------------------------------
+  # 6. WEB BUILD JOB
+  # ---------------------------------------------------------------------------
+  web-build:
+    name: web-build
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🟢 Set up Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: 🐍 Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 📦 Install Dependencies
+        run: |
+          npm ci || npm install
+          pip install -r requirements.txt
+
+      - name: 🚀 Start Flask Backend Server for Live Integration
+        run: |
+          python backend/app.py &
+          until curl -s http://127.0.0.1:5000/health > /dev/null; do
+            sleep 1
+          done
+
+      - name: 🔨 Execute Web Build & Asset Synchronization
+        run: |
+          npm run build
+
+      - name: 🧪 Execute Web Build & Functional Validation Suite
+        run: |
+          python run_all_qa_tests.py --category web-build
+
+      - name: 📤 Upload Web Build Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-build
+          path: reports/web-build/
+          retention-days: 30
+
+  # ---------------------------------------------------------------------------
+  # 7. FINAL SUMMARY JOB
+  # ---------------------------------------------------------------------------
+  summary:
+    name: summary
+    needs: [setup, selenium-tests, appium-tests, load-tests, security-assessment, web-build]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 📦 Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: 📥 Download Selenium Report
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: selenium-report
+          path: reports/selenium/
+
+      - name: 📥 Download Appium Report
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: appium-report
+          path: reports/appium/
+
+      - name: 📥 Download Load Report
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: load-report
+          path: reports/load/
+
+      - name: 📥 Download Security Report
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: security-report
+          path: reports/security/
+
+      - name: 📥 Download Web Build Report
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: web-build
+          path: reports/web-build/
+
+      - name: 📊 Compile Master Quality Assurance Summary & Dashboard
+        run: |
+          python run_all_qa_tests.py --category summary
+
+      - name: 📝 Publish GitHub Step Summary
+        if: always()
+        run: |
+          if [ -f "reports/final-summary/FINAL_QA_REPORT.md" ]; then
+            cat reports/final-summary/FINAL_QA_REPORT.md >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: 📤 Upload Final QA Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: final-qa-report
+          path: reports/final-summary/
+          retention-days: 30

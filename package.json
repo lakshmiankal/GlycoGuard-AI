@@ -5,7 +5,7 @@
   "main": "auth.html",
   "scripts": {
     "build": "python build_www.py",
-    "cap:sync": "npx cap sync android",
+    "cap:sync": "python build_www.py && npx cap sync android",
     "cap:open": "npx cap open android"
   },
   "keywords": [

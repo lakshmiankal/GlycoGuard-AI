@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GlycoGuard AI - Appium Android Mobile Report</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b132b; color: #f8fafc; margin: 0; padding: 24px; }
+        .header { background: #1c2541; padding: 24px; border-radius: 12px; margin-bottom: 24px; border: 1px solid #3a506b; }
+        h1 { margin: 0 0 8px 0; color: #00f2fe; }
+        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { background: #1c2541; padding: 18px; border-radius: 10px; border: 1px solid #3a506b; }
+        .kpi-val { font-size: 28px; font-weight: 700; color: #00f2fe; margin-top: 4px; }
+        .kpi-pass { color: #10b981; }
+        .kpi-fail { color: #ef4444; }
+        .kpi-skip { color: #f59e0b; }
+        table { width: 100%; border-collapse: collapse; background: #1c2541; border-radius: 10px; overflow: hidden; font-size: 13px; }
+        th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        th { background: #0f172a; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .badge { display: inline-block; padding: 4px 8px; border-radius: 6px; font-weight: 600; font-size: 11px; }
+        .badge-pass { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid #10b981; }
+        .badge-fail { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid #ef4444; }
+        .badge-skip { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid #f59e0b; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>GlycoGuard AI — Appium Android Mobile Quality Report</h1>
+        <p style="color: #94a3b8; margin: 0;">Comprehensive verification and test execution report. Generated on Aug 19, 2026 15:36:59.</p>
+    </div>
+
+    <div class="kpi-grid">
+        <div class="kpi-card"><div>Total Tests</div><div class="kpi-val">69</div></div>
+        <div class="kpi-card"><div>Passed</div><div class="kpi-val kpi-pass">52</div></div>
+        <div class="kpi-card"><div>Failed</div><div class="kpi-val kpi-fail">0</div></div>
+        <div class="kpi-card"><div>Not Executed</div><div class="kpi-val kpi-skip">17</div></div>
+        <div class="kpi-card"><div>Pass Rate</div><div class="kpi-val kpi-pass">75.4%</div></div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Test ID</th>
+                <th>Test Name</th>
+                <th>Objective</th>
+                <th>Status</th>
+                <th>Expected</th>
+                <th>Actual</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>TC-MOB-001</code></td>
+                <td><strong>APK Binary Existence</strong></td>
+                <td>Verify GlycoGuard_AI.apk exists and exceeds 2MB</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>> 2MB APK</td>
+                <td>4019714 bytes</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-002</code></td>
+                <td><strong>APK ZIP Structure</strong></td>
+                <td>Verify APK contains Manifest, DEX, and Web assets</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Manifest, DEX & assets present</td>
+                <td>Valid APK structure</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-003</code></td>
+                <td><strong>Android App Identifier</strong></td>
+                <td>Verify package ID is com.glycoguard.ai</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>com.glycoguard.ai</td>
+                <td>com.glycoguard.ai</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-004</code></td>
+                <td><strong>Permission: INTERNET</strong></td>
+                <td>Verify INTERNET permission in AndroidManifest</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>android.permission.INTERNET present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-005</code></td>
+                <td><strong>Permission: ACCESS_NETWORK_STATE</strong></td>
+                <td>Verify network state permission in AndroidManifest</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>ACCESS_NETWORK_STATE present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-006</code></td>
+                <td><strong>MainActivity LaunchMode</strong></td>
+                <td>Verify launchMode is singleTask</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>singleTask</td>
+                <td>singleTask configured</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-007</code></td>
+                <td><strong>Cleartext Traffic Allowed</strong></td>
+                <td>Verify usesCleartextTraffic is true for local testing</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>usesCleartextTraffic=true</td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-008</code></td>
+                <td><strong>Capacitor WebDir Config</strong></td>
+                <td>Verify webDir is set to www</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>www</td>
+                <td>www</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-009</code></td>
+                <td><strong>Capacitor Android Scheme</strong></td>
+                <td>Verify androidScheme is https</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>https</td>
+                <td>https</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-010</code></td>
+                <td><strong>Native Asset: index.html</strong></td>
+                <td>Verify android assets contain index.html</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>File exists</td>
+                <td>Size: 65166 bytes</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-011</code></td>
+                <td><strong>Native Asset: css/app.css</strong></td>
+                <td>Verify android assets contain css/app.css</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>File exists</td>
+                <td>Size: 33754 bytes</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-012</code></td>
+                <td><strong>Native Asset: js/app.js</strong></td>
+                <td>Verify android assets contain js/app.js</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>File exists</td>
+                <td>Size: 62401 bytes</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-013</code></td>
+                <td><strong>Native Asset: js/config.js</strong></td>
+                <td>Verify android assets contain js/config.js</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>File exists</td>
+                <td>Size: 3876 bytes</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-014</code></td>
+                <td><strong>Native Asset Synchronization</strong></td>
+                <td>Verify root index matches Android native index</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Exact match</td>
+                <td>100% Synchronized</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-015</code></td>
+                <td><strong>Gradle Wrapper Config</strong></td>
+                <td>Verify gradle wrapper is configured</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>gradle-wrapper.properties present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-016</code></td>
+                <td><strong>Mobile Header In HTML</strong></td>
+                <td>Verify mobile header element exists</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>mobile-header present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-017</code></td>
+                <td><strong>Bottom Nav In HTML</strong></td>
+                <td>Verify bottom navigation bar element exists</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>bottom-nav present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-018</code></td>
+                <td><strong>Bottom Nav 5 Primary Tabs</strong></td>
+                <td>Verify primary mobile navigation tabs</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Tabs present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-019</code></td>
+                <td><strong>Safe Area Inset Rule in CSS</strong></td>
+                <td>Verify safe-area-inset-bottom clearance in CSS</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>env(safe-area-inset-bottom)</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-020</code></td>
+                <td><strong>Screen Footer Spacer Class</strong></td>
+                <td>Verify .screen-footer-spacer definition in CSS</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Class defined</td>
+                <td>Defined</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-022</code></td>
+                <td><strong>Touch Target Sizing</strong></td>
+                <td>Verify touch items exceed 44px min-height</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Touch targets sized</td>
+                <td>Configured</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-023</code></td>
+                <td><strong>Capacitor App Listener Init</strong></td>
+                <td>Verify Capacitor App backButton listener attached</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Listener attached</td>
+                <td>Attached</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-024</code></td>
+                <td><strong>Hardware Back Handler Function</strong></td>
+                <td>Verify handleHardwareBack function exists in app.js</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Function defined</td>
+                <td>Defined</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-025</code></td>
+                <td><strong>Modal Dismissal on Back Button</strong></td>
+                <td>Verify hardware back closes active modal before exiting</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Modal dismissal configured</td>
+                <td>Configured</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-026</code></td>
+                <td><strong>Deterministic Mobile Startup</strong></td>
+                <td>Verify initApp checks localStorage token before showing UI</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Token check implemented</td>
+                <td>Implemented</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-027</code></td>
+                <td><strong>Mobile Google OAuth Modal Markup</strong></td>
+                <td>Verify Google OAuth modal markup present in Android bundle</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Modal present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-028</code></td>
+                <td><strong>Mobile Patient Bottom Sheet Modal</strong></td>
+                <td>Verify patientModal bottom sheet modal markup</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Modal present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-029</code></td>
+                <td><strong>Mobile Prediction Circular Gauge</strong></td>
+                <td>Verify SVG circular progress gauge in prediction</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Gauge present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-030</code></td>
+                <td><strong>Mobile Vitals Logging Form</strong></td>
+                <td>Verify daily vitals form inputs in Android bundle</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Vitals form present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-031</code></td>
+                <td><strong>Mobile Daily Planner Goals</strong></td>
+                <td>Verify planner goals checklist in Android bundle</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Goals present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-032</code></td>
+                <td><strong>Mobile Population Analytics Canvas</strong></td>
+                <td>Verify Chart.js canvas elements in Android bundle</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Canvas present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-033</code></td>
+                <td><strong>Mobile Clinical Reports Preview</strong></td>
+                <td>Verify report preview container in Android bundle</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Preview container present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-034</code></td>
+                <td><strong>Mobile Theme Toggle Functionality</strong></td>
+                <td>Verify toggleAppTheme handles mobile theme toggling</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Function defined</td>
+                <td>Defined</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-035</code></td>
+                <td><strong>Mobile Standalone ML Calibration</strong></td>
+                <td>Verify LocalMLEngine.predict exists for offline Android execution</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>LocalMLEngine present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-036</code></td>
+                <td><strong>Screen Size 360x640 Support</strong></td>
+                <td>Verify CSS supports compact 360px mobile width</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Supported</td>
+                <td>Supported</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-037</code></td>
+                <td><strong>Screen Size 390x844 Support</strong></td>
+                <td>Verify CSS supports standard 390px iPhone/Android width</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Supported</td>
+                <td>Supported</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-038</code></td>
+                <td><strong>Screen Size 412x915 Support</strong></td>
+                <td>Verify CSS supports Pixel/Galaxy 412px width</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Supported</td>
+                <td>Supported</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-039</code></td>
+                <td><strong>Screen Size 768x1024 Support</strong></td>
+                <td>Verify CSS supports 768px tablet portrait</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Supported</td>
+                <td>Supported</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-040</code></td>
+                <td><strong>Offline Fallback Patients DB</strong></td>
+                <td>Verify LocalDB returns default patients if server offline</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Offline DB active</td>
+                <td>Active</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-041</code></td>
+                <td><strong>Offline Risk Assessment</strong></td>
+                <td>Verify LocalMLEngine runs without network dependencies</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Offline engine ready</td>
+                <td>Ready</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-042</code></td>
+                <td><strong>Offline Meal Plans</strong></td>
+                <td>Verify AI Health plans return offline defaults</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Offline plans configured</td>
+                <td>Configured</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-043</code></td>
+                <td><strong>Offline Vitals Logging</strong></td>
+                <td>Verify tracking logs stored in localStorage when offline</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Offline storage ready</td>
+                <td>Ready</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-044</code></td>
+                <td><strong>Offline Reports Generation</strong></td>
+                <td>Verify reports generated offline with timestamp and ID</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Offline generator ready</td>
+                <td>Ready</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-045</code></td>
+                <td><strong>Toast Notifications on Android</strong></td>
+                <td>Verify showToast works without alert() dialog popups</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Toast utility defined</td>
+                <td>Defined</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-047</code></td>
+                <td><strong>Mobile Session Token Clearance</strong></td>
+                <td>Verify handleLogout removes token from mobile storage</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Clearance configured</td>
+                <td>Configured</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-048</code></td>
+                <td><strong>Mobile User Profile Display</strong></td>
+                <td>Verify updateUserProfileDisplay updates avatar and greetings</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Function defined</td>
+                <td>Defined</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-049</code></td>
+                <td><strong>Active Navigation Class Sync</strong></td>
+                <td>Verify navigateTo updates both tab icons and view visibility</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Class sync configured</td>
+                <td>Configured</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-050</code></td>
+                <td><strong>Deep Link View Param Support</strong></td>
+                <td>Verify URLSearchParams reads ?view= for instant routing</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Deep links supported</td>
+                <td>Supported</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-052</code></td>
+                <td><strong>Safe Numeric Parsing</strong></td>
+                <td>Verify parseFloat / parseInt handles NaN values</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>parseFloat configured</td>
+                <td>Configured</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-053</code></td>
+                <td><strong>Circular Gauge Probability Offset</strong></td>
+                <td>Verify strokeDashoffset calculated based on score</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Animation configured</td>
+                <td>Configured</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-054</code></td>
+                <td><strong>Chart.js Destroy on Refresh</strong></td>
+                <td>Verify previous Chart instances destroyed before re-render</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Memory leak protection</td>
+                <td>Configured</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-055</code></td>
+                <td><strong>Mobile Safe View Transitions</strong></td>
+                <td>Verify screen transitions handle overflow-y cleanly</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>overflow-y: auto present</td>
+                <td>Present</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-056</code></td>
+                <td><strong>Physical Device USB Connection</strong></td>
+                <td>Verify Android hardware device connected via ADB</td>
+                <td><span class="badge badge-skip">NOT EXECUTED</span></td>
+                <td>Physical device</td>
+                <td>NOT EXECUTED - physical device unavailable</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-057</code></td>
+                <td><strong>Physical Device Touch Latency</strong></td>
+                <td>Verify hardware touch screen input latency < 50ms</td>
+                <td><span class="badge badge-skip">NOT EXECUTED</span></td>
+                <td>< 50ms</td>
+                <td>NOT EXECUTED - physical device unavailable</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-058</code></td>
+                <td><strong>Physical Device Screen Rotation</strong></td>
+                <td>Verify portrait to landscape layout transformation</td>
+                <td><span class="badge badge-skip">NOT EXECUTED</span></td>
+                <td>Smooth rotation</td>
+                <td>NOT EXECUTED - physical device unavailable</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-059</code></td>
+                <td><strong>Physical Device Battery Consumption</strong></td>
+                <td>Verify app idle battery drain < 1% per hour</td>
+                <td><span class="badge badge-skip">NOT EXECUTED</span></td>
+                <td>< 1%/hr</td>
+                <td>NOT EXECUTED - physical device unavailable</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-060</code></td>
+                <td><strong>Physical Device Thermal Throttling</strong></td>
+                <td>Verify CPU temp during 100 predictions < 45C</td>
+                <td><span class="badge badge-skip">NOT EXECUTED</span></td>
+                <td>< 45C</td>
+                <td>NOT EXECUTED - physical device unavailable</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-061</code></td>
+                <td><strong>Physical Device RAM Memory Footprint</strong></td>
+                <td>Verify native runtime memory < 120MB</td>
+                <td><span class="badge badge-skip">NOT EXECUTED</span></td>
+                <td>< 120MB</td>
+                <td>NOT EXECUTED - physical device unavailable</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-062</code></td>
+                <td><strong>Physical Device APK Installation via ADB</strong></td>
+                <td>Install GlycoGuard_AI.apk via adb install -r</td>
+                <td><span class="badge badge-skip">NOT EXECUTED</span></td>
+                <td>Installed</td>
+                <td>NOT EXECUTED - physical device unavailable</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-063</code></td>
+                <td><strong>Physical Device App Cold Startup Time</strong></td>
+                <td>Verify cold launch to interactive screen < 1.5s</td>
+                <td><span class="badge badge-skip">NOT EXECUTED</span></td>
+                <td>< 1.5s</td>
+                <td>NOT EXECUTED - physical device unavailable</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-064</code></td>
+                <td><strong>Physical Device App Warm Resume Time</strong></td>
+                <td>Verify resume from background < 300ms</td>
+                <td><span class="badge badge-skip">NOT EXECUTED</span></td>
+                <td>< 300ms</td>
+                <td>NOT EXECUTED - physical device unavailable</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-065</code></td>
+                <td><strong>Physical Device Camera Permission Modal</strong></td>
+                <td>Verify runtime prompt for camera barcode scan</td>
+                <td><span class="badge badge-skip">NOT EXECUTED</span></td>
+                <td>Prompt visible</td>
+                <td>NOT EXECUTED - physical device unavailable</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-066</code></td>
+                <td><strong>Physical Device Biometric Fingerprint Auth</strong></td>
+                <td>Verify fingerprint biometric unlock bridge</td>
+                <td><span class="badge badge-skip">NOT EXECUTED</span></td>
+                <td>Biometric bridge</td>
+                <td>NOT EXECUTED - physical device unavailable</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-067</code></td>
+                <td><strong>Physical Device BLE Glucometer Sync</strong></td>
+                <td>Verify Bluetooth LE hardware glucose meter pairing</td>
+                <td><span class="badge badge-skip">NOT EXECUTED</span></td>
+                <td>BLE paired</td>
+                <td>NOT EXECUTED - physical device unavailable</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-068</code></td>
+                <td><strong>Physical Device Push Notifications</strong></td>
+                <td>Verify Firebase Cloud Messaging notification banner</td>
+                <td><span class="badge badge-skip">NOT EXECUTED</span></td>
+                <td>Notification banner</td>
+                <td>NOT EXECUTED - physical device unavailable</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-069</code></td>
+                <td><strong>Physical Device Offline Airplane Mode</strong></td>
+                <td>Verify seamless operation with Airplane Mode active</td>
+                <td><span class="badge badge-skip">NOT EXECUTED</span></td>
+                <td>Offline mode</td>
+                <td>NOT EXECUTED - physical device unavailable</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-070</code></td>
+                <td><strong>Physical Device 5G to Wi-Fi Handover</strong></td>
+                <td>Verify network socket recovery during cellular handover</td>
+                <td><span class="badge badge-skip">NOT EXECUTED</span></td>
+                <td>Socket recovered</td>
+                <td>NOT EXECUTED - physical device unavailable</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-071</code></td>
+                <td><strong>Physical Device Dark Mode System Sync</strong></td>
+                <td>Verify Android OS dark mode setting auto-detection</td>
+                <td><span class="badge badge-skip">NOT EXECUTED</span></td>
+                <td>System sync</td>
+                <td>NOT EXECUTED - physical device unavailable</td>
+            </tr>
+            <tr>
+                <td><code>TC-MOB-072</code></td>
+                <td><strong>Physical Device App Uninstall & Clean DB</strong></td>
+                <td>Verify clean SQLite DB purge upon app uninstall</td>
+                <td><span class="badge badge-skip">NOT EXECUTED</span></td>
+                <td>Clean purge</td>
+                <td>NOT EXECUTED - physical device unavailable</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

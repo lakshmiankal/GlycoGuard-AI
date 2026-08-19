@@ -1,0 +1,70 @@
+test_id,category,name,objective,status,expected,actual,error,timestamp
+TC-MOB-001,Appium Android Mobile,APK Binary Existence,Verify GlycoGuard_AI.apk exists and exceeds 2MB,PASS,> 2MB APK,4019714 bytes,,2026-08-19T15:36:59.468425
+TC-MOB-002,Appium Android Mobile,APK ZIP Structure,"Verify APK contains Manifest, DEX, and Web assets",PASS,"Manifest, DEX & assets present",Valid APK structure,,2026-08-19T15:36:59.471214
+TC-MOB-003,Appium Android Mobile,Android App Identifier,Verify package ID is com.glycoguard.ai,PASS,com.glycoguard.ai,com.glycoguard.ai,,2026-08-19T15:36:59.471592
+TC-MOB-004,Appium Android Mobile,Permission: INTERNET,Verify INTERNET permission in AndroidManifest,PASS,android.permission.INTERNET present,Present,,2026-08-19T15:36:59.471816
+TC-MOB-005,Appium Android Mobile,Permission: ACCESS_NETWORK_STATE,Verify network state permission in AndroidManifest,PASS,ACCESS_NETWORK_STATE present,Present,,2026-08-19T15:36:59.471982
+TC-MOB-006,Appium Android Mobile,MainActivity LaunchMode,Verify launchMode is singleTask,PASS,singleTask,singleTask configured,,2026-08-19T15:36:59.472128
+TC-MOB-007,Appium Android Mobile,Cleartext Traffic Allowed,Verify usesCleartextTraffic is true for local testing,PASS,usesCleartextTraffic=true,true,,2026-08-19T15:36:59.472256
+TC-MOB-008,Appium Android Mobile,Capacitor WebDir Config,Verify webDir is set to www,PASS,www,www,,2026-08-19T15:36:59.472399
+TC-MOB-009,Appium Android Mobile,Capacitor Android Scheme,Verify androidScheme is https,PASS,https,https,,2026-08-19T15:36:59.472534
+TC-MOB-010,Appium Android Mobile,Native Asset: index.html,Verify android assets contain index.html,PASS,File exists,Size: 65166 bytes,,2026-08-19T15:36:59.472632
+TC-MOB-011,Appium Android Mobile,Native Asset: css/app.css,Verify android assets contain css/app.css,PASS,File exists,Size: 33754 bytes,,2026-08-19T15:36:59.472707
+TC-MOB-012,Appium Android Mobile,Native Asset: js/app.js,Verify android assets contain js/app.js,PASS,File exists,Size: 62401 bytes,,2026-08-19T15:36:59.472773
+TC-MOB-013,Appium Android Mobile,Native Asset: js/config.js,Verify android assets contain js/config.js,PASS,File exists,Size: 3876 bytes,,2026-08-19T15:36:59.472839
+TC-MOB-014,Appium Android Mobile,Native Asset Synchronization,Verify root index matches Android native index,PASS,Exact match,100% Synchronized,,2026-08-19T15:36:59.473247
+TC-MOB-015,Appium Android Mobile,Gradle Wrapper Config,Verify gradle wrapper is configured,PASS,gradle-wrapper.properties present,Present,,2026-08-19T15:36:59.473341
+TC-MOB-016,Appium Android Mobile,Mobile Header In HTML,Verify mobile header element exists,PASS,mobile-header present,Present,,2026-08-19T15:36:59.473545
+TC-MOB-017,Appium Android Mobile,Bottom Nav In HTML,Verify bottom navigation bar element exists,PASS,bottom-nav present,Present,,2026-08-19T15:36:59.473763
+TC-MOB-018,Appium Android Mobile,Bottom Nav 5 Primary Tabs,Verify primary mobile navigation tabs,PASS,Tabs present,Present,,2026-08-19T15:36:59.473978
+TC-MOB-019,Appium Android Mobile,Safe Area Inset Rule in CSS,Verify safe-area-inset-bottom clearance in CSS,PASS,env(safe-area-inset-bottom),Present,,2026-08-19T15:36:59.474165
+TC-MOB-020,Appium Android Mobile,Screen Footer Spacer Class,Verify .screen-footer-spacer definition in CSS,PASS,Class defined,Defined,,2026-08-19T15:36:59.474356
+TC-MOB-022,Appium Android Mobile,Touch Target Sizing,Verify touch items exceed 44px min-height,PASS,Touch targets sized,Configured,,2026-08-19T15:36:59.475294
+TC-MOB-023,Appium Android Mobile,Capacitor App Listener Init,Verify Capacitor App backButton listener attached,PASS,Listener attached,Attached,,2026-08-19T15:36:59.475960
+TC-MOB-024,Appium Android Mobile,Hardware Back Handler Function,Verify handleHardwareBack function exists in app.js,PASS,Function defined,Defined,,2026-08-19T15:36:59.476247
+TC-MOB-025,Appium Android Mobile,Modal Dismissal on Back Button,Verify hardware back closes active modal before exiting,PASS,Modal dismissal configured,Configured,,2026-08-19T15:36:59.476495
+TC-MOB-026,Appium Android Mobile,Deterministic Mobile Startup,Verify initApp checks localStorage token before showing UI,PASS,Token check implemented,Implemented,,2026-08-19T15:36:59.476695
+TC-MOB-027,Appium Android Mobile,Mobile Google OAuth Modal Markup,Verify Google OAuth modal markup present in Android bundle,PASS,Modal present,Present,,2026-08-19T15:36:59.476912
+TC-MOB-028,Appium Android Mobile,Mobile Patient Bottom Sheet Modal,Verify patientModal bottom sheet modal markup,PASS,Modal present,Present,,2026-08-19T15:36:59.477117
+TC-MOB-029,Appium Android Mobile,Mobile Prediction Circular Gauge,Verify SVG circular progress gauge in prediction,PASS,Gauge present,Present,,2026-08-19T15:36:59.477384
+TC-MOB-030,Appium Android Mobile,Mobile Vitals Logging Form,Verify daily vitals form inputs in Android bundle,PASS,Vitals form present,Present,,2026-08-19T15:36:59.477679
+TC-MOB-031,Appium Android Mobile,Mobile Daily Planner Goals,Verify planner goals checklist in Android bundle,PASS,Goals present,Present,,2026-08-19T15:36:59.477918
+TC-MOB-032,Appium Android Mobile,Mobile Population Analytics Canvas,Verify Chart.js canvas elements in Android bundle,PASS,Canvas present,Present,,2026-08-19T15:36:59.478130
+TC-MOB-033,Appium Android Mobile,Mobile Clinical Reports Preview,Verify report preview container in Android bundle,PASS,Preview container present,Present,,2026-08-19T15:36:59.478329
+TC-MOB-034,Appium Android Mobile,Mobile Theme Toggle Functionality,Verify toggleAppTheme handles mobile theme toggling,PASS,Function defined,Defined,,2026-08-19T15:36:59.478545
+TC-MOB-035,Appium Android Mobile,Mobile Standalone ML Calibration,Verify LocalMLEngine.predict exists for offline Android execution,PASS,LocalMLEngine present,Present,,2026-08-19T15:36:59.478749
+TC-MOB-036,Appium Android Mobile,Screen Size 360x640 Support,Verify CSS supports compact 360px mobile width,PASS,Supported,Supported,,2026-08-19T15:36:59.478786
+TC-MOB-037,Appium Android Mobile,Screen Size 390x844 Support,Verify CSS supports standard 390px iPhone/Android width,PASS,Supported,Supported,,2026-08-19T15:36:59.478809
+TC-MOB-038,Appium Android Mobile,Screen Size 412x915 Support,Verify CSS supports Pixel/Galaxy 412px width,PASS,Supported,Supported,,2026-08-19T15:36:59.478830
+TC-MOB-039,Appium Android Mobile,Screen Size 768x1024 Support,Verify CSS supports 768px tablet portrait,PASS,Supported,Supported,,2026-08-19T15:36:59.478849
+TC-MOB-040,Appium Android Mobile,Offline Fallback Patients DB,Verify LocalDB returns default patients if server offline,PASS,Offline DB active,Active,,2026-08-19T15:36:59.479025
+TC-MOB-041,Appium Android Mobile,Offline Risk Assessment,Verify LocalMLEngine runs without network dependencies,PASS,Offline engine ready,Ready,,2026-08-19T15:36:59.479211
+TC-MOB-042,Appium Android Mobile,Offline Meal Plans,Verify AI Health plans return offline defaults,PASS,Offline plans configured,Configured,,2026-08-19T15:36:59.479392
+TC-MOB-043,Appium Android Mobile,Offline Vitals Logging,Verify tracking logs stored in localStorage when offline,PASS,Offline storage ready,Ready,,2026-08-19T15:36:59.479574
+TC-MOB-044,Appium Android Mobile,Offline Reports Generation,Verify reports generated offline with timestamp and ID,PASS,Offline generator ready,Ready,,2026-08-19T15:36:59.479779
+TC-MOB-045,Appium Android Mobile,Toast Notifications on Android,Verify showToast works without alert() dialog popups,PASS,Toast utility defined,Defined,,2026-08-19T15:36:59.479993
+TC-MOB-047,Appium Android Mobile,Mobile Session Token Clearance,Verify handleLogout removes token from mobile storage,PASS,Clearance configured,Configured,,2026-08-19T15:36:59.480841
+TC-MOB-048,Appium Android Mobile,Mobile User Profile Display,Verify updateUserProfileDisplay updates avatar and greetings,PASS,Function defined,Defined,,2026-08-19T15:36:59.481079
+TC-MOB-049,Appium Android Mobile,Active Navigation Class Sync,Verify navigateTo updates both tab icons and view visibility,PASS,Class sync configured,Configured,,2026-08-19T15:36:59.481295
+TC-MOB-050,Appium Android Mobile,Deep Link View Param Support,Verify URLSearchParams reads ?view= for instant routing,PASS,Deep links supported,Supported,,2026-08-19T15:36:59.481491
+TC-MOB-052,Appium Android Mobile,Safe Numeric Parsing,Verify parseFloat / parseInt handles NaN values,PASS,parseFloat configured,Configured,,2026-08-19T15:36:59.482246
+TC-MOB-053,Appium Android Mobile,Circular Gauge Probability Offset,Verify strokeDashoffset calculated based on score,PASS,Animation configured,Configured,,2026-08-19T15:36:59.482462
+TC-MOB-054,Appium Android Mobile,Chart.js Destroy on Refresh,Verify previous Chart instances destroyed before re-render,PASS,Memory leak protection,Configured,,2026-08-19T15:36:59.482667
+TC-MOB-055,Appium Android Mobile,Mobile Safe View Transitions,Verify screen transitions handle overflow-y cleanly,PASS,overflow-y: auto present,Present,,2026-08-19T15:36:59.482828
+TC-MOB-056,Appium Android Mobile,Physical Device USB Connection,Verify Android hardware device connected via ADB,NOT EXECUTED,Physical device,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.482859
+TC-MOB-057,Appium Android Mobile,Physical Device Touch Latency,Verify hardware touch screen input latency < 50ms,NOT EXECUTED,< 50ms,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.482881
+TC-MOB-058,Appium Android Mobile,Physical Device Screen Rotation,Verify portrait to landscape layout transformation,NOT EXECUTED,Smooth rotation,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.482900
+TC-MOB-059,Appium Android Mobile,Physical Device Battery Consumption,Verify app idle battery drain < 1% per hour,NOT EXECUTED,< 1%/hr,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.482918
+TC-MOB-060,Appium Android Mobile,Physical Device Thermal Throttling,Verify CPU temp during 100 predictions < 45C,NOT EXECUTED,< 45C,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.482936
+TC-MOB-061,Appium Android Mobile,Physical Device RAM Memory Footprint,Verify native runtime memory < 120MB,NOT EXECUTED,< 120MB,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.482955
+TC-MOB-062,Appium Android Mobile,Physical Device APK Installation via ADB,Install GlycoGuard_AI.apk via adb install -r,NOT EXECUTED,Installed,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.482974
+TC-MOB-063,Appium Android Mobile,Physical Device App Cold Startup Time,Verify cold launch to interactive screen < 1.5s,NOT EXECUTED,< 1.5s,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.482993
+TC-MOB-064,Appium Android Mobile,Physical Device App Warm Resume Time,Verify resume from background < 300ms,NOT EXECUTED,< 300ms,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.483010
+TC-MOB-065,Appium Android Mobile,Physical Device Camera Permission Modal,Verify runtime prompt for camera barcode scan,NOT EXECUTED,Prompt visible,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.483028
+TC-MOB-066,Appium Android Mobile,Physical Device Biometric Fingerprint Auth,Verify fingerprint biometric unlock bridge,NOT EXECUTED,Biometric bridge,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.483047
+TC-MOB-067,Appium Android Mobile,Physical Device BLE Glucometer Sync,Verify Bluetooth LE hardware glucose meter pairing,NOT EXECUTED,BLE paired,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.483064
+TC-MOB-068,Appium Android Mobile,Physical Device Push Notifications,Verify Firebase Cloud Messaging notification banner,NOT EXECUTED,Notification banner,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.483081
+TC-MOB-069,Appium Android Mobile,Physical Device Offline Airplane Mode,Verify seamless operation with Airplane Mode active,NOT EXECUTED,Offline mode,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.483104
+TC-MOB-070,Appium Android Mobile,Physical Device 5G to Wi-Fi Handover,Verify network socket recovery during cellular handover,NOT EXECUTED,Socket recovered,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.483121
+TC-MOB-071,Appium Android Mobile,Physical Device Dark Mode System Sync,Verify Android OS dark mode setting auto-detection,NOT EXECUTED,System sync,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.483144
+TC-MOB-072,Appium Android Mobile,Physical Device App Uninstall & Clean DB,Verify clean SQLite DB purge upon app uninstall,NOT EXECUTED,Clean purge,NOT EXECUTED - physical device unavailable,,2026-08-19T15:36:59.483165

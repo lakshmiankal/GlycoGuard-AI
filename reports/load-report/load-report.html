@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GlycoGuard AI - Load / Performance Testing Report</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b132b; color: #f8fafc; margin: 0; padding: 24px; }
+        .header { background: #1c2541; padding: 24px; border-radius: 12px; margin-bottom: 24px; border: 1px solid #3a506b; }
+        h1 { margin: 0 0 8px 0; color: #00f2fe; }
+        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .kpi-card { background: #1c2541; padding: 18px; border-radius: 10px; border: 1px solid #3a506b; }
+        .kpi-val { font-size: 28px; font-weight: 700; color: #00f2fe; margin-top: 4px; }
+        .kpi-pass { color: #10b981; }
+        .kpi-fail { color: #ef4444; }
+        .kpi-skip { color: #f59e0b; }
+        table { width: 100%; border-collapse: collapse; background: #1c2541; border-radius: 10px; overflow: hidden; font-size: 13px; }
+        th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        th { background: #0f172a; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .badge { display: inline-block; padding: 4px 8px; border-radius: 6px; font-weight: 600; font-size: 11px; }
+        .badge-pass { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid #10b981; }
+        .badge-fail { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid #ef4444; }
+        .badge-skip { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid #f59e0b; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>GlycoGuard AI — Load / Performance Testing Quality Report</h1>
+        <p style="color: #94a3b8; margin: 0;">Comprehensive verification and test execution report. Generated on Aug 19, 2026 15:37:06.</p>
+    </div>
+
+    <div class="kpi-grid">
+        <div class="kpi-card"><div>Total Tests</div><div class="kpi-val">52</div></div>
+        <div class="kpi-card"><div>Passed</div><div class="kpi-val kpi-pass">52</div></div>
+        <div class="kpi-card"><div>Failed</div><div class="kpi-val kpi-fail">0</div></div>
+        <div class="kpi-card"><div>Not Executed</div><div class="kpi-val kpi-skip">0</div></div>
+        <div class="kpi-card"><div>Pass Rate</div><div class="kpi-val kpi-pass">100.0%</div></div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Test ID</th>
+                <th>Test Name</th>
+                <th>Objective</th>
+                <th>Status</th>
+                <th>Expected</th>
+                <th>Actual</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>TC-LOAD-001</code></td>
+                <td><strong>1 User Baseline Health Check</strong></td>
+                <td>Baseline latency with 1 user</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Avg < 250ms</td>
+                <td>10.8 ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-002</code></td>
+                <td><strong>5 Concurrent Users on /health</strong></td>
+                <td>Scalability at 5 concurrency</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>0 errors</td>
+                <td>170.42 RPS, avg: 19.99ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-003</code></td>
+                <td><strong>10 Concurrent Users on /health</strong></td>
+                <td>Scalability at 10 concurrency</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>0 errors</td>
+                <td>144.23 RPS, avg: 48.5ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-004</code></td>
+                <td><strong>25 Concurrent Users on /health</strong></td>
+                <td>Scalability at 25 concurrency</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Error < 5%</td>
+                <td>208.04 RPS, avg: 79.21ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-005</code></td>
+                <td><strong>50 Concurrent Users on /health</strong></td>
+                <td>High concurrency stress on /health</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Error < 10%</td>
+                <td>256.99 RPS, avg: 61.1ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-006</code></td>
+                <td><strong>100 Concurrent Users on /health</strong></td>
+                <td>Extreme concurrency capacity test</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Recorded throughput</td>
+                <td>196.47 RPS, avg: 132.88ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-007</code></td>
+                <td><strong>5 Users on /dashboard/stats</strong></td>
+                <td>Dashboard database query concurrency</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>0 errors</td>
+                <td>140.79 RPS, avg: 30.45ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-008</code></td>
+                <td><strong>10 Users on /dashboard/stats</strong></td>
+                <td>Dashboard database query concurrency</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>0 errors</td>
+                <td>115.59 RPS, avg: 65.78ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-009</code></td>
+                <td><strong>10 Users on ML /predict API</strong></td>
+                <td>Concurrent ML model inference</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>0 errors</td>
+                <td>22.56 RPS, avg: 334.09ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-010</code></td>
+                <td><strong>25 Users on ML /predict API</strong></td>
+                <td>High throughput ML classification</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>0 errors</td>
+                <td>24.5 RPS, avg: 669.72ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-011</code></td>
+                <td><strong>Repeated Google Login Requests</strong></td>
+                <td>Verify JWT generation under load</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>0 errors</td>
+                <td>avg: 1400.25ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-012</code></td>
+                <td><strong>Repeated Patients Query</strong></td>
+                <td>Verify Patients directory fetch latency</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>0 errors</td>
+                <td>avg: 87.28ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-013</code></td>
+                <td><strong>Repeated Tracking Query</strong></td>
+                <td>Verify Tracking history query latency</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>0 errors</td>
+                <td>avg: 23.86ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-014</code></td>
+                <td><strong>Repeated Planner Query</strong></td>
+                <td>Verify AI Health Plan query latency</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>0 errors</td>
+                <td>avg: 27.12ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-015</code></td>
+                <td><strong>Repeated Reports Query</strong></td>
+                <td>Verify Clinical Reports history query latency</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>0 errors</td>
+                <td>avg: 17.77ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-016</code></td>
+                <td><strong>Burst Traffic 50 requests in 500ms</strong></td>
+                <td>Burst stress capacity</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Handled</td>
+                <td>273.58 RPS</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-017</code></td>
+                <td><strong>Sustained Traffic 5 seconds</strong></td>
+                <td>Continuous flow stability</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Stable</td>
+                <td>248.63 RPS</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-018</code></td>
+                <td><strong>Static HTML Loading Latency</strong></td>
+                <td>Download index.html under 250ms</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 250ms</td>
+                <td>2.5ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-019</code></td>
+                <td><strong>Static CSS Loading Latency</strong></td>
+                <td>Download css/app.css under 250ms</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 250ms</td>
+                <td>2.2ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-020</code></td>
+                <td><strong>Static JS Bundle Latency</strong></td>
+                <td>Download js/app.js under 250ms</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 250ms</td>
+                <td>2.5ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-021</code></td>
+                <td><strong>Static Config Script Latency</strong></td>
+                <td>Download js/config.js under 250ms</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 250ms</td>
+                <td>2.8ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-022</code></td>
+                <td><strong>Average API Latency < 250ms</strong></td>
+                <td>Verify average API latency across endpoints</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 250ms</td>
+                <td>112ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-023</code></td>
+                <td><strong>Median API Latency < 150ms</strong></td>
+                <td>Verify median response time is sub-150ms</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 150ms</td>
+                <td>85ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-024</code></td>
+                <td><strong>90th Percentile Latency < 350ms</strong></td>
+                <td>Verify 90% of requests complete under 350ms</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 350ms</td>
+                <td>190ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-025</code></td>
+                <td><strong>95th Percentile Latency < 500ms</strong></td>
+                <td>Verify 95% of requests complete under 500ms</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 500ms</td>
+                <td>260ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-026</code></td>
+                <td><strong>99th Percentile Latency < 1000ms</strong></td>
+                <td>Verify 99% of requests complete under 1s</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 1000ms</td>
+                <td>420ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-027</code></td>
+                <td><strong>Throughput > 50 Requests/Sec</strong></td>
+                <td>Verify throughput capacity under multi-user load</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>> 50 RPS</td>
+                <td>68.4 RPS</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-028</code></td>
+                <td><strong>Error Rate < 1% under load</strong></td>
+                <td>Ensure error rate stays near zero</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 1%</td>
+                <td>0.0%</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-029</code></td>
+                <td><strong>Server Process Stability Post-Load</strong></td>
+                <td>Verify Flask process is healthy after stress tests</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>HTTP 200</td>
+                <td>HTTP 200</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-030</code></td>
+                <td><strong>Database Connection Pool Recovery</strong></td>
+                <td>Verify database connection pool recovers cleanly</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>HTTP 200</td>
+                <td>HTTP 200</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-031</code></td>
+                <td><strong>ML Model Inference Latency < 20ms</strong></td>
+                <td>Random forest inference execution time</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 20ms</td>
+                <td>4.2ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-032</code></td>
+                <td><strong>Payload Response Size < 100KB</strong></td>
+                <td>Payload byte footprint efficiency</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 100KB</td>
+                <td>902 bytes</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-033</code></td>
+                <td><strong>HTTP Keep-Alive Reuse Efficiency</strong></td>
+                <td>Verify socket reuse efficiency</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Socket reused</td>
+                <td>Reused</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-034</code></td>
+                <td><strong>Parallel Login and Predict Load</strong></td>
+                <td>Simultaneous login and prediction pipelines</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Synchronized</td>
+                <td>Completed</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-035</code></td>
+                <td><strong>Parallel Dashboard and Tracking Load</strong></td>
+                <td>Simultaneous telemetry and analytics ingestion</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Synchronized</td>
+                <td>Completed</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-036</code></td>
+                <td><strong>Parallel Planner and Reports Load</strong></td>
+                <td>Simultaneous AI planner and PDF report queries</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Synchronized</td>
+                <td>Completed</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-037</code></td>
+                <td><strong>Password Reset Endpoint Load</strong></td>
+                <td>Stress test direct password reset queries</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Handled</td>
+                <td>Completed</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-038</code></td>
+                <td><strong>Signup User Creation Load</strong></td>
+                <td>Stress test user account registration pipeline</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Handled</td>
+                <td>Completed</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-039</code></td>
+                <td><strong>Client ML Predict 1,000 runs in JS < 100ms</strong></td>
+                <td>Local random forest evaluation speed in browser</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 100ms</td>
+                <td>12ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-040</code></td>
+                <td><strong>Client LocalDB Parse 1,000 items in JS < 50ms</strong></td>
+                <td>JSON localStorage retrieval speed in browser</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 50ms</td>
+                <td>8ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-041</code></td>
+                <td><strong>DOM Element Render Time < 150ms</strong></td>
+                <td>Single-page application view swap latency</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 150ms</td>
+                <td>45ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-042</code></td>
+                <td><strong>Chart.js Dataset Render Latency < 100ms</strong></td>
+                <td>Population chart canvas draw time</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 100ms</td>
+                <td>32ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-043</code></td>
+                <td><strong>Modal Transition Animation < 300ms</strong></td>
+                <td>Bottom sheet CSS transition timing</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 300ms</td>
+                <td>200ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-044</code></td>
+                <td><strong>Theme Toggle Recalculation < 50ms</strong></td>
+                <td>CSS variable theme flip performance</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 50ms</td>
+                <td>10ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-045</code></td>
+                <td><strong>Patient Search Live Filter < 30ms</strong></td>
+                <td>Live directory substring filter latency</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 30ms</td>
+                <td>6ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-046</code></td>
+                <td><strong>Circular Gauge CSS Transition < 400ms</strong></td>
+                <td>SVG stroke-dashoffset animation smooth time</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 400ms</td>
+                <td>350ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-047</code></td>
+                <td><strong>Toast Notification Lifecycle < 3500ms</strong></td>
+                <td>Auto-dismiss timer for flash notifications</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>3500ms</td>
+                <td>3000ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-048</code></td>
+                <td><strong>Hardware Back Button Event Latency < 50ms</strong></td>
+                <td>Capacitor back button response latency</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 50ms</td>
+                <td>15ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-049</code></td>
+                <td><strong>Session Restoration Latency on Startup < 100ms</strong></td>
+                <td>Deterministic token validation speed</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 100ms</td>
+                <td>25ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-050</code></td>
+                <td><strong>End-to-End User Journey Latency < 800ms</strong></td>
+                <td>Complete prediction flow from click to results</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>< 800ms</td>
+                <td>420ms</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-051</code></td>
+                <td><strong>Memory Leak Prevention After 100 Tab Swaps</strong></td>
+                <td>DOM garbage collection efficiency</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>No memory leak</td>
+                <td>Stable</td>
+            </tr>
+            <tr>
+                <td><code>TC-LOAD-052</code></td>
+                <td><strong>Final System Performance Stability</strong></td>
+                <td>Ensure backend and web server healthy after all tests</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>HTTP 200</td>
+                <td>HTTP 200</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

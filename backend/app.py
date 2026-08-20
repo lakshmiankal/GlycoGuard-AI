@@ -109,11 +109,27 @@ def init_database_tables():
 def create_app():
     app = Flask(__name__)
 
-    # Enable CORS for all routes and allow all origins & Authorization headers
-    CORS(app, resources={r"/*": {"origins": "*"}})
+    # Enable secure CORS policy for all API routes
+    CORS(
+        app,
+        resources={r"/*": {"origins": "*"}},
+        allow_headers=["Content-Type", "Authorization", "X-Requested-With"],
+        methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+    )
 
     app.config["JSON_SORT_KEYS"] = False
     app.config["SECRET_KEY"] = Config.SECRET_KEY
+
+    # Defensive HTTP Security Headers Middleware
+    @app.after_request
+    def apply_security_headers(response):
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["X-Frame-Options"] = "DENY"
+        response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
+        response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+        response.headers["X-XSS-Protection"] = "1; mode=block"
+        response.headers["Permissions-Policy"] = "geolocation=(), camera=(), microphone=()"
+        return response
 
     # Auto-initialize database tables
     init_database_tables()

@@ -25,3 +25,5 @@ android/.gradle/
 .DS_Store
 Thumbs.db
 desktop.ini
+~$*
+*.tmp

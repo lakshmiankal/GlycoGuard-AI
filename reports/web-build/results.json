@@ -6,7 +6,7 @@
   "blocked": 0,
   "not_executed": 0,
   "pass_percentage": 100.0,
-  "generated_at": "2026-08-19T15:37:10.310937",
+  "generated_at": "2026-08-20T10:55:22.397491",
   "results": [
     {
       "test_id": "TC-FUNC-001",
@@ -17,7 +17,7 @@
       "expected": "Return code 0",
       "actual": "Code 0",
       "error": "",
-      "timestamp": "2026-08-19T15:37:08.025833"
+      "timestamp": "2026-08-20T10:55:20.749729"
     },
     {
       "test_id": "TC-FUNC-002",
@@ -28,7 +28,7 @@
       "expected": "File exists > 1KB",
       "actual": "65166 bytes",
       "error": "",
-      "timestamp": "2026-08-19T15:37:08.026005"
+      "timestamp": "2026-08-20T10:55:20.749921"
     },
     {
       "test_id": "TC-FUNC-003",
@@ -39,7 +39,7 @@
       "expected": "File exists > 1KB",
       "actual": "33754 bytes",
       "error": "",
-      "timestamp": "2026-08-19T15:37:08.026082"
+      "timestamp": "2026-08-20T10:55:20.750009"
     },
     {
       "test_id": "TC-FUNC-004",
@@ -50,7 +50,7 @@
       "expected": "File exists > 1KB",
       "actual": "62401 bytes",
       "error": "",
-      "timestamp": "2026-08-19T15:37:08.026137"
+      "timestamp": "2026-08-20T10:55:20.750076"
     },
     {
       "test_id": "TC-FUNC-005",
@@ -61,7 +61,7 @@
       "expected": "File exists > 500B",
       "actual": "3876 bytes",
       "error": "",
-      "timestamp": "2026-08-19T15:37:08.026189"
+      "timestamp": "2026-08-20T10:55:20.750137"
     },
     {
       "test_id": "TC-FUNC-006",
@@ -72,7 +72,7 @@
       "expected": "Exact match",
       "actual": "100% Match",
       "error": "",
-      "timestamp": "2026-08-19T15:37:08.026683"
+      "timestamp": "2026-08-20T10:55:20.750705"
     },
     {
       "test_id": "TC-FUNC-007",
@@ -83,7 +83,7 @@
       "expected": "Exact match",
       "actual": "100% Match",
       "error": "",
-      "timestamp": "2026-08-19T15:37:08.027003"
+      "timestamp": "2026-08-20T10:55:20.751139"
     },
     {
       "test_id": "TC-FUNC-008",
@@ -94,7 +94,7 @@
       "expected": "Exact match",
       "actual": "100% Match",
       "error": "",
-      "timestamp": "2026-08-19T15:37:08.027330"
+      "timestamp": "2026-08-20T10:55:20.751580"
     },
     {
       "test_id": "TC-FUNC-009",
@@ -105,7 +105,7 @@
       "expected": "Exact match",
       "actual": "100% Match",
       "error": "",
-      "timestamp": "2026-08-19T15:37:08.027647"
+      "timestamp": "2026-08-20T10:55:20.752394"
     },
     {
       "test_id": "TC-FUNC-010",
@@ -116,7 +116,7 @@
       "expected": "Exact match",
       "actual": "100% Match",
       "error": "",
-      "timestamp": "2026-08-19T15:37:08.027950"
+      "timestamp": "2026-08-20T10:55:20.752938"
     },
     {
       "test_id": "TC-FUNC-011",
@@ -127,7 +127,7 @@
       "expected": "Model loaded",
       "actual": "Type: RandomForestClassifier",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.596078"
+      "timestamp": "2026-08-20T10:55:22.316333"
     },
     {
       "test_id": "TC-FUNC-012",
@@ -138,7 +138,7 @@
       "expected": "Valid probability score",
       "actual": "Risk Prob: 0.71",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.614059"
+      "timestamp": "2026-08-20T10:55:22.349241"
     },
     {
       "test_id": "TC-FUNC-013",
@@ -149,7 +149,7 @@
       "expected": "Both datasets present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.614374"
+      "timestamp": "2026-08-20T10:55:22.349625"
     },
     {
       "test_id": "TC-FUNC-014",
@@ -160,7 +160,7 @@
       "expected": "PNG artifact present",
       "actual": "15209 bytes",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.614479"
+      "timestamp": "2026-08-20T10:55:22.350004"
     },
     {
       "test_id": "TC-FUNC-015",
@@ -171,7 +171,7 @@
       "expected": "web: gunicorn wsgi:app",
       "actual": "web: gunicorn --chdir backend app:app --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.614738"
+      "timestamp": "2026-08-20T10:55:22.350555"
     },
     {
       "test_id": "TC-FUNC-016",
@@ -182,7 +182,7 @@
       "expected": "Valid manifest",
       "actual": "Valid",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.614957"
+      "timestamp": "2026-08-20T10:55:22.351175"
     },
     {
       "test_id": "TC-FUNC-017",
@@ -193,7 +193,7 @@
       "expected": "Build script present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.615159"
+      "timestamp": "2026-08-20T10:55:22.351460"
     },
     {
       "test_id": "TC-FUNC-018",
@@ -204,7 +204,7 @@
       "expected": "Capacitor present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.615316"
+      "timestamp": "2026-08-20T10:55:22.351660"
     },
     {
       "test_id": "TC-FUNC-019",
@@ -215,7 +215,7 @@
       "expected": "Redirect configured",
       "actual": "Configured",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.615521"
+      "timestamp": "2026-08-20T10:55:22.352272"
     },
     {
       "test_id": "TC-FUNC-020",
@@ -226,7 +226,7 @@
       "expected": "Redirect configured",
       "actual": "Configured",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.615708"
+      "timestamp": "2026-08-20T10:55:22.352771"
     },
     {
       "test_id": "TC-FUNC-021",
@@ -237,7 +237,7 @@
       "expected": "Redirect configured",
       "actual": "Configured",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.615870"
+      "timestamp": "2026-08-20T10:55:22.353284"
     },
     {
       "test_id": "TC-FUNC-022",
@@ -248,7 +248,7 @@
       "expected": "Redirect configured",
       "actual": "Configured",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.616029"
+      "timestamp": "2026-08-20T10:55:22.353787"
     },
     {
       "test_id": "TC-FUNC-023",
@@ -259,7 +259,7 @@
       "expected": "Redirect configured",
       "actual": "Configured",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.616194"
+      "timestamp": "2026-08-20T10:55:22.354335"
     },
     {
       "test_id": "TC-FUNC-024",
@@ -270,7 +270,7 @@
       "expected": "Redirect configured",
       "actual": "Configured",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.616351"
+      "timestamp": "2026-08-20T10:55:22.354771"
     },
     {
       "test_id": "TC-FUNC-025",
@@ -281,7 +281,7 @@
       "expected": "Redirect configured",
       "actual": "Configured",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.616520"
+      "timestamp": "2026-08-20T10:55:22.355213"
     },
     {
       "test_id": "TC-FUNC-026",
@@ -292,7 +292,7 @@
       "expected": "File exists",
       "actual": "Exists",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.616598"
+      "timestamp": "2026-08-20T10:55:22.355356"
     },
     {
       "test_id": "TC-FUNC-027",
@@ -303,7 +303,7 @@
       "expected": "File exists",
       "actual": "Exists",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.616655"
+      "timestamp": "2026-08-20T10:55:22.355430"
     },
     {
       "test_id": "TC-FUNC-028",
@@ -314,7 +314,7 @@
       "expected": "File exists",
       "actual": "Exists",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.616740"
+      "timestamp": "2026-08-20T10:55:22.355492"
     },
     {
       "test_id": "TC-FUNC-029",
@@ -325,7 +325,7 @@
       "expected": "File exists",
       "actual": "Exists",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.616794"
+      "timestamp": "2026-08-20T10:55:22.355545"
     },
     {
       "test_id": "TC-FUNC-030",
@@ -336,7 +336,7 @@
       "expected": "File exists",
       "actual": "Exists",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.616852"
+      "timestamp": "2026-08-20T10:55:22.355595"
     },
     {
       "test_id": "TC-FUNC-031",
@@ -347,7 +347,7 @@
       "expected": "File exists",
       "actual": "Exists",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.616911"
+      "timestamp": "2026-08-20T10:55:22.355643"
     },
     {
       "test_id": "TC-FUNC-032",
@@ -358,7 +358,7 @@
       "expected": "File exists",
       "actual": "Exists",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.616993"
+      "timestamp": "2026-08-20T10:55:22.355703"
     },
     {
       "test_id": "TC-FUNC-033",
@@ -369,7 +369,7 @@
       "expected": "version 2.0",
       "actual": "v2.0",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.682184"
+      "timestamp": "2026-08-20T10:55:22.358828"
     },
     {
       "test_id": "TC-FUNC-034",
@@ -380,7 +380,7 @@
       "expected": "JWT issued",
       "actual": "Issued",
       "error": "",
-      "timestamp": "2026-08-19T15:37:09.720686"
+      "timestamp": "2026-08-20T10:55:22.363964"
     },
     {
       "test_id": "TC-FUNC-035",
@@ -391,7 +391,7 @@
       "expected": "HTTP 200",
       "actual": "HTTP 200",
       "error": "",
-      "timestamp": "2026-08-19T15:37:10.120304"
+      "timestamp": "2026-08-20T10:55:22.380922"
     },
     {
       "test_id": "TC-FUNC-036",
@@ -402,7 +402,7 @@
       "expected": "HTTP 200",
       "actual": "HTTP 200",
       "error": "",
-      "timestamp": "2026-08-19T15:37:10.283788"
+      "timestamp": "2026-08-20T10:55:22.393804"
     },
     {
       "test_id": "TC-FUNC-037",
@@ -413,7 +413,7 @@
       "expected": "HTTP 200",
       "actual": "HTTP 200",
       "error": "",
-      "timestamp": "2026-08-19T15:37:10.310747"
+      "timestamp": "2026-08-20T10:55:22.397300"
     },
     {
       "test_id": "TC-FUNC-038",
@@ -424,7 +424,7 @@
       "expected": "All components operational",
       "actual": "Operational",
       "error": "",
-      "timestamp": "2026-08-19T15:37:10.310829"
+      "timestamp": "2026-08-20T10:55:22.397386"
     }
   ]
 }

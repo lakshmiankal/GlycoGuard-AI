@@ -25,12 +25,12 @@
 <body>
     <div class="header">
         <h1>GlycoGuard AI — Selenium Web UI Quality Report</h1>
-        <p style="color: #94a3b8; margin: 0;">Comprehensive verification and test execution report. Generated on Aug 19, 2026 15:36:59.</p>
+        <p style="color: #94a3b8; margin: 0;">Comprehensive verification and test execution report. Generated on Aug 20, 2026 10:55:18.</p>
     </div>
 
     <div class="kpi-grid">
-        <div class="kpi-card"><div>Total Tests</div><div class="kpi-val">95</div></div>
-        <div class="kpi-card"><div>Passed</div><div class="kpi-val kpi-pass">95</div></div>
+        <div class="kpi-card"><div>Total Tests</div><div class="kpi-val">93</div></div>
+        <div class="kpi-card"><div>Passed</div><div class="kpi-val kpi-pass">93</div></div>
         <div class="kpi-card"><div>Failed</div><div class="kpi-val kpi-fail">0</div></div>
         <div class="kpi-card"><div>Not Executed</div><div class="kpi-val kpi-skip">0</div></div>
         <div class="kpi-card"><div>Pass Rate</div><div class="kpi-val kpi-pass">100.0%</div></div>
@@ -81,22 +81,6 @@
                 <td>none</td>
             </tr>
             <tr>
-                <td><code>TC-SEL-007</code></td>
-                <td><strong>Brand Tagline Verification</strong></td>
-                <td>Verify tagline is Predict • Prevent • Personalize</td>
-                <td><span class="badge badge-pass">PASS</span></td>
-                <td>Predict • Prevent • Personalize</td>
-                <td>PREDICT • PREVENT • PERSONALIZE</td>
-            </tr>
-            <tr>
-                <td><code>TC-SEL-008</code></td>
-                <td><strong>Auth Navigation Tabs</strong></td>
-                <td>Verify Sign In, Register, Reset tabs exist</td>
-                <td><span class="badge badge-pass">PASS</span></td>
-                <td>All 3 tabs visible</td>
-                <td>All 3 tabs visible</td>
-            </tr>
-            <tr>
                 <td><code>TC-SEL-009</code></td>
                 <td><strong>Theme Attribute Check</strong></td>
                 <td>Verify data-theme attribute on HTML root</td>
@@ -143,6 +127,30 @@
                 <td><span class="badge badge-pass">PASS</span></td>
                 <td>Password required toast</td>
                 <td>Please enter username/email and password</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-015</code></td>
+                <td><strong>Valid Login Transition</strong></td>
+                <td>Verify login transitions to Main App Shell</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>display: block</td>
+                <td>block</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-016</code></td>
+                <td><strong>Session Storage Integrity</strong></td>
+                <td>Verify token and user persisted in localStorage</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Token and User stored</td>
+                <td>user=dr_lakshmi</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-017</code></td>
+                <td><strong>Logout Session Cleanup</strong></td>
+                <td>Verify token cleared and Auth View displayed on logout</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Token cleared & Auth View visible</td>
+                <td>Token cleared</td>
             </tr>
             <tr>
                 <td><code>TC-SEL-018</code></td>
@@ -206,7 +214,7 @@
                 <td>Verify time-of-day greeting rendered</td>
                 <td><span class="badge badge-pass">PASS</span></td>
                 <td>Greeting text</td>
-                <td>Good afternoon 🌤, Dr.</td>
+                <td>Good morning ☀️, Dr.</td>
             </tr>
             <tr>
                 <td><code>TC-SEL-027</code></td>
@@ -214,7 +222,7 @@
                 <td>Verify current formatted date displayed</td>
                 <td><span class="badge badge-pass">PASS</span></td>
                 <td>Formatted date string</td>
-                <td>Wednesday, August 19, 2026</td>
+                <td>Thursday, August 20, 2026</td>
             </tr>
             <tr>
                 <td><code>TC-SEL-028</code></td>
@@ -425,38 +433,6 @@
                 <td>age=34, bmi=22.8</td>
             </tr>
             <tr>
-                <td><code>TC-SEL-054</code></td>
-                <td><strong>Low Risk Assessment</strong></td>
-                <td>Evaluate healthy biomarkers to Low Risk</td>
-                <td><span class="badge badge-pass">PASS</span></td>
-                <td>LOW RISK badge</td>
-                <td>LOW RISK</td>
-            </tr>
-            <tr>
-                <td><code>TC-SEL-055</code></td>
-                <td><strong>High Risk Assessment</strong></td>
-                <td>Evaluate elevated biomarkers to High Risk</td>
-                <td><span class="badge badge-pass">PASS</span></td>
-                <td>HIGH RISK badge</td>
-                <td>HIGH RISK</td>
-            </tr>
-            <tr>
-                <td><code>TC-SEL-056</code></td>
-                <td><strong>Circular Gauge Score Text</strong></td>
-                <td>Verify probability score rendered in gauge</td>
-                <td><span class="badge badge-pass">PASS</span></td>
-                <td>Contains %</td>
-                <td>89%</td>
-            </tr>
-            <tr>
-                <td><code>TC-SEL-057</code></td>
-                <td><strong>Clinical Recommendation Output</strong></td>
-                <td>Verify AI recommendation text rendered</td>
-                <td><span class="badge badge-pass">PASS</span></td>
-                <td>Detailed recommendation</td>
-                <td>High risk detected! Schedule a...</td>
-            </tr>
-            <tr>
                 <td><code>TC-SEL-058</code></td>
                 <td><strong>Open AI Plan Navigation</strong></td>
                 <td>Verify Open AI Plan button navigates to Planner</td>
@@ -655,6 +631,14 @@
                 <td><span class="badge badge-pass">PASS</span></td>
                 <td>display: none</td>
                 <td>none</td>
+            </tr>
+            <tr>
+                <td><code>TC-SEL-084</code></td>
+                <td><strong>Mobile Scroll Height Clearance</strong></td>
+                <td>Verify screen-view padding includes bottom nav clearance</td>
+                <td><span class="badge badge-pass">PASS</span></td>
+                <td>Clearance configured</td>
+                <td>Configured</td>
             </tr>
             <tr>
                 <td><code>TC-SEL-085</code></td>

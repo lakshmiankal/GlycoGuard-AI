@@ -1,16 +1,16 @@
 {
   "overall_status": "READY WITH MINOR ISSUES",
-  "total_test_cases": 302,
-  "passed": 285,
+  "total_test_cases": 300,
+  "passed": 283,
   "failed": 0,
   "blocked": 0,
   "not_executed": 17,
-  "pass_percentage": 94.4,
+  "pass_percentage": 94.3,
   "fail_percentage": 0.0,
   "category_breakdown": {
     "Selenium Web UI": {
-      "total": 95,
-      "passed": 95,
+      "total": 93,
+      "passed": 93,
       "failed": 0,
       "blocked": 0,
       "not_executed": 0
@@ -44,5 +44,5 @@
       "not_executed": 0
     }
   },
-  "generated_at": "2026-08-19T15:37:10.410238"
+  "generated_at": "2026-08-20T10:55:22.409909"
 }

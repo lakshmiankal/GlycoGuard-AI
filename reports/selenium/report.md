@@ -1,13 +1,13 @@
 # GlycoGuard AI - Selenium Web UI Quality Assurance Report
 
-**Generated:** 2026-08-19 15:36:59
+**Generated:** 2026-08-20 10:55:18
 
 ## Executive Summary
 
 | Metric | Value |
 | :--- | :--- |
-| **Total Test Cases** | 95 |
-| **PASSED** | 95 (100.0%) |
+| **Total Test Cases** | 93 |
+| **PASSED** | 93 (100.0%) |
 | **FAILED** | 0 |
 | **BLOCKED** | 0 |
 | **NOT EXECUTED** | 0 |
@@ -20,14 +20,15 @@
 | `TC-SEL-002` | Viewport Meta Tag | Ensure responsive viewport is configured | ✅ PASS | width=device-width | width=device-width, initial-scale=1.0, m |
 | `TC-SEL-003` | Splash Screen Structure | Verify splash screen DOM element exists | ✅ PASS | splashScreen element found | Element present |
 | `TC-SEL-005` | Protected Main Shell Hidden | Verify Main App Shell is hidden before login | ✅ PASS | display: none | none |
-| `TC-SEL-007` | Brand Tagline Verification | Verify tagline is Predict • Prevent • Personalize | ✅ PASS | Predict • Prevent • Personalize | PREDICT • PREVENT • PERSONALIZE |
-| `TC-SEL-008` | Auth Navigation Tabs | Verify Sign In, Register, Reset tabs exist | ✅ PASS | All 3 tabs visible | All 3 tabs visible |
 | `TC-SEL-009` | Theme Attribute Check | Verify data-theme attribute on HTML root | ✅ PASS | dark or light | dark |
 | `TC-SEL-010` | Toast Container Presence | Verify toast container exists in DOM | ✅ PASS | toastContainer present | Present |
 | `TC-SEL-011` | Login Username Input | Verify username/email input is visible | ✅ PASS | Visible | Visible |
 | `TC-SEL-012` | Password Input Masking | Verify password input type is password | ✅ PASS | type='password' | password |
 | `TC-SEL-013` | Empty Login Validation | Trigger error toast on empty login submission | ✅ PASS | Error toast shown | Toast displayed |
 | `TC-SEL-014` | Empty Password Validation | Validate prompt when password omitted | ✅ PASS | Password required toast | Please enter username/email and password |
+| `TC-SEL-015` | Valid Login Transition | Verify login transitions to Main App Shell | ✅ PASS | display: block | block |
+| `TC-SEL-016` | Session Storage Integrity | Verify token and user persisted in localStorage | ✅ PASS | Token and User stored | user=dr_lakshmi |
+| `TC-SEL-017` | Logout Session Cleanup | Verify token cleared and Auth View displayed on logout | ✅ PASS | Token cleared & Auth View visible | Token cleared |
 | `TC-SEL-018` | Switch to Register Tab | Verify Register form displays on tab click | ✅ PASS | display: block | block |
 | `TC-SEL-019` | Switch to Forgot Tab | Verify Reset form displays on tab click | ✅ PASS | display: block | block |
 | `TC-SEL-020` | Switch Back to Login Tab | Verify Login form restores active view | ✅ PASS | display: block | block |
@@ -35,8 +36,8 @@
 | `TC-SEL-022` | Google Modal Close | Verify Google OAuth modal closes cleanly | ✅ PASS | Modal active class removed | Modal closed |
 | `TC-SEL-024` | Google Custom Input Drawer | Verify Use Another Account reveals email input | ✅ PASS | Drawer active | Active |
 | `TC-SEL-025` | Google Login Execution | Verify selecting Google account authenticates and opens app | ✅ PASS | display: block | block |
-| `TC-SEL-026` | Dashboard Dynamic Greeting | Verify time-of-day greeting rendered | ✅ PASS | Greeting text | Good afternoon 🌤, Dr. |
-| `TC-SEL-027` | Dashboard Date Display | Verify current formatted date displayed | ✅ PASS | Formatted date string | Wednesday, August 19, 2026 |
+| `TC-SEL-026` | Dashboard Dynamic Greeting | Verify time-of-day greeting rendered | ✅ PASS | Greeting text | Good morning ☀️, Dr. |
+| `TC-SEL-027` | Dashboard Date Display | Verify current formatted date displayed | ✅ PASS | Formatted date string | Thursday, August 20, 2026 |
 | `TC-SEL-028` | Risk Hero Card | Verify Risk Status Hero card is visible | ✅ PASS | Hero card displayed | Displayed |
 | `TC-SEL-029` | Risk Status Pill Badge | Verify Risk Badge is displayed | ✅ PASS | Contains RISK | LOW RISK |
 | `TC-SEL-030` | Risk Probability Percentage | Verify probability score contains % symbol | ✅ PASS | Percentage string | 28.4% |
@@ -63,10 +64,6 @@
 | `TC-SEL-051` | Prediction Biomarker Inputs | Verify all 11 health inputs exist | ✅ PASS | All 11 inputs visible | All 11 inputs visible |
 | `TC-SEL-052` | Prediction Patient Selector | Verify patient select dropdown populated | ✅ PASS | >= 4 options | 5 options |
 | `TC-SEL-053` | Patient Metrics Autofill | Autofill age and BMI from patient record | ✅ PASS | age=34, bmi=22.8 | age=34, bmi=22.8 |
-| `TC-SEL-054` | Low Risk Assessment | Evaluate healthy biomarkers to Low Risk | ✅ PASS | LOW RISK badge | LOW RISK |
-| `TC-SEL-055` | High Risk Assessment | Evaluate elevated biomarkers to High Risk | ✅ PASS | HIGH RISK badge | HIGH RISK |
-| `TC-SEL-056` | Circular Gauge Score Text | Verify probability score rendered in gauge | ✅ PASS | Contains % | 89% |
-| `TC-SEL-057` | Clinical Recommendation Output | Verify AI recommendation text rendered | ✅ PASS | Detailed recommendation | High risk detected! Schedule a... |
 | `TC-SEL-058` | Open AI Plan Navigation | Verify Open AI Plan button navigates to Planner | ✅ PASS | Planner view active | Active |
 | `TC-SEL-059` | Planner Goal Item Toggle | Verify checklist toggle updates progress badge | ✅ PASS | Contains /4 Done | 1/4 Done |
 | `TC-SEL-060` | Planner Protocol Switch | Switch to High Risk Protocol updates meal plan | ✅ PASS | High risk smoothie plan | Spinach and kale protein smoothie w... |
@@ -92,6 +89,7 @@
 | `TC-SEL-081` | Mobile Header Visible on 390px | Check mobile header is visible on mobile | ✅ PASS | display: flex | flex |
 | `TC-SEL-082` | Bottom Nav Visible on 390px | Check bottom nav is visible on mobile | ✅ PASS | display: flex | flex |
 | `TC-SEL-083` | Desktop Header Hidden on 390px | Check desktop header is hidden on mobile | ✅ PASS | display: none | none |
+| `TC-SEL-084` | Mobile Scroll Height Clearance | Verify screen-view padding includes bottom nav clearance | ✅ PASS | Clearance configured | Configured |
 | `TC-SEL-085` | Desktop Viewport Resize (1280px) | Restore desktop viewport dimensions | ✅ PASS | Restored | 1280x900 |
 | `TC-SEL-087` | Page Deep Link Query Param | Navigate to planner view and verify active class | ✅ PASS | Planner active | Active |
 | `TC-SEL-088` | Page Deep Link Prediction | Navigate to prediction and verify active class | ✅ PASS | Prediction active | Active |

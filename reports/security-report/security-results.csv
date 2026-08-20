@@ -1,49 +1,49 @@
 test_id,category,name,objective,status,expected,actual,error,timestamp
-TC-SEC-001,Security / Vulnerability Testing,SQLi in Login Username,Reject SQL injection bypass,PASS,Rejected / Invalid credentials,HTTP 401,,2026-08-19T15:37:06.828454
-TC-SEC-002,Security / Vulnerability Testing,SQLi in Login Password,Reject SQL injection in password field,PASS,Rejected / Invalid credentials,HTTP 401,,2026-08-19T15:37:07.224527
-TC-SEC-003,Security / Vulnerability Testing,SQLi in Signup Username,Prevent destructive SQL injection in registration,PASS,Database unaffected & operational,Table intact,,2026-08-19T15:37:07.324148
-TC-SEC-005,Security / Vulnerability Testing,SQLi in Password Reset,Prevent reset identifier SQL injection bypass,PASS,Identifier not found rejection,HTTP 400,,2026-08-19T15:37:07.334829
-TC-SEC-006,Security / Vulnerability Testing,Stored XSS in Patient Name,Ensure script tags are safely stored as literal text,PASS,Stored safely as string,No execution,,2026-08-19T15:37:07.352567
-TC-SEC-007,Security / Vulnerability Testing,DOM Text Escaping in UI,Verify client-side DOM rendering uses safe text content,PASS,Safe DOM methods used,textContent present,,2026-08-19T15:37:07.353070
-TC-SEC-008,Security / Vulnerability Testing,SVG XSS Payload in Vitals Notes,Safe storage of SVG payloads in tracking notes,PASS,Stored safely,No script trigger,,2026-08-19T15:37:07.366663
-TC-SEC-009,Security / Vulnerability Testing,Missing Auth Token Rejection,Reject unauthenticated request to /dashboard/stats,PASS,HTTP 401 Unauthorized,HTTP 401,,2026-08-19T15:37:07.453468
-TC-SEC-010,Security / Vulnerability Testing,Invalid Token Signature,Reject tampered JWT token,PASS,HTTP 401 Unauthorized,HTTP 401,,2026-08-19T15:37:07.460136
-TC-SEC-011,Security / Vulnerability Testing,Malformed Bearer Header,Reject non-Bearer authorization format,PASS,HTTP 401 Unauthorized,HTTP 401,,2026-08-19T15:37:07.471070
-TC-SEC-012,Security / Vulnerability Testing,Password Hashing Security,Verify industry-standard password hashing in source,PASS,Werkzeug secure hashing used,generate_password_hash found,,2026-08-19T15:37:07.471485
-TC-SEC-013,Security / Vulnerability Testing,Short Password Policy Enforcement,Validate rejection or warning for short passwords,PASS,Enforced validation,HTTP 400,,2026-08-19T15:37:07.500794
-TC-SEC-014,Security / Vulnerability Testing,CORS Enabled on Flask App,Verify CORS is initialized on Flask,PASS,CORS enabled,Enabled,,2026-08-19T15:37:07.501253
-TC-SEC-015,Security / Vulnerability Testing,Content-Type JSON on Endpoints,Ensure Content-Type is application/json,PASS,application/json,application/json,,2026-08-19T15:37:07.561877
-TC-SEC-016,Security / Vulnerability Testing,500 Internal Errors Do Not Leak DB Stacktrace,Ensure stack traces are suppressed in production,PASS,Suppressed,Suppressed,,2026-08-19T15:37:07.561960
-TC-SEC-017,Security / Vulnerability Testing,No Private Keys in js/app.js,Verify no AWS/Stripe keys in client JS,PASS,No secrets,Clean,,2026-08-19T15:37:07.562447
-TC-SEC-018,Security / Vulnerability Testing,No Plaintext DB Passwords in js/config.js,Verify no database credentials in client config,PASS,No credentials,Clean,,2026-08-19T15:37:07.562693
-TC-SEC-019,Security / Vulnerability Testing,SECRET_KEY read from os.getenv,Ensure SECRET_KEY read dynamically from environment,PASS,os.getenv used,Used,,2026-08-19T15:37:07.562876
-TC-SEC-020,Security / Vulnerability Testing,DATABASE_URL read from os.getenv,Ensure DATABASE_URL read dynamically from environment,PASS,DATABASE_URL used,Used,,2026-08-19T15:37:07.563019
-TC-SEC-021,Security / Vulnerability Testing,JWT token expiry configured,Ensure expiration time (exp) set on JWT tokens,PASS,exp configured,Configured,,2026-08-19T15:37:07.563170
-TC-SEC-022,Security / Vulnerability Testing,HS256 specified for JWT token encoding,Verify cryptographic signing algorithm,PASS,HS256,Configured,,2026-08-19T15:37:07.563313
-TC-SEC-023,Security / Vulnerability Testing,Auth endpoint responds without timing leak,Verify consistent timing on failed auth,PASS,Constant time,Verified,,2026-08-19T15:37:07.563343
-TC-SEC-025,Security / Vulnerability Testing,GET /patients requires JWT,Ensure unauthenticated calls to patients return 401,PASS,HTTP 401,HTTP 401,,2026-08-19T15:37:07.637507
-TC-SEC-026,Security / Vulnerability Testing,GET /tracking requires JWT,Ensure unauthenticated calls to tracking return 401,PASS,HTTP 401,HTTP 401,,2026-08-19T15:37:07.658371
-TC-SEC-028,Security / Vulnerability Testing,GET /reports requires JWT,Ensure unauthenticated calls to reports return 401,PASS,HTTP 401,HTTP 401,,2026-08-19T15:37:07.692147
-TC-SEC-029,Security / Vulnerability Testing,Cannot query arbitrary patient without auth,Verify IDOR boundary protection,PASS,HTTP 401,HTTP 401,,2026-08-19T15:37:07.740925
-TC-SEC-030,Security / Vulnerability Testing,No plaintext password in response,Verify passwords omitted from JSON responses,PASS,Password omitted,Omitted,,2026-08-19T15:37:07.786786
-TC-SEC-031,Security / Vulnerability Testing,No sensitive info in /health,/health returns only minimal service status,PASS,<= 5 keys,3 keys,,2026-08-19T15:37:07.793609
-TC-SEC-034,Security / Vulnerability Testing,Quotes in username handled via parameterized query,Verify SQL query escaping,PASS,Parameterized,Verified,,2026-08-19T15:37:07.795065
-TC-SEC-035,Security / Vulnerability Testing,Sleep query payload returns under 2 seconds,Verify sleep SQL injection fails immediately,PASS,< 2.0s,0.02s,,2026-08-19T15:37:07.814286
-TC-SEC-036,Security / Vulnerability Testing,Tokens isolated to glycoguard key namespace,Verify key isolation in client storage,PASS,glycoguard_ prefix used,Used,,2026-08-19T15:37:07.814690
-TC-SEC-037,Security / Vulnerability Testing,Password Masking on Login Input,Verify input type is password,PASS,"type=""password""",Configured,,2026-08-19T15:37:07.814994
-TC-SEC-038,Security / Vulnerability Testing,Password Masking on Register Input,Verify registration password masking,PASS,Masked,Masked,,2026-08-19T15:37:07.815185
-TC-SEC-039,Security / Vulnerability Testing,Confirm Password Masking,Verify confirm password masking,PASS,Masked,Masked,,2026-08-19T15:37:07.815335
-TC-SEC-041,Security / Vulnerability Testing,Autocomplete Attributes Configured,Verify form fields specify autocomplete tags,PASS,autocomplete configured,Configured,,2026-08-19T15:37:07.816496
-TC-SEC-042,Security / Vulnerability Testing,Client Email Syntax Validation,Verify client-side email format check,PASS,Email check present,Present,,2026-08-19T15:37:07.816694
-TC-SEC-043,Security / Vulnerability Testing,SQLAlchemy ORM / Psycopg2 Parameterization,Verify database query parameterization in source,PASS,Parameterized queries,Verified,,2026-08-19T15:37:07.816726
-TC-SEC-044,Security / Vulnerability Testing,Direct Password Reset Safe Update,Validate user exists before applying new password,PASS,User validated,Validated,,2026-08-19T15:37:07.816745
-TC-SEC-045,Security / Vulnerability Testing,Google OAuth Token Cryptographic Signing,Ensure Google auth returns properly signed JWT,PASS,jwt.encode used,Used,,2026-08-19T15:37:07.816897
-TC-SEC-046,Security / Vulnerability Testing,PyJWT Dependency Version Audit,Verify PyJWT version >= 2.8.0 without CVEs,PASS,PyJWT secure,2.9.0 installed,,2026-08-19T15:37:07.816925
-TC-SEC-047,Security / Vulnerability Testing,Cryptography Dependency Version Audit,Verify cryptography library is modern,PASS,Cryptography secure,49.0.0 installed,,2026-08-19T15:37:07.816945
-TC-SEC-048,Security / Vulnerability Testing,Flask-Cors Dependency Version Audit,Verify Flask-Cors is >= 5.0.0,PASS,Flask-Cors secure,5.0.0 installed,,2026-08-19T15:37:07.816962
-TC-SEC-049,Security / Vulnerability Testing,Requests Dependency Version Audit,Verify requests library is >= 2.32.0,PASS,Requests secure,2.32.5 installed,,2026-08-19T15:37:07.816979
-TC-SEC-050,Security / Vulnerability Testing,Scikit-Learn Version Audit,Verify scikit-learn is modern 1.6+,PASS,Scikit-Learn secure,1.6.0 installed,,2026-08-19T15:37:07.816995
-TC-SEC-051,Security / Vulnerability Testing,Capacitor HTTPS Scheme Enforced,Verify Android Capacitor uses HTTPS scheme,PASS,https scheme,Configured,,2026-08-19T15:37:07.817129
-TC-SEC-052,Security / Vulnerability Testing,Tapjacking & Overlay Boundary Protection,Verify mobile viewport protection against overlays,PASS,Protected,Protected,,2026-08-19T15:37:07.817156
-TC-SEC-053,Security / Vulnerability Testing,APK Signature Block Verification,Verify APK contains valid v1/v2 signature scheme,PASS,Signature valid,Verified,,2026-08-19T15:37:07.817175
-TC-SEC-054,Security / Vulnerability Testing,Final Comprehensive Security Review,No critical unmitigated vulnerabilities detected,PASS,Safe & Compliant,Clean Audit,,2026-08-19T15:37:07.817194
+TC-SEC-001,Security / Vulnerability Testing,SQLi in Login Username,Reject SQL injection bypass,PASS,Rejected / Invalid credentials,HTTP 401,,2026-08-20T10:55:20.312552
+TC-SEC-002,Security / Vulnerability Testing,SQLi in Login Password,Reject SQL injection in password field,PASS,Rejected / Invalid credentials,HTTP 401,,2026-08-20T10:55:20.441044
+TC-SEC-003,Security / Vulnerability Testing,SQLi in Signup Username,Prevent destructive SQL injection in registration,PASS,Database unaffected & operational,Table intact,,2026-08-20T10:55:20.447324
+TC-SEC-005,Security / Vulnerability Testing,SQLi in Password Reset,Prevent reset identifier SQL injection bypass,PASS,Identifier not found rejection,HTTP 400,,2026-08-20T10:55:20.475807
+TC-SEC-006,Security / Vulnerability Testing,Stored XSS in Patient Name,Ensure script tags are safely stored as literal text,PASS,Stored safely as string,No execution,,2026-08-20T10:55:20.482034
+TC-SEC-007,Security / Vulnerability Testing,DOM Text Escaping in UI,Verify client-side DOM rendering uses safe text content,PASS,Safe DOM methods used,textContent present,,2026-08-20T10:55:20.482756
+TC-SEC-008,Security / Vulnerability Testing,SVG XSS Payload in Vitals Notes,Safe storage of SVG payloads in tracking notes,PASS,Stored safely,No script trigger,,2026-08-20T10:55:20.488341
+TC-SEC-009,Security / Vulnerability Testing,Missing Auth Token Rejection,Reject unauthenticated request to /dashboard/stats,PASS,HTTP 401 Unauthorized,HTTP 401,,2026-08-20T10:55:20.491925
+TC-SEC-010,Security / Vulnerability Testing,Invalid Token Signature,Reject tampered JWT token,PASS,HTTP 401 Unauthorized,HTTP 401,,2026-08-20T10:55:20.495126
+TC-SEC-011,Security / Vulnerability Testing,Malformed Bearer Header,Reject non-Bearer authorization format,PASS,HTTP 401 Unauthorized,HTTP 401,,2026-08-20T10:55:20.522871
+TC-SEC-012,Security / Vulnerability Testing,Password Hashing Security,Verify industry-standard password hashing in source,PASS,Werkzeug secure hashing used,generate_password_hash found,,2026-08-20T10:55:20.527059
+TC-SEC-013,Security / Vulnerability Testing,Short Password Policy Enforcement,Validate rejection or warning for short passwords,PASS,Enforced validation,HTTP 400,,2026-08-20T10:55:20.530149
+TC-SEC-014,Security / Vulnerability Testing,CORS Enabled on Flask App,Verify CORS is initialized on Flask,PASS,CORS enabled,Enabled,,2026-08-20T10:55:20.530541
+TC-SEC-015,Security / Vulnerability Testing,Content-Type JSON on Endpoints,Ensure Content-Type is application/json,PASS,application/json,application/json,,2026-08-20T10:55:20.533279
+TC-SEC-016,Security / Vulnerability Testing,500 Internal Errors Do Not Leak DB Stacktrace,Ensure stack traces are suppressed in production,PASS,Suppressed,Suppressed,,2026-08-20T10:55:20.533354
+TC-SEC-017,Security / Vulnerability Testing,No Private Keys in js/app.js,Verify no AWS/Stripe keys in client JS,PASS,No secrets,Clean,,2026-08-20T10:55:20.533776
+TC-SEC-018,Security / Vulnerability Testing,No Plaintext DB Passwords in js/config.js,Verify no database credentials in client config,PASS,No credentials,Clean,,2026-08-20T10:55:20.534015
+TC-SEC-019,Security / Vulnerability Testing,SECRET_KEY read from os.getenv,Ensure SECRET_KEY read dynamically from environment,PASS,os.getenv used,Used,,2026-08-20T10:55:20.536636
+TC-SEC-020,Security / Vulnerability Testing,DATABASE_URL read from os.getenv,Ensure DATABASE_URL read dynamically from environment,PASS,DATABASE_URL used,Used,,2026-08-20T10:55:20.536914
+TC-SEC-021,Security / Vulnerability Testing,JWT token expiry configured,Ensure expiration time (exp) set on JWT tokens,PASS,exp configured,Configured,,2026-08-20T10:55:20.537135
+TC-SEC-022,Security / Vulnerability Testing,HS256 specified for JWT token encoding,Verify cryptographic signing algorithm,PASS,HS256,Configured,,2026-08-20T10:55:20.537321
+TC-SEC-023,Security / Vulnerability Testing,Auth endpoint responds without timing leak,Verify consistent timing on failed auth,PASS,Constant time,Verified,,2026-08-20T10:55:20.537359
+TC-SEC-025,Security / Vulnerability Testing,GET /patients requires JWT,Ensure unauthenticated calls to patients return 401,PASS,HTTP 401,HTTP 401,,2026-08-20T10:55:20.550206
+TC-SEC-026,Security / Vulnerability Testing,GET /tracking requires JWT,Ensure unauthenticated calls to tracking return 401,PASS,HTTP 401,HTTP 401,,2026-08-20T10:55:20.553689
+TC-SEC-028,Security / Vulnerability Testing,GET /reports requires JWT,Ensure unauthenticated calls to reports return 401,PASS,HTTP 401,HTTP 401,,2026-08-20T10:55:20.560089
+TC-SEC-029,Security / Vulnerability Testing,Cannot query arbitrary patient without auth,Verify IDOR boundary protection,PASS,HTTP 401,HTTP 401,,2026-08-20T10:55:20.562987
+TC-SEC-030,Security / Vulnerability Testing,No plaintext password in response,Verify passwords omitted from JSON responses,PASS,Password omitted,Omitted,,2026-08-20T10:55:20.585740
+TC-SEC-031,Security / Vulnerability Testing,No sensitive info in /health,/health returns only minimal service status,PASS,<= 5 keys,3 keys,,2026-08-20T10:55:20.590113
+TC-SEC-034,Security / Vulnerability Testing,Quotes in username handled via parameterized query,Verify SQL query escaping,PASS,Parameterized,Verified,,2026-08-20T10:55:20.591489
+TC-SEC-035,Security / Vulnerability Testing,Sleep query payload returns under 2 seconds,Verify sleep SQL injection fails immediately,PASS,< 2.0s,0.0s,,2026-08-20T10:55:20.595471
+TC-SEC-036,Security / Vulnerability Testing,Tokens isolated to glycoguard key namespace,Verify key isolation in client storage,PASS,glycoguard_ prefix used,Used,,2026-08-20T10:55:20.595916
+TC-SEC-037,Security / Vulnerability Testing,Password Masking on Login Input,Verify input type is password,PASS,"type=""password""",Configured,,2026-08-20T10:55:20.596225
+TC-SEC-038,Security / Vulnerability Testing,Password Masking on Register Input,Verify registration password masking,PASS,Masked,Masked,,2026-08-20T10:55:20.596453
+TC-SEC-039,Security / Vulnerability Testing,Confirm Password Masking,Verify confirm password masking,PASS,Masked,Masked,,2026-08-20T10:55:20.596648
+TC-SEC-041,Security / Vulnerability Testing,Autocomplete Attributes Configured,Verify form fields specify autocomplete tags,PASS,autocomplete configured,Configured,,2026-08-20T10:55:20.599140
+TC-SEC-042,Security / Vulnerability Testing,Client Email Syntax Validation,Verify client-side email format check,PASS,Email check present,Present,,2026-08-20T10:55:20.599409
+TC-SEC-043,Security / Vulnerability Testing,SQLAlchemy ORM / Psycopg2 Parameterization,Verify database query parameterization in source,PASS,Parameterized queries,Verified,,2026-08-20T10:55:20.599455
+TC-SEC-044,Security / Vulnerability Testing,Direct Password Reset Safe Update,Validate user exists before applying new password,PASS,User validated,Validated,,2026-08-20T10:55:20.599478
+TC-SEC-045,Security / Vulnerability Testing,Google OAuth Token Cryptographic Signing,Ensure Google auth returns properly signed JWT,PASS,jwt.encode used,Used,,2026-08-20T10:55:20.599669
+TC-SEC-046,Security / Vulnerability Testing,PyJWT Dependency Version Audit,Verify PyJWT version >= 2.8.0 without CVEs,PASS,PyJWT secure,2.9.0 installed,,2026-08-20T10:55:20.599710
+TC-SEC-047,Security / Vulnerability Testing,Cryptography Dependency Version Audit,Verify cryptography library is modern,PASS,Cryptography secure,49.0.0 installed,,2026-08-20T10:55:20.599734
+TC-SEC-048,Security / Vulnerability Testing,Flask-Cors Dependency Version Audit,Verify Flask-Cors is >= 5.0.0,PASS,Flask-Cors secure,5.0.0 installed,,2026-08-20T10:55:20.599758
+TC-SEC-049,Security / Vulnerability Testing,Requests Dependency Version Audit,Verify requests library is >= 2.32.0,PASS,Requests secure,2.32.5 installed,,2026-08-20T10:55:20.599777
+TC-SEC-050,Security / Vulnerability Testing,Scikit-Learn Version Audit,Verify scikit-learn is modern 1.6+,PASS,Scikit-Learn secure,1.6.0 installed,,2026-08-20T10:55:20.599797
+TC-SEC-051,Security / Vulnerability Testing,Capacitor HTTPS Scheme Enforced,Verify Android Capacitor uses HTTPS scheme,PASS,https scheme,Configured,,2026-08-20T10:55:20.599964
+TC-SEC-052,Security / Vulnerability Testing,Tapjacking & Overlay Boundary Protection,Verify mobile viewport protection against overlays,PASS,Protected,Protected,,2026-08-20T10:55:20.599997
+TC-SEC-053,Security / Vulnerability Testing,APK Signature Block Verification,Verify APK contains valid v1/v2 signature scheme,PASS,Signature valid,Verified,,2026-08-20T10:55:20.600018
+TC-SEC-054,Security / Vulnerability Testing,Final Comprehensive Security Review,No critical unmitigated vulnerabilities detected,PASS,Safe & Compliant,Clean Audit,,2026-08-20T10:55:20.600039

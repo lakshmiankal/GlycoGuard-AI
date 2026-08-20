@@ -6,7 +6,13 @@
   "scripts": {
     "build": "python build_www.py",
     "cap:sync": "python build_www.py && npx cap sync android",
-    "cap:open": "npx cap open android"
+    "cap:open": "npx cap open android",
+    "test:selenium": "node selenium-tests/tests/login-tests.js",
+    "test:appium": "node appium-tests/tests/mobile-tests.js",
+    "test:load": "python load-tests/run_load_test.py",
+    "test:security": "python generate_security_assessment.py",
+    "test:all": "npm run test:selenium && npm run test:appium && npm run test:load && npm run test:security && python collect_all_excel_reports.py",
+    "test:e2e": "node selenium-tests/tests/login-tests.js"
   },
   "keywords": [
     "glycoguard",
@@ -22,5 +28,10 @@
     "@capacitor/app": "^6.0.2",
     "@capacitor/cli": "^6.2.0",
     "@capacitor/core": "^6.2.0"
+  },
+  "devDependencies": {
+    "chromedriver": "^152.0.0",
+    "exceljs": "^4.4.0",
+    "selenium-webdriver": "^4.47.0"
   }
 }

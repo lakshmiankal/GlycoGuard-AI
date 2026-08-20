@@ -1,39 +1,39 @@
 test_id,category,name,objective,status,expected,actual,error,timestamp
-TC-FUNC-001,Web Build / Application Functional Validation,Build Script Execution,Execute build_www.py without error,PASS,Return code 0,Code 0,,2026-08-19T15:37:08.025833
-TC-FUNC-002,Web Build / Application Functional Validation,www/index.html Presence,Verify www/index.html bundled,PASS,File exists > 1KB,65166 bytes,,2026-08-19T15:37:08.026005
-TC-FUNC-003,Web Build / Application Functional Validation,www/css/app.css Presence,Verify www/css/app.css bundled,PASS,File exists > 1KB,33754 bytes,,2026-08-19T15:37:08.026082
-TC-FUNC-004,Web Build / Application Functional Validation,www/js/app.js Presence,Verify www/js/app.js bundled,PASS,File exists > 1KB,62401 bytes,,2026-08-19T15:37:08.026137
-TC-FUNC-005,Web Build / Application Functional Validation,www/js/config.js Presence,Verify www/js/config.js bundled,PASS,File exists > 500B,3876 bytes,,2026-08-19T15:37:08.026189
-TC-FUNC-006,Web Build / Application Functional Validation,Android index.html Sync,Verify Android index matches root exactly,PASS,Exact match,100% Match,,2026-08-19T15:37:08.026683
-TC-FUNC-007,Web Build / Application Functional Validation,Android css/app.css Sync,Verify Android CSS matches root exactly,PASS,Exact match,100% Match,,2026-08-19T15:37:08.027003
-TC-FUNC-008,Web Build / Application Functional Validation,Android js/app.js Sync,Verify Android JS matches root exactly,PASS,Exact match,100% Match,,2026-08-19T15:37:08.027330
-TC-FUNC-009,Web Build / Application Functional Validation,mobile/index.html Alias Sync,Verify mobile/index.html matches single source of truth,PASS,Exact match,100% Match,,2026-08-19T15:37:08.027647
-TC-FUNC-010,Web Build / Application Functional Validation,auth.html Alias Sync,Verify root auth.html is in sync with index.html,PASS,Exact match,100% Match,,2026-08-19T15:37:08.027950
-TC-FUNC-011,Web Build / Application Functional Validation,ML Model Pickle Deserialization,Load model.pkl and verify predict methods,PASS,Model loaded,Type: RandomForestClassifier,,2026-08-19T15:37:09.596078
-TC-FUNC-012,Web Build / Application Functional Validation,ML Model Benchmark Classification,Evaluate clinical sample with trained model,PASS,Valid probability score,Risk Prob: 0.71,,2026-08-19T15:37:09.614059
-TC-FUNC-013,Web Build / Application Functional Validation,Clinical Datasets Integrity,Verify raw and cleaned diabetes CSV datasets exist,PASS,Both datasets present,Present,,2026-08-19T15:37:09.614374
-TC-FUNC-014,Web Build / Application Functional Validation,Model Evaluation Artifact,Verify confusion matrix chart PNG exists,PASS,PNG artifact present,15209 bytes,,2026-08-19T15:37:09.614479
-TC-FUNC-015,Web Build / Application Functional Validation,Cloud Procfile Configuration,Verify Procfile specifies gunicorn entrypoint,PASS,web: gunicorn wsgi:app,web: gunicorn --chdir backend app:app --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120,,2026-08-19T15:37:09.614738
-TC-FUNC-016,Web Build / Application Functional Validation,render.yaml Manifest Validity,Verify render deployment manifest,PASS,Valid manifest,Valid,,2026-08-19T15:37:09.614957
-TC-FUNC-017,Web Build / Application Functional Validation,package.json Build Scripts,Verify package.json build script configured,PASS,Build script present,Present,,2026-08-19T15:37:09.615159
-TC-FUNC-018,Web Build / Application Functional Validation,Capacitor App Dependencies,Verify Capacitor android dependency declared,PASS,Capacitor present,Present,,2026-08-19T15:37:09.615316
-TC-FUNC-019,Web Build / Application Functional Validation,Frontend Redirect: dashboard.html,Verify legacy dashboard redirect,PASS,Redirect configured,Configured,,2026-08-19T15:37:09.615521
-TC-FUNC-020,Web Build / Application Functional Validation,Frontend Redirect: prediction.html,Verify legacy prediction redirect,PASS,Redirect configured,Configured,,2026-08-19T15:37:09.615708
-TC-FUNC-021,Web Build / Application Functional Validation,Frontend Redirect: patients.html,Verify legacy patients redirect,PASS,Redirect configured,Configured,,2026-08-19T15:37:09.615870
-TC-FUNC-022,Web Build / Application Functional Validation,Frontend Redirect: tracking.html,Verify legacy tracking redirect,PASS,Redirect configured,Configured,,2026-08-19T15:37:09.616029
-TC-FUNC-023,Web Build / Application Functional Validation,Frontend Redirect: planner.html,Verify legacy planner redirect,PASS,Redirect configured,Configured,,2026-08-19T15:37:09.616194
-TC-FUNC-024,Web Build / Application Functional Validation,Frontend Redirect: analytics.html,Verify legacy analytics redirect,PASS,Redirect configured,Configured,,2026-08-19T15:37:09.616351
-TC-FUNC-025,Web Build / Application Functional Validation,Frontend Redirect: reports.html,Verify legacy reports redirect,PASS,Redirect configured,Configured,,2026-08-19T15:37:09.616520
-TC-FUNC-026,Web Build / Application Functional Validation,Backend Blueprint: auth.py,Verify auth blueprint exists,PASS,File exists,Exists,,2026-08-19T15:37:09.616598
-TC-FUNC-027,Web Build / Application Functional Validation,Backend Blueprint: prediction.py,Verify prediction blueprint exists,PASS,File exists,Exists,,2026-08-19T15:37:09.616655
-TC-FUNC-028,Web Build / Application Functional Validation,Backend Blueprint: patient.py,Verify patient blueprint exists,PASS,File exists,Exists,,2026-08-19T15:37:09.616740
-TC-FUNC-029,Web Build / Application Functional Validation,Backend Blueprint: tracking.py,Verify tracking blueprint exists,PASS,File exists,Exists,,2026-08-19T15:37:09.616794
-TC-FUNC-030,Web Build / Application Functional Validation,Backend Blueprint: planner.py,Verify planner blueprint exists,PASS,File exists,Exists,,2026-08-19T15:37:09.616852
-TC-FUNC-031,Web Build / Application Functional Validation,Backend Blueprint: reports.py,Verify reports blueprint exists,PASS,File exists,Exists,,2026-08-19T15:37:09.616911
-TC-FUNC-032,Web Build / Application Functional Validation,Backend Blueprint: dashboard.py,Verify dashboard blueprint exists,PASS,File exists,Exists,,2026-08-19T15:37:09.616993
-TC-FUNC-033,Web Build / Application Functional Validation,Backend Live /health Verification,Verify backend responds with v2.0,PASS,version 2.0,v2.0,,2026-08-19T15:37:09.682184
-TC-FUNC-034,Web Build / Application Functional Validation,Live Signup & JWT Generation,Verify live JWT issue from backend,PASS,JWT issued,Issued,,2026-08-19T15:37:09.720686
-TC-FUNC-035,Web Build / Application Functional Validation,Live Prediction ML Pipeline,Verify live end-to-end prediction response,PASS,HTTP 200,HTTP 200,,2026-08-19T15:37:10.120304
-TC-FUNC-036,Web Build / Application Functional Validation,Live Dashboard Metrics Fetch,Verify live dashboard statistics endpoint,PASS,HTTP 200,HTTP 200,,2026-08-19T15:37:10.283788
-TC-FUNC-037,Web Build / Application Functional Validation,Static Web Server Asset Serving,Verify HTTP 200 on index.html serving,PASS,HTTP 200,HTTP 200,,2026-08-19T15:37:10.310747
-TC-FUNC-038,Web Build / Application Functional Validation,End-to-End System Operational Integrity,Complete end-to-end operational check,PASS,All components operational,Operational,,2026-08-19T15:37:10.310829
+TC-FUNC-001,Web Build / Application Functional Validation,Build Script Execution,Execute build_www.py without error,PASS,Return code 0,Code 0,,2026-08-20T10:55:20.749729
+TC-FUNC-002,Web Build / Application Functional Validation,www/index.html Presence,Verify www/index.html bundled,PASS,File exists > 1KB,65166 bytes,,2026-08-20T10:55:20.749921
+TC-FUNC-003,Web Build / Application Functional Validation,www/css/app.css Presence,Verify www/css/app.css bundled,PASS,File exists > 1KB,33754 bytes,,2026-08-20T10:55:20.750009
+TC-FUNC-004,Web Build / Application Functional Validation,www/js/app.js Presence,Verify www/js/app.js bundled,PASS,File exists > 1KB,62401 bytes,,2026-08-20T10:55:20.750076
+TC-FUNC-005,Web Build / Application Functional Validation,www/js/config.js Presence,Verify www/js/config.js bundled,PASS,File exists > 500B,3876 bytes,,2026-08-20T10:55:20.750137
+TC-FUNC-006,Web Build / Application Functional Validation,Android index.html Sync,Verify Android index matches root exactly,PASS,Exact match,100% Match,,2026-08-20T10:55:20.750705
+TC-FUNC-007,Web Build / Application Functional Validation,Android css/app.css Sync,Verify Android CSS matches root exactly,PASS,Exact match,100% Match,,2026-08-20T10:55:20.751139
+TC-FUNC-008,Web Build / Application Functional Validation,Android js/app.js Sync,Verify Android JS matches root exactly,PASS,Exact match,100% Match,,2026-08-20T10:55:20.751580
+TC-FUNC-009,Web Build / Application Functional Validation,mobile/index.html Alias Sync,Verify mobile/index.html matches single source of truth,PASS,Exact match,100% Match,,2026-08-20T10:55:20.752394
+TC-FUNC-010,Web Build / Application Functional Validation,auth.html Alias Sync,Verify root auth.html is in sync with index.html,PASS,Exact match,100% Match,,2026-08-20T10:55:20.752938
+TC-FUNC-011,Web Build / Application Functional Validation,ML Model Pickle Deserialization,Load model.pkl and verify predict methods,PASS,Model loaded,Type: RandomForestClassifier,,2026-08-20T10:55:22.316333
+TC-FUNC-012,Web Build / Application Functional Validation,ML Model Benchmark Classification,Evaluate clinical sample with trained model,PASS,Valid probability score,Risk Prob: 0.71,,2026-08-20T10:55:22.349241
+TC-FUNC-013,Web Build / Application Functional Validation,Clinical Datasets Integrity,Verify raw and cleaned diabetes CSV datasets exist,PASS,Both datasets present,Present,,2026-08-20T10:55:22.349625
+TC-FUNC-014,Web Build / Application Functional Validation,Model Evaluation Artifact,Verify confusion matrix chart PNG exists,PASS,PNG artifact present,15209 bytes,,2026-08-20T10:55:22.350004
+TC-FUNC-015,Web Build / Application Functional Validation,Cloud Procfile Configuration,Verify Procfile specifies gunicorn entrypoint,PASS,web: gunicorn wsgi:app,web: gunicorn --chdir backend app:app --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120,,2026-08-20T10:55:22.350555
+TC-FUNC-016,Web Build / Application Functional Validation,render.yaml Manifest Validity,Verify render deployment manifest,PASS,Valid manifest,Valid,,2026-08-20T10:55:22.351175
+TC-FUNC-017,Web Build / Application Functional Validation,package.json Build Scripts,Verify package.json build script configured,PASS,Build script present,Present,,2026-08-20T10:55:22.351460
+TC-FUNC-018,Web Build / Application Functional Validation,Capacitor App Dependencies,Verify Capacitor android dependency declared,PASS,Capacitor present,Present,,2026-08-20T10:55:22.351660
+TC-FUNC-019,Web Build / Application Functional Validation,Frontend Redirect: dashboard.html,Verify legacy dashboard redirect,PASS,Redirect configured,Configured,,2026-08-20T10:55:22.352272
+TC-FUNC-020,Web Build / Application Functional Validation,Frontend Redirect: prediction.html,Verify legacy prediction redirect,PASS,Redirect configured,Configured,,2026-08-20T10:55:22.352771
+TC-FUNC-021,Web Build / Application Functional Validation,Frontend Redirect: patients.html,Verify legacy patients redirect,PASS,Redirect configured,Configured,,2026-08-20T10:55:22.353284
+TC-FUNC-022,Web Build / Application Functional Validation,Frontend Redirect: tracking.html,Verify legacy tracking redirect,PASS,Redirect configured,Configured,,2026-08-20T10:55:22.353787
+TC-FUNC-023,Web Build / Application Functional Validation,Frontend Redirect: planner.html,Verify legacy planner redirect,PASS,Redirect configured,Configured,,2026-08-20T10:55:22.354335
+TC-FUNC-024,Web Build / Application Functional Validation,Frontend Redirect: analytics.html,Verify legacy analytics redirect,PASS,Redirect configured,Configured,,2026-08-20T10:55:22.354771
+TC-FUNC-025,Web Build / Application Functional Validation,Frontend Redirect: reports.html,Verify legacy reports redirect,PASS,Redirect configured,Configured,,2026-08-20T10:55:22.355213
+TC-FUNC-026,Web Build / Application Functional Validation,Backend Blueprint: auth.py,Verify auth blueprint exists,PASS,File exists,Exists,,2026-08-20T10:55:22.355356
+TC-FUNC-027,Web Build / Application Functional Validation,Backend Blueprint: prediction.py,Verify prediction blueprint exists,PASS,File exists,Exists,,2026-08-20T10:55:22.355430
+TC-FUNC-028,Web Build / Application Functional Validation,Backend Blueprint: patient.py,Verify patient blueprint exists,PASS,File exists,Exists,,2026-08-20T10:55:22.355492
+TC-FUNC-029,Web Build / Application Functional Validation,Backend Blueprint: tracking.py,Verify tracking blueprint exists,PASS,File exists,Exists,,2026-08-20T10:55:22.355545
+TC-FUNC-030,Web Build / Application Functional Validation,Backend Blueprint: planner.py,Verify planner blueprint exists,PASS,File exists,Exists,,2026-08-20T10:55:22.355595
+TC-FUNC-031,Web Build / Application Functional Validation,Backend Blueprint: reports.py,Verify reports blueprint exists,PASS,File exists,Exists,,2026-08-20T10:55:22.355643
+TC-FUNC-032,Web Build / Application Functional Validation,Backend Blueprint: dashboard.py,Verify dashboard blueprint exists,PASS,File exists,Exists,,2026-08-20T10:55:22.355703
+TC-FUNC-033,Web Build / Application Functional Validation,Backend Live /health Verification,Verify backend responds with v2.0,PASS,version 2.0,v2.0,,2026-08-20T10:55:22.358828
+TC-FUNC-034,Web Build / Application Functional Validation,Live Signup & JWT Generation,Verify live JWT issue from backend,PASS,JWT issued,Issued,,2026-08-20T10:55:22.363964
+TC-FUNC-035,Web Build / Application Functional Validation,Live Prediction ML Pipeline,Verify live end-to-end prediction response,PASS,HTTP 200,HTTP 200,,2026-08-20T10:55:22.380922
+TC-FUNC-036,Web Build / Application Functional Validation,Live Dashboard Metrics Fetch,Verify live dashboard statistics endpoint,PASS,HTTP 200,HTTP 200,,2026-08-20T10:55:22.393804
+TC-FUNC-037,Web Build / Application Functional Validation,Static Web Server Asset Serving,Verify HTTP 200 on index.html serving,PASS,HTTP 200,HTTP 200,,2026-08-20T10:55:22.397300
+TC-FUNC-038,Web Build / Application Functional Validation,End-to-End System Operational Integrity,Complete end-to-end operational check,PASS,All components operational,Operational,,2026-08-20T10:55:22.397386

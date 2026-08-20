@@ -6,7 +6,7 @@
   "blocked": 0,
   "not_executed": 17,
   "pass_percentage": 75.4,
-  "generated_at": "2026-08-19T15:36:59.483315",
+  "generated_at": "2026-08-20T10:55:18.231023",
   "results": [
     {
       "test_id": "TC-MOB-001",
@@ -17,7 +17,7 @@
       "expected": "> 2MB APK",
       "actual": "4019714 bytes",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.468425"
+      "timestamp": "2026-08-20T10:55:18.203752"
     },
     {
       "test_id": "TC-MOB-002",
@@ -28,7 +28,7 @@
       "expected": "Manifest, DEX & assets present",
       "actual": "Valid APK structure",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.471214"
+      "timestamp": "2026-08-20T10:55:18.209930"
     },
     {
       "test_id": "TC-MOB-003",
@@ -39,7 +39,7 @@
       "expected": "com.glycoguard.ai",
       "actual": "com.glycoguard.ai",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.471592"
+      "timestamp": "2026-08-20T10:55:18.210800"
     },
     {
       "test_id": "TC-MOB-004",
@@ -50,7 +50,7 @@
       "expected": "android.permission.INTERNET present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.471816"
+      "timestamp": "2026-08-20T10:55:18.211692"
     },
     {
       "test_id": "TC-MOB-005",
@@ -61,7 +61,7 @@
       "expected": "ACCESS_NETWORK_STATE present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.471982"
+      "timestamp": "2026-08-20T10:55:18.212061"
     },
     {
       "test_id": "TC-MOB-006",
@@ -72,7 +72,7 @@
       "expected": "singleTask",
       "actual": "singleTask configured",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.472128"
+      "timestamp": "2026-08-20T10:55:18.212333"
     },
     {
       "test_id": "TC-MOB-007",
@@ -83,7 +83,7 @@
       "expected": "usesCleartextTraffic=true",
       "actual": "true",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.472256"
+      "timestamp": "2026-08-20T10:55:18.212589"
     },
     {
       "test_id": "TC-MOB-008",
@@ -94,7 +94,7 @@
       "expected": "www",
       "actual": "www",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.472399"
+      "timestamp": "2026-08-20T10:55:18.212891"
     },
     {
       "test_id": "TC-MOB-009",
@@ -105,7 +105,7 @@
       "expected": "https",
       "actual": "https",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.472534"
+      "timestamp": "2026-08-20T10:55:18.213157"
     },
     {
       "test_id": "TC-MOB-010",
@@ -116,7 +116,7 @@
       "expected": "File exists",
       "actual": "Size: 65166 bytes",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.472632"
+      "timestamp": "2026-08-20T10:55:18.213898"
     },
     {
       "test_id": "TC-MOB-011",
@@ -127,7 +127,7 @@
       "expected": "File exists",
       "actual": "Size: 33754 bytes",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.472707"
+      "timestamp": "2026-08-20T10:55:18.214425"
     },
     {
       "test_id": "TC-MOB-012",
@@ -138,7 +138,7 @@
       "expected": "File exists",
       "actual": "Size: 62401 bytes",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.472773"
+      "timestamp": "2026-08-20T10:55:18.215123"
     },
     {
       "test_id": "TC-MOB-013",
@@ -149,7 +149,7 @@
       "expected": "File exists",
       "actual": "Size: 3876 bytes",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.472839"
+      "timestamp": "2026-08-20T10:55:18.215489"
     },
     {
       "test_id": "TC-MOB-014",
@@ -160,7 +160,7 @@
       "expected": "Exact match",
       "actual": "100% Synchronized",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.473247"
+      "timestamp": "2026-08-20T10:55:18.216759"
     },
     {
       "test_id": "TC-MOB-015",
@@ -171,7 +171,7 @@
       "expected": "gradle-wrapper.properties present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.473341"
+      "timestamp": "2026-08-20T10:55:18.216934"
     },
     {
       "test_id": "TC-MOB-016",
@@ -182,7 +182,7 @@
       "expected": "mobile-header present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.473545"
+      "timestamp": "2026-08-20T10:55:18.217306"
     },
     {
       "test_id": "TC-MOB-017",
@@ -193,7 +193,7 @@
       "expected": "bottom-nav present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.473763"
+      "timestamp": "2026-08-20T10:55:18.217706"
     },
     {
       "test_id": "TC-MOB-018",
@@ -204,7 +204,7 @@
       "expected": "Tabs present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.473978"
+      "timestamp": "2026-08-20T10:55:18.218081"
     },
     {
       "test_id": "TC-MOB-019",
@@ -215,7 +215,7 @@
       "expected": "env(safe-area-inset-bottom)",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.474165"
+      "timestamp": "2026-08-20T10:55:18.219345"
     },
     {
       "test_id": "TC-MOB-020",
@@ -226,7 +226,7 @@
       "expected": "Class defined",
       "actual": "Defined",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.474356"
+      "timestamp": "2026-08-20T10:55:18.219618"
     },
     {
       "test_id": "TC-MOB-022",
@@ -237,7 +237,7 @@
       "expected": "Touch targets sized",
       "actual": "Configured",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.475294"
+      "timestamp": "2026-08-20T10:55:18.220866"
     },
     {
       "test_id": "TC-MOB-023",
@@ -248,7 +248,7 @@
       "expected": "Listener attached",
       "actual": "Attached",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.475960"
+      "timestamp": "2026-08-20T10:55:18.221818"
     },
     {
       "test_id": "TC-MOB-024",
@@ -259,7 +259,7 @@
       "expected": "Function defined",
       "actual": "Defined",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.476247"
+      "timestamp": "2026-08-20T10:55:18.222763"
     },
     {
       "test_id": "TC-MOB-025",
@@ -270,7 +270,7 @@
       "expected": "Modal dismissal configured",
       "actual": "Configured",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.476495"
+      "timestamp": "2026-08-20T10:55:18.223086"
     },
     {
       "test_id": "TC-MOB-026",
@@ -281,7 +281,7 @@
       "expected": "Token check implemented",
       "actual": "Implemented",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.476695"
+      "timestamp": "2026-08-20T10:55:18.223349"
     },
     {
       "test_id": "TC-MOB-027",
@@ -292,7 +292,7 @@
       "expected": "Modal present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.476912"
+      "timestamp": "2026-08-20T10:55:18.223645"
     },
     {
       "test_id": "TC-MOB-028",
@@ -303,7 +303,7 @@
       "expected": "Modal present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.477117"
+      "timestamp": "2026-08-20T10:55:18.223900"
     },
     {
       "test_id": "TC-MOB-029",
@@ -314,7 +314,7 @@
       "expected": "Gauge present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.477384"
+      "timestamp": "2026-08-20T10:55:18.224121"
     },
     {
       "test_id": "TC-MOB-030",
@@ -325,7 +325,7 @@
       "expected": "Vitals form present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.477679"
+      "timestamp": "2026-08-20T10:55:18.224321"
     },
     {
       "test_id": "TC-MOB-031",
@@ -336,7 +336,7 @@
       "expected": "Goals present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.477918"
+      "timestamp": "2026-08-20T10:55:18.224519"
     },
     {
       "test_id": "TC-MOB-032",
@@ -347,7 +347,7 @@
       "expected": "Canvas present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.478130"
+      "timestamp": "2026-08-20T10:55:18.224714"
     },
     {
       "test_id": "TC-MOB-033",
@@ -358,7 +358,7 @@
       "expected": "Preview container present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.478329"
+      "timestamp": "2026-08-20T10:55:18.224909"
     },
     {
       "test_id": "TC-MOB-034",
@@ -369,7 +369,7 @@
       "expected": "Function defined",
       "actual": "Defined",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.478545"
+      "timestamp": "2026-08-20T10:55:18.225105"
     },
     {
       "test_id": "TC-MOB-035",
@@ -380,7 +380,7 @@
       "expected": "LocalMLEngine present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.478749"
+      "timestamp": "2026-08-20T10:55:18.225301"
     },
     {
       "test_id": "TC-MOB-036",
@@ -391,7 +391,7 @@
       "expected": "Supported",
       "actual": "Supported",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.478786"
+      "timestamp": "2026-08-20T10:55:18.225338"
     },
     {
       "test_id": "TC-MOB-037",
@@ -402,7 +402,7 @@
       "expected": "Supported",
       "actual": "Supported",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.478809"
+      "timestamp": "2026-08-20T10:55:18.225360"
     },
     {
       "test_id": "TC-MOB-038",
@@ -413,7 +413,7 @@
       "expected": "Supported",
       "actual": "Supported",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.478830"
+      "timestamp": "2026-08-20T10:55:18.225381"
     },
     {
       "test_id": "TC-MOB-039",
@@ -424,7 +424,7 @@
       "expected": "Supported",
       "actual": "Supported",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.478849"
+      "timestamp": "2026-08-20T10:55:18.225400"
     },
     {
       "test_id": "TC-MOB-040",
@@ -435,7 +435,7 @@
       "expected": "Offline DB active",
       "actual": "Active",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.479025"
+      "timestamp": "2026-08-20T10:55:18.225586"
     },
     {
       "test_id": "TC-MOB-041",
@@ -446,7 +446,7 @@
       "expected": "Offline engine ready",
       "actual": "Ready",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.479211"
+      "timestamp": "2026-08-20T10:55:18.225781"
     },
     {
       "test_id": "TC-MOB-042",
@@ -457,7 +457,7 @@
       "expected": "Offline plans configured",
       "actual": "Configured",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.479392"
+      "timestamp": "2026-08-20T10:55:18.225975"
     },
     {
       "test_id": "TC-MOB-043",
@@ -468,7 +468,7 @@
       "expected": "Offline storage ready",
       "actual": "Ready",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.479574"
+      "timestamp": "2026-08-20T10:55:18.226167"
     },
     {
       "test_id": "TC-MOB-044",
@@ -479,7 +479,7 @@
       "expected": "Offline generator ready",
       "actual": "Ready",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.479779"
+      "timestamp": "2026-08-20T10:55:18.226372"
     },
     {
       "test_id": "TC-MOB-045",
@@ -490,7 +490,7 @@
       "expected": "Toast utility defined",
       "actual": "Defined",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.479993"
+      "timestamp": "2026-08-20T10:55:18.226584"
     },
     {
       "test_id": "TC-MOB-047",
@@ -501,7 +501,7 @@
       "expected": "Clearance configured",
       "actual": "Configured",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.480841"
+      "timestamp": "2026-08-20T10:55:18.227471"
     },
     {
       "test_id": "TC-MOB-048",
@@ -512,7 +512,7 @@
       "expected": "Function defined",
       "actual": "Defined",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.481079"
+      "timestamp": "2026-08-20T10:55:18.227725"
     },
     {
       "test_id": "TC-MOB-049",
@@ -523,7 +523,7 @@
       "expected": "Class sync configured",
       "actual": "Configured",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.481295"
+      "timestamp": "2026-08-20T10:55:18.227952"
     },
     {
       "test_id": "TC-MOB-050",
@@ -534,7 +534,7 @@
       "expected": "Deep links supported",
       "actual": "Supported",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.481491"
+      "timestamp": "2026-08-20T10:55:18.228398"
     },
     {
       "test_id": "TC-MOB-052",
@@ -545,7 +545,7 @@
       "expected": "parseFloat configured",
       "actual": "Configured",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.482246"
+      "timestamp": "2026-08-20T10:55:18.229708"
     },
     {
       "test_id": "TC-MOB-053",
@@ -556,7 +556,7 @@
       "expected": "Animation configured",
       "actual": "Configured",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.482462"
+      "timestamp": "2026-08-20T10:55:18.230027"
     },
     {
       "test_id": "TC-MOB-054",
@@ -567,7 +567,7 @@
       "expected": "Memory leak protection",
       "actual": "Configured",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.482667"
+      "timestamp": "2026-08-20T10:55:18.230304"
     },
     {
       "test_id": "TC-MOB-055",
@@ -578,7 +578,7 @@
       "expected": "overflow-y: auto present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.482828"
+      "timestamp": "2026-08-20T10:55:18.230529"
     },
     {
       "test_id": "TC-MOB-056",
@@ -589,7 +589,7 @@
       "expected": "Physical device",
       "actual": "NOT EXECUTED - physical device unavailable",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.482859"
+      "timestamp": "2026-08-20T10:55:18.230567"
     },
     {
       "test_id": "TC-MOB-057",
@@ -600,7 +600,7 @@
       "expected": "< 50ms",
       "actual": "NOT EXECUTED - physical device unavailable",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.482881"
+      "timestamp": "2026-08-20T10:55:18.230590"
     },
     {
       "test_id": "TC-MOB-058",
@@ -611,7 +611,7 @@
       "expected": "Smooth rotation",
       "actual": "NOT EXECUTED - physical device unavailable",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.482900"
+      "timestamp": "2026-08-20T10:55:18.230616"
     },
     {
       "test_id": "TC-MOB-059",
@@ -622,7 +622,7 @@
       "expected": "< 1%/hr",
       "actual": "NOT EXECUTED - physical device unavailable",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.482918"
+      "timestamp": "2026-08-20T10:55:18.230634"
     },
     {
       "test_id": "TC-MOB-060",
@@ -633,7 +633,7 @@
       "expected": "< 45C",
       "actual": "NOT EXECUTED - physical device unavailable",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.482936"
+      "timestamp": "2026-08-20T10:55:18.230653"
     },
     {
       "test_id": "TC-MOB-061",
@@ -644,7 +644,7 @@
       "expected": "< 120MB",
       "actual": "NOT EXECUTED - physical device unavailable",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.482955"
+      "timestamp": "2026-08-20T10:55:18.230671"
     },
     {
       "test_id": "TC-MOB-062",
@@ -655,7 +655,7 @@
       "expected": "Installed",
       "actual": "NOT EXECUTED - physical device unavailable",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.482974"
+      "timestamp": "2026-08-20T10:55:18.230689"
     },
     {
       "test_id": "TC-MOB-063",
@@ -666,7 +666,7 @@
       "expected": "< 1.5s",
       "actual": "NOT EXECUTED - physical device unavailable",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.482993"
+      "timestamp": "2026-08-20T10:55:18.230708"
     },
     {
       "test_id": "TC-MOB-064",
@@ -677,7 +677,7 @@
       "expected": "< 300ms",
       "actual": "NOT EXECUTED - physical device unavailable",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.483010"
+      "timestamp": "2026-08-20T10:55:18.230726"
     },
     {
       "test_id": "TC-MOB-065",
@@ -688,7 +688,7 @@
       "expected": "Prompt visible",
       "actual": "NOT EXECUTED - physical device unavailable",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.483028"
+      "timestamp": "2026-08-20T10:55:18.230743"
     },
     {
       "test_id": "TC-MOB-066",
@@ -699,7 +699,7 @@
       "expected": "Biometric bridge",
       "actual": "NOT EXECUTED - physical device unavailable",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.483047"
+      "timestamp": "2026-08-20T10:55:18.230762"
     },
     {
       "test_id": "TC-MOB-067",
@@ -710,7 +710,7 @@
       "expected": "BLE paired",
       "actual": "NOT EXECUTED - physical device unavailable",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.483064"
+      "timestamp": "2026-08-20T10:55:18.230780"
     },
     {
       "test_id": "TC-MOB-068",
@@ -721,7 +721,7 @@
       "expected": "Notification banner",
       "actual": "NOT EXECUTED - physical device unavailable",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.483081"
+      "timestamp": "2026-08-20T10:55:18.230798"
     },
     {
       "test_id": "TC-MOB-069",
@@ -732,7 +732,7 @@
       "expected": "Offline mode",
       "actual": "NOT EXECUTED - physical device unavailable",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.483104"
+      "timestamp": "2026-08-20T10:55:18.230816"
     },
     {
       "test_id": "TC-MOB-070",
@@ -743,7 +743,7 @@
       "expected": "Socket recovered",
       "actual": "NOT EXECUTED - physical device unavailable",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.483121"
+      "timestamp": "2026-08-20T10:55:18.230834"
     },
     {
       "test_id": "TC-MOB-071",
@@ -754,7 +754,7 @@
       "expected": "System sync",
       "actual": "NOT EXECUTED - physical device unavailable",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.483144"
+      "timestamp": "2026-08-20T10:55:18.230852"
     },
     {
       "test_id": "TC-MOB-072",
@@ -765,7 +765,7 @@
       "expected": "Clean purge",
       "actual": "NOT EXECUTED - physical device unavailable",
       "error": "",
-      "timestamp": "2026-08-19T15:36:59.483165"
+      "timestamp": "2026-08-20T10:55:18.230869"
     }
   ]
 }

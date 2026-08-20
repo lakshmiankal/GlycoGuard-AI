@@ -1,6 +1,6 @@
 # GlycoGuard AI - Security / Vulnerability Testing Quality Assurance Report
 
-**Generated:** 2026-08-19 15:37:07
+**Generated:** 2026-08-20 10:55:20
 
 ## Executive Summary
 
@@ -45,7 +45,7 @@
 | `TC-SEC-030` | No plaintext password in response | Verify passwords omitted from JSON responses | ✅ PASS | Password omitted | Omitted |
 | `TC-SEC-031` | No sensitive info in /health | /health returns only minimal service status | ✅ PASS | <= 5 keys | 3 keys |
 | `TC-SEC-034` | Quotes in username handled via parameterized query | Verify SQL query escaping | ✅ PASS | Parameterized | Verified |
-| `TC-SEC-035` | Sleep query payload returns under 2 seconds | Verify sleep SQL injection fails immediately | ✅ PASS | < 2.0s | 0.02s |
+| `TC-SEC-035` | Sleep query payload returns under 2 seconds | Verify sleep SQL injection fails immediately | ✅ PASS | < 2.0s | 0.0s |
 | `TC-SEC-036` | Tokens isolated to glycoguard key namespace | Verify key isolation in client storage | ✅ PASS | glycoguard_ prefix used | Used |
 | `TC-SEC-037` | Password Masking on Login Input | Verify input type is password | ✅ PASS | type="password" | Configured |
 | `TC-SEC-038` | Password Masking on Register Input | Verify registration password masking | ✅ PASS | Masked | Masked |

@@ -1,19 +1,20 @@
 === GLYCOGUARD AI - SELENIUM WEB UI TEST EXECUTION LOG ===
-Timestamp: 2026-08-19T15:36:59.423186
-Total: 95 | Passed: 95 | Failed: 0 | Blocked: 0 | Not Executed: 0
+Timestamp: 2026-08-20T10:55:18.116773
+Total: 93 | Passed: 93 | Failed: 0 | Blocked: 0 | Not Executed: 0
 
 [PASS] TC-SEL-001 - Page Title Verification
 [PASS] TC-SEL-002 - Viewport Meta Tag
 [PASS] TC-SEL-003 - Splash Screen Structure
 [PASS] TC-SEL-005 - Protected Main Shell Hidden
-[PASS] TC-SEL-007 - Brand Tagline Verification
-[PASS] TC-SEL-008 - Auth Navigation Tabs
 [PASS] TC-SEL-009 - Theme Attribute Check
 [PASS] TC-SEL-010 - Toast Container Presence
 [PASS] TC-SEL-011 - Login Username Input
 [PASS] TC-SEL-012 - Password Input Masking
 [PASS] TC-SEL-013 - Empty Login Validation
 [PASS] TC-SEL-014 - Empty Password Validation
+[PASS] TC-SEL-015 - Valid Login Transition
+[PASS] TC-SEL-016 - Session Storage Integrity
+[PASS] TC-SEL-017 - Logout Session Cleanup
 [PASS] TC-SEL-018 - Switch to Register Tab
 [PASS] TC-SEL-019 - Switch to Forgot Tab
 [PASS] TC-SEL-020 - Switch Back to Login Tab
@@ -49,10 +50,6 @@ Total: 95 | Passed: 95 | Failed: 0 | Blocked: 0 | Not Executed: 0
 [PASS] TC-SEL-051 - Prediction Biomarker Inputs
 [PASS] TC-SEL-052 - Prediction Patient Selector
 [PASS] TC-SEL-053 - Patient Metrics Autofill
-[PASS] TC-SEL-054 - Low Risk Assessment
-[PASS] TC-SEL-055 - High Risk Assessment
-[PASS] TC-SEL-056 - Circular Gauge Score Text
-[PASS] TC-SEL-057 - Clinical Recommendation Output
 [PASS] TC-SEL-058 - Open AI Plan Navigation
 [PASS] TC-SEL-059 - Planner Goal Item Toggle
 [PASS] TC-SEL-060 - Planner Protocol Switch
@@ -78,6 +75,7 @@ Total: 95 | Passed: 95 | Failed: 0 | Blocked: 0 | Not Executed: 0
 [PASS] TC-SEL-081 - Mobile Header Visible on 390px
 [PASS] TC-SEL-082 - Bottom Nav Visible on 390px
 [PASS] TC-SEL-083 - Desktop Header Hidden on 390px
+[PASS] TC-SEL-084 - Mobile Scroll Height Clearance
 [PASS] TC-SEL-085 - Desktop Viewport Resize (1280px)
 [PASS] TC-SEL-087 - Page Deep Link Query Param
 [PASS] TC-SEL-088 - Page Deep Link Prediction

@@ -50,11 +50,11 @@
     </div>
 
     <div class="kpi-row">
-        <div class="kpi-card"><div>Total Test Cases</div><div class="kpi-num">302</div></div>
-        <div class="kpi-card"><div>Passed</div><div class="kpi-num kpi-pass">285</div></div>
+        <div class="kpi-card"><div>Total Test Cases</div><div class="kpi-num">300</div></div>
+        <div class="kpi-card"><div>Passed</div><div class="kpi-num kpi-pass">283</div></div>
         <div class="kpi-card"><div>Failed</div><div class="kpi-num kpi-fail">0</div></div>
         <div class="kpi-card"><div>Not Executed (Hardware)</div><div class="kpi-num kpi-skip">17</div></div>
-        <div class="kpi-card"><div>Pass Rate</div><div class="kpi-num kpi-pass">94.4%</div></div>
+        <div class="kpi-card"><div>Pass Rate</div><div class="kpi-num kpi-pass">94.3%</div></div>
     </div>
 
     <div class="charts-row">
@@ -76,8 +76,8 @@
         <tbody>
             <tr>
                 <td><strong>Selenium Web UI</strong></td>
-                <td>95</td>
-                <td style="color:var(--green); font-weight:700;">95</td>
+                <td>93</td>
+                <td style="color:var(--green); font-weight:700;">93</td>
                 <td style="color:var(--red); font-weight:700;">0</td>
                 <td style="color:var(--amber); font-weight:700;">0</td>
                 <td><strong>100.0%</strong></td>
@@ -119,7 +119,7 @@
 
     <script>
         const catLabels = ["Selenium Web UI", "Appium Android Mobile", "Load / Performance Testing", "Security / Vulnerability Testing", "Web Build / Application Functional Validation"];
-        const catPassed = [95, 52, 52, 48, 38];
+        const catPassed = [93, 52, 52, 48, 38];
         const catFailed = [0, 0, 0, 0, 0];
         const catNotExec = [0, 17, 0, 0, 0];
 
@@ -149,9 +149,9 @@
         new Chart(document.getElementById('statusChart'), {
             type: 'doughnut',
             data: {
-                labels: ['Passed (285)', 'Failed (0)', 'Not Executed (17)'],
+                labels: ['Passed (283)', 'Failed (0)', 'Not Executed (17)'],
                 datasets: [{
-                    data: [285, 0, 17],
+                    data: [283, 0, 17],
                     backgroundColor: ['#10b981', '#ef4444', '#f59e0b'],
                     borderWidth: 0
                 }]

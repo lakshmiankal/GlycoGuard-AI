@@ -1,12 +1,12 @@
 {
   "category": "Selenium Web UI",
-  "total": 95,
-  "passed": 95,
+  "total": 93,
+  "passed": 93,
   "failed": 0,
   "blocked": 0,
   "not_executed": 0,
   "pass_percentage": 100.0,
-  "generated_at": "2026-08-19T15:36:59.405198",
+  "generated_at": "2026-08-20T10:55:18.101409",
   "results": [
     {
       "test_id": "TC-SEL-001",
@@ -17,7 +17,7 @@
       "expected": "GlycoGuard AI",
       "actual": "GlycoGuard AI - Diabetes Prediction & Preventive Health Platform",
       "error": "",
-      "timestamp": "2026-08-19T15:36:41.096685"
+      "timestamp": "2026-08-20T10:54:56.395409"
     },
     {
       "test_id": "TC-SEL-002",
@@ -28,7 +28,7 @@
       "expected": "width=device-width",
       "actual": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover",
       "error": "",
-      "timestamp": "2026-08-19T15:36:41.125228"
+      "timestamp": "2026-08-20T10:54:56.415980"
     },
     {
       "test_id": "TC-SEL-003",
@@ -39,7 +39,7 @@
       "expected": "splashScreen element found",
       "actual": "Element present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:41.147270"
+      "timestamp": "2026-08-20T10:54:56.425652"
     },
     {
       "test_id": "TC-SEL-005",
@@ -50,29 +50,7 @@
       "expected": "display: none",
       "actual": "none",
       "error": "",
-      "timestamp": "2026-08-19T15:36:41.205156"
-    },
-    {
-      "test_id": "TC-SEL-007",
-      "category": "Selenium Web UI",
-      "name": "Brand Tagline Verification",
-      "objective": "Verify tagline is Predict \u2022 Prevent \u2022 Personalize",
-      "status": "PASS",
-      "expected": "Predict \u2022 Prevent \u2022 Personalize",
-      "actual": "PREDICT \u2022 PREVENT \u2022 PERSONALIZE",
-      "error": "",
-      "timestamp": "2026-08-19T15:36:41.232367"
-    },
-    {
-      "test_id": "TC-SEL-008",
-      "category": "Selenium Web UI",
-      "name": "Auth Navigation Tabs",
-      "objective": "Verify Sign In, Register, Reset tabs exist",
-      "status": "PASS",
-      "expected": "All 3 tabs visible",
-      "actual": "All 3 tabs visible",
-      "error": "",
-      "timestamp": "2026-08-19T15:36:41.269430"
+      "timestamp": "2026-08-20T10:54:56.454713"
     },
     {
       "test_id": "TC-SEL-009",
@@ -83,7 +61,7 @@
       "expected": "dark or light",
       "actual": "dark",
       "error": "",
-      "timestamp": "2026-08-19T15:36:41.281539"
+      "timestamp": "2026-08-20T10:54:56.553766"
     },
     {
       "test_id": "TC-SEL-010",
@@ -94,7 +72,7 @@
       "expected": "toastContainer present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:41.287954"
+      "timestamp": "2026-08-20T10:54:56.561043"
     },
     {
       "test_id": "TC-SEL-011",
@@ -105,7 +83,7 @@
       "expected": "Visible",
       "actual": "Visible",
       "error": "",
-      "timestamp": "2026-08-19T15:36:41.305937"
+      "timestamp": "2026-08-20T10:54:56.591533"
     },
     {
       "test_id": "TC-SEL-012",
@@ -116,7 +94,7 @@
       "expected": "type='password'",
       "actual": "password",
       "error": "",
-      "timestamp": "2026-08-19T15:36:41.321457"
+      "timestamp": "2026-08-20T10:54:56.610368"
     },
     {
       "test_id": "TC-SEL-013",
@@ -127,7 +105,7 @@
       "expected": "Error toast shown",
       "actual": "Toast displayed",
       "error": "",
-      "timestamp": "2026-08-19T15:36:41.583320"
+      "timestamp": "2026-08-20T10:54:56.895870"
     },
     {
       "test_id": "TC-SEL-014",
@@ -138,7 +116,40 @@
       "expected": "Password required toast",
       "actual": "Please enter username/email and password",
       "error": "",
-      "timestamp": "2026-08-19T15:36:41.870033"
+      "timestamp": "2026-08-20T10:54:57.204096"
+    },
+    {
+      "test_id": "TC-SEL-015",
+      "category": "Selenium Web UI",
+      "name": "Valid Login Transition",
+      "objective": "Verify login transitions to Main App Shell",
+      "status": "PASS",
+      "expected": "display: block",
+      "actual": "block",
+      "error": "",
+      "timestamp": "2026-08-20T10:54:57.769847"
+    },
+    {
+      "test_id": "TC-SEL-016",
+      "category": "Selenium Web UI",
+      "name": "Session Storage Integrity",
+      "objective": "Verify token and user persisted in localStorage",
+      "status": "PASS",
+      "expected": "Token and User stored",
+      "actual": "user=dr_lakshmi",
+      "error": "",
+      "timestamp": "2026-08-20T10:54:57.777884"
+    },
+    {
+      "test_id": "TC-SEL-017",
+      "category": "Selenium Web UI",
+      "name": "Logout Session Cleanup",
+      "objective": "Verify token cleared and Auth View displayed on logout",
+      "status": "PASS",
+      "expected": "Token cleared & Auth View visible",
+      "actual": "Token cleared",
+      "error": "",
+      "timestamp": "2026-08-20T10:54:58.123710"
     },
     {
       "test_id": "TC-SEL-018",
@@ -149,7 +160,7 @@
       "expected": "display: block",
       "actual": "block",
       "error": "",
-      "timestamp": "2026-08-19T15:36:42.985848"
+      "timestamp": "2026-08-20T10:54:58.351095"
     },
     {
       "test_id": "TC-SEL-019",
@@ -160,7 +171,7 @@
       "expected": "display: block",
       "actual": "block",
       "error": "",
-      "timestamp": "2026-08-19T15:36:43.204127"
+      "timestamp": "2026-08-20T10:54:58.575288"
     },
     {
       "test_id": "TC-SEL-020",
@@ -171,7 +182,7 @@
       "expected": "display: block",
       "actual": "block",
       "error": "",
-      "timestamp": "2026-08-19T15:36:43.424645"
+      "timestamp": "2026-08-20T10:54:58.797414"
     },
     {
       "test_id": "TC-SEL-021",
@@ -182,7 +193,7 @@
       "expected": "Modal active class present",
       "actual": "Modal active",
       "error": "",
-      "timestamp": "2026-08-19T15:36:43.640614"
+      "timestamp": "2026-08-20T10:54:59.021086"
     },
     {
       "test_id": "TC-SEL-022",
@@ -193,7 +204,7 @@
       "expected": "Modal active class removed",
       "actual": "Modal closed",
       "error": "",
-      "timestamp": "2026-08-19T15:36:43.856457"
+      "timestamp": "2026-08-20T10:54:59.239690"
     },
     {
       "test_id": "TC-SEL-024",
@@ -204,7 +215,7 @@
       "expected": "Drawer active",
       "actual": "Active",
       "error": "",
-      "timestamp": "2026-08-19T15:36:44.300400"
+      "timestamp": "2026-08-20T10:54:59.682473"
     },
     {
       "test_id": "TC-SEL-025",
@@ -215,7 +226,7 @@
       "expected": "display: block",
       "actual": "block",
       "error": "",
-      "timestamp": "2026-08-19T15:36:44.720129"
+      "timestamp": "2026-08-20T10:55:00.107606"
     },
     {
       "test_id": "TC-SEL-026",
@@ -224,9 +235,9 @@
       "objective": "Verify time-of-day greeting rendered",
       "status": "PASS",
       "expected": "Greeting text",
-      "actual": "Good afternoon \ud83c\udf24, Dr.",
+      "actual": "Good morning \u2600\ufe0f, Dr.",
       "error": "",
-      "timestamp": "2026-08-19T15:36:45.046115"
+      "timestamp": "2026-08-20T10:55:00.430032"
     },
     {
       "test_id": "TC-SEL-027",
@@ -235,9 +246,9 @@
       "objective": "Verify current formatted date displayed",
       "status": "PASS",
       "expected": "Formatted date string",
-      "actual": "Wednesday, August 19, 2026",
+      "actual": "Thursday, August 20, 2026",
       "error": "",
-      "timestamp": "2026-08-19T15:36:45.060492"
+      "timestamp": "2026-08-20T10:55:00.443693"
     },
     {
       "test_id": "TC-SEL-028",
@@ -248,7 +259,7 @@
       "expected": "Hero card displayed",
       "actual": "Displayed",
       "error": "",
-      "timestamp": "2026-08-19T15:36:45.075425"
+      "timestamp": "2026-08-20T10:55:00.458590"
     },
     {
       "test_id": "TC-SEL-029",
@@ -259,7 +270,7 @@
       "expected": "Contains RISK",
       "actual": "LOW RISK",
       "error": "",
-      "timestamp": "2026-08-19T15:36:45.090602"
+      "timestamp": "2026-08-20T10:55:00.472253"
     },
     {
       "test_id": "TC-SEL-030",
@@ -270,7 +281,7 @@
       "expected": "Percentage string",
       "actual": "28.4%",
       "error": "",
-      "timestamp": "2026-08-19T15:36:45.108078"
+      "timestamp": "2026-08-20T10:55:00.485714"
     },
     {
       "test_id": "TC-SEL-031",
@@ -281,7 +292,7 @@
       "expected": "Numeric value",
       "actual": "112",
       "error": "",
-      "timestamp": "2026-08-19T15:36:45.123350"
+      "timestamp": "2026-08-20T10:55:00.501317"
     },
     {
       "test_id": "TC-SEL-032",
@@ -292,7 +303,7 @@
       "expected": "Numeric value",
       "actual": "2.2",
       "error": "",
-      "timestamp": "2026-08-19T15:36:45.137257"
+      "timestamp": "2026-08-20T10:55:00.514818"
     },
     {
       "test_id": "TC-SEL-033",
@@ -303,7 +314,7 @@
       "expected": "Numeric value",
       "actual": "30",
       "error": "",
-      "timestamp": "2026-08-19T15:36:45.154475"
+      "timestamp": "2026-08-20T10:55:00.526536"
     },
     {
       "test_id": "TC-SEL-034",
@@ -314,7 +325,7 @@
       "expected": "Numeric value",
       "actual": "7.5",
       "error": "",
-      "timestamp": "2026-08-19T15:36:45.168482"
+      "timestamp": "2026-08-20T10:55:00.539187"
     },
     {
       "test_id": "TC-SEL-035",
@@ -325,7 +336,7 @@
       "expected": "Displayed",
       "actual": "Displayed",
       "error": "",
-      "timestamp": "2026-08-19T15:36:45.180808"
+      "timestamp": "2026-08-20T10:55:00.551076"
     },
     {
       "test_id": "TC-SEL-036",
@@ -336,7 +347,7 @@
       "expected": "Activity items > 0",
       "actual": "2 items",
       "error": "",
-      "timestamp": "2026-08-19T15:36:45.195951"
+      "timestamp": "2026-08-20T10:55:00.565076"
     },
     {
       "test_id": "TC-SEL-037",
@@ -347,7 +358,7 @@
       "expected": "display: block",
       "actual": "block",
       "error": "",
-      "timestamp": "2026-08-19T15:36:45.207452"
+      "timestamp": "2026-08-20T10:55:00.576382"
     },
     {
       "test_id": "TC-SEL-038",
@@ -358,7 +369,7 @@
       "expected": "8 navigation links",
       "actual": "8 links",
       "error": "",
-      "timestamp": "2026-08-19T15:36:45.214513"
+      "timestamp": "2026-08-20T10:55:00.584014"
     },
     {
       "test_id": "TC-SEL-039",
@@ -369,7 +380,7 @@
       "expected": "View active",
       "actual": "Active",
       "error": "",
-      "timestamp": "2026-08-19T15:36:45.441166"
+      "timestamp": "2026-08-20T10:55:00.815605"
     },
     {
       "test_id": "TC-SEL-040",
@@ -380,7 +391,7 @@
       "expected": "View active",
       "actual": "Active",
       "error": "",
-      "timestamp": "2026-08-19T15:36:45.676452"
+      "timestamp": "2026-08-20T10:55:01.039547"
     },
     {
       "test_id": "TC-SEL-041",
@@ -391,7 +402,7 @@
       "expected": "View active",
       "actual": "Active",
       "error": "",
-      "timestamp": "2026-08-19T15:36:45.903851"
+      "timestamp": "2026-08-20T10:55:01.263231"
     },
     {
       "test_id": "TC-SEL-042",
@@ -402,7 +413,7 @@
       "expected": "View active",
       "actual": "Active",
       "error": "",
-      "timestamp": "2026-08-19T15:36:46.129406"
+      "timestamp": "2026-08-20T10:55:01.511313"
     },
     {
       "test_id": "TC-SEL-043",
@@ -413,7 +424,7 @@
       "expected": "View active",
       "actual": "Active",
       "error": "",
-      "timestamp": "2026-08-19T15:36:46.349242"
+      "timestamp": "2026-08-20T10:55:01.740576"
     },
     {
       "test_id": "TC-SEL-044",
@@ -424,7 +435,7 @@
       "expected": "View active",
       "actual": "Active",
       "error": "",
-      "timestamp": "2026-08-19T15:36:46.572628"
+      "timestamp": "2026-08-20T10:55:01.972120"
     },
     {
       "test_id": "TC-SEL-045",
@@ -435,7 +446,7 @@
       "expected": "View active",
       "actual": "Active",
       "error": "",
-      "timestamp": "2026-08-19T15:36:46.803079"
+      "timestamp": "2026-08-20T10:55:02.204869"
     },
     {
       "test_id": "TC-SEL-046",
@@ -446,7 +457,7 @@
       "expected": "View active",
       "actual": "Active",
       "error": "",
-      "timestamp": "2026-08-19T15:36:47.035388"
+      "timestamp": "2026-08-20T10:55:02.424866"
     },
     {
       "test_id": "TC-SEL-047",
@@ -457,7 +468,7 @@
       "expected": ">= 8 spacers present",
       "actual": "8 spacers",
       "error": "",
-      "timestamp": "2026-08-19T15:36:47.043117"
+      "timestamp": "2026-08-20T10:55:02.431987"
     },
     {
       "test_id": "TC-SEL-048",
@@ -468,7 +479,7 @@
       "expected": "Theme switched",
       "actual": "dark -> light",
       "error": "",
-      "timestamp": "2026-08-19T15:36:47.280805"
+      "timestamp": "2026-08-20T10:55:02.665758"
     },
     {
       "test_id": "TC-SEL-049",
@@ -479,7 +490,7 @@
       "expected": "Theme restored",
       "actual": "dark",
       "error": "",
-      "timestamp": "2026-08-19T15:36:47.505220"
+      "timestamp": "2026-08-20T10:55:02.895055"
     },
     {
       "test_id": "TC-SEL-050",
@@ -490,7 +501,7 @@
       "expected": "D",
       "actual": "D",
       "error": "",
-      "timestamp": "2026-08-19T15:36:47.521714"
+      "timestamp": "2026-08-20T10:55:02.926907"
     },
     {
       "test_id": "TC-SEL-051",
@@ -501,7 +512,7 @@
       "expected": "All 11 inputs visible",
       "actual": "All 11 inputs visible",
       "error": "",
-      "timestamp": "2026-08-19T15:36:47.905622"
+      "timestamp": "2026-08-20T10:55:03.314323"
     },
     {
       "test_id": "TC-SEL-052",
@@ -512,7 +523,7 @@
       "expected": ">= 4 options",
       "actual": "5 options",
       "error": "",
-      "timestamp": "2026-08-19T15:36:47.921735"
+      "timestamp": "2026-08-20T10:55:03.331392"
     },
     {
       "test_id": "TC-SEL-053",
@@ -523,51 +534,7 @@
       "expected": "age=34, bmi=22.8",
       "actual": "age=34, bmi=22.8",
       "error": "",
-      "timestamp": "2026-08-19T15:36:48.157216"
-    },
-    {
-      "test_id": "TC-SEL-054",
-      "category": "Selenium Web UI",
-      "name": "Low Risk Assessment",
-      "objective": "Evaluate healthy biomarkers to Low Risk",
-      "status": "PASS",
-      "expected": "LOW RISK badge",
-      "actual": "LOW RISK",
-      "error": "",
-      "timestamp": "2026-08-19T15:36:48.707492"
-    },
-    {
-      "test_id": "TC-SEL-055",
-      "category": "Selenium Web UI",
-      "name": "High Risk Assessment",
-      "objective": "Evaluate elevated biomarkers to High Risk",
-      "status": "PASS",
-      "expected": "HIGH RISK badge",
-      "actual": "HIGH RISK",
-      "error": "",
-      "timestamp": "2026-08-19T15:36:49.357728"
-    },
-    {
-      "test_id": "TC-SEL-056",
-      "category": "Selenium Web UI",
-      "name": "Circular Gauge Score Text",
-      "objective": "Verify probability score rendered in gauge",
-      "status": "PASS",
-      "expected": "Contains %",
-      "actual": "89%",
-      "error": "",
-      "timestamp": "2026-08-19T15:36:49.383559"
-    },
-    {
-      "test_id": "TC-SEL-057",
-      "category": "Selenium Web UI",
-      "name": "Clinical Recommendation Output",
-      "objective": "Verify AI recommendation text rendered",
-      "status": "PASS",
-      "expected": "Detailed recommendation",
-      "actual": "High risk detected! Schedule a...",
-      "error": "",
-      "timestamp": "2026-08-19T15:36:49.398159"
+      "timestamp": "2026-08-20T10:55:03.581931"
     },
     {
       "test_id": "TC-SEL-058",
@@ -578,7 +545,7 @@
       "expected": "Planner view active",
       "actual": "Active",
       "error": "",
-      "timestamp": "2026-08-19T15:36:49.681468"
+      "timestamp": "2026-08-20T10:55:07.465480"
     },
     {
       "test_id": "TC-SEL-059",
@@ -589,7 +556,7 @@
       "expected": "Contains /4 Done",
       "actual": "1/4 Done",
       "error": "",
-      "timestamp": "2026-08-19T15:36:49.948087"
+      "timestamp": "2026-08-20T10:55:07.741032"
     },
     {
       "test_id": "TC-SEL-060",
@@ -600,7 +567,7 @@
       "expected": "High risk smoothie plan",
       "actual": "Spinach and kale protein smoothie w...",
       "error": "",
-      "timestamp": "2026-08-19T15:36:50.172375"
+      "timestamp": "2026-08-20T10:55:07.958559"
     },
     {
       "test_id": "TC-SEL-061",
@@ -611,7 +578,7 @@
       "expected": "Logged successfully",
       "actual": "Toast displayed",
       "error": "",
-      "timestamp": "2026-08-19T15:36:51.084040"
+      "timestamp": "2026-08-20T10:55:08.853078"
     },
     {
       "test_id": "TC-SEL-062",
@@ -622,7 +589,7 @@
       "expected": "Canvas displayed",
       "actual": "Displayed",
       "error": "",
-      "timestamp": "2026-08-19T15:36:51.100579"
+      "timestamp": "2026-08-20T10:55:08.874346"
     },
     {
       "test_id": "TC-SEL-063",
@@ -633,7 +600,7 @@
       "expected": "Items > 0",
       "actual": "6 logs",
       "error": "",
-      "timestamp": "2026-08-19T15:36:51.115702"
+      "timestamp": "2026-08-20T10:55:08.894969"
     },
     {
       "test_id": "TC-SEL-064",
@@ -644,7 +611,7 @@
       "expected": ">= 4 patient cards",
       "actual": "4 cards",
       "error": "",
-      "timestamp": "2026-08-19T15:36:51.341228"
+      "timestamp": "2026-08-20T10:55:09.130824"
     },
     {
       "test_id": "TC-SEL-065",
@@ -655,7 +622,7 @@
       "expected": "Priya Sharma listed",
       "actual": "Found",
       "error": "",
-      "timestamp": "2026-08-19T15:36:51.625299"
+      "timestamp": "2026-08-20T10:55:09.402481"
     },
     {
       "test_id": "TC-SEL-066",
@@ -666,7 +633,7 @@
       "expected": "Modal active",
       "actual": "Active",
       "error": "",
-      "timestamp": "2026-08-19T15:36:51.845070"
+      "timestamp": "2026-08-20T10:55:09.619705"
     },
     {
       "test_id": "TC-SEL-067",
@@ -677,7 +644,7 @@
       "expected": "24.7",
       "actual": "24.7",
       "error": "",
-      "timestamp": "2026-08-19T15:36:52.003023"
+      "timestamp": "2026-08-20T10:55:09.755712"
     },
     {
       "test_id": "TC-SEL-068",
@@ -688,7 +655,7 @@
       "expected": "Patient in list",
       "actual": "Saved & listed",
       "error": "",
-      "timestamp": "2026-08-19T15:36:52.277112"
+      "timestamp": "2026-08-20T10:55:10.036417"
     },
     {
       "test_id": "TC-SEL-069",
@@ -699,7 +666,7 @@
       "expected": "All 4 charts visible",
       "actual": "4 charts displayed",
       "error": "",
-      "timestamp": "2026-08-19T15:36:52.627041"
+      "timestamp": "2026-08-20T10:55:10.399063"
     },
     {
       "test_id": "TC-SEL-070",
@@ -710,7 +677,7 @@
       "expected": "display: block",
       "actual": "Report card displayed",
       "error": "",
-      "timestamp": "2026-08-19T15:36:53.152890"
+      "timestamp": "2026-08-20T10:55:10.933875"
     },
     {
       "test_id": "TC-SEL-071",
@@ -721,7 +688,7 @@
       "expected": "main element present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:53.162360"
+      "timestamp": "2026-08-20T10:55:10.942641"
     },
     {
       "test_id": "TC-SEL-072",
@@ -732,7 +699,7 @@
       "expected": ">= 15 labels",
       "actual": "43 labels",
       "error": "",
-      "timestamp": "2026-08-19T15:36:53.182254"
+      "timestamp": "2026-08-20T10:55:10.954479"
     },
     {
       "test_id": "TC-SEL-073",
@@ -743,7 +710,7 @@
       "expected": ">= 10 icons",
       "actual": "47 icons",
       "error": "",
-      "timestamp": "2026-08-19T15:36:53.193277"
+      "timestamp": "2026-08-20T10:55:10.967301"
     },
     {
       "test_id": "TC-SEL-075",
@@ -754,7 +721,7 @@
       "expected": "Chart loaded",
       "actual": "Loaded",
       "error": "",
-      "timestamp": "2026-08-19T15:36:53.221246"
+      "timestamp": "2026-08-20T10:55:10.984276"
     },
     {
       "test_id": "TC-SEL-076",
@@ -765,7 +732,7 @@
       "expected": "CONFIG loaded",
       "actual": "Loaded",
       "error": "",
-      "timestamp": "2026-08-19T15:36:53.225380"
+      "timestamp": "2026-08-20T10:55:10.989845"
     },
     {
       "test_id": "TC-SEL-077",
@@ -776,7 +743,7 @@
       "expected": "AppState loaded",
       "actual": "Loaded",
       "error": "",
-      "timestamp": "2026-08-19T15:36:53.230994"
+      "timestamp": "2026-08-20T10:55:10.994310"
     },
     {
       "test_id": "TC-SEL-078",
@@ -787,7 +754,7 @@
       "expected": "LocalDB loaded",
       "actual": "Loaded",
       "error": "",
-      "timestamp": "2026-08-19T15:36:53.235025"
+      "timestamp": "2026-08-20T10:55:10.998214"
     },
     {
       "test_id": "TC-SEL-079",
@@ -798,7 +765,7 @@
       "expected": "LocalMLEngine loaded",
       "actual": "Loaded",
       "error": "",
-      "timestamp": "2026-08-19T15:36:53.239357"
+      "timestamp": "2026-08-20T10:55:11.002443"
     },
     {
       "test_id": "TC-SEL-080",
@@ -809,7 +776,7 @@
       "expected": "Resized",
       "actual": "390x844",
       "error": "",
-      "timestamp": "2026-08-19T15:36:53.608720"
+      "timestamp": "2026-08-20T10:55:11.375546"
     },
     {
       "test_id": "TC-SEL-081",
@@ -820,7 +787,7 @@
       "expected": "display: flex",
       "actual": "flex",
       "error": "",
-      "timestamp": "2026-08-19T15:36:53.633341"
+      "timestamp": "2026-08-20T10:55:11.423643"
     },
     {
       "test_id": "TC-SEL-082",
@@ -831,7 +798,7 @@
       "expected": "display: flex",
       "actual": "flex",
       "error": "",
-      "timestamp": "2026-08-19T15:36:53.655803"
+      "timestamp": "2026-08-20T10:55:11.442230"
     },
     {
       "test_id": "TC-SEL-083",
@@ -842,7 +809,18 @@
       "expected": "display: none",
       "actual": "none",
       "error": "",
-      "timestamp": "2026-08-19T15:36:53.670053"
+      "timestamp": "2026-08-20T10:55:11.453581"
+    },
+    {
+      "test_id": "TC-SEL-084",
+      "category": "Selenium Web UI",
+      "name": "Mobile Scroll Height Clearance",
+      "objective": "Verify screen-view padding includes bottom nav clearance",
+      "status": "PASS",
+      "expected": "Clearance configured",
+      "actual": "Configured",
+      "error": "",
+      "timestamp": "2026-08-20T10:55:11.459138"
     },
     {
       "test_id": "TC-SEL-085",
@@ -853,7 +831,7 @@
       "expected": "Restored",
       "actual": "1280x900",
       "error": "",
-      "timestamp": "2026-08-19T15:36:53.703421"
+      "timestamp": "2026-08-20T10:55:11.488534"
     },
     {
       "test_id": "TC-SEL-087",
@@ -864,7 +842,7 @@
       "expected": "Planner active",
       "actual": "Active",
       "error": "",
-      "timestamp": "2026-08-19T15:36:54.601925"
+      "timestamp": "2026-08-20T10:55:12.804128"
     },
     {
       "test_id": "TC-SEL-088",
@@ -875,7 +853,7 @@
       "expected": "Prediction active",
       "actual": "Active",
       "error": "",
-      "timestamp": "2026-08-19T15:36:55.140139"
+      "timestamp": "2026-08-20T10:55:13.331582"
     },
     {
       "test_id": "TC-SEL-089",
@@ -886,7 +864,7 @@
       "expected": "Patients active",
       "actual": "Active",
       "error": "",
-      "timestamp": "2026-08-19T15:36:55.667736"
+      "timestamp": "2026-08-20T10:55:13.861354"
     },
     {
       "test_id": "TC-SEL-090",
@@ -897,7 +875,7 @@
       "expected": "Safe probability",
       "actual": "Handled",
       "error": "",
-      "timestamp": "2026-08-19T15:36:55.672407"
+      "timestamp": "2026-08-20T10:55:13.870441"
     },
     {
       "test_id": "TC-SEL-091",
@@ -908,7 +886,7 @@
       "expected": "<= 97%",
       "actual": "Bounded",
       "error": "",
-      "timestamp": "2026-08-19T15:36:55.691427"
+      "timestamp": "2026-08-20T10:55:13.875182"
     },
     {
       "test_id": "TC-SEL-092",
@@ -919,7 +897,7 @@
       "expected": ">= 5%",
       "actual": "Bounded",
       "error": "",
-      "timestamp": "2026-08-19T15:36:55.696936"
+      "timestamp": "2026-08-20T10:55:13.879569"
     },
     {
       "test_id": "TC-SEL-093",
@@ -930,7 +908,7 @@
       "expected": "Email string",
       "actual": "lakshmiankala1906@gmail.com",
       "error": "",
-      "timestamp": "2026-08-19T15:36:56.224425"
+      "timestamp": "2026-08-20T10:55:14.413242"
     },
     {
       "test_id": "TC-SEL-094",
@@ -941,7 +919,7 @@
       "expected": "Medical Practitioner",
       "actual": "Medical Practitioner",
       "error": "",
-      "timestamp": "2026-08-19T15:36:56.768749"
+      "timestamp": "2026-08-20T10:55:14.945285"
     },
     {
       "test_id": "TC-SEL-095",
@@ -952,7 +930,7 @@
       "expected": "Field visible",
       "actual": "Visible",
       "error": "",
-      "timestamp": "2026-08-19T15:36:56.781870"
+      "timestamp": "2026-08-20T10:55:14.960778"
     },
     {
       "test_id": "TC-SEL-096",
@@ -963,7 +941,7 @@
       "expected": "Button visible",
       "actual": "Visible",
       "error": "",
-      "timestamp": "2026-08-19T15:36:56.798840"
+      "timestamp": "2026-08-20T10:55:14.976310"
     },
     {
       "test_id": "TC-SEL-097",
@@ -974,7 +952,7 @@
       "expected": "Saved",
       "actual": "Executed",
       "error": "",
-      "timestamp": "2026-08-19T15:36:56.806184"
+      "timestamp": "2026-08-20T10:55:14.982139"
     },
     {
       "test_id": "TC-SEL-099",
@@ -985,7 +963,7 @@
       "expected": "170",
       "actual": "170",
       "error": "",
-      "timestamp": "2026-08-19T15:36:57.040770"
+      "timestamp": "2026-08-20T10:55:15.214651"
     },
     {
       "test_id": "TC-SEL-100",
@@ -996,7 +974,7 @@
       "expected": "70",
       "actual": "70",
       "error": "",
-      "timestamp": "2026-08-19T15:36:57.051255"
+      "timestamp": "2026-08-20T10:55:15.227181"
     },
     {
       "test_id": "TC-SEL-101",
@@ -1007,7 +985,7 @@
       "expected": "FontAwesome link present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:57.060298"
+      "timestamp": "2026-08-20T10:55:15.234944"
     },
     {
       "test_id": "TC-SEL-102",
@@ -1018,7 +996,7 @@
       "expected": "Google fonts present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:57.070222"
+      "timestamp": "2026-08-20T10:55:15.242085"
     },
     {
       "test_id": "TC-SEL-103",
@@ -1029,7 +1007,7 @@
       "expected": "Tokens defined",
       "actual": "Defined",
       "error": "",
-      "timestamp": "2026-08-19T15:36:57.078420"
+      "timestamp": "2026-08-20T10:55:15.248859"
     },
     {
       "test_id": "TC-SEL-104",
@@ -1040,7 +1018,7 @@
       "expected": "Backdrop filter present",
       "actual": "Present",
       "error": "",
-      "timestamp": "2026-08-19T15:36:57.078534"
+      "timestamp": "2026-08-20T10:55:15.248947"
     },
     {
       "test_id": "TC-SEL-105",
@@ -1051,7 +1029,7 @@
       "expected": "Token is null",
       "actual": "Token cleared",
       "error": "",
-      "timestamp": "2026-08-19T15:36:57.083601"
+      "timestamp": "2026-08-20T10:55:15.252944"
     }
   ]
 }

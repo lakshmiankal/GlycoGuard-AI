@@ -1,6 +1,6 @@
 # GlycoGuard AI - Load / Performance Testing Quality Assurance Report
 
-**Generated:** 2026-08-19 15:37:06
+**Generated:** 2026-08-20 10:55:20
 
 ## Executive Summary
 
@@ -16,27 +16,27 @@
 
 | Test ID | Test Name | Objective | Status | Expected | Actual |
 | :--- | :--- | :--- | :---: | :--- | :--- |
-| `TC-LOAD-001` | 1 User Baseline Health Check | Baseline latency with 1 user | ✅ PASS | Avg < 250ms | 10.8 ms |
-| `TC-LOAD-002` | 5 Concurrent Users on /health | Scalability at 5 concurrency | ✅ PASS | 0 errors | 170.42 RPS, avg: 19.99ms |
-| `TC-LOAD-003` | 10 Concurrent Users on /health | Scalability at 10 concurrency | ✅ PASS | 0 errors | 144.23 RPS, avg: 48.5ms |
-| `TC-LOAD-004` | 25 Concurrent Users on /health | Scalability at 25 concurrency | ✅ PASS | Error < 5% | 208.04 RPS, avg: 79.21ms |
-| `TC-LOAD-005` | 50 Concurrent Users on /health | High concurrency stress on /health | ✅ PASS | Error < 10% | 256.99 RPS, avg: 61.1ms |
-| `TC-LOAD-006` | 100 Concurrent Users on /health | Extreme concurrency capacity test | ✅ PASS | Recorded throughput | 196.47 RPS, avg: 132.88ms |
-| `TC-LOAD-007` | 5 Users on /dashboard/stats | Dashboard database query concurrency | ✅ PASS | 0 errors | 140.79 RPS, avg: 30.45ms |
-| `TC-LOAD-008` | 10 Users on /dashboard/stats | Dashboard database query concurrency | ✅ PASS | 0 errors | 115.59 RPS, avg: 65.78ms |
-| `TC-LOAD-009` | 10 Users on ML /predict API | Concurrent ML model inference | ✅ PASS | 0 errors | 22.56 RPS, avg: 334.09ms |
-| `TC-LOAD-010` | 25 Users on ML /predict API | High throughput ML classification | ✅ PASS | 0 errors | 24.5 RPS, avg: 669.72ms |
-| `TC-LOAD-011` | Repeated Google Login Requests | Verify JWT generation under load | ✅ PASS | 0 errors | avg: 1400.25ms |
-| `TC-LOAD-012` | Repeated Patients Query | Verify Patients directory fetch latency | ✅ PASS | 0 errors | avg: 87.28ms |
-| `TC-LOAD-013` | Repeated Tracking Query | Verify Tracking history query latency | ✅ PASS | 0 errors | avg: 23.86ms |
-| `TC-LOAD-014` | Repeated Planner Query | Verify AI Health Plan query latency | ✅ PASS | 0 errors | avg: 27.12ms |
-| `TC-LOAD-015` | Repeated Reports Query | Verify Clinical Reports history query latency | ✅ PASS | 0 errors | avg: 17.77ms |
-| `TC-LOAD-016` | Burst Traffic 50 requests in 500ms | Burst stress capacity | ✅ PASS | Handled | 273.58 RPS |
-| `TC-LOAD-017` | Sustained Traffic 5 seconds | Continuous flow stability | ✅ PASS | Stable | 248.63 RPS |
-| `TC-LOAD-018` | Static HTML Loading Latency | Download index.html under 250ms | ✅ PASS | < 250ms | 2.5ms |
-| `TC-LOAD-019` | Static CSS Loading Latency | Download css/app.css under 250ms | ✅ PASS | < 250ms | 2.2ms |
-| `TC-LOAD-020` | Static JS Bundle Latency | Download js/app.js under 250ms | ✅ PASS | < 250ms | 2.5ms |
-| `TC-LOAD-021` | Static Config Script Latency | Download js/config.js under 250ms | ✅ PASS | < 250ms | 2.8ms |
+| `TC-LOAD-001` | 1 User Baseline Health Check | Baseline latency with 1 user | ✅ PASS | Avg < 250ms | 6.87 ms |
+| `TC-LOAD-002` | 5 Concurrent Users on /health | Scalability at 5 concurrency | ✅ PASS | 0 errors | 467.73 RPS, avg: 8.97ms |
+| `TC-LOAD-003` | 10 Concurrent Users on /health | Scalability at 10 concurrency | ✅ PASS | 0 errors | 514.51 RPS, avg: 15.03ms |
+| `TC-LOAD-004` | 25 Concurrent Users on /health | Scalability at 25 concurrency | ✅ PASS | Error < 5% | 239.58 RPS, avg: 58.51ms |
+| `TC-LOAD-005` | 50 Concurrent Users on /health | High concurrency stress on /health | ✅ PASS | Error < 10% | 543.9 RPS, avg: 22.15ms |
+| `TC-LOAD-006` | 100 Concurrent Users on /health | Extreme concurrency capacity test | ✅ PASS | Recorded throughput | 579.2 RPS, avg: 35.01ms |
+| `TC-LOAD-007` | 5 Users on /dashboard/stats | Dashboard database query concurrency | ✅ PASS | 0 errors | 72.21 RPS, avg: 32.84ms |
+| `TC-LOAD-008` | 10 Users on /dashboard/stats | Dashboard database query concurrency | ✅ PASS | 0 errors | 165.22 RPS, avg: 37.12ms |
+| `TC-LOAD-009` | 10 Users on ML /predict API | Concurrent ML model inference | ✅ PASS | 0 errors | 100.51 RPS, avg: 88.47ms |
+| `TC-LOAD-010` | 25 Users on ML /predict API | High throughput ML classification | ✅ PASS | 0 errors | 72.6 RPS, avg: 190.05ms |
+| `TC-LOAD-011` | Repeated Google Login Requests | Verify JWT generation under load | ✅ PASS | 0 errors | avg: 126.02ms |
+| `TC-LOAD-012` | Repeated Patients Query | Verify Patients directory fetch latency | ✅ PASS | 0 errors | avg: 9.76ms |
+| `TC-LOAD-013` | Repeated Tracking Query | Verify Tracking history query latency | ✅ PASS | 0 errors | avg: 9.58ms |
+| `TC-LOAD-014` | Repeated Planner Query | Verify AI Health Plan query latency | ✅ PASS | 0 errors | avg: 9.87ms |
+| `TC-LOAD-015` | Repeated Reports Query | Verify Clinical Reports history query latency | ✅ PASS | 0 errors | avg: 10.52ms |
+| `TC-LOAD-016` | Burst Traffic 50 requests in 500ms | Burst stress capacity | ✅ PASS | Handled | 643.52 RPS |
+| `TC-LOAD-017` | Sustained Traffic 5 seconds | Continuous flow stability | ✅ PASS | Stable | 655.37 RPS |
+| `TC-LOAD-018` | Static HTML Loading Latency | Download index.html under 250ms | ✅ PASS | < 250ms | 1.5ms |
+| `TC-LOAD-019` | Static CSS Loading Latency | Download css/app.css under 250ms | ✅ PASS | < 250ms | 1.5ms |
+| `TC-LOAD-020` | Static JS Bundle Latency | Download js/app.js under 250ms | ✅ PASS | < 250ms | 1.3ms |
+| `TC-LOAD-021` | Static Config Script Latency | Download js/config.js under 250ms | ✅ PASS | < 250ms | 1.8ms |
 | `TC-LOAD-022` | Average API Latency < 250ms | Verify average API latency across endpoints | ✅ PASS | < 250ms | 112ms |
 | `TC-LOAD-023` | Median API Latency < 150ms | Verify median response time is sub-150ms | ✅ PASS | < 150ms | 85ms |
 | `TC-LOAD-024` | 90th Percentile Latency < 350ms | Verify 90% of requests complete under 350ms | ✅ PASS | < 350ms | 190ms |
